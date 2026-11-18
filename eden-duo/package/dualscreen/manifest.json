@@ -1,0 +1,605 @@
+{
+  "format": 1,
+  "title_id": "0100F4300BF2C000",
+  "name": "Snap Companion Next",
+  "version": "0.1.0-dev.1",
+  "min_runtime": 25,
+  "canvas_w": 1240,
+  "canvas_h": 1080,
+  "background": "#FFF4F2E5",
+  "requires_module": true,
+  "module_tick_hidden": false,
+  "module": {
+    "abi": 1,
+    "build_ids": [
+      "DDB900FF04A912ED42430508389853CFAF1ACCCE000000000000000000000000"
+    ],
+    "libraries": {}
+  },
+  "flags": {
+    "map.pokemon": 1,
+    "map.routes": 1
+  },
+  "derived": [
+    {
+      "name": "ui.pokemon",
+      "expr": "scn.pokemon_available && @flag:map.pokemon"
+    },
+    {
+      "name": "ui.routes",
+      "expr": "scn.route_available && @flag:map.routes"
+    }
+  ],
+  "map": {
+    "areas": {
+      "course_canvas": {
+        "min": [
+          0,
+          -2160
+        ],
+        "max": [
+          3840,
+          0
+        ],
+        "dynamic_markers": [
+          {
+            "group": "player",
+            "count": 1,
+            "x": "scn.map_x",
+            "y": "scn.map_y",
+            "kind": "scn.player_valid",
+            "hide_when_kind": 0,
+            "icon_src_bind": "scn.player_pin_src",
+            "size": 38,
+            "size_max": 48
+          }
+        ]
+      }
+    }
+  },
+  "actions": {
+    "expand": {
+      "kind": "page",
+      "page": "map",
+      "transition": "fade",
+      "duration_ms": 120,
+      "enabled_bind": "scn.map_valid"
+    },
+    "home": {
+      "kind": "page",
+      "page": "home",
+      "transition": "fade",
+      "duration_ms": 120
+    },
+    "pokemon": {
+      "kind": "flag",
+      "flag": "map.pokemon",
+      "enabled_bind": "scn.pokemon_available"
+    },
+    "routes": {
+      "kind": "flag",
+      "flag": "map.routes",
+      "enabled_bind": "scn.route_available"
+    },
+    "reset": {
+      "kind": "view_reset",
+      "view": "course_map"
+    }
+  },
+  "pages": [
+    {
+      "id": "home",
+      "title": "Course",
+      "widgets": [
+        {
+          "type": "rect",
+          "rect": [
+            0,
+            0,
+            1240,
+            92
+          ],
+          "bg": "#FF246E72",
+          "color": "#00000000",
+          "frame": 0
+        },
+        {
+          "type": "label",
+          "rect": [
+            28,
+            22,
+            780,
+            52
+          ],
+          "text_scale": 7,
+          "color": "#FFFFFFFF",
+          "wrap_width": 780,
+          "max_lines": 1,
+          "fit_text": true,
+          "text_min_scale": 2,
+          "text": "Snap Companion Next"
+        },
+        {
+          "type": "label",
+          "rect": [
+            960,
+            24,
+            80,
+            40
+          ],
+          "text_scale": 3,
+          "color": "#FFE2F0DD",
+          "wrap_width": 80,
+          "max_lines": 1,
+          "fit_text": true,
+          "text_min_scale": 2,
+          "bind_text": "scn.connection_label",
+          "align": "right"
+        },
+        {
+          "type": "value",
+          "rect": [
+            1060,
+            24,
+            60,
+            40
+          ],
+          "bind": "@clock.hour",
+          "pad": 2,
+          "text_scale": 4,
+          "color": "#FFFFFFFF"
+        },
+        {
+          "type": "label",
+          "rect": [
+            1116,
+            24,
+            12,
+            40
+          ],
+          "text_scale": 4,
+          "color": "#FFFFFFFF",
+          "wrap_width": 12,
+          "max_lines": 1,
+          "fit_text": true,
+          "text_min_scale": 2,
+          "text": ":"
+        },
+        {
+          "type": "value",
+          "rect": [
+            1130,
+            24,
+            60,
+            40
+          ],
+          "bind": "@clock.minute",
+          "pad": 2,
+          "text_scale": 4,
+          "color": "#FFFFFFFF"
+        },
+        {
+          "type": "rect",
+          "rect": [
+            24,
+            116,
+            1192,
+            144
+          ],
+          "bg": "#FFFFFFFF",
+          "color": "#00000000",
+          "frame": 0
+        },
+        {
+          "type": "rect",
+          "rect": [
+            24,
+            116,
+            9,
+            144
+          ],
+          "bg": "#FFDF893C",
+          "color": "#00000000",
+          "frame": 0
+        },
+        {
+          "type": "label",
+          "rect": [
+            52,
+            130,
+            1136,
+            64
+          ],
+          "text_scale": 8,
+          "color": "#FF254C4D",
+          "wrap_width": 1136,
+          "max_lines": 1,
+          "fit_text": true,
+          "text_min_scale": 2,
+          "bind_text": "scn.course_name"
+        },
+        {
+          "type": "label",
+          "rect": [
+            52,
+            205,
+            1136,
+            38
+          ],
+          "text_scale": 4,
+          "color": "#FF254C4D",
+          "wrap_width": 1136,
+          "max_lines": 1,
+          "fit_text": true,
+          "text_min_scale": 2,
+          "bind_text": "scn.course_detail"
+        },
+        {
+          "type": "rect",
+          "rect": [
+            24,
+            280,
+            1192,
+            670
+          ],
+          "bg": "#FFE3E9D6",
+          "color": "#00000000",
+          "frame": 0
+        },
+        {
+          "type": "map",
+          "id": "course_preview",
+          "rect": [
+            24,
+            280,
+            1192,
+            670
+          ],
+          "area": "course_canvas",
+          "area_label": false,
+          "bg": "#FFE3E9D6",
+          "need_bind": "scn.map_valid",
+          "pan_zoom": false,
+          "min_zoom": 1,
+          "max_zoom": 5,
+          "overlays": [
+            {
+              "src_bind": "scn.map_src",
+              "x0": 0,
+              "y0": -2160,
+              "x1": 3840,
+              "y1": 0,
+              "src_hold": false
+            },
+            {
+              "src_bind": "scn.route_src",
+              "x0": 0,
+              "y0": -2160,
+              "x1": 3840,
+              "y1": 0,
+              "show_bind": "ui.routes",
+              "src_hold": false
+            },
+            {
+              "src_bind": "scn.pokemon_src",
+              "x0": 0,
+              "y0": -2160,
+              "x1": 3840,
+              "y1": 0,
+              "show_bind": "ui.pokemon",
+              "src_hold": false
+            }
+          ]
+        },
+        {
+          "type": "label",
+          "rect": [
+            130,
+            575,
+            980,
+            50
+          ],
+          "text_scale": 5,
+          "color": "#FF254C4D",
+          "wrap_width": 980,
+          "max_lines": 1,
+          "fit_text": true,
+          "text_min_scale": 2,
+          "bind_text": "scn.status",
+          "align": "center",
+          "need_bind": "!scn.map_valid"
+        },
+        {
+          "type": "button",
+          "rect": [
+            960,
+            870,
+            224,
+            56
+          ],
+          "text": "Expand Map",
+          "on_tap": "expand",
+          "text_scale": 4,
+          "color": "#FFFFFFFF",
+          "bg": "#FF246E72",
+          "align": "center",
+          "pill": true,
+          "border": 0,
+          "text_center_h": 56,
+          "need_bind": "scn.map_valid"
+        },
+        {
+          "type": "rect",
+          "rect": [
+            24,
+            974,
+            1192,
+            76
+          ],
+          "bg": "#FFFFFFFF",
+          "color": "#00000000",
+          "frame": 0
+        },
+        {
+          "type": "label",
+          "rect": [
+            48,
+            994,
+            920,
+            32
+          ],
+          "text_scale": 3,
+          "color": "#FF687D77",
+          "wrap_width": 920,
+          "max_lines": 1,
+          "fit_text": true,
+          "text_min_scale": 2,
+          "text": "Development \u2022 Live course mapping pending"
+        },
+        {
+          "type": "value",
+          "rect": [
+            1052,
+            992,
+            140,
+            36
+          ],
+          "bind": "@perf.fps",
+          "suffix": " FPS",
+          "text_scale": 4,
+          "color": "#FF246E72"
+        }
+      ]
+    },
+    {
+      "id": "map",
+      "title": "Map",
+      "no_auto_leave": true,
+      "widgets": [
+        {
+          "type": "rect",
+          "rect": [
+            0,
+            0,
+            1240,
+            92
+          ],
+          "bg": "#FF246E72",
+          "color": "#00000000",
+          "frame": 0
+        },
+        {
+          "type": "label",
+          "rect": [
+            28,
+            22,
+            780,
+            52
+          ],
+          "text_scale": 7,
+          "color": "#FFFFFFFF",
+          "wrap_width": 780,
+          "max_lines": 1,
+          "fit_text": true,
+          "text_min_scale": 2,
+          "text": "Snap Companion Next"
+        },
+        {
+          "type": "label",
+          "rect": [
+            960,
+            24,
+            80,
+            40
+          ],
+          "text_scale": 3,
+          "color": "#FFE2F0DD",
+          "wrap_width": 80,
+          "max_lines": 1,
+          "fit_text": true,
+          "text_min_scale": 2,
+          "bind_text": "scn.connection_label",
+          "align": "right"
+        },
+        {
+          "type": "value",
+          "rect": [
+            1060,
+            24,
+            60,
+            40
+          ],
+          "bind": "@clock.hour",
+          "pad": 2,
+          "text_scale": 4,
+          "color": "#FFFFFFFF"
+        },
+        {
+          "type": "label",
+          "rect": [
+            1116,
+            24,
+            12,
+            40
+          ],
+          "text_scale": 4,
+          "color": "#FFFFFFFF",
+          "wrap_width": 12,
+          "max_lines": 1,
+          "fit_text": true,
+          "text_min_scale": 2,
+          "text": ":"
+        },
+        {
+          "type": "value",
+          "rect": [
+            1130,
+            24,
+            60,
+            40
+          ],
+          "bind": "@clock.minute",
+          "pad": 2,
+          "text_scale": 4,
+          "color": "#FFFFFFFF"
+        },
+        {
+          "type": "button",
+          "rect": [
+            24,
+            112,
+            120,
+            56
+          ],
+          "text": "Back",
+          "on_tap": "home",
+          "text_scale": 4,
+          "color": "#FFFFFFFF",
+          "bg": "#FF246E72",
+          "align": "center",
+          "pill": true,
+          "border": 0,
+          "text_center_h": 56
+        },
+        {
+          "type": "label",
+          "rect": [
+            172,
+            120,
+            1000,
+            48
+          ],
+          "text_scale": 6,
+          "color": "#FF254C4D",
+          "wrap_width": 1000,
+          "max_lines": 1,
+          "fit_text": true,
+          "text_min_scale": 2,
+          "bind_text": "scn.course_name"
+        },
+        {
+          "type": "map",
+          "id": "course_map",
+          "rect": [
+            24,
+            188,
+            1192,
+            760
+          ],
+          "area": "course_canvas",
+          "area_label": false,
+          "bg": "#FFE3E9D6",
+          "need_bind": "scn.map_valid",
+          "pan_zoom": true,
+          "min_zoom": 1,
+          "max_zoom": 5,
+          "overlays": [
+            {
+              "src_bind": "scn.map_src",
+              "x0": 0,
+              "y0": -2160,
+              "x1": 3840,
+              "y1": 0,
+              "src_hold": false
+            },
+            {
+              "src_bind": "scn.route_src",
+              "x0": 0,
+              "y0": -2160,
+              "x1": 3840,
+              "y1": 0,
+              "show_bind": "ui.routes",
+              "src_hold": false
+            },
+            {
+              "src_bind": "scn.pokemon_src",
+              "x0": 0,
+              "y0": -2160,
+              "x1": 3840,
+              "y1": 0,
+              "show_bind": "ui.pokemon",
+              "src_hold": false
+            }
+          ]
+        },
+        {
+          "type": "button",
+          "rect": [
+            24,
+            974,
+            246,
+            64
+          ],
+          "text": "Pok\u00e9mon",
+          "on_tap": "pokemon",
+          "text_scale": 4,
+          "color": "#FFFFFFFF",
+          "bg": "#FF246E72",
+          "align": "center",
+          "pill": true,
+          "border": 0,
+          "text_center_h": 64,
+          "need_bind": "scn.pokemon_available"
+        },
+        {
+          "type": "button",
+          "rect": [
+            292,
+            974,
+            246,
+            64
+          ],
+          "text": "Routes",
+          "on_tap": "routes",
+          "text_scale": 4,
+          "color": "#FFFFFFFF",
+          "bg": "#FF246E72",
+          "align": "center",
+          "pill": true,
+          "border": 0,
+          "text_center_h": 64,
+          "need_bind": "scn.route_available"
+        },
+        {
+          "type": "button",
+          "rect": [
+            992,
+            974,
+            224,
+            64
+          ],
+          "text": "Reset View",
+          "on_tap": "reset",
+          "text_scale": 4,
+          "color": "#FFFFFFFF",
+          "bg": "#FF246E72",
+          "align": "center",
+          "pill": true,
+          "border": 0,
+          "text_center_h": 64,
+          "need_bind": "scn.map_valid"
+        }
+      ]
+    }
+  ]
+}

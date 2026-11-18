@@ -1,0 +1,46 @@
+{
+  "schema": 1,
+  "title_id": "0100F4300BF2C000",
+  "game_version": "2.0.1",
+  "build_id": "DDB900FF04A912ED42430508389853CFAF1ACCCE000000000000000000000000",
+  "build16": "DDB900FF04A912ED",
+  "status": "unverified-live-mappings",
+  "release_ready": false,
+  "live_fields": {
+    "current_course": null,
+    "course_variant": null,
+    "selected_research_level": null,
+    "active_route": null,
+    "run_lifetime": null,
+    "neo_one_position": null,
+    "camera_heading": null,
+    "world_to_map_projection": null,
+    "pokemon_markers": null
+  },
+  "verified_offline": {
+    "maps_and_routes": 143,
+    "source_archives": 30,
+    "texture_dimensions": [3840, 2160],
+    "texture_formats": {"BC1": 38, "BC3": 98, "BC7": 7},
+    "archive_encryption": "All 143 map/route entries are unencrypted",
+    "compression": "Oodle; open-source ooz matches all 143 owned decoded textures byte for byte",
+    "display_dimensions": [1920, 1080],
+    "independent_render_check": {
+      "textures": 143,
+      "BC1_max_channel_difference": 1,
+      "BC3_max_channel_difference": 1,
+      "BC7_max_channel_difference": 0,
+      "alpha_exact": true,
+      "method": "Runtime-style C++ archive/texture decoder compared with independent numpy deswizzler and texture2ddecoder, including alpha-weighted downsampling"
+    },
+    "scope": "Own local game files only. No live-game or Thor validation."
+  },
+  "rejected_shortcuts": [
+    "A loaded LC archive is not a unique live course: multiple variants share it",
+    "Saved research/unlocked level is not the selected level of the current run",
+    "RouteData string coordinate pairs are not a verified world-to-map transform",
+    "Elapsed time along a drawn path is not a measured NEO-ONE position",
+    "A static Pokemon encounter reference is not a currently visible live actor",
+    "Pointers or guest hooks from another game cannot be reused for Snap"
+  ]
+}

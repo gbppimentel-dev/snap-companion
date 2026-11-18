@@ -1,0 +1,7 @@
+{
+  "eden_sdk": {"url": "https://github.com/igawa6/eden-duo", "commit": "123d55297655f4c59df471da88183827aa132ae3", "abi": 1},
+  "companions_reference": {"url": "https://github.com/igawa6/eden-duo-companions", "commit": "2169928d2f301aa7bb3b13777ca8a94d0e73961d", "runtime_target": 25},
+  "ooz": {"url": "https://github.com/zao/ooz", "commit": "ff5aeb9e45e362e8d6bb1199aa82406285dd2a18", "license": "GPL-3.0-or-later", "vendored": false},
+  "simde": {"url": "https://github.com/simd-everywhere/simde", "commit": "dd0b662fd8cf4b1617dbbb4d08aa053e512b08e4", "license": "MIT", "vendored": false},
+  "bcdec": {"url": "https://github.com/iOrange/bcdec", "commit": "80859ed3b7afb1c527a2a99d70c61457bea72d0c", "license": "MIT", "vendored": true}
+}

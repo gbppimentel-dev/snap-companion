@@ -12,5 +12,12 @@
     "commit": "b87fbbfe3e3d33dbdd09a55c9b190895a70a569a",
     "apkSha256": "2f28fa4fa9e59825b38495b68c7b63bb4b7d15fbcdbca8e290c1be7b83a0f8c3"
   },
-  "policy": "Optional separate app/storage. Never replace, migrate from, modify or merge into the stable build without an explicit new user request."
+  "policy": "Optional separate app/storage. Never replace, migrate from, modify or merge into the stable build without an explicit new user request.",
+  "delivery": {
+    "kind": "eden-duo-dsmod",
+    "source": "eden-duo",
+    "titleId": "0100F4300BF2C000",
+    "status": "development; live mappings unverified",
+    "supersedes": "Android Next APK foundation"
+  }
 }

@@ -1,5 +1,7 @@
 # Optional Next fork
 
+**Current direction — 2026-11-18:** SCN is now an Eden Duo companion mod, not a new Android app. Its implementation and checklist are in [eden-duo/README.md](../eden-duo/README.md). The APK information below describes the previous isolated foundation, retained for reference only. It is not the new deliverable.
+
 Stable v0.5.24 is the preserved working baseline. Its source tag, main branch, published release, APK and private app data remain unchanged.
 
 | | Stable | Optional fork |
