@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Read-only Pass4 collector for the companion's standard service metrics. Never installs or sends input."""
 import argparse,json,pathlib,re,subprocess,time
-PACKAGE='dev.gbppimentel.snapcompanion'
+PACKAGE='dev.gbppimentel.snapcompanion.next'
 COUNTERS=['frames','readings','successfulInferenceMillis','failedInferenceMillis','inferenceFailures','dropped','duplicates']
 def parse(text,kind):
  rows=[]

@@ -1,0 +1,11 @@
+package dev.gbppimentel.snapcompanion.next;
+import java.util.*;import org.junit.Test;import static org.junit.Assert.*;
+public class PhotoPhaseStateTest {
+ private LiveReading reading(long at,String profile,Map<String,LiveReading.Value> f){return new LiveReading(at,"fixture",profile,LiveReading.Scene.PHOTO_SELECTION,f);}
+ private LiveReading.Value raw(String v){return new LiveReading.Value(v,.95f,"explicit fixture label");}
+ private LiveStabilizer.Stable stable(String key,String value,long at){return new LiveStabilizer.Stable(key,value,.95f,at,at,3,"fixture","default","fixture");}
+ @Test public void publishesOnlySamePhotoFieldsThatAgreeWithCurrentReading()throws Exception{var fields=Map.of("subject",raw("810"),"category",raw("3"),"photosTaken",raw("24"));var stable=Map.of("subject",stable("subject","810",1000),"category",stable("category","3",1000),"photosTaken",stable("photosTaken","24",1000));var out=PhotoPhaseState.read(reading(1000,"default",fields),stable,"default",1100);assertEquals(810,out.getInt("subject"));assertEquals(3,out.getInt("category"));assertEquals(24,out.getInt("photosTaken"));}
+ @Test public void switchingPhotosNeverReusesPreviousCategoryOrSpecies()throws Exception{var prior=Map.of("subject",stable("subject","810",1000),"category",stable("category","1",1000));assertEquals(0,PhotoPhaseState.read(reading(1500,"default",Map.of("subject",raw("172"),"category",raw("4"))),prior,"default",1600).length());assertEquals(0,PhotoPhaseState.read(reading(1500,"default",Map.of()),prior,"default",1600).length());}
+ @Test public void staleOtherProfileAndImpossibleCountsStayUnknown()throws Exception{var fields=Map.of("photosTaken",raw("99"));var same=Map.of("photosTaken",stable("photosTaken","99",1000));assertEquals(0,PhotoPhaseState.read(reading(1000,"default",fields),same,"default",1100).length());assertEquals(0,PhotoPhaseState.read(reading(1000,"other",fields),same,"default",1100).length());assertEquals(0,PhotoPhaseState.read(reading(1000,"default",fields),same,"default",7000).length());}
+ @Test public void gradingFieldsAreNoLongerPublished()throws Exception{var r=new LiveReading(1000,"fixture","default",LiveReading.Scene.EVALUATION,Map.of("subject",raw("810")));assertEquals(0,PhotoPhaseState.read(r,Map.of("subject",stable("subject","810",1000)),"default",1100).length());}
+}

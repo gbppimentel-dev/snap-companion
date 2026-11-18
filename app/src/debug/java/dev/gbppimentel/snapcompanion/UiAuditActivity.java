@@ -1,6 +1,0 @@
-package dev.gbppimentel.snapcompanion;
-import android.app.Activity;import android.os.Bundle;import android.webkit.*;import android.graphics.Color;import android.view.*;
-/** Debug-only local Android renderer harness. Never starts game/link/capture services. */
-public final class UiAuditActivity extends Activity {
- @Override public void onCreate(Bundle state){super.onCreate(state);WebView.setWebContentsDebuggingEnabled(true);WebView web=new WebView(this);setContentView(web);web.setBackgroundColor(Color.TRANSPARENT);web.setOverScrollMode(View.OVER_SCROLL_NEVER);WebSettings s=web.getSettings();s.setJavaScriptEnabled(true);s.setDomStorageEnabled(true);s.setAllowFileAccess(false);s.setAllowContentAccess(false);s.setAllowFileAccessFromFileURLs(false);s.setAllowUniversalAccessFromFileURLs(false);s.setUseWideViewPort(true);s.setLoadWithOverviewMode(true);s.setTextZoom(100);web.setWebViewClient(new WebViewClient(){@Override public void onPageFinished(WebView v,String url){v.evaluateJavascript("SnapApp.update({connected:false,phase:'waiting',requestsKnown:true,received:SNAP_CONTENT.requests.slice(0,8).map(r=>r.id),photos:{},album:[]});SnapApp.nav('requests');",null);}});web.loadUrl("file:///android_asset/ui/index.html");getWindow().getInsetsController().hide(WindowInsets.Type.systemBars());}
-}

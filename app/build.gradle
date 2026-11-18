@@ -1,14 +1,14 @@
 plugins { id 'com.android.application' }
 
 android {
-    namespace 'dev.gbppimentel.snapcompanion'
+    namespace 'dev.gbppimentel.snapcompanion.next'
     compileSdk 36
     defaultConfig {
-        applicationId 'dev.gbppimentel.snapcompanion'
+        applicationId 'dev.gbppimentel.snapcompanion.next'
         minSdk 30
         targetSdk 36
-        versionCode 36
-        versionName '0.5.24'
+        versionCode 1
+        versionName '0.5.24-next.1'
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
     }
     compileOptions { sourceCompatibility JavaVersion.VERSION_17; targetCompatibility JavaVersion.VERSION_17 }
@@ -35,7 +35,7 @@ android {
 tasks.register('buildLiveBridge', Exec) {
     inputs.files rootProject.fileTree('bridge/src').matching { include '**/*.java' }
     inputs.file rootProject.file('scripts/build-live-bridge.sh')
-    inputs.file rootProject.file('app/src/main/java/dev/gbppimentel/snapcompanion/ControllerButtons.java')
+    inputs.file rootProject.file('app/src/main/java/dev/gbppimentel/snapcompanion/next/ControllerButtons.java')
     outputs.file layout.buildDirectory.file('generated/liveBridge/assets/bridge/live-projection.jar')
     commandLine 'sh', rootProject.file('scripts/build-live-bridge.sh').absolutePath
 }

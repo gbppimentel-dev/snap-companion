@@ -38,4 +38,6 @@ jobs:
           yes | "$SDKMANAGER" --licenses >/dev/null || true
           "$SDKMANAGER" 'platforms;android-36' 'build-tools;36.0.0'
       - name: test and build Android app
-        run: ./gradlew :app:testDebugUnitTest :app:assembleDebug :app:lintDebug --console=plain
+        run: |
+          ./gradlew :app:testDebugUnitTest :app:assembleRelease :app:lintRelease --console=plain
+          python tests/fork-isolation.py --apk app/build/outputs/apk/release/app-release.apk

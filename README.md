@@ -1,3 +1,13 @@
+# Snap Companion Next
+
+**Optional development fork of stable [v0.5.24](https://github.com/gbppimentel-dev/snap-companion/releases/tag/v0.5.24).**
+
+The stable app is frozen and stays on its original package, data and release. All improvements happen here as **Snap Companion Next**, package `dev.gbppimentel.snapcompanion.next`, with separate Android storage and versioning. Nothing is automatically installed, published or migrated.
+
+Use `scripts/build-next.sh` to produce a separate Next APK. The original stable-release packager is disabled in this fork. See [fork rules](docs/NEXT.md). The documentation below is the inherited v0.5.24 baseline, not a separate qualification of Next.
+
+---
+
 # Snap Companion
 
 [![release](https://img.shields.io/github/v/release/gbppimentel-dev/snap-companion)](https://github.com/gbppimentel-dev/snap-companion/releases/latest)
