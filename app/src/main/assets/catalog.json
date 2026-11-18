@@ -1,0 +1,1918 @@
+{
+  "schema": 1,
+  "roster": [
+    {
+      "lental": 1,
+      "id": 666,
+      "name": "Vivillon",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/vivillon.shtml"
+    },
+    {
+      "lental": 2,
+      "id": 172,
+      "name": "Pichu",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/pichu.shtml"
+    },
+    {
+      "lental": 3,
+      "id": 810,
+      "name": "Grookey",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/grookey.shtml"
+    },
+    {
+      "lental": 4,
+      "id": 813,
+      "name": "Scorbunny",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/scorbunny.shtml"
+    },
+    {
+      "lental": 5,
+      "id": 626,
+      "name": "Bouffalant",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/bouffalant.shtml"
+    },
+    {
+      "lental": 6,
+      "id": 18,
+      "name": "Pidgeot",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/pidgeot.shtml"
+    },
+    {
+      "lental": 7,
+      "id": 465,
+      "name": "Tangrowth",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/tangrowth.shtml"
+    },
+    {
+      "lental": 8,
+      "id": 587,
+      "name": "Emolga",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/emolga.shtml"
+    },
+    {
+      "lental": 9,
+      "id": 265,
+      "name": "Wurmple",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/wurmple.shtml"
+    },
+    {
+      "lental": 10,
+      "id": 198,
+      "name": "Murkrow",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/murkrow.shtml"
+    },
+    {
+      "lental": 11,
+      "id": 10,
+      "name": "Caterpie",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/caterpie.shtml"
+    },
+    {
+      "lental": 12,
+      "id": 214,
+      "name": "Heracross",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/heracross.shtml"
+    },
+    {
+      "lental": 13,
+      "id": 127,
+      "name": "Pinsir",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/pinsir.shtml"
+    },
+    {
+      "lental": 14,
+      "id": 85,
+      "name": "Dodrio",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/dodrio.shtml"
+    },
+    {
+      "lental": 15,
+      "id": 580,
+      "name": "Ducklett",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/ducklett.shtml"
+    },
+    {
+      "lental": 16,
+      "id": 581,
+      "name": "Swanna",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/swanna.shtml"
+    },
+    {
+      "lental": 17,
+      "id": 399,
+      "name": "Bidoof",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/bidoof.shtml"
+    },
+    {
+      "lental": 18,
+      "id": 276,
+      "name": "Taillow",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/taillow.shtml"
+    },
+    {
+      "lental": 19,
+      "id": 389,
+      "name": "Torterra",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/torterra.shtml"
+    },
+    {
+      "lental": 20,
+      "id": 129,
+      "name": "Magikarp",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/magikarp.shtml"
+    },
+    {
+      "lental": 21,
+      "id": 163,
+      "name": "Hoothoot",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/hoothoot.shtml"
+    },
+    {
+      "lental": 22,
+      "id": 764,
+      "name": "Comfey",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/comfey.shtml"
+    },
+    {
+      "lental": 23,
+      "id": 671,
+      "name": "Florges",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/florges.shtml"
+    },
+    {
+      "lental": 24,
+      "id": 415,
+      "name": "Combee",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/combee.shtml"
+    },
+    {
+      "lental": 25,
+      "id": 416,
+      "name": "Vespiquen",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/vespiquen.shtml"
+    },
+    {
+      "lental": 26,
+      "id": 700,
+      "name": "Sylveon",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/sylveon.shtml"
+    },
+    {
+      "lental": 27,
+      "id": 492,
+      "name": "Shaymin",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/shaymin.shtml"
+    },
+    {
+      "lental": 28,
+      "id": 154,
+      "name": "Meganium",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/meganium.shtml"
+    },
+    {
+      "lental": 29,
+      "id": 133,
+      "name": "Eevee",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/eevee.shtml"
+    },
+    {
+      "lental": 30,
+      "id": 25,
+      "name": "Pikachu",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/pikachu.shtml"
+    },
+    {
+      "lental": 31,
+      "id": 742,
+      "name": "Cutiefly",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/cutiefly.shtml"
+    },
+    {
+      "lental": 32,
+      "id": 659,
+      "name": "Bunnelby",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/bunnelby.shtml"
+    },
+    {
+      "lental": 33,
+      "id": 508,
+      "name": "Stoutland",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/stoutland.shtml"
+    },
+    {
+      "lental": 34,
+      "id": 396,
+      "name": "Starly",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/starly.shtml"
+    },
+    {
+      "lental": 35,
+      "id": 52,
+      "name": "Meowth",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/meowth.shtml"
+    },
+    {
+      "lental": 36,
+      "id": 531,
+      "name": "Audino",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/audino.shtml"
+    },
+    {
+      "lental": 37,
+      "id": 19,
+      "name": "Rattata",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/rattata.shtml"
+    },
+    {
+      "lental": 38,
+      "id": 568,
+      "name": "Trubbish",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/trubbish.shtml"
+    },
+    {
+      "lental": 39,
+      "id": 185,
+      "name": "Sudowoodo",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/sudowoodo.shtml"
+    },
+    {
+      "lental": 40,
+      "id": 702,
+      "name": "Dedenne",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/dedenne.shtml"
+    },
+    {
+      "lental": 41,
+      "id": 190,
+      "name": "Aipom",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/aipom.shtml"
+    },
+    {
+      "lental": 42,
+      "id": 761,
+      "name": "Bounsweet",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/bounsweet.shtml"
+    },
+    {
+      "lental": 43,
+      "id": 11,
+      "name": "Metapod",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/metapod.shtml"
+    },
+    {
+      "lental": 44,
+      "id": 267,
+      "name": "Beautifly",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/beautifly.shtml"
+    },
+    {
+      "lental": 45,
+      "id": 24,
+      "name": "Arbok",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/arbok.shtml"
+    },
+    {
+      "lental": 46,
+      "id": 469,
+      "name": "Yanmega",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/yanmega.shtml"
+    },
+    {
+      "lental": 47,
+      "id": 731,
+      "name": "Pikipek",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/pikipek.shtml"
+    },
+    {
+      "lental": 48,
+      "id": 733,
+      "name": "Toucannon",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/toucannon.shtml"
+    },
+    {
+      "lental": 49,
+      "id": 168,
+      "name": "Ariados",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/ariados.shtml"
+    },
+    {
+      "lental": 50,
+      "id": 755,
+      "name": "Morelull",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/morelull.shtml"
+    },
+    {
+      "lental": 51,
+      "id": 289,
+      "name": "Slaking",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/slaking.shtml"
+    },
+    {
+      "lental": 52,
+      "id": 3,
+      "name": "Venusaur",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/venusaur.shtml"
+    },
+    {
+      "lental": 53,
+      "id": 510,
+      "name": "Liepard",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/liepard.shtml"
+    },
+    {
+      "lental": 54,
+      "id": 194,
+      "name": "Wooper",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/wooper.shtml"
+    },
+    {
+      "lental": 55,
+      "id": 195,
+      "name": "Quagsire",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/quagsire.shtml"
+    },
+    {
+      "lental": 56,
+      "id": 260,
+      "name": "Swampert",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/swampert.shtml"
+    },
+    {
+      "lental": 57,
+      "id": 166,
+      "name": "Ledian",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/ledian.shtml"
+    },
+    {
+      "lental": 58,
+      "id": 816,
+      "name": "Sobble",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/sobble.shtml"
+    },
+    {
+      "lental": 59,
+      "id": 470,
+      "name": "Leafeon",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/leafeon.shtml"
+    },
+    {
+      "lental": 60,
+      "id": 151,
+      "name": "Mew",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/mew.shtml"
+    },
+    {
+      "lental": 61,
+      "id": 709,
+      "name": "Trevenant",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/trevenant.shtml"
+    },
+    {
+      "lental": 62,
+      "id": 677,
+      "name": "Espurr",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/espurr.shtml"
+    },
+    {
+      "lental": 63,
+      "id": 275,
+      "name": "Shiftry",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/shiftry.shtml"
+    },
+    {
+      "lental": 64,
+      "id": 352,
+      "name": "Kecleon",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/kecleon.shtml"
+    },
+    {
+      "lental": 65,
+      "id": 585,
+      "name": "Deerling",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/deerling.shtml"
+    },
+    {
+      "lental": 66,
+      "id": 586,
+      "name": "Sawsbuck",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/sawsbuck.shtml"
+    },
+    {
+      "lental": 67,
+      "id": 521,
+      "name": "Unfezant",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/unfezant.shtml"
+    },
+    {
+      "lental": 68,
+      "id": 780,
+      "name": "Drampa",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/drampa.shtml"
+    },
+    {
+      "lental": 69,
+      "id": 674,
+      "name": "Pancham",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/pancham.shtml"
+    },
+    {
+      "lental": 70,
+      "id": 1,
+      "name": "Bulbasaur",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/bulbasaur.shtml"
+    },
+    {
+      "lental": 71,
+      "id": 497,
+      "name": "Serperior",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/serperior.shtml"
+    },
+    {
+      "lental": 72,
+      "id": 840,
+      "name": "Applin",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/applin.shtml"
+    },
+    {
+      "lental": 73,
+      "id": 760,
+      "name": "Bewear",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/bewear.shtml"
+    },
+    {
+      "lental": 74,
+      "id": 282,
+      "name": "Gardevoir",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/gardevoir.shtml"
+    },
+    {
+      "lental": 75,
+      "id": 38,
+      "name": "Ninetales",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/ninetales.shtml"
+    },
+    {
+      "lental": 76,
+      "id": 270,
+      "name": "Lotad",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/lotad.shtml"
+    },
+    {
+      "lental": 77,
+      "id": 196,
+      "name": "Espeon",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/espeon.shtml"
+    },
+    {
+      "lental": 78,
+      "id": 251,
+      "name": "Celebi",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/celebi.shtml"
+    },
+    {
+      "lental": 79,
+      "id": 350,
+      "name": "Milotic",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/milotic.shtml"
+    },
+    {
+      "lental": 80,
+      "id": 278,
+      "name": "Wingull",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/wingull.shtml"
+    },
+    {
+      "lental": 81,
+      "id": 103,
+      "name": "Exeggutor",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/exeggutor.shtml"
+    },
+    {
+      "lental": 82,
+      "id": 739,
+      "name": "Crabrawler",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/crabrawler.shtml"
+    },
+    {
+      "lental": 83,
+      "id": 426,
+      "name": "Drifblim",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/drifblim.shtml"
+    },
+    {
+      "lental": 84,
+      "id": 335,
+      "name": "Zangoose",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/zangoose.shtml"
+    },
+    {
+      "lental": 85,
+      "id": 336,
+      "name": "Seviper",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/seviper.shtml"
+    },
+    {
+      "lental": 86,
+      "id": 182,
+      "name": "Bellossom",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/bellossom.shtml"
+    },
+    {
+      "lental": 87,
+      "id": 686,
+      "name": "Inkay",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/inkay.shtml"
+    },
+    {
+      "lental": 88,
+      "id": 771,
+      "name": "Pyukumuku",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/pyukumuku.shtml"
+    },
+    {
+      "lental": 89,
+      "id": 68,
+      "name": "Machamp",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/machamp.shtml"
+    },
+    {
+      "lental": 90,
+      "id": 618,
+      "name": "Stunfisk",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/stunfisk.shtml"
+    },
+    {
+      "lental": 91,
+      "id": 224,
+      "name": "Octillery",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/octillery.shtml"
+    },
+    {
+      "lental": 92,
+      "id": 222,
+      "name": "Corsola",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/corsola.shtml"
+    },
+    {
+      "lental": 93,
+      "id": 456,
+      "name": "Finneon",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/finneon.shtml"
+    },
+    {
+      "lental": 94,
+      "id": 366,
+      "name": "Clamperl",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/clamperl.shtml"
+    },
+    {
+      "lental": 95,
+      "id": 730,
+      "name": "Primarina",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/primarina.shtml"
+    },
+    {
+      "lental": 96,
+      "id": 26,
+      "name": "Raichu",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/raichu.shtml"
+    },
+    {
+      "lental": 97,
+      "id": 769,
+      "name": "Sandygast",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/sandygast.shtml"
+    },
+    {
+      "lental": 98,
+      "id": 319,
+      "name": "Sharpedo",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/sharpedo.shtml"
+    },
+    {
+      "lental": 99,
+      "id": 7,
+      "name": "Squirtle",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/squirtle.shtml"
+    },
+    {
+      "lental": 100,
+      "id": 9,
+      "name": "Blastoise",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/blastoise.shtml"
+    },
+    {
+      "lental": 101,
+      "id": 131,
+      "name": "Lapras",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/lapras.shtml"
+    },
+    {
+      "lental": 102,
+      "id": 226,
+      "name": "Mantine",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/mantine.shtml"
+    },
+    {
+      "lental": 103,
+      "id": 279,
+      "name": "Pelipper",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/pelipper.shtml"
+    },
+    {
+      "lental": 104,
+      "id": 321,
+      "name": "Wailord",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/wailord.shtml"
+    },
+    {
+      "lental": 105,
+      "id": 747,
+      "name": "Mareanie",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/mareanie.shtml"
+    },
+    {
+      "lental": 106,
+      "id": 134,
+      "name": "Vaporeon",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/vaporeon.shtml"
+    },
+    {
+      "lental": 107,
+      "id": 490,
+      "name": "Manaphy",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/manaphy.shtml"
+    },
+    {
+      "lental": 108,
+      "id": 370,
+      "name": "Luvdisc",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/luvdisc.shtml"
+    },
+    {
+      "lental": 109,
+      "id": 594,
+      "name": "Alomomola",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/alomomola.shtml"
+    },
+    {
+      "lental": 110,
+      "id": 320,
+      "name": "Wailmer",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/wailmer.shtml"
+    },
+    {
+      "lental": 111,
+      "id": 346,
+      "name": "Cradily",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/cradily.shtml"
+    },
+    {
+      "lental": 112,
+      "id": 457,
+      "name": "Lumineon",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/lumineon.shtml"
+    },
+    {
+      "lental": 113,
+      "id": 211,
+      "name": "Qwilfish",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/qwilfish.shtml"
+    },
+    {
+      "lental": 114,
+      "id": 693,
+      "name": "Clawitzer",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/clawitzer.shtml"
+    },
+    {
+      "lental": 115,
+      "id": 73,
+      "name": "Tentacruel",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/tentacruel.shtml"
+    },
+    {
+      "lental": 116,
+      "id": 170,
+      "name": "Chinchou",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/chinchou.shtml"
+    },
+    {
+      "lental": 117,
+      "id": 171,
+      "name": "Lanturn",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/lanturn.shtml"
+    },
+    {
+      "lental": 118,
+      "id": 121,
+      "name": "Starmie",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/starmie.shtml"
+    },
+    {
+      "lental": 119,
+      "id": 592,
+      "name": "Frillish",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/frillish.shtml"
+    },
+    {
+      "lental": 120,
+      "id": 768,
+      "name": "Golisopod",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/golisopod.shtml"
+    },
+    {
+      "lental": 121,
+      "id": 249,
+      "name": "Lugia",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/lugia.shtml"
+    },
+    {
+      "lental": 122,
+      "id": 746,
+      "name": "Wishiwashi",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/wishiwashi.shtml"
+    },
+    {
+      "lental": 123,
+      "id": 451,
+      "name": "Skorupi",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/skorupi.shtml"
+    },
+    {
+      "lental": 124,
+      "id": 331,
+      "name": "Cacnea",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/cacnea.shtml"
+    },
+    {
+      "lental": 125,
+      "id": 27,
+      "name": "Sandshrew",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/sandshrew.shtml"
+    },
+    {
+      "lental": 126,
+      "id": 328,
+      "name": "Trapinch",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/trapinch.shtml"
+    },
+    {
+      "lental": 127,
+      "id": 330,
+      "name": "Flygon",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/flygon.shtml"
+    },
+    {
+      "lental": 128,
+      "id": 115,
+      "name": "Kangaskhan",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/kangaskhan.shtml"
+    },
+    {
+      "lental": 129,
+      "id": 630,
+      "name": "Mandibuzz",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/mandibuzz.shtml"
+    },
+    {
+      "lental": 130,
+      "id": 774,
+      "name": "Minior",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/minior.shtml"
+    },
+    {
+      "lental": 131,
+      "id": 843,
+      "name": "Silicobra",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/silicobra.shtml"
+    },
+    {
+      "lental": 132,
+      "id": 255,
+      "name": "Torchic",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/torchic.shtml"
+    },
+    {
+      "lental": 133,
+      "id": 695,
+      "name": "Heliolisk",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/heliolisk.shtml"
+    },
+    {
+      "lental": 134,
+      "id": 745,
+      "name": "Lycanroc",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/lycanroc.shtml"
+    },
+    {
+      "lental": 135,
+      "id": 450,
+      "name": "Hippowdon",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/hippowdon.shtml"
+    },
+    {
+      "lental": 136,
+      "id": 248,
+      "name": "Tyranitar",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/tyranitar.shtml"
+    },
+    {
+      "lental": 137,
+      "id": 95,
+      "name": "Onix",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/onix.shtml"
+    },
+    {
+      "lental": 138,
+      "id": 334,
+      "name": "Altaria",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/altaria.shtml"
+    },
+    {
+      "lental": 139,
+      "id": 403,
+      "name": "Shinx",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/shinx.shtml"
+    },
+    {
+      "lental": 140,
+      "id": 405,
+      "name": "Luxray",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/luxray.shtml"
+    },
+    {
+      "lental": 141,
+      "id": 663,
+      "name": "Talonflame",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/talonflame.shtml"
+    },
+    {
+      "lental": 142,
+      "id": 391,
+      "name": "Monferno",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/monferno.shtml"
+    },
+    {
+      "lental": 143,
+      "id": 142,
+      "name": "Aerodactyl",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/aerodactyl.shtml"
+    },
+    {
+      "lental": 144,
+      "id": 697,
+      "name": "Tyrantrum",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/tyrantrum.shtml"
+    },
+    {
+      "lental": 145,
+      "id": 75,
+      "name": "Graveler",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/graveler.shtml"
+    },
+    {
+      "lental": 146,
+      "id": 567,
+      "name": "Archeops",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/archeops.shtml"
+    },
+    {
+      "lental": 147,
+      "id": 218,
+      "name": "Slugma",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/slugma.shtml"
+    },
+    {
+      "lental": 148,
+      "id": 324,
+      "name": "Torkoal",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/torkoal.shtml"
+    },
+    {
+      "lental": 149,
+      "id": 4,
+      "name": "Charmander",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/charmander.shtml"
+    },
+    {
+      "lental": 150,
+      "id": 6,
+      "name": "Charizard",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/charizard.shtml"
+    },
+    {
+      "lental": 151,
+      "id": 157,
+      "name": "Typhlosion",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/typhlosion.shtml"
+    },
+    {
+      "lental": 152,
+      "id": 136,
+      "name": "Flareon",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/flareon.shtml"
+    },
+    {
+      "lental": 153,
+      "id": 250,
+      "name": "Ho-Oh",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/ho-oh.shtml"
+    },
+    {
+      "lental": 154,
+      "id": 637,
+      "name": "Volcarona",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/volcarona.shtml"
+    },
+    {
+      "lental": 155,
+      "id": 162,
+      "name": "Furret",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/furret.shtml"
+    },
+    {
+      "lental": 156,
+      "id": 613,
+      "name": "Cubchoo",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/cubchoo.shtml"
+    },
+    {
+      "lental": 157,
+      "id": 614,
+      "name": "Beartic",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/beartic.shtml"
+    },
+    {
+      "lental": 158,
+      "id": 262,
+      "name": "Mightyena",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/mightyena.shtml"
+    },
+    {
+      "lental": 159,
+      "id": 461,
+      "name": "Weavile",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/weavile.shtml"
+    },
+    {
+      "lental": 160,
+      "id": 628,
+      "name": "Braviary",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/braviary.shtml"
+    },
+    {
+      "lental": 161,
+      "id": 220,
+      "name": "Swinub",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/swinub.shtml"
+    },
+    {
+      "lental": 162,
+      "id": 473,
+      "name": "Mamoswine",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/mamoswine.shtml"
+    },
+    {
+      "lental": 163,
+      "id": 227,
+      "name": "Skarmory",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/skarmory.shtml"
+    },
+    {
+      "lental": 164,
+      "id": 28,
+      "name": "Sandslash",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/sandslash.shtml"
+    },
+    {
+      "lental": 165,
+      "id": 460,
+      "name": "Abomasnow",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/abomasnow.shtml"
+    },
+    {
+      "lental": 166,
+      "id": 37,
+      "name": "Vulpix",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/vulpix.shtml"
+    },
+    {
+      "lental": 167,
+      "id": 225,
+      "name": "Delibird",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/delibird.shtml"
+    },
+    {
+      "lental": 168,
+      "id": 872,
+      "name": "Snom",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/snom.shtml"
+    },
+    {
+      "lental": 169,
+      "id": 873,
+      "name": "Frosmoth",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/frosmoth.shtml"
+    },
+    {
+      "lental": 170,
+      "id": 740,
+      "name": "Crabominable",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/crabominable.shtml"
+    },
+    {
+      "lental": 171,
+      "id": 361,
+      "name": "Snorunt",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/snorunt.shtml"
+    },
+    {
+      "lental": 172,
+      "id": 362,
+      "name": "Glalie",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/glalie.shtml"
+    },
+    {
+      "lental": 173,
+      "id": 478,
+      "name": "Froslass",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/froslass.shtml"
+    },
+    {
+      "lental": 174,
+      "id": 124,
+      "name": "Jynx",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/jynx.shtml"
+    },
+    {
+      "lental": 175,
+      "id": 363,
+      "name": "Spheal",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/spheal.shtml"
+    },
+    {
+      "lental": 176,
+      "id": 393,
+      "name": "Piplup",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/piplup.shtml"
+    },
+    {
+      "lental": 177,
+      "id": 584,
+      "name": "Vanilluxe",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/vanilluxe.shtml"
+    },
+    {
+      "lental": 178,
+      "id": 713,
+      "name": "Avalugg",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/avalugg.shtml"
+    },
+    {
+      "lental": 179,
+      "id": 87,
+      "name": "Dewgong",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/dewgong.shtml"
+    },
+    {
+      "lental": 180,
+      "id": 699,
+      "name": "Aurorus",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/aurorus.shtml"
+    },
+    {
+      "lental": 181,
+      "id": 471,
+      "name": "Glaceon",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/glaceon.shtml"
+    },
+    {
+      "lental": 182,
+      "id": 245,
+      "name": "Suicune",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/suicune.shtml"
+    },
+    {
+      "lental": 183,
+      "id": 169,
+      "name": "Crobat",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/crobat.shtml"
+    },
+    {
+      "lental": 184,
+      "id": 595,
+      "name": "Joltik",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/joltik.shtml"
+    },
+    {
+      "lental": 185,
+      "id": 74,
+      "name": "Geodude",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/geodude.shtml"
+    },
+    {
+      "lental": 186,
+      "id": 703,
+      "name": "Carbink",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/carbink.shtml"
+    },
+    {
+      "lental": 187,
+      "id": 94,
+      "name": "Gengar",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/gengar.shtml"
+    },
+    {
+      "lental": 188,
+      "id": 714,
+      "name": "Noibat",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/noibat.shtml"
+    },
+    {
+      "lental": 189,
+      "id": 710,
+      "name": "Pumpkaboo",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/pumpkaboo.shtml"
+    },
+    {
+      "lental": 190,
+      "id": 453,
+      "name": "Croagunk",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/croagunk.shtml"
+    },
+    {
+      "lental": 191,
+      "id": 425,
+      "name": "Drifloon",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/drifloon.shtml"
+    },
+    {
+      "lental": 192,
+      "id": 35,
+      "name": "Clefairy",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/clefairy.shtml"
+    },
+    {
+      "lental": 193,
+      "id": 302,
+      "name": "Sableye",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/sableye.shtml"
+    },
+    {
+      "lental": 194,
+      "id": 409,
+      "name": "Rampardos",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/rampardos.shtml"
+    },
+    {
+      "lental": 195,
+      "id": 635,
+      "name": "Hydreigon",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/hydreigon.shtml"
+    },
+    {
+      "lental": 196,
+      "id": 706,
+      "name": "Goodra",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/goodra.shtml"
+    },
+    {
+      "lental": 197,
+      "id": 303,
+      "name": "Mawile",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/mawile.shtml"
+    },
+    {
+      "lental": 198,
+      "id": 135,
+      "name": "Jolteon",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/jolteon.shtml"
+    },
+    {
+      "lental": 199,
+      "id": 719,
+      "name": "Diancie",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/diancie.shtml"
+    },
+    {
+      "lental": 200,
+      "id": 208,
+      "name": "Steelix",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/steelix.shtml"
+    },
+    {
+      "lental": 201,
+      "id": 229,
+      "name": "Houndoom",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/houndoom.shtml"
+    },
+    {
+      "lental": 202,
+      "id": 830,
+      "name": "Eldegoss",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/eldegoss.shtml"
+    },
+    {
+      "lental": 203,
+      "id": 177,
+      "name": "Natu",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/natu.shtml"
+    },
+    {
+      "lental": 204,
+      "id": 359,
+      "name": "Absol",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/absol.shtml"
+    },
+    {
+      "lental": 205,
+      "id": 757,
+      "name": "Salandit",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/salandit.shtml"
+    },
+    {
+      "lental": 206,
+      "id": 715,
+      "name": "Noivern",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/noivern.shtml"
+    },
+    {
+      "lental": 207,
+      "id": 527,
+      "name": "Woobat",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/woobat.shtml"
+    },
+    {
+      "lental": 208,
+      "id": 561,
+      "name": "Sigilyph",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/sigilyph.shtml"
+    },
+    {
+      "lental": 209,
+      "id": 606,
+      "name": "Beheeyem",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/beheeyem.shtml"
+    },
+    {
+      "lental": 210,
+      "id": 623,
+      "name": "Golurk",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/golurk.shtml"
+    },
+    {
+      "lental": 211,
+      "id": 609,
+      "name": "Chandelure",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/chandelure.shtml"
+    },
+    {
+      "lental": 212,
+      "id": 197,
+      "name": "Umbreon",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/umbreon.shtml"
+    },
+    {
+      "lental": 213,
+      "id": 385,
+      "name": "Jirachi",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/jirachi.shtml"
+    },
+    {
+      "lental": 214,
+      "id": 716,
+      "name": "Xerneas",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/xerneas.shtml"
+    },
+    {
+      "lental": 215,
+      "id": 285,
+      "name": "Shroomish",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/shroomish.shtml"
+    },
+    {
+      "lental": 216,
+      "id": 590,
+      "name": "Foongus",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/foongus.shtml"
+    },
+    {
+      "lental": 217,
+      "id": 143,
+      "name": "Snorlax",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/snorlax.shtml"
+    },
+    {
+      "lental": 218,
+      "id": 160,
+      "name": "Feraligatr",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/feraligatr.shtml"
+    },
+    {
+      "lental": 219,
+      "id": 357,
+      "name": "Tropius",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/tropius.shtml"
+    },
+    {
+      "lental": 220,
+      "id": 54,
+      "name": "Psyduck",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/psyduck.shtml"
+    },
+    {
+      "lental": 221,
+      "id": 217,
+      "name": "Ursaring",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/ursaring.shtml"
+    },
+    {
+      "lental": 222,
+      "id": 529,
+      "name": "Drilbur",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/drilbur.shtml"
+    },
+    {
+      "lental": 223,
+      "id": 173,
+      "name": "Cleffa",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/cleffa.shtml"
+    },
+    {
+      "lental": 224,
+      "id": 130,
+      "name": "Gyarados",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/gyarados.shtml"
+    },
+    {
+      "lental": 225,
+      "id": 50,
+      "name": "Diglett",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/diglett.shtml"
+    },
+    {
+      "lental": 226,
+      "id": 744,
+      "name": "Rockruff",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/rockruff.shtml"
+    },
+    {
+      "lental": 227,
+      "id": 758,
+      "name": "Salazzle",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/salazzle.shtml"
+    },
+    {
+      "lental": 228,
+      "id": 498,
+      "name": "Tepig",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/tepig.shtml"
+    },
+    {
+      "lental": 229,
+      "id": 558,
+      "name": "Crustle",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/crustle.shtml"
+    },
+    {
+      "lental": 230,
+      "id": 472,
+      "name": "Gliscor",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/gliscor.shtml"
+    },
+    {
+      "lental": 231,
+      "id": 545,
+      "name": "Scolipede",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/scolipede.shtml"
+    },
+    {
+      "lental": 232,
+      "id": 109,
+      "name": "Koffing",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/koffing.shtml"
+    },
+    {
+      "lental": 233,
+      "id": 317,
+      "name": "Swalot",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/swalot.shtml"
+    },
+    {
+      "lental": 234,
+      "id": 807,
+      "name": "Zeraora",
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/zeraora.shtml"
+    }
+  ],
+  "courses": [
+    {
+      "id": "park-day",
+      "name": "Florio Nature Park · Day",
+      "steps": [
+        "Entrance meadow",
+        "Woodland bend",
+        "Lakeside",
+        "Flower field"
+      ],
+      "encounters": [
+        {
+          "id": 85,
+          "level": 1,
+          "step": 0,
+          "hint": "Watch the path as the course begins."
+        },
+        {
+          "id": 666,
+          "level": 1,
+          "step": 0,
+          "hint": "Look for butterflies near the meadow and flowers."
+        },
+        {
+          "id": 626,
+          "level": 1,
+          "step": 0,
+          "hint": "Frame the herd from the path."
+        },
+        {
+          "id": 172,
+          "level": 1,
+          "step": 0,
+          "hint": "Watch the small Pokémon beside Grookey."
+        },
+        {
+          "id": 810,
+          "level": 1,
+          "step": 0,
+          "hint": "Check the grass and later the flower field."
+        },
+        {
+          "id": 587,
+          "level": 1,
+          "step": 1,
+          "hint": "Watch the trees and scorched fruit."
+        },
+        {
+          "id": 399,
+          "level": 1,
+          "step": 2,
+          "hint": "Look along the water and dam."
+        },
+        {
+          "id": 265,
+          "level": 1,
+          "step": 1,
+          "hint": "Look beside the woodland path."
+        },
+        {
+          "id": 276,
+          "level": 1,
+          "step": 1,
+          "hint": "Watch the path and passing birds."
+        },
+        {
+          "id": 581,
+          "level": 1,
+          "step": 2,
+          "hint": "Look across the lake."
+        },
+        {
+          "id": 129,
+          "level": 1,
+          "step": 2,
+          "hint": "Watch near the water."
+        },
+        {
+          "id": 671,
+          "level": 1,
+          "step": 3,
+          "hint": "Look among the flowers."
+        },
+        {
+          "id": 764,
+          "level": 1,
+          "step": 3,
+          "hint": "Watch the flowers near the exit."
+        },
+        {
+          "id": 580,
+          "level": 2,
+          "step": 2,
+          "hint": "Watch the lake and airborne groups."
+        },
+        {
+          "id": 465,
+          "level": 2,
+          "step": 0,
+          "hint": "Look near the entrance side."
+        },
+        {
+          "id": 163,
+          "level": 1,
+          "step": 2,
+          "hint": "Check the hollow tree."
+        },
+        {
+          "id": 813,
+          "level": 3,
+          "step": 0,
+          "hint": "Watch the route with Grookey and Pichu."
+        },
+        {
+          "id": 18,
+          "level": 3,
+          "step": 2,
+          "hint": "Look around the lakeside perches."
+        }
+      ],
+      "coverage": "Starter guide: 18 encounter cues. Branches, forms and exact behavior timing are incomplete."
+    },
+    {
+      "id": "park-night",
+      "name": "Florio Nature Park · Night",
+      "steps": [
+        "Course start",
+        "Mid-course",
+        "Course end"
+      ],
+      "encounters": []
+    },
+    {
+      "id": "park-illumina",
+      "name": "Florio · Illumina Spot",
+      "steps": [
+        "Course start",
+        "Mid-course",
+        "Course end"
+      ],
+      "encounters": []
+    },
+    {
+      "id": "camp",
+      "name": "Research Camp",
+      "steps": [
+        "Course start",
+        "Mid-course",
+        "Course end"
+      ],
+      "encounters": []
+    },
+    {
+      "id": "path-day",
+      "name": "Secret Side Path · Day",
+      "steps": [
+        "Course start",
+        "Mid-course",
+        "Course end"
+      ],
+      "encounters": []
+    },
+    {
+      "id": "path-night",
+      "name": "Secret Side Path · Night",
+      "steps": [
+        "Course start",
+        "Mid-course",
+        "Course end"
+      ],
+      "encounters": []
+    },
+    {
+      "id": "jungle-day",
+      "name": "Founja Jungle · Day",
+      "steps": [
+        "Course start",
+        "Mid-course",
+        "Course end"
+      ],
+      "encounters": []
+    },
+    {
+      "id": "jungle-night",
+      "name": "Founja Jungle · Night",
+      "steps": [
+        "Course start",
+        "Mid-course",
+        "Course end"
+      ],
+      "encounters": []
+    },
+    {
+      "id": "forest",
+      "name": "Elsewhere Forest",
+      "steps": [
+        "Course start",
+        "Mid-course",
+        "Course end"
+      ],
+      "encounters": []
+    },
+    {
+      "id": "forest-illumina",
+      "name": "Belusylva · Illumina Spot",
+      "steps": [
+        "Course start",
+        "Mid-course",
+        "Course end"
+      ],
+      "encounters": []
+    },
+    {
+      "id": "river-day",
+      "name": "Mightywide River · Day",
+      "steps": [
+        "Course start",
+        "Mid-course",
+        "Course end"
+      ],
+      "encounters": []
+    },
+    {
+      "id": "river-night",
+      "name": "Mightywide River · Night",
+      "steps": [
+        "Course start",
+        "Mid-course",
+        "Course end"
+      ],
+      "encounters": []
+    },
+    {
+      "id": "beach-day",
+      "name": "Blushing Beach · Day",
+      "steps": [
+        "Course start",
+        "Mid-course",
+        "Course end"
+      ],
+      "encounters": []
+    },
+    {
+      "id": "beach-night",
+      "name": "Blushing Beach · Night",
+      "steps": [
+        "Course start",
+        "Mid-course",
+        "Course end"
+      ],
+      "encounters": []
+    },
+    {
+      "id": "reef-day",
+      "name": "Maricopia Reef · Day",
+      "steps": [
+        "Course start",
+        "Mid-course",
+        "Course end"
+      ],
+      "encounters": []
+    },
+    {
+      "id": "reef-evening",
+      "name": "Maricopia Reef · Evening",
+      "steps": [
+        "Course start",
+        "Mid-course",
+        "Course end"
+      ],
+      "encounters": []
+    },
+    {
+      "id": "undersea",
+      "name": "Lental Seafloor · Undersea",
+      "steps": [
+        "Course start",
+        "Mid-course",
+        "Course end"
+      ],
+      "encounters": []
+    },
+    {
+      "id": "sea-illumina",
+      "name": "Maricopia · Illumina Spot",
+      "steps": [
+        "Course start",
+        "Mid-course",
+        "Course end"
+      ],
+      "encounters": []
+    },
+    {
+      "id": "sands-day",
+      "name": "Sweltering Sands · Day",
+      "steps": [
+        "Course start",
+        "Mid-course",
+        "Course end"
+      ],
+      "encounters": []
+    },
+    {
+      "id": "sands-night",
+      "name": "Sweltering Sands · Night",
+      "steps": [
+        "Course start",
+        "Mid-course",
+        "Course end"
+      ],
+      "encounters": []
+    },
+    {
+      "id": "volcano",
+      "name": "Fireflow Volcano",
+      "steps": [
+        "Course start",
+        "Mid-course",
+        "Course end"
+      ],
+      "encounters": []
+    },
+    {
+      "id": "volcano-illumina",
+      "name": "Voluca · Illumina Spot",
+      "steps": [
+        "Course start",
+        "Mid-course",
+        "Course end"
+      ],
+      "encounters": []
+    },
+    {
+      "id": "badlands-day",
+      "name": "Barren Badlands · Day",
+      "steps": [
+        "Course start",
+        "Mid-course",
+        "Course end"
+      ],
+      "encounters": []
+    },
+    {
+      "id": "badlands-night",
+      "name": "Barren Badlands · Night",
+      "steps": [
+        "Course start",
+        "Mid-course",
+        "Course end"
+      ],
+      "encounters": []
+    },
+    {
+      "id": "snow-day",
+      "name": "Shiver Snowfields · Day",
+      "steps": [
+        "Course start",
+        "Mid-course",
+        "Course end"
+      ],
+      "encounters": []
+    },
+    {
+      "id": "snow-night",
+      "name": "Shiver Snowfields · Night",
+      "steps": [
+        "Course start",
+        "Mid-course",
+        "Course end"
+      ],
+      "encounters": []
+    },
+    {
+      "id": "cave",
+      "name": "Outaway Cave",
+      "steps": [
+        "Course start",
+        "Mid-course",
+        "Course end"
+      ],
+      "encounters": []
+    },
+    {
+      "id": "cave-illumina",
+      "name": "Durice · Illumina Spot",
+      "steps": [
+        "Course start",
+        "Mid-course",
+        "Course end"
+      ],
+      "encounters": []
+    },
+    {
+      "id": "ruins",
+      "name": "Ruins of Remembrance",
+      "steps": [
+        "Course start",
+        "Mid-course",
+        "Course end"
+      ],
+      "encounters": []
+    },
+    {
+      "id": "ruins-illumina",
+      "name": "Aurus · Illumina Spot",
+      "steps": [
+        "Course start",
+        "Mid-course",
+        "Course end"
+      ],
+      "encounters": []
+    }
+  ],
+  "requests": [
+    {
+      "id": "hide-flowers",
+      "title": "Hide-and-Seek in the Flowers",
+      "pokemon": 172,
+      "course": "park-day",
+      "level": 3,
+      "step": 3,
+      "hint": "Look for someone hiding at the end.",
+      "solution": "Throw fluffruit near the hidden Pichu in the final flower field, then photograph its reaction."
+    },
+    {
+      "id": "head-to-head",
+      "title": "Head-to-Head Competition",
+      "pokemon": 626,
+      "course": "park-day",
+      "level": 3,
+      "step": 0,
+      "hint": "The herd may react to a sound.",
+      "solution": "Play the melody near the Bouffalant and photograph two fighting."
+    },
+    {
+      "id": "well-done",
+      "title": "Shockingly Well-Done",
+      "pokemon": 587,
+      "course": "park-day",
+      "level": 0,
+      "step": 1,
+      "hint": "The scorched fruit is a clue.",
+      "solution": "Throw fluffruit by the scorched fruit and photograph Emolga discharging electricity."
+    },
+    {
+      "id": "wurmple",
+      "title": "What’s Up with Wurmple?",
+      "pokemon": 265,
+      "course": "park-day",
+      "level": 0,
+      "step": 1,
+      "hint": "Watch the interaction with the nearby birds.",
+      "solution": "Photograph flying Taillow to draw them toward Wurmple; illuminate Wurmple and capture its Poison Gas."
+    },
+    {
+      "id": "swanna-be",
+      "title": "Swanna-be",
+      "pokemon": 580,
+      "course": "park-day",
+      "level": 3,
+      "step": 2,
+      "hint": "Watch above the water.",
+      "solution": "Photograph a Ducklett flying, rather than swimming."
+    },
+    {
+      "id": "dam-home",
+      "title": "Dam, Sweet Dam",
+      "pokemon": 399,
+      "course": "park-day",
+      "level": 0,
+      "step": 2,
+      "hint": "Check who is home at the dam.",
+      "solution": "Throw fluffruit into the completed dam and photograph Bidoof peeking out."
+    },
+    {
+      "id": "startle",
+      "title": "Off to a Flying Startle",
+      "pokemon": 276,
+      "course": "park-day",
+      "level": 0,
+      "step": 1,
+      "hint": "A photo can provoke a reaction.",
+      "solution": "Photograph a Taillow as it is startled into flight."
+    },
+    {
+      "id": "flowers",
+      "title": "Livening Up the Flowers",
+      "pokemon": 671,
+      "course": "park-day",
+      "level": 0,
+      "step": 3,
+      "hint": "Try the nearby Crystabloom.",
+      "solution": "Illuminate the nearby Crystabloom and photograph Florges tending the flowers."
+    }
+  ],
+  "sources": [
+    {
+      "title": "Lental Photodex factual roster",
+      "url": "https://www.serebii.net/newpokemonsnap/lentalphotodex.shtml"
+    },
+    {
+      "title": "Park Day encounter and behavior reference",
+      "url": "https://www.serebii.net/newpokemonsnap/locations/parkday.shtml"
+    },
+    {
+      "title": "Florio request reference",
+      "url": "https://www.serebii.net/newpokemonsnap/missions/florioisland.shtml"
+    }
+  ]
+}

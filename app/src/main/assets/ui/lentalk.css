@@ -1,0 +1,57 @@
+/* LenTalk postcards and an illustrated, always-open solution reader. */
+.request-grid{gap:18px 14px;padding:4px 0 18px;align-items:stretch}
+.request-grid .talk-card{position:relative;display:flex;flex-direction:column;align-items:stretch;padding:0;overflow:visible;border:1px solid #a69771;border-bottom:3px solid #998265;border-radius:6px;background:#fffaf0;box-shadow:0 4px 9px #654c2518;contain-intrinsic-size:auto 365px;color:#513e32}
+.talk-art,.talk-hero-image{position:relative;isolation:isolate;background:#648c82;overflow:visible;border-radius:5px 5px 0 0}
+.talk-art{width:100%;align-self:stretch;height:126px;border-bottom:4px solid #447e72;margin:5px 5px 0}
+.talk-atmosphere{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:blur(7px) brightness(.7);border-radius:inherit;opacity:.7}
+.talk-course-art{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;border-radius:inherit;opacity:.94}
+.talk-art:after{content:'';position:absolute;inset:0;box-shadow:inset 0 0 0 2px #fff9;pointer-events:none;border-radius:inherit}
+.talk-art>.talk-cutout{position:absolute;left:4px;bottom:-11px;width:104px;height:108px;object-fit:contain;z-index:2;filter:drop-shadow(0 1px #fffc) drop-shadow(0 3px 2px #193e4055)}
+.talk-course-time{position:absolute;top:7px;left:7px;padding:4px 7px;border:1px solid #f4e5ae88;border-radius:2px;background:#213e3fe8;color:#fff4c9;font:8px DIN;letter-spacing:.6px}
+.talk-receipt{position:absolute;right:6px;bottom:7px;z-index:3}
+.receipt-status{display:inline-flex;align-items:center;gap:4px;background:#f7f0dfea;border:1px solid #cbb999;border-radius:3px;padding:4px 6px;font:9px/1.1 DIN;color:#86775e;white-space:nowrap}
+.receipt-status i{display:grid;place-items:center;font:10px DIN;font-style:normal;width:13px;height:13px;border-radius:50%;border:1px solid #c4b596;color:#a08c6b}
+.receipt-status.green{border-color:#79a28c;color:#306c55;background:#edf8eaf2}.receipt-status.green i{color:#fff;border-color:#55816c;background:#55816c}
+.talk-card-copy{width:100%;align-self:stretch;display:flex;flex-direction:column;flex:1;padding:15px 11px 0;min-width:0}
+.talk-subject{display:flex;align-items:center;gap:5px;color:#527f77;font:9px DIN;letter-spacing:.3px}.talk-subject img{width:13px;height:13px;object-fit:contain;opacity:.65}
+.talk-card-copy h3{font:14px/1.45 Rodin;color:#503a2d;margin:5px 0 8px;overflow-wrap:anywhere;text-wrap:pretty}
+.talk-card-meta{display:flex;align-items:stretch;gap:5px;margin:0 0 8px;padding:6px 0;border-top:1px solid #e1d5bf;border-bottom:1px solid #e1d5bf}
+.talk-card-meta>span{display:flex;align-items:center;gap:5px;min-width:0}.talk-card-meta>span:first-child{flex:1}.talk-card-meta>span:last-child{flex-shrink:0;border-left:1px solid #dfd0b6;padding-left:6px}
+.talk-card-meta img{width:17px;height:17px;object-fit:contain;opacity:.75}.talk-card-meta b{font:9px/1.45 DIN;color:#8a7351}
+.talk-tip-preview{background:#edf1e8;border:1px solid #cbd6bf;border-left:3px solid #7d9c81;border-radius:2px;padding:7px 8px;margin-bottom:10px}
+.tip-caption{display:flex;align-items:center;gap:5px;font:8px DIN;text-transform:uppercase;letter-spacing:.7px;color:#5f806b;margin-bottom:4px}.tip-caption img{width:14px;height:14px;object-fit:contain}
+.talk-tip-preview p{font:11px/1.6 Snap;color:#6c7360;margin:0}
+mark.pokemon-word,mark.tool-word{background:transparent;font-weight:bold;padding:0;color:#3e736e}mark.tool-word{color:#aa632e}
+.talk-card-foot{margin-top:auto;border-top:1px dashed #d4c4a8;display:flex;align-items:center;justify-content:space-between;gap:5px;padding:8px 0}
+.talk-open{display:flex;align-items:center;gap:8px;font:9px DIN;color:#a54139;white-space:nowrap}.talk-open b{font:22px/1 DIN;color:#b84a40}
+.tools{display:flex;align-items:center;flex-wrap:wrap;gap:5px}.tool-chip{display:inline-flex;align-items:center;gap:5px;min-height:26px;border:1px solid #dcc9a5;border-radius:4px;padding:3px 7px;font:10px DIN;background:#f8e7c9;color:#946038}
+.tool-chip .tool{width:21px;height:21px;object-fit:contain;filter:drop-shadow(0 1px 0 #fff9)}.tool-chip.orb{color:#3f6e8e;border-color:#b5ced2;background:#e7f1ee}.tool-chip.music{color:#84668e;border-color:#d3c0db;background:#f1eaf4}.tool-chip.scan{color:#587b63;border-color:#bccfbb;background:#e9efdf}.tool-chip.speed{color:#89723a;border-color:#d3c799;background:#f5eed4}
+.compact-tools{gap:3px}.compact-tools .tool-chip{padding:2px;min-height:25px;width:25px;justify-content:center}.compact-tools .tool-chip>span{display:none}.compact-tools .tool-chip .tool{width:19px;height:19px}
+.camera-ready{display:flex;align-items:center;gap:5px;font:8px DIN;color:#9e8d70}.camera-ready img{width:16px;height:16px;object-fit:contain;opacity:.5}
+.talk-reward-flag{position:absolute;right:12px;top:-4px;pointer-events:none;z-index:4}.talk-reward-flag img{width:22px;height:32px;object-fit:contain;filter:drop-shadow(0 2px 1px #30201833)}
+.talk-detail{width:650px;height:calc(100dvh - 18px);max-height:620px;background:#f4eddb}
+.talk-detail .talk-dialog-head{background:#335f59;color:#fffae5;padding:7px 12px;border-bottom:3px solid #c8ac67;min-height:43px}.talk-dialog-head .row{gap:8px}.talk-dialog-head .row>img{width:27px;height:27px;filter:brightness(0) invert(1);opacity:.8}.talk-dialog-head h2{font:15px Rodin}.talk-dialog-head .close{filter:drop-shadow(0 1px 1px #142d2d88)}
+.talk-hero{display:grid;grid-template-columns:174px 1fr;gap:16px;flex-shrink:0;padding:13px 14px;border-bottom:1px solid #c4ae83;background:linear-gradient(115deg,#f4e7c9,#fffcf2);align-items:center;min-width:0}
+.talk-hero-image{height:116px;border:4px solid #fffaf0;box-shadow:0 2px 5px #654d2c33;transform:rotate(-2deg);border-radius:2px;margin:2px 0 6px}
+.talk-hero-image>.talk-cutout{position:absolute;z-index:2;left:-3px;bottom:-8px;width:112px;height:118px;object-fit:contain;filter:drop-shadow(0 2px #fff8) drop-shadow(0 4px 2px #0003)}
+.talk-tape{position:absolute;right:20px;top:-10px;width:54px;height:18px;object-fit:fill;rotate:5deg;opacity:.85;z-index:3}
+.talk-hero-copy{min-width:0}.talk-hero-label{display:flex;flex-wrap:wrap;align-items:center;gap:5px;justify-content:space-between}.talk-hero-label .eyebrow{font-size:7px;color:#a1834d;letter-spacing:1px}.talk-hero-copy>h2{font:19px/1.4 Rodin;color:#63412d;margin:6px 0 5px;text-wrap:pretty;overflow-wrap:anywhere}.talk-hero-copy .talk-subject{font-size:10px;margin-bottom:8px}
+.talk-location{border-top:1px solid #dfcba5;padding-top:7px}.talk-location>span{display:flex;gap:5px;align-items:center}.talk-location img{width:18px;height:18px;object-fit:contain}.talk-location strong{font:10px/1.4 DIN;color:#85704b}.talk-location>div{display:flex;gap:4px;flex-wrap:wrap;margin-top:5px}.talk-location .badge{font:9px DIN;background:#e9dec8;border:1px solid #d7c5a5;color:#8b7148}
+.talk-reader{flex:1;min-height:0;overflow:auto;padding:12px 15px 16px;background:#f7f0e1 url('../game-art/ui/pattern.webp') center/180px;scrollbar-width:thin;scrollbar-color:#b69b68 transparent}
+.talk-toolbelt{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:12px;padding:8px 10px;border:1px solid #d4c29e;border-radius:4px;background:#fffbef}.talk-toolbelt h3,.talk-cast h3{font:10px Rodin;color:#8d744c;display:flex;align-items:center;gap:6px}.talk-toolbelt h3 img,.talk-cast h3 img{width:20px;height:20px;object-fit:contain;opacity:.7}
+.talk-solution{border:1px solid #c9b48f;border-radius:4px;background:#fffcf4;box-shadow:0 3px 0 #80643012;overflow:hidden}.talk-section-title{display:flex;align-items:center;gap:8px;background:#e3ecdf;border-bottom:1px solid #bccab4;padding:8px 11px}.talk-section-title>img{width:28px;height:30px;object-fit:contain}.talk-section-title .eyebrow{font:7px DIN;color:#6b8c74;letter-spacing:1px}.talk-section-title h3{font:15px/1.5 Rodin;color:#426f64}.talk-section-title .section-seal{margin-left:auto;width:26px;height:26px;opacity:.2}
+.talk-solution .solution-steps{list-style:none;margin:0;padding:12px 11px;display:flex;flex-direction:column;gap:8px}
+.solution-steps li{display:flex;gap:10px;position:relative;background:#f6f0e3;border:1px solid #e1d5bd;border-left:3px solid #bb6250;border-radius:3px;padding:10px;margin:0;align-items:flex-start}
+.solution-step-marker{flex:0 0 24px;display:flex;flex-direction:column;align-items:center;gap:5px}.solution-step-marker b{font:18px/1 DIN;color:#b4955f}.solution-step-marker img{width:17px;height:17px;object-fit:contain;opacity:.65}
+.solution-steps p{margin:0;font:12px/1.85 Snap;color:#69553f;min-width:0}.solution-steps li:last-child{border-left-color:#668b73;background:#f0f2e6}
+.talk-cast{margin-top:13px;border:1px solid #d3c3a5;background:#fff9e9;border-radius:4px;padding:9px 10px}.talk-cast>div{display:flex;flex-wrap:wrap;justify-content:center;gap:7px;margin-top:9px}.talk-cast>div>span{display:flex;flex-direction:column;align-items:center;flex:0 1 88px;padding:4px 4px 7px;border-bottom:2px solid #d7c6a5;background:radial-gradient(ellipse at 50% 50%,#e5e6d5,transparent 70%);min-width:0}.talk-cast .portrait{width:69px;height:69px;object-fit:contain}.talk-cast b{font:10px DIN;color:#6b563b;margin-top:4px}.talk-cast small{font:7px DIN;color:#688c73;margin-top:3px}
+.talk-rewards{border:1px solid #d2b976;background:#f8edca;margin-top:12px;padding:8px 10px;border-radius:4px}.talk-rewards>div:first-child{display:flex;align-items:center;gap:8px}.talk-rewards>div:first-child img{width:22px;height:30px;object-fit:contain}.talk-rewards h3{font:11px Rodin;color:#957035}.reward-slips{display:flex;flex-wrap:wrap;gap:6px;margin-top:7px}.reward-slips>span{display:flex;align-items:center;gap:6px;border:1px solid #d6bb7d;background:#fffae7;padding:6px 9px;border-radius:3px}.reward-slips img{height:25px;width:18px;object-fit:contain}.reward-slips b{font:10px/1.5 Snap;color:#856139}
+.photo-hint mark{font-weight:bold}.photo-hint .box-label{padding-left:22px;background:url('../game-art/ui/request-note.webp') left center/16px 16px no-repeat}
+@media(max-width:420px){.request-grid{gap:17px}.talk-art{height:142px}.talk-art>.talk-cutout{width:116px;height:118px;left:12px}.talk-card-copy{padding:16px 13px 0}.talk-card-copy h3{font-size:16px}.talk-card-meta b{font-size:10px}.talk-tip-preview p{font-size:12px}.talk-detail{height:calc(100dvh - 12px);max-height:none}.talk-hero{grid-template-columns:105px 1fr;padding:12px 10px;gap:12px}.talk-hero-image{height:103px}.talk-hero-image>.talk-cutout{width:98px;height:100px;left:-6px}.talk-hero-copy>h2{font-size:16px}.talk-hero-label .eyebrow{display:none}.talk-hero-copy .talk-subject{font-size:9px}.talk-location strong{font-size:9px}.talk-reader{padding:10px}.talk-toolbelt{gap:7px}.solution-steps p{font-size:12px;line-height:1.8}.talk-solution .solution-steps{padding:9px}.solution-steps li{padding:9px 8px;gap:7px}.talk-hero .receipt-status{font-size:8px;padding:3px 5px}.talk-cast>div>span{flex-basis:80px}}
+/* Quiet reading surfaces let the original art and coloured stamps lead. */
+#content.request-page{background:linear-gradient(145deg,#dfe9da,#f5eddb 55%,#ebe1ca);background-attachment:local}
+.talk-reader{background:linear-gradient(105deg,#eee6d3,#faf5e9 55%,#f4eddb)}
+.talk-art{height:102px}.talk-art>.talk-cutout{width:92px;height:98px}
+.talk-detail .talk-hero-image>.talk-cutout{width:112px;height:118px}
+@media(max-width:420px){.talk-art{height:123px}.talk-art>.talk-cutout{width:108px;height:112px}.talk-detail .talk-hero-image>.talk-cutout{width:98px;height:100px}}
+.talk-course-time{z-index:3}

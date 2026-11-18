@@ -1,0 +1,7 @@
+score-digits.png is train-nps.png from Hugo Peixoto's Cyberscore Auto-proofer.
+Source: https://gitlab.com/cyberscore/auto-proofer/-/blob/main/scorescanner/src/games/new_pokemon_snap/train-nps.png
+The upstream .reuse/dep5 explicitly declares PNG images CC0-1.0 (2022 Hugo Peixoto).
+License: assets/licenses/cyberscore-digit-images-CC0.txt.
+Only the digit-training image is reused. No AGPL scanner code is included or ported.
+The companion's threshold, segmentation, normalization and comparison implementation is independent.
+The game names and underlying marks retain their respective owners' rights.

@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: setup & compatibility
+    url: https://github.com/gbppimentel-dev/snap-companion/blob/main/docs/COMPATIBILITY.md
+    about: Check the supported environment and current limitations first.

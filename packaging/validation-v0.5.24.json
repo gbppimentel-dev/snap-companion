@@ -1,0 +1,28 @@
+{
+  "version": "0.5.24",
+  "versionCode": 36,
+  "sha256": "2f28fa4fa9e59825b38495b68c7b63bb4b7d15fbcdbca8e290c1be7b83a0f8c3",
+  "focusedJvmPassed": 156,
+  "modelTestsPassed": 38,
+  "releaseLint": {
+    "Error": 0,
+    "Warning": 32
+  },
+  "packagedAssetsMatchSource": 1315,
+  "bridgeBytes": 11623,
+  "noInternetPermission": true,
+  "releaseHasNoDebugHarness": true,
+  "certificateSha256": "a59a575f5e7525500e003e9bba01b92195c57af78b6acbb7abc3593648029e77",
+  "status": "local-checks-passed; hardware acceptance of credits update not performed",
+  "includesPersonalData": false,
+  "creditsPreview": "Local Chromium landscape/portrait with invented example progress",
+  "priorCoreValidation": "0.5.23 core:6 offline diagnostic and6 isolated Android OCR fixture checks; WebView109 presentation review. Not new0.5.24 physical acceptance.",
+  "cleanPublicCheckoutChecks": {
+    "jvmRobolectricPassed": 165,
+    "modelPassed": 38,
+    "offlineDiagnosticPassed": 6,
+    "debugAssembly": "passed",
+    "debugLint": "passed",
+    "publicationAudit": "passed"
+  }
+}

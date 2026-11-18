@@ -1,0 +1,1 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"><application><activity android:name=".UiAuditActivity" android:exported="true" android:process=":ui_audit" /></application></manifest>

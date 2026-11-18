@@ -1,0 +1,22 @@
+name: bug report
+description: Something in the existing companion is not working.
+labels: [bug]
+body:
+  - type: textarea
+    id: behavior
+    attributes:
+      label: What happened?
+      description: Include expected behavior and a short reproduction. Do not attach saves, credentials or private captures.
+    validations:
+      required: true
+  - type: input
+    id: versions
+    attributes:
+      label: App, Android, Eden and game versions
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Course and screen
+      description: For example, Park Night level2 during photo selection. Say whether a value stayed unknown or was incorrect.

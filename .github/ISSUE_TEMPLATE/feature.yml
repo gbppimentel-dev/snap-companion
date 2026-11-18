@@ -1,0 +1,10 @@
+name: feature request
+description: Suggest a focused improvement.
+labels: [enhancement]
+body:
+  - type: textarea
+    id: need
+    attributes:
+      label: What would this help you do?
+    validations:
+      required: true

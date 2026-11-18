@@ -1,0 +1,1601 @@
+{
+  "schema": 1,
+  "files": [
+    {
+      "file": "new-pokemon-snap-abomasnow-all-stars-photos-locations.html",
+      "sha256": "c82ca0711ae79b41e2dcc8ca69a248349b4101187e08e8eebd84ccc0385fbd0f",
+      "species": 460
+    },
+    {
+      "file": "new-pokemon-snap-absol-all-stars-photos-locations.html",
+      "sha256": "a7ba5bb9958c6722f48ef9864988241ff58af6b51d2e8e839286e1086219c2f8",
+      "species": 359
+    },
+    {
+      "file": "new-pokemon-snap-aerodactyl-all-stars-photos-locations.html",
+      "sha256": "510d06cda8ef201186a0800aef5fa4957204ef663f1710dc54a44da1a049148c",
+      "species": 142
+    },
+    {
+      "file": "new-pokemon-snap-aipom-all-stars-photos-locations.html",
+      "sha256": "3cbfe3549163b9b7ba7cbd78ee05db877f29209af898e3d8996652969615f5e9",
+      "species": 190
+    },
+    {
+      "file": "new-pokemon-snap-alomomola-all-stars-photos-locations.html",
+      "sha256": "22903c68356ae5a79f64d7a0bdc6585cee6c172ec5140fa0eec2343b0d95cab5",
+      "species": 594
+    },
+    {
+      "file": "new-pokemon-snap-altaria-all-stars-photos-locations.html",
+      "sha256": "c27d035c0f1617d19d1b29862a4d79f89276d966b6f57af20209b31eed669a1a",
+      "species": 334
+    },
+    {
+      "file": "new-pokemon-snap-applin-all-stars-photos-locations.html",
+      "sha256": "3b2093602fe6affa3b1e9c43d8b9faf8ad9c1258d7b0e79badc683ced2afe189",
+      "species": 840
+    },
+    {
+      "file": "new-pokemon-snap-arbok-all-stars-photos-locations.html",
+      "sha256": "b7f821b01a66574743aefb9f8beeb4ea071dce6d53d31fe5aaab12b074cda819",
+      "species": 24
+    },
+    {
+      "file": "new-pokemon-snap-archeops-all-stars-photos-locations.html",
+      "sha256": "8fd376131533c58c8f842406f2705289dad5573e51f9f2949726ee57db30d40a",
+      "species": 567
+    },
+    {
+      "file": "new-pokemon-snap-ariados-all-stars-photos-locations.html",
+      "sha256": "93d5868bc4a75840a0223f982285bf24b5a5ba73528e6fb35ebde961c2d42575",
+      "species": 168
+    },
+    {
+      "file": "new-pokemon-snap-audino-all-stars-photos-locations.html",
+      "sha256": "982abe9870221209fd45ae163f48dd576206ccabc394b71eacf28aa520a90875",
+      "species": 531
+    },
+    {
+      "file": "new-pokemon-snap-aurorus-all-stars-photos-locations.html",
+      "sha256": "92a3efdf0ff5b60fe03c2e96264283f36c45a7ff19a4e3da93201a43644711ab",
+      "species": 699
+    },
+    {
+      "file": "new-pokemon-snap-avalugg-all-stars-photos-locations.html",
+      "sha256": "d2bb1bb7121d7fe1172ea19b0133c8dc135a596afb014d0d1ecae6c4ccfac386",
+      "species": 713
+    },
+    {
+      "file": "new-pokemon-snap-beartic-all-stars-photos-locations.html",
+      "sha256": "2e9eab098c06f8ec27799cbef14bda9d104a56b1a4ec9ebfe563a8f94b159514",
+      "species": 614
+    },
+    {
+      "file": "new-pokemon-snap-beautifly-all-stars-photos-locations.html",
+      "sha256": "731ab4f00bb5425be991767a7eaaf3778383bc03a214957c2b643d0ea588af82",
+      "species": 267
+    },
+    {
+      "file": "new-pokemon-snap-beheeyem-all-stars-photos-locations.html",
+      "sha256": "a727c9a0e6f957f2fcdbf526e580b0cfec957128990ef27d73295b2b55a95ebc",
+      "species": 606
+    },
+    {
+      "file": "new-pokemon-snap-bellossom-all-stars-photos-locations.html",
+      "sha256": "24c496b9f0208059b6a0fa963d6ba87e6dac6b83596adee5f04410c35137d857",
+      "species": 182
+    },
+    {
+      "file": "new-pokemon-snap-bewear-all-stars-photos-locations.html",
+      "sha256": "a8cbc4fcc2ba4646979bf5e1a0a75d228ed301c1c92a30ac9e32188f65e09ce3",
+      "species": 760
+    },
+    {
+      "file": "new-pokemon-snap-bidoof-all-stars-photos-locations.html",
+      "sha256": "60280cccf779227367552f5ccbe5aeab7c258bfca0a9c33f7650d61c8dbb04f1",
+      "species": 399
+    },
+    {
+      "file": "new-pokemon-snap-blastoise-all-stars-photos-locations.html",
+      "sha256": "09beda2438e486b0ef331f9c201d1d5305f46922c7a3db470b76eeed260302ee",
+      "species": 9
+    },
+    {
+      "file": "new-pokemon-snap-bouffalant-all-stars-photos-locations.html",
+      "sha256": "b619466ff9c9435efb9cc8a7981bcc71054687746158ce99b92b576f73fb5f88",
+      "species": 626
+    },
+    {
+      "file": "new-pokemon-snap-bounsweet-all-stars-photos-locations.html",
+      "sha256": "b624cc12aab83ab4bcc96010fcf4fa2e1ac28feb69f1bc91c876491c8face8df",
+      "species": 761
+    },
+    {
+      "file": "new-pokemon-snap-braviary-all-stars-photos-locations.html",
+      "sha256": "b7389342ffe30fbf81cd0861b2d0a802a75fabb59e072978693367fcb410e5ac",
+      "species": 628
+    },
+    {
+      "file": "new-pokemon-snap-bulbasaur-all-stars-photos-locations.html",
+      "sha256": "3329743836d43467ee6c931f2055e8c5f6797c4c8aede12419a8088ce4798cf0",
+      "species": 1
+    },
+    {
+      "file": "new-pokemon-snap-bunnelby-all-stars-photos-locations.html",
+      "sha256": "f38dc8c272b7f608a26f1ef508be40d77acb84d551692046f4d6f3f7e4728caa",
+      "species": 659
+    },
+    {
+      "file": "new-pokemon-snap-cacnea-all-stars-photos-locations.html",
+      "sha256": "7bf5f9531c12c6ecd3d44821a48dd18b949695544a644343d1b4ed2b245c0d46",
+      "species": 331
+    },
+    {
+      "file": "new-pokemon-snap-carbink-all-stars-photos-locations.html",
+      "sha256": "ba66d0ccbb4a7c9c222a928d9bf281bb13b9145a38a3ade55fe44a990e2fb42d",
+      "species": 703
+    },
+    {
+      "file": "new-pokemon-snap-caterpie-all-stars-photos-locations.html",
+      "sha256": "e3d5011dfad954c48f11c9a5389c5e4a4a68ad6bd768b76e4a48e6329f0c5b44",
+      "species": 10
+    },
+    {
+      "file": "new-pokemon-snap-celebi-all-stars-photos-locations.html",
+      "sha256": "61e14e7494a52c4d64593938020a1c4e4936b66e40ce028b1792aaeb6e6ffb9d",
+      "species": 251
+    },
+    {
+      "file": "new-pokemon-snap-chandelure-all-stars-photos-locations.html",
+      "sha256": "333a646e52de7407b7117364d7a9d53744c0aa952b3519c54d765c9acdd4945a",
+      "species": 609
+    },
+    {
+      "file": "new-pokemon-snap-charizard-all-stars-photos-locations.html",
+      "sha256": "df33c2d2d2697eefa04335f04ec5090f51ab922ed9db27dd9ec0c13ab62abbc4",
+      "species": 6
+    },
+    {
+      "file": "new-pokemon-snap-charmander-all-stars-photos-locations.html",
+      "sha256": "028366c3e56e49d6abd3bc8cb3a4e1f4570170e605b6492b937722934acd2617",
+      "species": 4
+    },
+    {
+      "file": "new-pokemon-snap-chinchou-all-stars-photos-locations.html",
+      "sha256": "f7455256f9703eebf27502e92cc2f619c14ce30f431118d68d94e2cc36c2709a",
+      "species": 170
+    },
+    {
+      "file": "new-pokemon-snap-clamperl-all-stars-photos-locations.html",
+      "sha256": "d17e312102bf8480d8ab71050408252d7f9ce9ad8242ebc284fffb5930e921e5",
+      "species": 366
+    },
+    {
+      "file": "new-pokemon-snap-clawitzer-all-stars-photos-locations.html",
+      "sha256": "449789d5c7f85bd96a1826346e979a6e53030a20c3ea1601e7b76b2166886ab5",
+      "species": 693
+    },
+    {
+      "file": "new-pokemon-snap-clefairy-all-stars-photos-locations.html",
+      "sha256": "888480d5617fbfa0a8a3f9c22ef70d435ff331d518c8436dea82091eb9531bc6",
+      "species": 35
+    },
+    {
+      "file": "new-pokemon-snap-combee-all-stars-photos-locations.html",
+      "sha256": "9b01268cf9107720204ba6777e3a61a30d21e17448b02b566a51e812d0e206b7",
+      "species": 415
+    },
+    {
+      "file": "new-pokemon-snap-comfey-all-stars-photos-locations.html",
+      "sha256": "a5dac00667dacf835c068019be85a0e4dba701f238dfbfa059718c1db36cf5f0",
+      "species": 764
+    },
+    {
+      "file": "new-pokemon-snap-corsola-all-stars-photos-locations.html",
+      "sha256": "6341b2b4fd7333f685fbe64b62a40dc9721f968cc07ab20a6649aaf4ed3ee3da",
+      "species": 222
+    },
+    {
+      "file": "new-pokemon-snap-crabominable-all-stars-photos-locations.html",
+      "sha256": "bb057d90ee0a46015326e7d63344d50a3626020bb503c3206b5bb179a61b36d4",
+      "species": 740
+    },
+    {
+      "file": "new-pokemon-snap-crabrawler-all-stars-photos-locations.html",
+      "sha256": "4c3c3dee93e649c255962487e43a31490f209fb4de56f4af28a8c563bb0ce52e",
+      "species": 739
+    },
+    {
+      "file": "new-pokemon-snap-cradily-all-stars-photos-locations.html",
+      "sha256": "80a424473865538d720170df2d9a586035eebcce7c92e7bf045fe2fc588cdf3d",
+      "species": 346
+    },
+    {
+      "file": "new-pokemon-snap-croagunk-all-stars-photos-locations.html",
+      "sha256": "d9370327892fce0461aa8f78a0fad8ffeecb8327443168d5514a547747560036",
+      "species": 453
+    },
+    {
+      "file": "new-pokemon-snap-crobat-all-stars-photos-locations.html",
+      "sha256": "ac10eb7a88e1eb627964369ef7fb2f892d240f56ed83137755db9c6d547ee5e2",
+      "species": 169
+    },
+    {
+      "file": "new-pokemon-snap-cubchoo-all-stars-photos-locations.html",
+      "sha256": "4a2e18866c121de7e1f15752a4a0cbd45bc07eb621e4090c8fe8cd8fc22af083",
+      "species": 613
+    },
+    {
+      "file": "new-pokemon-snap-cutiefly-all-stars-photos-locations.html",
+      "sha256": "4e70721d848ff1bf5656f976c5d348e3665a75a23dcde9c7744ed2a77fccafd9",
+      "species": 742
+    },
+    {
+      "file": "new-pokemon-snap-dedenne-all-stars-photos-locations.html",
+      "sha256": "7ff6863f1db1395be7ef141dd9772d40e839d9d33f4f9fd3e880c7e95fc328b1",
+      "species": 702
+    },
+    {
+      "file": "new-pokemon-snap-deerling-all-stars-photos-locations.html",
+      "sha256": "aaf900f88965d0df97574583bc108e9137e0f7c5a1669915eab386b26e00dafb",
+      "species": 585
+    },
+    {
+      "file": "new-pokemon-snap-delibird-all-stars-photos-locations.html",
+      "sha256": "ec3b4798b7cad8f6de11ff832f543b8e14a91d162926de2a12e319ceabc5829e",
+      "species": 225
+    },
+    {
+      "file": "new-pokemon-snap-dewgong-all-stars-photos-locations.html",
+      "sha256": "67624ca73d85ea4bc3ad2245c6b95fdb7c3dfb19bf8860fef3acd03f7bc81e21",
+      "species": 87
+    },
+    {
+      "file": "new-pokemon-snap-diancie-all-stars-photos-locations.html",
+      "sha256": "7f2518ea62a0d6fabd7226e61179f96ccf0cd4a2e5786bcc4f93acb249c3e9f4",
+      "species": 719
+    },
+    {
+      "file": "new-pokemon-snap-dodrio-all-stars-photos-locations.html",
+      "sha256": "2dbea75ed96ea0996a5d85662874df202339faeaa6e6fe7d8430f973f2be2a3f",
+      "species": 85
+    },
+    {
+      "file": "new-pokemon-snap-drampa-all-stars-photos-locations.html",
+      "sha256": "d8f5583db2090c6234c0e1e11c95f654b269a2a07bf0df829e8b8b1ac778405d",
+      "species": 780
+    },
+    {
+      "file": "new-pokemon-snap-drifblim-all-stars-photos-locations.html",
+      "sha256": "8c9f540a76d4b0c0c4cf90731307db3e413d951eee9c0ad011da3c5195c90bf4",
+      "species": 426
+    },
+    {
+      "file": "new-pokemon-snap-drifloon-all-stars-photos-locations.html",
+      "sha256": "e8bda88e591bf98b9341a5b1e27b25a5b6397159a987543978a5588ed51ec571",
+      "species": 425
+    },
+    {
+      "file": "new-pokemon-snap-ducklett-all-stars-photos-locations.html",
+      "sha256": "36b5ab197f7b828a7cfa469a2c643112e9ad8c9e76b160485f0f1aeeb95a5bd7",
+      "species": 580
+    },
+    {
+      "file": "new-pokemon-snap-eevee-all-stars-photos-locations.html",
+      "sha256": "439a1a0fb01652e116d9293fb73313404b436bd723adc36665cd8ec3efb78c74",
+      "species": 133
+    },
+    {
+      "file": "new-pokemon-snap-eldegoss-all-stars-photos-locations.html",
+      "sha256": "4e154e93b15b077a0e8dfe509441cc13984d32dd17ca12c47d4bc9b89355219f",
+      "species": 830
+    },
+    {
+      "file": "new-pokemon-snap-emolga-all-stars-photos-locations.html",
+      "sha256": "7a89d6e086d69561c100e218dd9f04a8f2e373c7b5385860db09c5a97ce5c065",
+      "species": 587
+    },
+    {
+      "file": "new-pokemon-snap-espeon-all-stars-photos-locations.html",
+      "sha256": "23bb230c3764a569b2d96ea326414fe3411c574c142ad5f42ff2d47954a96d9b",
+      "species": 196
+    },
+    {
+      "file": "new-pokemon-snap-espurr-all-stars-photos-locations.html",
+      "sha256": "df69062bf09593b26b7f38783f45582b18cd499a64a3dec4286865b676550aa5",
+      "species": 677
+    },
+    {
+      "file": "new-pokemon-snap-exeggutor-all-stars-photos-locations.html",
+      "sha256": "2035c5cd6f9e0aa6c11b84aa5ba2165c042aacdd463ee74b043b44b98951819c",
+      "species": 103
+    },
+    {
+      "file": "new-pokemon-snap-finneon-all-stars-photos-locations.html",
+      "sha256": "3f0356533a303a862306a7803bc4da190b774c34d7abd7e31b0e27abc6fc77d3",
+      "species": 456
+    },
+    {
+      "file": "new-pokemon-snap-flareon-all-stars-photos-locations.html",
+      "sha256": "9c0d9bd2d0432f204095116db0f105aac9a246199b7ef46c5e72a8322a0f0200",
+      "species": 136
+    },
+    {
+      "file": "new-pokemon-snap-florges-all-stars-photos-locations.html",
+      "sha256": "7ed04e79ecc88a158d4a3085678116bf122d4721abb3ef71d07a161b293e0402",
+      "species": 671
+    },
+    {
+      "file": "new-pokemon-snap-flygon-all-stars-photos-locations.html",
+      "sha256": "2c253c05939c3e34edc8a51ae50a8841debeebcdf0aa62103c30a969d8f0398d",
+      "species": 330
+    },
+    {
+      "file": "new-pokemon-snap-frillish-all-stars-photos-locations.html",
+      "sha256": "948f21946fa383ae09d9afac513c4a7573305e1a5d4447ceb3f9ddbd9b76a795",
+      "species": 592
+    },
+    {
+      "file": "new-pokemon-snap-froslass-all-stars-photos-locations.html",
+      "sha256": "7c3d60e10e0867a8652c932c042f06943fe382467602d75269590a97e744835e",
+      "species": 478
+    },
+    {
+      "file": "new-pokemon-snap-frosmoth-all-stars-photos-locations.html",
+      "sha256": "6c09576ba1c49c0a6e5bf231fdfa92b4347e4320c74b5516acf51649a9724aa4",
+      "species": 873
+    },
+    {
+      "file": "new-pokemon-snap-furret-all-stars-photos-locations.html",
+      "sha256": "66ae2bc8be105f3e796786ddd80ff489a7b339ee6d4b29896037c5f027ad3152",
+      "species": 162
+    },
+    {
+      "file": "new-pokemon-snap-gardevoir-all-stars-photos-locations.html",
+      "sha256": "53a4263a1ee45925bd3a9668c18e6e5192e46ec1be67a346119c5f4c4b71e931",
+      "species": 282
+    },
+    {
+      "file": "new-pokemon-snap-gengar-all-stars-photos-locations.html",
+      "sha256": "e4ab99d42c5c49dfa137f8145692305324bd7b0e86f7ade74cd67c6b321f773d",
+      "species": 94
+    },
+    {
+      "file": "new-pokemon-snap-geodude-all-stars-photos-locations.html",
+      "sha256": "26ed5dcaf4ce6500d374ac2d0872e182fbc811dbdab7d57528d7c9469c0363de",
+      "species": 74
+    },
+    {
+      "file": "new-pokemon-snap-glaceon-all-stars-photos-locations.html",
+      "sha256": "f0e2f0de7be92d37a0394bc84eceeb61aeda72b3ad64983a54b139309ed96848",
+      "species": 471
+    },
+    {
+      "file": "new-pokemon-snap-glalie-all-stars-photos-locations.html",
+      "sha256": "6945d6b66078388b5729a31ef5583f32156cd371c0608efd90792783669b740c",
+      "species": 362
+    },
+    {
+      "file": "new-pokemon-snap-golisopod-all-stars-photos-locations.html",
+      "sha256": "73f0425b451c62d96772b9c4f740c8c860252e9bfd266ae7d0a1a898db51bd9e",
+      "species": 768
+    },
+    {
+      "file": "new-pokemon-snap-golurk-all-stars-photos-locations.html",
+      "sha256": "6b9119ec330c0c3abad0dadbc3a6e04dd91e7a799322b8a6bac7854cf871eb93",
+      "species": 623
+    },
+    {
+      "file": "new-pokemon-snap-goodra-all-stars-photos-locations.html",
+      "sha256": "4db8d59dbde0a337895ed05798779a52c9a3d0453026079f9ef05227009a551f",
+      "species": 706
+    },
+    {
+      "file": "new-pokemon-snap-graveler-all-stars-photos-locations.html",
+      "sha256": "68f042660ec6ed9a55e73ba18dedba8f586b074049e07f7b7c026e4b3c709ace",
+      "species": 75
+    },
+    {
+      "file": "new-pokemon-snap-grookey-all-stars-photos-locations.html",
+      "sha256": "e956e9dce21caa47aab5c813130e9832f1b8293a844fd7ef3aef7608ecb1ca6f",
+      "species": 810
+    },
+    {
+      "file": "new-pokemon-snap-heliolisk-all-stars-photos-locations.html",
+      "sha256": "8efb2b74df760b434d34e537519a9b09e9d83c70203e626e3f2516bcd7b3a6b0",
+      "species": 695
+    },
+    {
+      "file": "new-pokemon-snap-heracross-all-stars-photos-locations.html",
+      "sha256": "9eeafee8533004b034deb03595a4528ff9c98b4d88ec361d2d68dd5c764dcce6",
+      "species": 214
+    },
+    {
+      "file": "new-pokemon-snap-hippowdon-all-stars-photos-locations.html",
+      "sha256": "c2e2a10ea3ff715ca79ea55c2f7b1a35f010916995bccb1078bc2188b5be4d36",
+      "species": 450
+    },
+    {
+      "file": "new-pokemon-snap-ho-oh-all-stars-photos-locations.html",
+      "sha256": "129aba1bbb7e842ac7bf6675164b6001bbf02783a6157ecc1ea91b61379df9c5",
+      "species": 250
+    },
+    {
+      "file": "new-pokemon-snap-hoothoot-all-stars-photos-locations.html",
+      "sha256": "bdba4c3885c2e276d8b1a73143713f7f4dec5d8f916801e781f44b7ce9f537d0",
+      "species": 163
+    },
+    {
+      "file": "new-pokemon-snap-houndoom-all-stars-photos-locations.html",
+      "sha256": "8c19ec530300f9c290690943b7c5ecd7012dd24d36cf5b0a84114713bd327751",
+      "species": 229
+    },
+    {
+      "file": "new-pokemon-snap-hydreigon-all-stars-photos-locations.html",
+      "sha256": "eccd722c5a4cbbcffd1ab687d6f7ba589bad4f20a2c60a087a38077b6a07c782",
+      "species": 635
+    },
+    {
+      "file": "new-pokemon-snap-inkay-all-stars-photos-locations.html",
+      "sha256": "c88cf5825cf3fc1de6b3b9a874c96f20f82157c69fc453c7e049db7a8f7ed570",
+      "species": 686
+    },
+    {
+      "file": "new-pokemon-snap-jirachi-all-stars-photos-locations.html",
+      "sha256": "8e777df614f0fef0bb907be18d3e5739a8b2e6b121841b976c2b1a64bc952bd4",
+      "species": 385
+    },
+    {
+      "file": "new-pokemon-snap-jolteon-all-stars-photos-locations.html",
+      "sha256": "ad642f42045333e645d7218a3d90be5ec349b17f4a28298defa144096105ce9d",
+      "species": 135
+    },
+    {
+      "file": "new-pokemon-snap-joltik-all-stars-photos-locations.html",
+      "sha256": "3c32c3beb00e3d4963dd4271ad7e175c383cfaf3213a981274b7978463e2f5a8",
+      "species": 595
+    },
+    {
+      "file": "new-pokemon-snap-jynx-all-stars-photos-locations.html",
+      "sha256": "3a1b204f577a53e37bca8cc004a7584ea1d05b437694235dd1ad320d5df060cb",
+      "species": 124
+    },
+    {
+      "file": "new-pokemon-snap-kangaskhan-all-stars-photos-locations.html",
+      "sha256": "b81b5673596a09ef000af6d30b99fa01d09810f15b1cf577c466dcaed0d135c8",
+      "species": 115
+    },
+    {
+      "file": "new-pokemon-snap-kecleon-all-stars-photos-locations.html",
+      "sha256": "5b0a2225b1cdcefb92ca4e79ca19c3437831e8e96e9d28085b1030e6c0656541",
+      "species": 352
+    },
+    {
+      "file": "new-pokemon-snap-lanturn-all-stars-photos-locations.html",
+      "sha256": "88a681cc653f1b5e9d184b738f23b35acfdeb2a269ef70ec2803cb68f06c4a83",
+      "species": 171
+    },
+    {
+      "file": "new-pokemon-snap-lapras-all-stars-photos-locations.html",
+      "sha256": "41b0dded9c6056c3a542e49def0e3bf6724d883317424560f7ab4c8f4cd847a7",
+      "species": 131
+    },
+    {
+      "file": "new-pokemon-snap-leafeon-all-stars-photos-locations.html",
+      "sha256": "d0e56e6bedab86e0f29f416c31ca72683356119293c49e7a9e870838b3260949",
+      "species": 470
+    },
+    {
+      "file": "new-pokemon-snap-ledian-all-stars-photos-locations.html",
+      "sha256": "4c4c1b538b068ff63b3d60b46a4d68445e669cee72bcdc3b701d92332fc9d134",
+      "species": 166
+    },
+    {
+      "file": "new-pokemon-snap-liepard-all-stars-photos-locations.html",
+      "sha256": "3a39913f2e219b4cb650b70cafc68982b2c9c92679620f7bf71377b7e2ceec26",
+      "species": 510
+    },
+    {
+      "file": "new-pokemon-snap-lotad-all-stars-photos-locations.html",
+      "sha256": "3f0f7ce654528729e55524742cf886ffe8bced8e7a458ee9a29335b355770377",
+      "species": 270
+    },
+    {
+      "file": "new-pokemon-snap-lugia-all-stars-photos-locations.html",
+      "sha256": "f433e4481047e1a27d8025cf4558121c188d8847e2d1590028fc9c73fc8aaa08",
+      "species": 249
+    },
+    {
+      "file": "new-pokemon-snap-lumineon-all-stars-photos-locations.html",
+      "sha256": "599c83aaeac51fe8c58ec0d58e8448a50c73d0a4aebcfba60fa97e2ae61ca87d",
+      "species": 457
+    },
+    {
+      "file": "new-pokemon-snap-luvdisc-all-stars-photos-locations.html",
+      "sha256": "667ecb3e9187e2707306e0ab619be9e37bcb1c160ec7ff2761b154a516895ba2",
+      "species": 370
+    },
+    {
+      "file": "new-pokemon-snap-luxray-all-stars-photos-locations.html",
+      "sha256": "183d0bac8cc778219426762d9db40acb5a5ce73fc7b1c184de6fbc45408c90ad",
+      "species": 405
+    },
+    {
+      "file": "new-pokemon-snap-lycanroc-all-stars-photos-locations.html",
+      "sha256": "ba799b94380a827f732db08bd49fca735e5f6f659db20825f14af56b3d47fd3a",
+      "species": 745
+    },
+    {
+      "file": "new-pokemon-snap-machamp-all-stars-photos-locations.html",
+      "sha256": "2e723342e491047178a1d78cd5d53737724512e6062954512a11f56295227729",
+      "species": 68
+    },
+    {
+      "file": "new-pokemon-snap-magikarp-all-stars-photos-locations.html",
+      "sha256": "7dd9c359bb412d455c8df62061fc57a0c5e0645f9e8c7a860b918fcc72501e34",
+      "species": 129
+    },
+    {
+      "file": "new-pokemon-snap-mamoswine-all-stars-photos-locations.html",
+      "sha256": "2848d42eebd048be4db8dad2248917354aad9b91d07c61564ed8ad627f0d2a31",
+      "species": 473
+    },
+    {
+      "file": "new-pokemon-snap-manaphy-all-stars-photos-locations.html",
+      "sha256": "e51134175d129d828cc3c71006894d26640b70b1e90dfd107bdc895fac2ab621",
+      "species": 490
+    },
+    {
+      "file": "new-pokemon-snap-mandibuzz-all-stars-photos-locations.html",
+      "sha256": "943823bad09f4bc422e3ba915fac84db601ed329e316fce33949225ccbc4ce63",
+      "species": 630
+    },
+    {
+      "file": "new-pokemon-snap-mantine-all-stars-photos-locations.html",
+      "sha256": "71d9fcdc56081e829844e20bdb390e2f217188e896b67d964084f5cd8b027c9b",
+      "species": 226
+    },
+    {
+      "file": "new-pokemon-snap-mareanie-all-stars-photos-locations.html",
+      "sha256": "d09f924b22edb3acd903464ae949b86127e8662b3024c3060e1047cd56f4a954",
+      "species": 747
+    },
+    {
+      "file": "new-pokemon-snap-mawile-all-stars-photos-locations.html",
+      "sha256": "10a3f2a95a2240ed24ff6c57bc5f8450db819d0e74de6e6ba389e40e6b8d1a8f",
+      "species": 303
+    },
+    {
+      "file": "new-pokemon-snap-meganium-all-stars-photos-locations.html",
+      "sha256": "1c63519ecb4e39290bb7e9c8ddf47670f82a659d47b646d62d47f22f4fa87016",
+      "species": 154
+    },
+    {
+      "file": "new-pokemon-snap-meowth-all-stars-photos-locations.html",
+      "sha256": "89f15e5483e8073d0ed67d7a1cd8d66531019bd01af208d80897a0afba7c9c85",
+      "species": 52
+    },
+    {
+      "file": "new-pokemon-snap-metapod-all-stars-photos-locations.html",
+      "sha256": "d87d9e58ade27f3386e028ff3dcd201129bc82ea94b1e582c9a38cd39930135c",
+      "species": 11
+    },
+    {
+      "file": "new-pokemon-snap-mew-all-stars-photos-locations.html",
+      "sha256": "6c35c414405f4133a7625a02d21381bd87d4ab60b0833096eb59edd602d9f47e",
+      "species": 151
+    },
+    {
+      "file": "new-pokemon-snap-mightyena-all-stars-photos-locations.html",
+      "sha256": "213a8a266392920129edb70570c3169dc3d87abc1e5573b202343716e4064077",
+      "species": 262
+    },
+    {
+      "file": "new-pokemon-snap-milotic-all-stars-photos-locations.html",
+      "sha256": "7623463afcb89834198bb5fbfe35af174702b728b3299d5922b6d6fa25538ed3",
+      "species": 350
+    },
+    {
+      "file": "new-pokemon-snap-minior-all-stars-photos-locations.html",
+      "sha256": "d9d4c47a502093c09d939d803c8ed1cb26ac574b1d9cad31ba0099518b8ab7ed",
+      "species": 774
+    },
+    {
+      "file": "new-pokemon-snap-monferno-all-stars-photos-locations.html",
+      "sha256": "ec05aa54f381596e39c3a84ac5983bff242ab4ae0ee09db68f665fd634a7c2f1",
+      "species": 391
+    },
+    {
+      "file": "new-pokemon-snap-morelull-all-stars-photos-locations.html",
+      "sha256": "6d791fbf741d36130f523cfa1c634ed13156825937efe7203d8d419a4af461c9",
+      "species": 755
+    },
+    {
+      "file": "new-pokemon-snap-murkrow-all-stars-photos-locations.html",
+      "sha256": "5a2c4a7825c737f29e8a4a5ef1b809651844efcf716a2640928e8f1608cc6037",
+      "species": 198
+    },
+    {
+      "file": "new-pokemon-snap-natu-all-stars-photos-locations.html",
+      "sha256": "b335cf8fb1dca6dcba840ab7ea86a0adfe13278f89f8df8d82a58d2f36967c0a",
+      "species": 177
+    },
+    {
+      "file": "new-pokemon-snap-ninetales-all-stars-photos-locations.html",
+      "sha256": "3f513468e07445af366e9622d05dddae0f4ab51f59450a60eec30760dac96aed",
+      "species": 38
+    },
+    {
+      "file": "new-pokemon-snap-noibat-all-stars-photos-locations.html",
+      "sha256": "503992d9559a9f9f280566745bca9f4bac0a1b372de37c2ff642afac1070cc35",
+      "species": 714
+    },
+    {
+      "file": "new-pokemon-snap-noivern-all-stars-photos-locations.html",
+      "sha256": "3d99bf122438a21037ac1e6cb92ab208492048a4dc04b9acb944020b915bf6bc",
+      "species": 715
+    },
+    {
+      "file": "new-pokemon-snap-octillery-all-stars-photos-locations.html",
+      "sha256": "e7faa4ea88f4fd0899eb6974142da7899561e87f1ac4c6fa880ace607348a1dd",
+      "species": 224
+    },
+    {
+      "file": "new-pokemon-snap-onix-all-stars-photos-locations.html",
+      "sha256": "2706014e265b5b9320d73ef314a76037c8d8130260502b0c4b30fd22c53914d1",
+      "species": 95
+    },
+    {
+      "file": "new-pokemon-snap-pancham-all-stars-photos-locations.html",
+      "sha256": "a5588f82cb6e86c71e3ac01654fe270eac858e22ec2636e76ab560fe31bf99f6",
+      "species": 674
+    },
+    {
+      "file": "new-pokemon-snap-pelipper-all-stars-photos-locations.html",
+      "sha256": "9d8dc69989a709437c455dd352e820d056dd2960563b7c5033b7183b78df91df",
+      "species": 279
+    },
+    {
+      "file": "new-pokemon-snap-pichu-all-stars-photos-locations.html",
+      "sha256": "ae9716d2f696e57e65508656bbd5f3ebca25455c819350ec83f315f4b2e0c2fc",
+      "species": 172
+    },
+    {
+      "file": "new-pokemon-snap-pidgeot-all-stars-photos-locations.html",
+      "sha256": "6f49a6c3ce0e27ea10248514c335f0703ee7eebb041c8b50798ed1439cf11c97",
+      "species": 18
+    },
+    {
+      "file": "new-pokemon-snap-pikachu-all-stars-photos-locations.html",
+      "sha256": "c822f9da7cbdf5b18a55796840d851f51b55b0d3eca2fe436119a48be7c2d19d",
+      "species": 25
+    },
+    {
+      "file": "new-pokemon-snap-pikipek-all-stars-photos-locations.html",
+      "sha256": "0623f059d909687e40207bc5d6cc939f41cdb98a2895c939a37cb70c77ec980e",
+      "species": 731
+    },
+    {
+      "file": "new-pokemon-snap-pinsir-all-stars-photos-locations.html",
+      "sha256": "105a6fa8375d7285d5052aebc8f9035689c78e433df7468a97d8a86c75afb7cb",
+      "species": 127
+    },
+    {
+      "file": "new-pokemon-snap-piplup-all-stars-photos-locations.html",
+      "sha256": "c979d22bd263bfb62b5c0aaeac04052f00363d4178eecb802855bacc5b814fef",
+      "species": 393
+    },
+    {
+      "file": "new-pokemon-snap-primarina-all-stars-photos-locations.html",
+      "sha256": "67e56b80589de55a6d278aa32b421af3e773c20f6132eca53735998992513c88",
+      "species": 730
+    },
+    {
+      "file": "new-pokemon-snap-pumpkaboo-all-stars-photos-locations.html",
+      "sha256": "c30b4f90a2b29d084f48365195f9eadd73f69a9b7dfe1180f3ff081e215f8cf0",
+      "species": 710
+    },
+    {
+      "file": "new-pokemon-snap-pyukumuku-all-stars-photos-locations.html",
+      "sha256": "869f514b1c4922cb510b8a86a85f08cb64960f889fea836a31df0ed571a542e3",
+      "species": 771
+    },
+    {
+      "file": "new-pokemon-snap-quagsire-all-stars-photos-locations.html",
+      "sha256": "869e3a1cdfa5058d3b4d3747f1ce099e7c08e44f2d449717590b3b406a7d91d3",
+      "species": 195
+    },
+    {
+      "file": "new-pokemon-snap-qwilfish-all-stars-photos-locations.html",
+      "sha256": "b4933932dd4c98723178407642f0e2a2a1b2f6af11818d9b238b63ce933ded0d",
+      "species": 211
+    },
+    {
+      "file": "new-pokemon-snap-raichu-all-stars-photos-locations.html",
+      "sha256": "00d3ddd7c77711d4f7b61d19e6b0a311c6ff801dc0b5b8690e15c7b5ffa947e3",
+      "species": 26
+    },
+    {
+      "file": "new-pokemon-snap-rampardos-all-stars-photos-locations.html",
+      "sha256": "4e2bc6c8146da1a618b2101ce1fa179c189aa66d751ae594bb49a950cb446b8b",
+      "species": 409
+    },
+    {
+      "file": "new-pokemon-snap-rattata-all-stars-photos-locations.html",
+      "sha256": "b839827ecfeb6aa5da032528e8fad969b9ea5fa0a6f16e7db44f7c950296b786",
+      "species": 19
+    },
+    {
+      "file": "new-pokemon-snap-sableye-all-stars-photos-locations.html",
+      "sha256": "55fee99c0447bc02187ff95548255c48f5ea2ff893a11ef47ab39b93f6b281ec",
+      "species": 302
+    },
+    {
+      "file": "new-pokemon-snap-salandit-all-stars-photos-locations.html",
+      "sha256": "dca6b8de926d2c6005bdfcd9f54585578e95b2855a717a34856f537bb0e94913",
+      "species": 757
+    },
+    {
+      "file": "new-pokemon-snap-sandshrew-all-stars-photos-locations.html",
+      "sha256": "29d347c250849e46b5d036e62966ad4271f8ee32d04573d79c3c3e7671a132b9",
+      "species": 27
+    },
+    {
+      "file": "new-pokemon-snap-sandslash-all-stars-photos-locations.html",
+      "sha256": "8fb9dd92973cb5846bd1dcbbf0e13ada303c01c99211bd25daf95a52342fd8c4",
+      "species": 28
+    },
+    {
+      "file": "new-pokemon-snap-sandygast-all-stars-photos-locations.html",
+      "sha256": "e49d1dd7c83165d0d9084146812ef4f763a30f1290634f2957101cc16c0d8997",
+      "species": 769
+    },
+    {
+      "file": "new-pokemon-snap-sawsbuck-all-stars-photos-locations.html",
+      "sha256": "7e1218f957d81adf1869ccba191606764181456dc282e918761928d76fe0debf",
+      "species": 586
+    },
+    {
+      "file": "new-pokemon-snap-scorbunny-all-stars-photos-locations.html",
+      "sha256": "ee48b0b34e667196063874ecfed5344e545c77c74019063d99d8e0a4b5ddb2f8",
+      "species": 813
+    },
+    {
+      "file": "new-pokemon-snap-serperior-all-stars-photos-locations.html",
+      "sha256": "86f11397922760cff55e6bb19d8ee2ead49ed753299607eeeaf9f55f694d1fc7",
+      "species": 497
+    },
+    {
+      "file": "new-pokemon-snap-seviper-all-stars-photos-locations.html",
+      "sha256": "8e33113d7b01097f2dd9d720a8eb5e29fa5ce6516cf6162df7286d25fb80fd36",
+      "species": 336
+    },
+    {
+      "file": "new-pokemon-snap-sharpedo-all-stars-photos-locations.html",
+      "sha256": "100de635566fd8e528ec2f464e56a4602dc06b859980b540c217aac7596964e2",
+      "species": 319
+    },
+    {
+      "file": "new-pokemon-snap-shaymin-all-stars-photos-locations.html",
+      "sha256": "d8e4e007046b04b09ace9e97f8003f4649c8b1209dd96864df4fa17b4f2b86e2",
+      "species": 492
+    },
+    {
+      "file": "new-pokemon-snap-shiftry-all-stars-photos-locations.html",
+      "sha256": "06a2907f12861a428456296beb27ef69c9e23b13bf4fd0b1008eca2dbc3c76a1",
+      "species": 275
+    },
+    {
+      "file": "new-pokemon-snap-shinx-all-stars-photos-locations.html",
+      "sha256": "81584dacfeaef6c2596e6d40cfe73f9dcb99fe8b0cf10c57918b6bf2046581d9",
+      "species": 403
+    },
+    {
+      "file": "new-pokemon-snap-sigilyph-all-stars-photos-locations.html",
+      "sha256": "38f7d8827b2a0dc898465e8a6230929d9847365a3933c6513bd26b4b47bfb2fe",
+      "species": 561
+    },
+    {
+      "file": "new-pokemon-snap-silicobra-all-stars-photos-locations.html",
+      "sha256": "79b9b9da9a7d4866002e7123f26769f55462f80552d375c9dbd56c14a95822ce",
+      "species": 843
+    },
+    {
+      "file": "new-pokemon-snap-skarmory-all-stars-photos-locations.html",
+      "sha256": "137c78b1a9b0de9158893d8408362ed3663241c006c54b0693a7fd3f6cc203d3",
+      "species": 227
+    },
+    {
+      "file": "new-pokemon-snap-skorupi-all-stars-photos-locations.html",
+      "sha256": "beef71737e34d01846402fa54f5062381589003f4eccdaacad230c19588c8ea5",
+      "species": 451
+    },
+    {
+      "file": "new-pokemon-snap-slaking-all-stars-photos-locations.html",
+      "sha256": "819a5954622d6a0359177187d4553b15e7f3c91edf87e6b06ef5fcfcae0e65df",
+      "species": 289
+    },
+    {
+      "file": "new-pokemon-snap-slugma-all-stars-photos-locations.html",
+      "sha256": "d021985db44d9186a7b7e4e03f3f1303c39220eb309869fe0b8a76ba4f50dd62",
+      "species": 218
+    },
+    {
+      "file": "new-pokemon-snap-snom-all-stars-photos-locations.html",
+      "sha256": "584dcaebb06da310a4802d4341b136de4ba7bdebd72f4b49bf4b90efd9cd3d93",
+      "species": 872
+    },
+    {
+      "file": "new-pokemon-snap-snorunt-all-stars-photos-locations.html",
+      "sha256": "696e7f74016a23d982c47b6b1d7fcd966c4536d153756195decca3d5eb4caf46",
+      "species": 361
+    },
+    {
+      "file": "new-pokemon-snap-sobble-all-stars-photos-locations.html",
+      "sha256": "b95597c2cb5de4bc05051d5335c26bb295d32aee735da5232f4432788ad4129f",
+      "species": 816
+    },
+    {
+      "file": "new-pokemon-snap-spheal-all-stars-photos-locations.html",
+      "sha256": "c676f53160730850c46e4736b95d2a52f0d0039696bc261dd052d880e141bd84",
+      "species": 363
+    },
+    {
+      "file": "new-pokemon-snap-squirtle-all-stars-photos-locations.html",
+      "sha256": "492cb524ce2afd1aefb321d339a7432f7d5a79036d994ecd456a1d5cbc632f7e",
+      "species": 7
+    },
+    {
+      "file": "new-pokemon-snap-starly-all-stars-photos-locations.html",
+      "sha256": "71571a1631254ecc5315c5b48074d71a0a85457f33ff8bf830dd439cc9ae1a1f",
+      "species": 396
+    },
+    {
+      "file": "new-pokemon-snap-starmie-all-stars-photos-locations.html",
+      "sha256": "10dfc23224033597b14aae87880d795a1ba379c431f9294d3c0c40144ade14a3",
+      "species": 121
+    },
+    {
+      "file": "new-pokemon-snap-steelix-all-stars-photos-locations.html",
+      "sha256": "c0e18caa1d3e0f1f6fa380b399efe17a4bc6579f59bb0e605a24ee6aa13b327c",
+      "species": 208
+    },
+    {
+      "file": "new-pokemon-snap-stoutland-all-stars-photos-locations.html",
+      "sha256": "c287b04939d5e88a55cae3a90947253b7ac5a0a69c5de7f6be3be76788315555",
+      "species": 508
+    },
+    {
+      "file": "new-pokemon-snap-stunfisk-all-stars-photos-locations.html",
+      "sha256": "9e857cef1a770adf4183836d8612a0e699ae05414043afcaf979f8d5e6f2d384",
+      "species": 618
+    },
+    {
+      "file": "new-pokemon-snap-sudowoodo-all-stars-photos-locations.html",
+      "sha256": "6633a1048302911e049f1545e8775a935c9e15d80e8738b42a169d6eeb69fe41",
+      "species": 185
+    },
+    {
+      "file": "new-pokemon-snap-suicune-all-stars-photos-locations.html",
+      "sha256": "ca34f759649f4d052b73f3c365ea49da4e98a85a805b162e18c505f83eb6a915",
+      "species": 245
+    },
+    {
+      "file": "new-pokemon-snap-swampert-all-stars-photos-locations.html",
+      "sha256": "81b83176153fc33d192167cda6c85185fac88fdb6483789748bd98782b51a1b5",
+      "species": 260
+    },
+    {
+      "file": "new-pokemon-snap-swanna-all-stars-photos-locations.html",
+      "sha256": "2aa3bb02dacb00f851062c91f53833059aee4b52507136e1555bab501e4fd6db",
+      "species": 581
+    },
+    {
+      "file": "new-pokemon-snap-swinub-all-stars-photos-locations.html",
+      "sha256": "1c648173b96869f194b1af574e24862f6d399e450bdf2d65453dfdd8c72df98a",
+      "species": 220
+    },
+    {
+      "file": "new-pokemon-snap-sylveon-all-stars-photos-locations.html",
+      "sha256": "4cd22b08f91661b3658f70b2599c0816cc360ba0de2648289f0006b2a57b9f98",
+      "species": 700
+    },
+    {
+      "file": "new-pokemon-snap-taillow-all-stars-photos-locations.html",
+      "sha256": "7d2c43b534ee8f8d5ab413919267a1f7081d3109f31a1517043bcb21046bc0f6",
+      "species": 276
+    },
+    {
+      "file": "new-pokemon-snap-talonflame-all-stars-photos-locations.html",
+      "sha256": "4d2a26077a377fed93fe6bbf1864d087e3546fd8f663b589e6a660a2ff8fc295",
+      "species": 663
+    },
+    {
+      "file": "new-pokemon-snap-tangrowth-all-stars-photos-locations.html",
+      "sha256": "154bb39c79e240ffe19f49c45adb0fe11d288c46cc44e6257d28ac368c12870e",
+      "species": 465
+    },
+    {
+      "file": "new-pokemon-snap-tentacruel-all-stars-photos-locations.html",
+      "sha256": "582f68a44dbfc56d7f16db57883a5ec86302b9b885632a84b6198208bb3dd428",
+      "species": 73
+    },
+    {
+      "file": "new-pokemon-snap-torchic-all-stars-photos-locations.html",
+      "sha256": "d6444ff97229c3c2fe8ea3b7ff3084a135465ca29d6e7ce4c2c958794ba7afb4",
+      "species": 255
+    },
+    {
+      "file": "new-pokemon-snap-torkoal-all-stars-photos-locations.html",
+      "sha256": "3a25ccc1b5b4a2072454f43757cfb34582294daa6514bcc65405040d125decc3",
+      "species": 324
+    },
+    {
+      "file": "new-pokemon-snap-torterra-all-stars-photos-locations.html",
+      "sha256": "addd30476cf1274b1c06a33c9a378828daf452c14311551fafba548fa82212fb",
+      "species": 389
+    },
+    {
+      "file": "new-pokemon-snap-toucannon-all-stars-photos-locations.html",
+      "sha256": "df36e74efe73fdeb389b744b1e472e8fa1f7ed3da36b373e08ed30a618c728aa",
+      "species": 733
+    },
+    {
+      "file": "new-pokemon-snap-trapinch-all-stars-photos-locations.html",
+      "sha256": "e89714d55241e9ce4ca263f985b19d67b3a657566db35b4ec376da040f0f3383",
+      "species": 328
+    },
+    {
+      "file": "new-pokemon-snap-trevenant-all-stars-photos-locations.html",
+      "sha256": "d632c83e8e0ec6acc339aea3ebf63fbb33726f141e72ef41c46d1f7017d3072a",
+      "species": 709
+    },
+    {
+      "file": "new-pokemon-snap-trubbish-all-stars-photos-locations.html",
+      "sha256": "af88040f9c6d82bb75fff9f73fe0b8107a40dd8d2546740808c62d50febfbb94",
+      "species": 568
+    },
+    {
+      "file": "new-pokemon-snap-typhlosion-all-stars-photos-locations.html",
+      "sha256": "9f5bcbfadb46d4cb9bbbc8687e60e684a705c16c58a7132b498919433b99f499",
+      "species": 157
+    },
+    {
+      "file": "new-pokemon-snap-tyranitar-all-stars-photos-locations.html",
+      "sha256": "7ee28d33954d4b3c2ce87df8a7a96ebee53160269ddd52e389b2e3f2f1b5bf30",
+      "species": 248
+    },
+    {
+      "file": "new-pokemon-snap-tyrantrum-all-stars-photos-locations.html",
+      "sha256": "494f9a955d99c598e11f593eb1447f3584d1f96716e3dde7a2028539d0f0ec32",
+      "species": 697
+    },
+    {
+      "file": "new-pokemon-snap-umbreon-all-stars-photos-locations.html",
+      "sha256": "817256e337c6bcdf831f5c1dd54d4a57d1554e5325319be14d1270d5560357bb",
+      "species": 197
+    },
+    {
+      "file": "new-pokemon-snap-unfezant-all-stars-photos-locations.html",
+      "sha256": "14b2df419e09106adba46b1677aef1633ef62d4c71607945755a06f27b1ca955",
+      "species": 521
+    },
+    {
+      "file": "new-pokemon-snap-vanilluxe-all-stars-photos-locations.html",
+      "sha256": "ef084d09e553ab89e488b42d9dc3bb6df5c51965b0c89f6e9c36f4928caaaf2b",
+      "species": 584
+    },
+    {
+      "file": "new-pokemon-snap-vaporeon-all-stars-photos-locations.html",
+      "sha256": "8eebed10bd26a2e0f5de35d54cbafe67e5e379507c7ba52d3d00a5338d288529",
+      "species": 134
+    },
+    {
+      "file": "new-pokemon-snap-venusaur-all-stars-photos-locations.html",
+      "sha256": "a98aa9d050031eeeaf42593709c9d8b74e67ca5356fab37d532f2787921bb2ef",
+      "species": 3
+    },
+    {
+      "file": "new-pokemon-snap-vespiquen-all-stars-photos-locations.html",
+      "sha256": "778dfa2424f50242e401a25c99ae4ff69b44e98be0bb9ccc0dba67249b72f611",
+      "species": 416
+    },
+    {
+      "file": "new-pokemon-snap-vivillon-all-stars-photos-locations.html",
+      "sha256": "8e5f3d7fcccc8142ffd82e558781c097e4be4064d1696975d2723b7c51432f5b",
+      "species": 666
+    },
+    {
+      "file": "new-pokemon-snap-volcarona-all-stars-photos-locations.html",
+      "sha256": "2891b191f611925587f156782772e63057b743b19807ac8bd9ad46c243f511ae",
+      "species": 637
+    },
+    {
+      "file": "new-pokemon-snap-vulpix-all-stars-photos-locations.html",
+      "sha256": "fa48ea2dfb90ca733d27820d974eff24a698dfbbb73f08f25f58644aaa06fa84",
+      "species": 37
+    },
+    {
+      "file": "new-pokemon-snap-wailmer-all-stars-photos-locations.html",
+      "sha256": "e02ae2c4ae7557461d978432ed9efa869704cbffe392f83841c3a920fb033136",
+      "species": 320
+    },
+    {
+      "file": "new-pokemon-snap-wailord-all-stars-photos-locations.html",
+      "sha256": "55c83e3ba1a01ccf565b18ad46317fe01f5c56c252e29af2cd7018a0212343ad",
+      "species": 321
+    },
+    {
+      "file": "new-pokemon-snap-weavile-all-stars-photos-locations.html",
+      "sha256": "4321a61fd62458ce95b7905a0b6934938a51287ce7169583504e8d1d3a96c34e",
+      "species": 461
+    },
+    {
+      "file": "new-pokemon-snap-wingull-all-stars-photos-locations.html",
+      "sha256": "1e6e974dade93865c37b6c366e93c1c8feef259f50583966f1e0e420c3957c6d",
+      "species": 278
+    },
+    {
+      "file": "new-pokemon-snap-wishiwashi-all-stars-photos-locations.html",
+      "sha256": "f0dddb3ab48bcf0a9e801915e54d70556e2191877df701b2c65ac7f706cd2bc6",
+      "species": 746
+    },
+    {
+      "file": "new-pokemon-snap-woobat-all-stars-photos-locations.html",
+      "sha256": "eee8484beeb1e31e020dc2647fb995a43ce213ac5ef97b6b7c73f4efb970a6af",
+      "species": 527
+    },
+    {
+      "file": "new-pokemon-snap-wooper-all-stars-photos-locations.html",
+      "sha256": "08015a2335ffd01336cd6861c725ac86142ef7203b71d37c5b50b8e748a721bd",
+      "species": 194
+    },
+    {
+      "file": "new-pokemon-snap-wurmple-all-stars-photos-locations.html",
+      "sha256": "ab9e33f1552fb13727df7ddd4025773466960ac1437d19ac2531026c527635ba",
+      "species": 265
+    },
+    {
+      "file": "new-pokemon-snap-xerneas-all-stars-photos-locations.html",
+      "sha256": "d196b83fa730216a515c620ceccc5bdd95e214f536a83df231d1205d3c088997",
+      "species": 716
+    },
+    {
+      "file": "new-pokemon-snap-yanmega-all-stars-photos-locations.html",
+      "sha256": "bd86b83cfe3b78ce9ddef97424148ee6cb25dbdd3b4bf74477c6b3873b15260f",
+      "species": 469
+    },
+    {
+      "file": "new-pokemon-snap-zangoose-all-stars-photos-locations.html",
+      "sha256": "2fc977e3e459968fabd884f90f3f7ce404e066d970daf1ac52ccaa99b6028f72",
+      "species": 335
+    }
+  ],
+  "headings": 856,
+  "accepted": 845,
+  "excluded": [
+    {
+      "species": 739,
+      "stars": 4,
+      "heading": "4 Stars: ???",
+      "reason": "ambiguous-or-unknown-course"
+    },
+    {
+      "species": 706,
+      "stars": 1,
+      "heading": "1 Stars: Ruins Research Level 3: Nice and calm",
+      "reason": "not-in-independent-encounters"
+    },
+    {
+      "species": 706,
+      "stars": 2,
+      "heading": "2 Stars: Ruins Research Level 3: Noteworthy behavior?",
+      "reason": "not-in-independent-encounters"
+    },
+    {
+      "species": 706,
+      "stars": 3,
+      "heading": "3 Stars: Ruins Research Level 3: Happy vibes",
+      "reason": "not-in-independent-encounters"
+    },
+    {
+      "species": 706,
+      "stars": 4,
+      "heading": "4 Stars: Ruins Research Level 3: You don’t see this every day",
+      "reason": "not-in-independent-encounters"
+    },
+    {
+      "species": 391,
+      "stars": 4,
+      "heading": "4 Stars: ???",
+      "reason": "ambiguous-or-unknown-course"
+    },
+    {
+      "species": 25,
+      "stars": 1,
+      "heading": "1 Stars: Park (Day) Research Level 1 – Nice and calm",
+      "reason": "not-in-independent-encounters"
+    },
+    {
+      "species": 716,
+      "stars": 1,
+      "heading": "1 Stars: Ruins Research Level 1 – Where’s it going?",
+      "reason": "not-in-independent-encounters"
+    },
+    {
+      "species": 716,
+      "stars": 2,
+      "heading": "2 Stars: Ruins Research Level 2 – Nice and calm",
+      "reason": "not-in-independent-encounters"
+    },
+    {
+      "species": 716,
+      "stars": 3,
+      "heading": "3 Stars: Ruins Research Level 2 – You don’t see this every day",
+      "reason": "not-in-independent-encounters"
+    },
+    {
+      "species": 716,
+      "stars": 4,
+      "heading": "4 Stars: Ruins Research Level 2 – The power of life",
+      "reason": "not-in-independent-encounters"
+    }
+  ],
+  "qualifications": [
+    {
+      "species": 24,
+      "stars": 4,
+      "course": "jungle-night",
+      "sourceLevel": 3,
+      "reason": "unsupported-reference-level"
+    },
+    {
+      "species": 168,
+      "stars": 3,
+      "course": "jungle-night",
+      "sourceLevel": 3,
+      "reason": "unsupported-reference-level"
+    },
+    {
+      "species": 168,
+      "stars": 4,
+      "course": "jungle-night",
+      "sourceLevel": 3,
+      "reason": "unsupported-reference-level"
+    },
+    {
+      "species": 699,
+      "stars": 1,
+      "course": "snow-night",
+      "sourceLevel": 3,
+      "reason": "unsupported-reference-level"
+    },
+    {
+      "species": 699,
+      "stars": 2,
+      "course": "snow-night",
+      "sourceLevel": 3,
+      "reason": "unsupported-reference-level"
+    },
+    {
+      "species": 699,
+      "stars": 3,
+      "course": "snow-night",
+      "sourceLevel": 3,
+      "reason": "unsupported-reference-level"
+    },
+    {
+      "species": 699,
+      "stars": 4,
+      "course": "snow-night",
+      "sourceLevel": 3,
+      "reason": "unsupported-reference-level"
+    },
+    {
+      "species": 713,
+      "stars": 1,
+      "course": "snow-night",
+      "sourceLevel": 3,
+      "reason": "unsupported-reference-level"
+    },
+    {
+      "species": 713,
+      "stars": 2,
+      "course": "snow-night",
+      "sourceLevel": 3,
+      "reason": "unsupported-reference-level"
+    },
+    {
+      "species": 713,
+      "stars": 3,
+      "course": "snow-night",
+      "sourceLevel": 3,
+      "reason": "unsupported-reference-level"
+    },
+    {
+      "species": 713,
+      "stars": 4,
+      "course": "snow-night",
+      "sourceLevel": 3,
+      "reason": "unsupported-reference-level"
+    },
+    {
+      "species": 761,
+      "stars": 4,
+      "course": "jungle-night",
+      "sourceLevel": 3,
+      "reason": "unsupported-reference-level"
+    },
+    {
+      "species": 628,
+      "stars": 3,
+      "course": "snow-night",
+      "sourceLevel": 3,
+      "reason": "unsupported-reference-level"
+    },
+    {
+      "species": 628,
+      "stars": 4,
+      "course": "snow-night",
+      "sourceLevel": 3,
+      "reason": "unsupported-reference-level"
+    },
+    {
+      "species": 10,
+      "stars": 3,
+      "course": "park-night",
+      "sourceLevel": 3,
+      "reason": "unsupported-reference-level"
+    },
+    {
+      "species": 415,
+      "stars": 3,
+      "course": "park-illumina",
+      "sourceLevel": 3,
+      "reason": "unsupported-reference-level"
+    },
+    {
+      "species": 740,
+      "stars": 1,
+      "course": "snow-night",
+      "sourceLevel": 3,
+      "reason": "unsupported-reference-level"
+    },
+    {
+      "species": 740,
+      "stars": 2,
+      "course": "snow-night",
+      "sourceLevel": 3,
+      "reason": "unsupported-reference-level"
+    },
+    {
+      "species": 740,
+      "stars": 3,
+      "course": "snow-night",
+      "sourceLevel": 3,
+      "reason": "unsupported-reference-level"
+    },
+    {
+      "species": 103,
+      "stars": 3,
+      "course": "beach-night",
+      "sourceLevel": 3,
+      "reason": "unsupported-reference-level"
+    },
+    {
+      "species": 103,
+      "stars": 4,
+      "course": "beach-night",
+      "sourceLevel": 3,
+      "reason": "unsupported-reference-level"
+    },
+    {
+      "species": 456,
+      "stars": 4,
+      "course": "beach-night",
+      "sourceLevel": 3,
+      "reason": "unsupported-reference-level"
+    },
+    {
+      "species": 873,
+      "stars": 3,
+      "course": "snow-night",
+      "sourceLevel": 3,
+      "reason": "unsupported-reference-level"
+    },
+    {
+      "species": 873,
+      "stars": 4,
+      "course": "snow-night",
+      "sourceLevel": 3,
+      "reason": "unsupported-reference-level"
+    },
+    {
+      "species": 214,
+      "stars": 4,
+      "course": "park-night",
+      "sourceLevel": 3,
+      "reason": "unsupported-reference-level"
+    },
+    {
+      "species": 686,
+      "stars": 4,
+      "course": "beach-night",
+      "sourceLevel": 3,
+      "reason": "unsupported-reference-level"
+    },
+    {
+      "species": 510,
+      "stars": 4,
+      "course": "jungle-night",
+      "sourceLevel": 3,
+      "reason": "unsupported-reference-level"
+    },
+    {
+      "species": 490,
+      "stars": 1,
+      "course": "reef-evening",
+      "sourceLevel": 3,
+      "reason": "unsupported-reference-level"
+    },
+    {
+      "species": 490,
+      "stars": 2,
+      "course": "reef-evening",
+      "sourceLevel": 3,
+      "reason": "unsupported-reference-level"
+    },
+    {
+      "species": 490,
+      "stars": 3,
+      "course": "reef-evening",
+      "sourceLevel": 3,
+      "reason": "unsupported-reference-level"
+    },
+    {
+      "species": 490,
+      "stars": 4,
+      "course": "reef-evening",
+      "sourceLevel": 3,
+      "reason": "unsupported-reference-level"
+    },
+    {
+      "species": 11,
+      "stars": 4,
+      "course": "jungle-night",
+      "sourceLevel": 3,
+      "reason": "unsupported-reference-level"
+    },
+    {
+      "species": 151,
+      "stars": 1,
+      "course": "jungle-night",
+      "sourceLevel": 3,
+      "reason": "unsupported-reference-level"
+    },
+    {
+      "species": 151,
+      "stars": 2,
+      "course": "jungle-night",
+      "sourceLevel": 3,
+      "reason": "unsupported-reference-level"
+    },
+    {
+      "species": 151,
+      "stars": 4,
+      "course": "jungle-night",
+      "sourceLevel": 3,
+      "reason": "unsupported-reference-level"
+    },
+    {
+      "species": 774,
+      "stars": 3,
+      "course": "sands-night",
+      "sourceLevel": 3,
+      "reason": "unsupported-reference-level"
+    },
+    {
+      "species": 774,
+      "stars": 4,
+      "course": "sands-night",
+      "sourceLevel": 3,
+      "reason": "unsupported-reference-level"
+    },
+    {
+      "species": 755,
+      "stars": 4,
+      "course": "jungle-night",
+      "sourceLevel": 3,
+      "reason": "unsupported-reference-level"
+    },
+    {
+      "species": 127,
+      "stars": 4,
+      "course": "park-night",
+      "sourceLevel": 3,
+      "reason": "unsupported-reference-level"
+    },
+    {
+      "species": 730,
+      "stars": 1,
+      "course": "beach-night",
+      "sourceLevel": 3,
+      "reason": "unsupported-reference-level"
+    },
+    {
+      "species": 730,
+      "stars": 2,
+      "course": "beach-night",
+      "sourceLevel": 3,
+      "reason": "unsupported-reference-level"
+    },
+    {
+      "species": 730,
+      "stars": 3,
+      "course": "beach-night",
+      "sourceLevel": 3,
+      "reason": "unsupported-reference-level"
+    },
+    {
+      "species": 730,
+      "stars": 4,
+      "course": "beach-night",
+      "sourceLevel": 3,
+      "reason": "unsupported-reference-level"
+    },
+    {
+      "species": 769,
+      "stars": 4,
+      "course": "beach-night",
+      "sourceLevel": 3,
+      "reason": "unsupported-reference-level"
+    },
+    {
+      "species": 336,
+      "stars": 3,
+      "course": "beach-night",
+      "sourceLevel": 3,
+      "reason": "unsupported-reference-level"
+    },
+    {
+      "species": 872,
+      "stars": 2,
+      "course": "snow-night",
+      "sourceLevel": 3,
+      "reason": "unsupported-reference-level"
+    },
+    {
+      "species": 7,
+      "stars": 4,
+      "course": "reef-evening",
+      "sourceLevel": 3,
+      "reason": "unsupported-reference-level"
+    },
+    {
+      "species": 245,
+      "stars": 1,
+      "course": "snow-night",
+      "sourceLevel": 3,
+      "reason": "unsupported-reference-level"
+    },
+    {
+      "species": 245,
+      "stars": 2,
+      "course": "snow-night",
+      "sourceLevel": 3,
+      "reason": "unsupported-reference-level"
+    },
+    {
+      "species": 245,
+      "stars": 3,
+      "course": "snow-night",
+      "sourceLevel": 3,
+      "reason": "unsupported-reference-level"
+    },
+    {
+      "species": 245,
+      "stars": 4,
+      "course": "snow-night",
+      "sourceLevel": 3,
+      "reason": "unsupported-reference-level"
+    },
+    {
+      "species": 581,
+      "stars": 3,
+      "course": "park-night",
+      "sourceLevel": 3,
+      "reason": "unsupported-reference-level"
+    },
+    {
+      "species": 581,
+      "stars": 4,
+      "course": "park-night",
+      "sourceLevel": 3,
+      "reason": "unsupported-reference-level"
+    },
+    {
+      "species": 700,
+      "stars": 3,
+      "course": "park-illumina",
+      "sourceLevel": 3,
+      "reason": "unsupported-reference-level"
+    },
+    {
+      "species": 700,
+      "stars": 4,
+      "course": "park-illumina",
+      "sourceLevel": 3,
+      "reason": "unsupported-reference-level"
+    },
+    {
+      "species": 733,
+      "stars": 4,
+      "course": "jungle-night",
+      "sourceLevel": 3,
+      "reason": "unsupported-reference-level"
+    },
+    {
+      "species": 584,
+      "stars": 4,
+      "course": "snow-night",
+      "sourceLevel": 3,
+      "reason": "unsupported-reference-level"
+    },
+    {
+      "species": 37,
+      "stars": 4,
+      "course": "snow-night",
+      "sourceLevel": 3,
+      "reason": "unsupported-reference-level"
+    },
+    {
+      "species": 461,
+      "stars": 4,
+      "course": "snow-night",
+      "sourceLevel": 3,
+      "reason": "unsupported-reference-level"
+    },
+    {
+      "species": 335,
+      "stars": 3,
+      "course": "beach-night",
+      "sourceLevel": 3,
+      "reason": "unsupported-reference-level"
+    },
+    {
+      "species": 335,
+      "stars": 4,
+      "course": "beach-night",
+      "sourceLevel": 3,
+      "reason": "unsupported-reference-level"
+    }
+  ],
+  "meaning": "Course and level of a reference example, not a minimum level or live observation. No source prose copied.",
+  "primaryCueCourseConflicts": [
+    {
+      "species": 25,
+      "stars": 1,
+      "sourceCourse": "park-day",
+      "sourceLevel": 1
+    },
+    {
+      "species": 706,
+      "stars": 1,
+      "sourceCourse": "ruins",
+      "sourceLevel": 3
+    },
+    {
+      "species": 706,
+      "stars": 2,
+      "sourceCourse": "ruins",
+      "sourceLevel": 3
+    },
+    {
+      "species": 527,
+      "stars": 2,
+      "sourceCourse": "cave-illumina",
+      "sourceLevel": 2
+    }
+  ]
+}

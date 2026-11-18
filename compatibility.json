@@ -1,0 +1,22 @@
+{
+  "schema": 1,
+  "app": "Snap Companion",
+  "version": "0.5.24",
+  "package": "dev.gbppimentel.snapcompanion",
+  "device": "AYN Thor",
+  "physicalDevelopmentAndroid": "13",
+  "minimumAndroidApi": 30,
+  "edenPackage": "dev.eden.eden_emulator",
+  "gameDataSchemas": "New Pok\u00e9mon Snap 2.0.1",
+  "screenLanguage": "English supported layouts",
+  "firmwareRequirement": "Existing compatible AYN PServerBinder service; exact public firmware/emulator matrix unqualified",
+  "validation": "Local release checks passed.0.5.24 credits update has no new physical acceptance run; core based on installed0.5.23 development build.",
+  "internetPermission": false,
+  "limits": [
+    "No verified current-course/selected-level memory source; mid-course screen-label recovery remains limited.",
+    "No route-timed visual/audio recognition or ungraded-photo ranking.",
+    "General saved ownership/unlock meanings remain partial.",
+    "No universal60FPS or original black-photo reconstruction claim.",
+    "Broader physical controls, sustained performance, gyro and new-save acceptance remain unverified."
+  ]
+}

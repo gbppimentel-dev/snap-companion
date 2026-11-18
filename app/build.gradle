@@ -1,0 +1,50 @@
+plugins { id 'com.android.application' }
+
+android {
+    namespace 'dev.gbppimentel.snapcompanion'
+    compileSdk 36
+    defaultConfig {
+        applicationId 'dev.gbppimentel.snapcompanion'
+        minSdk 30
+        targetSdk 36
+        versionCode 36
+        versionName '0.5.24'
+        testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
+    }
+    compileOptions { sourceCompatibility JavaVersion.VERSION_17; targetCompatibility JavaVersion.VERSION_17 }
+    buildTypes {
+        release {
+            minifyEnabled true
+            shrinkResources true
+            signingConfig signingConfigs.debug
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    testOptions {
+        unitTests.returnDefaultValues = true
+        unitTests.includeAndroidResources = true
+        unitTests.all {
+            systemProperty 'robolectric.dependency.repo.url', 'https://repo.maven.apache.org/maven2'
+            jvmArgs '--add-opens=java.base/java.lang=ALL-UNNAMED', '--add-opens=java.base/java.util=ALL-UNNAMED', '--add-opens=java.base/java.io=ALL-UNNAMED', '--add-opens=java.base/java.net=ALL-UNNAMED', '--add-opens=java.base/java.security=ALL-UNNAMED', '--add-opens=java.base/java.text=ALL-UNNAMED', '--add-opens=java.base/jdk.internal.access=ALL-UNNAMED', '--add-opens=java.desktop/java.awt.font=ALL-UNNAMED'
+        }
+    }
+    lint { abortOnError true }
+    androidResources { ignoreAssetsPattern = '!*.svn:!.git:!.ds_store:!*.scc:.*:!CVS:!thumbs.db:!picasa.ini:!*~:demo.json:feature-coverage.json' }
+    sourceSets.main.assets.srcDir layout.buildDirectory.dir('generated/liveBridge/assets')
+}
+tasks.register('buildLiveBridge', Exec) {
+    inputs.files rootProject.fileTree('bridge/src').matching { include '**/*.java' }
+    inputs.file rootProject.file('scripts/build-live-bridge.sh')
+    inputs.file rootProject.file('app/src/main/java/dev/gbppimentel/snapcompanion/ControllerButtons.java')
+    outputs.file layout.buildDirectory.file('generated/liveBridge/assets/bridge/live-projection.jar')
+    commandLine 'sh', rootProject.file('scripts/build-live-bridge.sh').absolutePath
+}
+tasks.named('preBuild').configure { dependsOn tasks.named('buildLiveBridge') }
+dependencies {
+    implementation 'com.google.mlkit:text-recognition:16.0.1'
+    androidTestImplementation 'androidx.test:runner:1.6.2'
+    androidTestImplementation 'androidx.test:rules:1.6.1'
+    testImplementation 'junit:junit:4.13.2'
+    testImplementation 'org.json:json:20250517'
+    testImplementation 'org.robolectric:robolectric:4.17'
+}

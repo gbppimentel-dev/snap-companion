@@ -1,0 +1,16 @@
+name: compatibility report
+description: Report results on another environment.
+body:
+  - type: input
+    id: versions
+    attributes:
+      label: Device, firmware, Android, emulator and game versions
+    validations:
+      required: true
+  - type: textarea
+    id: tested
+    attributes:
+      label: What did you actually test?
+      description: Separate saved sync, screen recognition, controls and performance. Do not attach private records or logs.
+    validations:
+      required: true

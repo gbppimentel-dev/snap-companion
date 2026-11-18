@@ -1,0 +1,121 @@
+/* Collection order follows the goal: Diamond → Gold → Silver → Bronze → To Find. */
+.medal-counts>.medal-total.diamond{color:#659b94}
+
+/* A separate action row keeps Photo Tips clear of the clamped preview. */
+.book-body[data-page=photos] .photo-hint{display:flex;flex-direction:column;gap:5px;padding:7px 9px;overflow:hidden}
+.photo-hint-copy{flex:1;min-height:0;overflow:hidden}
+.photo-hint-copy>.box-label{font-size:6px}
+.photo-hint-copy>p{font:11px/1.65 Snap;margin:4px 0 0;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;overflow:hidden}
+.book-body[data-page=photos] .photo-hint>.subtle{position:static;align-self:flex-end;flex:none;margin:0;min-height:25px;padding:3px 7px;display:flex;align-items:center;gap:5px;line-height:1}
+.photo-hint>.subtle>img{width:15px;height:15px;object-fit:contain}
+.photo-hint>.subtle>span{white-space:nowrap}
+
+/* At most four official prints. Reading and the expanded viewer stay fixed. */
+.book-dialog .book-body[data-page=album]{background:linear-gradient(115deg,#f1ecd9,#fffbed 52%,#f5efdd);display:flex;flex-direction:column;overflow:hidden;min-height:0}
+.album-overview{display:flex;flex-direction:column;flex:1;min-height:0;padding:7px 11px 9px;gap:6px;overflow:hidden}
+.album-heading{display:flex;align-items:center;justify-content:space-between;flex:none;min-height:20px;color:#82906e;font:9px DIN}
+.album-heading>span{display:flex;align-items:center;gap:5px}
+.album-heading img{width:18px;height:18px;object-fit:contain}
+.album-heading>b{font:12px DIN;color:#69927c}
+.album-overview>.album-grid{display:grid;grid-template-columns:repeat(var(--album-columns,2),minmax(0,1fr));grid-template-rows:repeat(var(--album-rows,2),minmax(0,1fr));gap:8px 12px;align-items:center;justify-items:center;align-content:stretch;flex:1;min-height:0;padding:0;overflow:hidden}
+.album-overview>.album-grid[data-count="1"]{grid-template-columns:minmax(0,1fr)}
+.album-grid[data-count="3"][data-columns="2"]>.album-print:last-child{grid-column:1/-1}
+.album-grid>.album-print:nth-child(n){display:flex;flex-direction:column;align-items:stretch;flex:none;min-width:0;max-width:100%;width:var(--print-width,100%);padding:3px 3px 0;border:1px solid #d5c7a6;border-radius:4px;rotate:0deg;transform:none;background:#fffcef;box-shadow:0 2px 0 #c6b897}
+.album-grid>.album-print>.album-image{display:flex;align-items:center;justify-content:center;flex:none;width:100%;height:auto;aspect-ratio:3/2;min-height:0;padding:0;border-radius:2px;overflow:hidden}
+.album-print .album-image>img{width:100%;height:100%;object-fit:contain}
+.album-print .album-image>.silhouette{height:80%;width:80%}
+.album-grid .album-photo-info{display:flex;align-items:center;justify-content:space-between;height:29px;min-height:29px;box-sizing:border-box;gap:5px;padding:3px 2px;flex:none}
+.album-photo-info>span{display:flex;flex-direction:column;align-items:flex-start;gap:2px}
+.album-photo-info .star-cluster{display:flex;gap:0;min-height:0}
+.album-photo-info .star-cluster img{height:10px;width:10px}
+.album-photo-info small{font:6px/1 DIN;color:#a18a61}
+.album-photo-info>b{display:flex;align-items:baseline;gap:2px;font:16px/1 DIN;color:#7e9469}
+.album-photo-info>b>small{font-size:6px}
+.album-overview>.album-empty{flex:1;min-height:0;padding:7px}
+.album-overview .empty-photo{height:min(100px,40%);width:150px;max-height:70%}
+.album-overview .empty-photo>.portrait{height:85%;object-fit:contain}
+.album-overview .album-empty h3{font-size:12px;margin:9px 0 0}
+.book-body[data-page=album]>.album-view{flex:1;min-height:0;width:100%;overflow:hidden;gap:5px;padding:7px 11px}
+.album-view>.subtle{flex:none;min-height:24px;font:9px DIN}
+.album-expanded-image{display:flex;position:relative;flex:1;min-height:0;width:100%;align-items:center;justify-content:center;overflow:hidden}
+.album-expanded-image>.album-photo{flex:none;width:100%;height:100%;min-height:0;object-fit:contain;border:0;box-shadow:none;background:none}
+.album-expanded-image>.silhouette{width:75%;height:85%;object-fit:contain;opacity:.18}
+.album-expanded-image>span{position:absolute;bottom:8px;font:10px DIN;color:#9e906f}
+.album-view>.album-caption{width:100%;flex:none;margin:0;min-height:28px;padding:4px 7px;display:flex;justify-content:space-between;font:12px DIN}
+.album-caption>div{display:flex;align-items:center;gap:7px}
+.album-caption .star-cluster{display:flex;gap:0}
+.album-caption .star-cluster img{height:13px;width:13px}
+.album-caption strong{font:17px DIN;color:#729273}
+.album-caption small{font:8px DIN}
+
+/* Equal location rows keep paired entries aligned, including the last odd one. */
+.compact-about .about-places{align-items:stretch;gap:6px;grid-auto-rows:auto}
+.compact-about .about-place{align-self:stretch;min-width:0}
+.compact-about .about-place>summary{display:grid;grid-template-columns:55px minmax(0,1fr) 12px;min-height:59px;height:100%;padding:6px;gap:7px;box-sizing:border-box}
+.compact-about .about-place[open]>summary{height:auto}
+.compact-about .about-place-art{width:55px;height:39px}
+.compact-about .about-place strong{display:block;line-height:1.45}
+.compact-about .about-place>summary>span:nth-child(2){align-self:center;gap:4px}
+.compact-about .about-place>summary>.glyph{justify-self:center;align-self:center}
+.about-places.odd>.about-place:last-child{grid-column:1/-1;width:calc(50% - 3px);justify-self:center}
+
+/* Request portraits occupy a balanced centre stage, clear of corner emblems. */
+.request-grid .talk-card .talk-art>.talk-cutout{width:84%;height:88%;left:50%;bottom:5%;max-width:none;max-height:none;transform:translateX(-50%);object-fit:contain;object-position:center bottom}
+.request-grid .talk-art>.time-emblem{left:7px;right:auto;top:7px;z-index:4}
+.request-grid .talk-art>.talk-receipt{z-index:5;right:6px;bottom:6px}
+.request-complete{position:absolute;z-index:6;right:0;top:0;width:69px;height:69px;overflow:hidden;pointer-events:none}
+.request-complete>img{position:absolute;width:94px;height:40px;max-width:none;right:-27px;top:13px;object-fit:fill;transform:rotate(58deg)}
+.compact-talk .talk-hero-image{overflow:hidden;border-radius:5px}
+.compact-talk .talk-hero-image>.talk-cutout{left:50%;bottom:2%;width:88%;height:94%;max-height:none;transform:translateX(-50%);object-fit:contain;object-position:center bottom}
+.compact-talk .talk-hero-image>.request-complete{width:47px;height:47px}
+.compact-talk .talk-hero-image>.request-complete>img{width:73px;height:31px;right:-24px;top:8px}
+
+/* Give course Pokémon the space; the course identity stays compact above them. */
+.course-reader{width:830px;max-width:calc(100vw - 14px);height:calc(100dvh - 14px);max-height:calc(100dvh - 14px);overflow:hidden}
+.course-reader .guide-detail-head{min-height:33px;height:33px;padding:4px 10px;flex:none}
+.course-reader .course-hero{padding:0;height:64px;min-height:64px;flex:none;border:0}
+.course-reader .course-hero>div{position:relative;width:100%;height:100%;box-sizing:border-box;padding:8px 12px}
+.course-reader .course-hero h2{font:16px/1.25 Rodin;margin:2px 0;padding-right:85px}
+.course-reader .course-hero .eyebrow{font-size:6px}
+.course-reader .course-hero .time-badge{position:absolute;right:12px;bottom:10px;font-size:8px;padding:3px 5px}
+.course-reader .course-collection{padding:6px 11px;min-height:37px;gap:3px 8px;flex:none}
+.course-reader .course-levels{padding:4px 10px;min-height:30px;flex:none;gap:5px}
+.course-reader .course-levels button{min-height:24px;padding:3px 9px}
+.course-reader .encounter-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 16px;padding:15px 18px 20px;align-content:start;min-height:0;flex:1;overflow:auto}
+.course-reader .encounter{position:relative;align-items:stretch;min-height:207px;padding:0 6px 6px;overflow:visible;display:flex;flex-direction:column;justify-content:flex-end}
+.course-reader .encounter>.portrait{position:relative;align-self:center;width:100%;height:147px;max-width:230px;object-fit:contain;flex:none;z-index:2}
+.course-reader .encounter>strong{font:13px/1.25 Rodin;margin:4px 0 6px;min-height:17px;text-align:center}
+.course-reader .encounter>.slots{height:25px;flex:none;gap:3px;width:100%}
+.course-reader .encounter .slot{min-width:0;height:25px;padding:2px}
+.course-reader .encounter .slot .star-cluster img{width:10px!important;height:12px!important}
+.course-reader .encounter-crown{z-index:3}
+@media(min-width:780px){.course-reader .encounter-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-height:420px) and (min-width:421px){
+ .book-body[data-page=photos] .photo-score-card{padding:5px 7px}
+ .book-body[data-page=photos] .photo-score-card h2{font-size:21px!important}
+ .book-body[data-page=photos] .reference-box{padding:4px 7px}
+ .book-body[data-page=photos] .reference-box h3{font-size:10px;margin:2px 0 3px}
+ .book-body[data-page=photos] .photo-hint{flex-direction:row;align-items:center;padding:4px 7px}
+ .photo-hint-copy>p{display:none}
+ .book-body[data-page=photos] .photo-hint>.subtle{align-self:center;min-height:23px}
+}
+@media(max-width:420px){
+ .book-body[data-page=photos] .photo-hint{padding:6px 7px;gap:3px}
+ .photo-hint-copy>p{font-size:10px;line-height:1.55;-webkit-line-clamp:4}
+ .album-overview{padding:6px 8px 8px;gap:4px}
+ .album-overview>.album-grid{gap:8px}
+ .album-photo-info>b{font-size:14px}
+ .album-photo-info .star-cluster img{width:9px;height:10px}
+ .compact-about .about-place>summary{grid-template-columns:55px minmax(0,1fr) 12px;min-height:58px}
+ .about-places.odd>.about-place:last-child{width:100%}
+ .request-grid .talk-art>.time-emblem{left:5px;top:5px}
+ .request-complete{width:55px;height:55px}
+ .request-complete>img{width:80px;height:34px;right:-25px;top:9px}
+ .course-reader .course-hero{height:61px;min-height:61px}
+ .course-reader .course-hero h2{font-size:14px}
+ .course-reader .encounter-grid{padding:11px 10px 16px;gap:15px 10px}
+ .course-reader .encounter{min-height:178px;padding:0 3px 5px}
+ .course-reader .encounter>.portrait{height:119px}
+ .course-reader .encounter>strong{font-size:11px;margin:4px 0 5px}
+ .course-reader .encounter .slot .star-cluster img{width:8px!important;height:10px!important}
+}

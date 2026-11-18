@@ -1,0 +1,7 @@
+Pokémon HOME appearance reference art
+
+Source: https://github.com/PokeAPI/sprites
+Metadata: https://pokeapi.co/docs/v2
+Prepared offline for this private companion build. Pokémon artwork remains the property of its respective rights holders. PokeAPI is the reference distribution/metadata source; no ownership or free-art license is claimed.
+
+The original Snap art and fonts remain separate from these supplemental reference portraits. These images are not user/gameplay photographs and do not establish a saved photograph's gender or form.
