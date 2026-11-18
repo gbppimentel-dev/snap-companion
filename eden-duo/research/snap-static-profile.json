@@ -1,0 +1,68 @@
+{
+  "title_id": "0100F4300BF2C000",
+  "build_id": "DDB900FF04A912ED42430508389853CFAF1ACCCE000000000000000000000000",
+  "status": "static-analysis-and-synthetic-verification-only",
+  "device_verified": false,
+  "production_enabled": false,
+  "objects": {
+    "course_scene": {
+      "vtable_rva": "0xc8a050",
+      "constructor": "0x621bd0",
+      "shared_owner_vtable_rva": "0xc80138",
+      "shared_owner_header_offset": -32,
+      "state_callback_offset": "0x38",
+      "rail_pointer_offset": "0x80",
+      "current_course_offset": "0x25c",
+      "selected_research_level_offset": "0x26c",
+      "saved_maximum_level_offset": "0x270",
+      "evidence": [
+        "Scene constructor establishes vtable; scene creation sites 0x43ff88 and 0x61d408 establish the shared owner block",
+        "0x62ce18..0x62ce28 copies scene+0x25c into rail+0x1e0",
+        "0x6306a8..0x63070c receives the chosen level from the UI and stores it at scene+0x26c",
+        "The saved-research getter 0x5e0b10 produces a separate value stored at scene+0x270"
+      ]
+    },
+    "rail": {
+      "vtable_rva": "0xc81e28",
+      "constructor": "0x4bdf90",
+      "curve_pointer_offset": "0x30",
+      "measured_distance_offset": "0x70",
+      "forward_vector_offset": "0x1a0",
+      "current_course_offset": "0x1e0",
+      "evidence": [
+        "0x4c1de8..0x4c1df0 advances measured rail distance",
+        "0x4bf670 samples curve(rail distance / curve length)",
+        "0x4c1e8c caches the normalized forward vector at rail+0x1a0"
+      ]
+    },
+    "curve": {
+      "getter": "0x3e5a70",
+      "length_offset": "0x3c",
+      "segments_begin_offset": "0x40",
+      "segments_end_offset": "0x48",
+      "mode_offset": "0x70",
+      "segment_stride": 56,
+      "point_stride": 48,
+      "supported_mode": 0,
+      "interpolation": {"0": "cubic Hermite", "1": "linear"},
+      "verification": {
+        "original_getter_sha256": "eea2c8905009d8697259a6ab3d423312c32559c5dca30d549f786e6413beb294",
+        "synthetic_vm_comparisons": 240,
+        "maximum_position_error": 0.000003814697265625,
+        "scope": "Unmodified original getter in isolated CPU VM, synthetic curve objects. No game process or Thor access."
+      }
+    }
+  },
+  "remaining_proof": [
+    "Actual owner discovery and state/lifetime behavior on Eden Duo/NCE",
+    "Course identity and selected-level comparisons across real variants and restarts",
+    "Illustrated map calibration, alternate routes and variant-image association",
+    "Behavior of unsupported curve modes and unusual course transitions"
+  ],
+  "primary_reference": {
+    "repository": "https://github.com/finalpantasy/new-pokemon-snap-recomp",
+    "commit": "4aaea05879f75bed1066fb1d934795c236f30f25",
+    "files": ["host/mods/neofilm.cpp", "host/mods/freecam.cpp", "docs/skip-course-intro.md", "tools/level-editor/src/level.rs"],
+    "note": "Static field evidence was checked against the owner's executable; no original code bytes or level data are distributed."
+  }
+}

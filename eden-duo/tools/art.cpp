@@ -1,6 +1,9 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Offline verifier only. Never bundled inside a mod or linked into its native module.
 #include "map_art.h"
+#include "catalog.h"
+#include "archive.h"
+#include "flat.h"
 #include <cassert>
 #include <cstring>
 #include <fstream>
@@ -27,7 +30,26 @@ int main(int argc,char** argv) {
         for(unsigned i=0;i<16;i++)b[i]=uint8_t(i);
         assert(scn::DeswizzleBlock(b,4,4,16,0,0,out));for(int i=0;i<16;i++)assert(out[i]==i);
         assert(!scn::DeswizzleBlock(b,4,4,16,4,0,out));assert(!scn::DeswizzleBlock({},4,4,16,0,0,out));
+        assert(!scn::ReadMsbt({}));assert(!scn::ReadMsbt(std::vector<uint8_t>(64,255)));
+        for(unsigned size=0;size<128;size++) {
+            std::vector<uint8_t> malformed(size,255);scn::Flat flat(malformed);
+            assert(!flat.Root());assert(!flat.Field(0,10000));assert(!scn::ReadMsbt(malformed));
+        }
         std::cout<<"Map decoder bounds checks passed.\n";return 0;
+    }
+    if(argc==3&&std::string(argv[1])=="--catalog") {
+        std::string root=argv[2];EdenDsmodHostApi host{};host.userdata=&root;host.read_romfs=Romfs;
+        auto catalog=scn::CourseCatalog::Load(host);
+        if(!catalog){std::cerr<<"Owned course catalog could not be decoded.\n";return 1;}
+        for(const auto& [id,c]:catalog->courses)std::cout<<id<<" | "<<c.name<<" | "<<c.region<<" | "<<c.pack<<" | "<<c.map_stem<<"\n";
+        std::cout<<"Verified "<<catalog->courses.size()<<" course records, localized names/descriptions and map identities from owned ROMFS.\n";
+        return 0;
+    }
+    if(argc==7&&std::string(argv[1])=="--member") {
+        std::string root=argv[2];EdenDsmodHostApi host{};host.userdata=&root;host.read_romfs=Romfs;
+        std::vector<uint8_t> bytes;
+        if(!scn::ReadArchiveMember(host,argv[3],argv[4],argv[5],bytes))return 1;
+        std::ofstream f(argv[6],std::ios::binary);f.write(reinterpret_cast<const char*>(bytes.data()),bytes.size());return f?0:1;
     }
     if(argc!=5) { std::cerr<<"Usage: scn-art <own-romfs-root> <archive 1..30> <member> <output.pam>\n";return 2; }
     std::string root=argv[1]; EdenDsmodHostApi host{};host.userdata=&root;host.read_romfs=Romfs;

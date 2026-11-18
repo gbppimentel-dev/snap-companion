@@ -34,6 +34,7 @@ int main() {
     for(unsigned i=0;i<32;i++) { unsigned x=0;std::sscanf(scn::kBuild+2*i,"%2x",&x);h.build_id[i]=uint8_t(x); }
     h.title_id=0;assert(!api->create(&h,"{}"));h.title_id=scn::kTitleId;
     void* instance=api->create(&h,"{}");assert(instance);
+    assert(state.files==1);state.files=0; // One bounded metadata attempt at creation, never a per-frame file poll.
     for(unsigned tick=0;tick<60;tick++) {
         state.tick=tick;state.ints.clear();state.text.clear();api->sample(instance,&h);api->tick(instance,&h);
         assert(state.ints.at("scn.connected")==1&&state.ints.at("scn.course_valid")==0&&state.ints.at("scn.player_valid")==0);

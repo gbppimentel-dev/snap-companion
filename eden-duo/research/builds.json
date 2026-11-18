@@ -18,6 +18,10 @@
     "pokemon_markers": null
   },
   "verified_offline": {
+    "android_arm64_module_compiles": true,
+    "owned_runtime_course_records": 30,
+    "chosen_level_static_evidence": "snap-static-profile.json; not device-verified",
+    "curve_getter_vm_cases": 240,
     "maps_and_routes": 143,
     "source_archives": 30,
     "texture_dimensions": [3840, 2160],

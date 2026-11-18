@@ -2,6 +2,8 @@
 
 No Thor inspection or Eden Duo installation has been performed for this mod. The current environment is regular Eden. A later authorized Eden Duo session is needed to identify and validate actual run objects. Read-only research must be distinguished from installing an emulator, copying saves, modifying settings or sending inputs.
 
+A prebuilt **SCN Read-only Validation** package can be prepared locally for that session. The Reader Check page and `SCN_DIAGNOSTIC` log lines expose candidate course, selected level and measured-distance curve position. They are explicitly unverified; the normal companion's trusted fields remain unknown. This package does not draw a player pin on an uncalibrated illustration, implement Pokémon locations, port the existing interface or establish original-APK compatibility. Installation is a separate action and has not occurred.
+
 For each supported full NSO build ID, record the source function or object layout, field type, offset, ownership/lifetime, phase checks, bounded read size, NCE relocation behavior and confidence. Keep raw dumps, executable bytes and saves private. A readable string, pattern hit or a plausible number alone is insufficient.
 
 1. Find a live run owner and distinguish in-course state from menus, loading, photo selection, grading, laboratory and retry transitions.

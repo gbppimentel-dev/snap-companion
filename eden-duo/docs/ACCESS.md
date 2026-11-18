@@ -4,8 +4,8 @@ The cited examples are genuine in-emulator integrations. They read each game's o
 
 | Source | Available capability | Snap status | Intended feature |
 | --- | --- | --- | --- |
-| Guest memory | Checked reads, pointers, mapped ranges, exact build gates and optional NCE data relocation | ABI implemented; Snap current-run roots unknown | Automatic course, time/variant, selected level, run/route state |
-| Guest pose | Typed bounded reads at module sample time | NEO-ONE and camera objects unknown | Real position and heading; no timer-based movement |
+| Guest memory | Checked reads, pointers, mapped ranges, exact build gates and optional NCE data relocation | Static candidate scene/course/chosen-level fields implemented; active lifetime unverified | Automatic course, time/variant, selected level, run/route state |
+| Guest pose | Typed bounded reads at module sample time | Supported NEO-ONE curve math verified offline; actual discovery and map calibration pending | Real position and heading; no timer-based movement |
 | Owned ROMFS | Runtime reads of patched game files, optional base/DLC/user sources | Original map/route textures found and decoded offline | Native course map and route overlays without scraping screenshots |
 | Course data | DRP/FlatBuffer tables, level/rail information and map identity recipes | Static evidence exists; semantics and projection not fully established | Match map segment and possible branches to the actual run |
 | Pokémon data/art | Runtime extraction is supported by the host | Locations/icons/conditions not implemented in SCN | Toggle verified Pokémon locations, filtered to current context |
@@ -27,6 +27,8 @@ Touching an Eden Duo companion can control its own UI, send a normal controller 
 - The Imgur album could not be inspected: web access failed and a direct fetch returned HTTP 429. No claim has been made about its precise annotations. The verified original game map is the visual base.
 
 The current reader design samples bounded fields at 20 Hz and republishes cached output on the host's 60 Hz snapshots. It does not scan the heap, poll screenshots, run OCR, read saves every frame or redraw a rotated map for every camera movement. These are design choices, **not a measured FPS gain or a guarantee of steady 60 FPS on Thor**. Initial maps stay north-up.
+
+The optional **diagnostic** reader is distinct: it performs bounded heap-page discovery to find exact-class scene candidates, then checks ownership, course/rail agreement and selected-level bounds. It never promotes those fields to trusted production output. Its scan budget and object lifetime rules must still be checked on the real Duo runtime; no scan-latency or performance claim has been made. The original rail math has now been independently reimplemented and compared with the owned original getter in 240 isolated synthetic cases, maximum position difference 0.000003815 world units. This verifies the supported interpolation math, not live scene discovery or map alignment.
 
 ## Sources
 
