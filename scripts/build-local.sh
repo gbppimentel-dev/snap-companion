@@ -8,7 +8,7 @@ if [ -z "${JAVA_HOME:-}" ]; then
 fi
 export ANDROID_HOME=${ANDROID_HOME:-$HOME/Library/Android/sdk}
 SNAP_BUILD_VERSION=$(python3 -c 'import json; print(json.load(open("fork.json"))["version"])')
-node --test tests/ui-model.cjs
+node --test tests/ui-model.cjs tests/maps.cjs
 python3 -m unittest discover -s diagnostics -p 'test_*.py'
 python3 tests/publication-audit.py
 ./gradlew :app:testDebugUnitTest :app:assembleRelease :app:lintRelease --console=plain

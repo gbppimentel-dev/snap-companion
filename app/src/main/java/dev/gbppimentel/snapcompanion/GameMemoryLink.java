@@ -30,6 +30,21 @@ final class GameMemoryLink implements AutoCloseable {
   if(!active||token.isEmpty())return new JSONObject();
   try(FileInputStream input=new FileInputStream(state)){JSONObject out=validate(new JSONObject(new String(MainActivity.readBounded(input,8192),StandardCharsets.UTF_8)),token,EdenLinkService.gamePid,now);if(out.optString("status").equals("ready")){String id=courses.get(out.getInt("courseId"));if(id==null)return new JSONObject();out.put("course",id);}return out;}catch(Exception e){return new JSONObject();}
  }
+ synchronized boolean requestTool(String action){
+  long now=System.currentTimeMillis();JSONObject current=current(now);
+  if(!active||!EdenLinkService.trusted(now)||!EdenLinkService.gameVisible||GameToolRules.key(action)<0||!GameToolRules.gameplay(current.optString("status"),current.optLong("phaseRva"))||!current.optBoolean("inputAvailable"))return false;
+  try{JSONObject request=new JSONObject().put("token",token).put("id",UUID.randomUUID().toString()).put("at",now).put("action",action);android.util.AtomicFile file=new android.util.AtomicFile(new File(context.getFilesDir(),"tool.request"));FileOutputStream out=null;try{out=file.startWrite();out.write(request.toString().getBytes(StandardCharsets.UTF_8));file.finishWrite(out);}catch(IOException e){if(out!=null)file.failWrite(out);throw e;}return true;}catch(Exception e){return false;}
+ }
+ static JSONObject uiSnapshot(JSONObject row){
+  JSONObject out=new JSONObject();try{
+   for(String key:new String[]{"status","course","courseId","level","distance","length","routeKey","run"})if(row.has(key))out.put(key,row.get(key));
+   if(row.has("at"))out.put("sampleAt",row.getLong("at"));
+   long phase=row.optLong("phaseRva");out.put("tools",GameToolRules.gameplay(row.optString("status"),phase)&&row.optBoolean("inputAvailable"));JSONObject feedback=row.optJSONObject("lastAction");if(feedback!=null&&GameToolRules.key(feedback.optString("action"))>=0)out.put("lastAction",new JSONObject().put("action",feedback.optString("action")).put("accepted",feedback.optBoolean("accepted")).put("at",feedback.optLong("at")));out.put("phase",phase==0x62e180?"research":phase==0x630240?"paused":"transition");
+   for(String key:new String[]{"world","forward"}){JSONArray value=row.optJSONArray(key);if(vector(value))out.put(key,value);}
+   JSONArray points=row.optJSONArray("routePoints");if(points!=null&&points.length()>=2&&points.length()<=97){boolean valid=true;for(int i=0;i<points.length();i++)if(!vector(points.optJSONArray(i)))valid=false;if(valid)out.put("routePoints",points);}
+  }catch(JSONException ignored){return new JSONObject();}return out;
+ }
+ private static boolean vector(JSONArray values){if(values==null||values.length()!=3)return false;for(int i=0;i<3;i++){double n=values.optDouble(i,Double.NaN);if(!Double.isFinite(n)||Math.abs(n)>=1e6)return false;}return true;}
  private boolean samplerAlive(long now){
   try(FileInputStream input=new FileInputStream(state)){JSONObject row=new JSONObject(new String(MainActivity.readBounded(input,8192),StandardCharsets.UTF_8));String status=row.optString("status");return Set.of("ready","idle","seeking","ambiguous").contains(status)&&sameGeneration(row,token,EdenLinkService.gamePid,now);}catch(Exception e){return false;}
  }

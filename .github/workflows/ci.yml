@@ -30,7 +30,7 @@ jobs:
           java-version: '21'
       - name: model, diagnostics and source boundary
         run: |
-          node --test tests/ui-model.cjs
+          node --test tests/ui-model.cjs tests/maps.cjs
           python -m unittest discover -s diagnostics -p 'test_*.py'
           python tests/publication-audit.py
       - name: Android checks and update identity

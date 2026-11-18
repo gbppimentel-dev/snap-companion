@@ -1,31 +1,30 @@
-# compatibility
+# Compatibility
 
-## supported scope
+## Current local development build
 
-| area | status |
+0.5.26-dev.2/code40 updates the original Snap Companion APK in place. Historical v0.5.24 release files remain unchanged. No new GitHub release has been published.
+
+| Area | Checked scope |
 | --- | --- |
-| AYN Thor / Android 13 development environment | used during private development |
-| original Eden package `dev.eden.eden_emulator` | targeted by fixed-purpose helpers |
-| New Pokémon Snap 2.0.1 saved-data schemas | independently checked envelope, dimensions, checksums and mappings |
-| Photodex registration / medals / selected images | implemented; image availability is reported separately |
-| LenTalk receipt/completion | implemented from distinct saved states; receipt is not completion |
-| saved research / named Forest season discoveries | specific verified fields only; not current selected level or active season |
-| supported English course/phase/photo-selection labels | implemented with generation/freshness guards; broad real-layout coverage remains unverified |
-| alternate emulators / languages / firmware / game updates | unverified |
+| Device | Connected AYN Thor, Android13; firmware's PServerBinder is required |
+| Emulator | Original `dev.eden.eden_emulator`, observed Eden0.2.1 |
+| Game | New Pokémon Snap2.0.1 exact fingerprint/layout |
+| Direct readings | Active course, selected level, measured rail distance/world position and vehicle travel direction |
+| Course hardware checks | Park Day/Night level2; pause, movement, transitions and mid-course Companion reopening |
+| Illustrated maps | All30 course views,143 assets and1403 authored records; local browser/asset checks |
+| Touch tools | Fluffruit, Illumina Orb, Melody and Scan visibly verified in Park Night; native/window/controller guards |
+| Saved records | Existing Photodex, images, received/completed LenTalk and saved research providers retained |
+| Screen reading | Existing supported English phase/photo-selection/FPS recognition remains; not every feature has a memory provider |
+| Other devices/emulators/game updates | Unverified; matching package names alone do not establish compatibility |
 
-The app uses the existing AYN firmware service (`PServerBinder`) for its fixed-purpose local link and projection startup. That availability is firmware/configuration dependent. This is not a generic Android or physical-Switch companion. The exact Eden/firmware build matrix has not been qualified for public distribution.
+## Limits
 
-## current limitations
+- The live player is on the measured Route Tracker. Its alignment with the separate illustrated map remains unverified. Baked illustrated vehicle symbols mean Start.
+- Marker locations describe authored references across research levels, not live Pokémon actor positions, exact current request poses or minimum-level guarantees.
+- Heading is vehicle travel direction; camera-view orientation/FOV has not been verified.
+- The native remaining-photo HUD experiment is withheld until active ownership across retries is proven. Existing recognized photo information remains unchanged.
+- All-course/branch/Illumina/Forest runtime acceptance, process restart, thermal comparisons and long sessions remain incomplete. No sustained60FPS guarantee is made.
+- Missing images can be retried; already-black original saved photos cannot be recreated without intact source data.
+- General story/tool/title/cosmetic/form ownership, current-run photo ranking and automatic visual/audio Pokémon recognition remain outside this verified memory feed.
 
-- No validated active course/selected-level memory source. Cold mid-run recovery without supported labels is incomplete; unknown context stays unknown.
-- No route-position/branch/camera/target/pose/interaction telemetry, trained visual/audio Pokémon recognition, or current-run photo ranking.
-- General story/tool/title/cosmetic/form ownership is not decoded. A specific request-reward condition or Forest discovery bit does not prove wider ownership or the active route.
-- No universal or sustained60FPS guarantee. Capture/inference rates and sampled emulator-reported FPS are different measurements. Baseline comparisons and broad thermal/long-session acceptance remain incomplete.
-- Missing cached images can be retried; already-black original saved photos cannot be recreated without intact source data.
-- Physical controller coverage and broad new-save/replacement/completion flows still need wider real-device acceptance.
-
-## release validation
-
-0.5.24 adds credits to the 0.5.23 core installed during development. The credits APK is locally built/checked; no new physical-device acceptance run is claimed. Local validation includes the supported native/model suites, fixture OCR/recovery work, and browser/Android WebView109 presentation reviews recorded with their individual scope. CI checks source builds and synthetic records, not actual gameplay.
-
-The [release notes](releases/v0.5.24.md) and release manifest distinguish local validation from hardware acceptance.
+The [implementation checklist](AFK_MAP_WORK.md) and [hardware validation](THOR_READER_VALIDATION.md) separate implemented behavior from pending acceptance. The [v0.5.24 release notes](releases/v0.5.24.md) describe the historical public baseline.

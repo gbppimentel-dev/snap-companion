@@ -7,8 +7,8 @@ android {
         applicationId 'dev.gbppimentel.snapcompanion'
         minSdk 30
         targetSdk 36
-        versionCode 38
-        versionName '0.5.25-dev.2'
+        versionCode 40
+        versionName '0.5.26-dev.2'
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
     }
     compileOptions { sourceCompatibility JavaVersion.VERSION_17; targetCompatibility JavaVersion.VERSION_17 }
@@ -47,6 +47,7 @@ tasks.register('buildLiveBridge', Exec) {
     inputs.files rootProject.fileTree('bridge/src').matching { include '**/*.java' }
     inputs.file rootProject.file('scripts/build-live-bridge.sh')
     inputs.file rootProject.file('app/src/main/java/dev/gbppimentel/snapcompanion/ControllerButtons.java')
+    inputs.file rootProject.file('app/src/main/java/dev/gbppimentel/snapcompanion/GameToolRules.java')
     outputs.file layout.buildDirectory.file('generated/liveBridge/assets/bridge/live-projection.jar')
     commandLine 'sh', rootProject.file('scripts/build-live-bridge.sh').absolutePath
 }

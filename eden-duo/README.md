@@ -1,4 +1,4 @@
-> APK implementation update: the Android adapter is now bundled in development APK0.5.25-dev.2 and feeds fresh course/selected-level values into the original dashboard. Park Day and Night/cold-reopening checks were performed on the owner's original Eden installation. Position is internal groundwork; maps and product touch shortcuts remain unfinished. This does not validate the separate native Duo module. See [the hardware record](../docs/THOR_READER_VALIDATION.md).
+> Current APK: **0.5.26-dev.2/code40** adds30 illustrated reference maps,1403 authored locations, a separate live measured Route Tracker and four guarded photography tools to the original Android interface. Park Day/Night and the four tool responses were checked on Thor. Illustrated player alignment and camera viewing direction remain pending. The historical research notes below predate these APK additions and do not establish separate Duo-module acceptance. See [the hardware record](../docs/THOR_READER_VALIDATION.md) and [current checklist](../docs/AFK_MAP_WORK.md).
 
 # SCN native reader research and diagnostics
 

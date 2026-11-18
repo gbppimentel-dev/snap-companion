@@ -18,7 +18,7 @@ import org.json.*;
 public final class MainActivity extends Activity {
     private static final String PAGE="file:///android_asset/ui/index.html",PHOTO_HOST="snap.companion.invalid";
     private ControllerFeed controllerFeed;private GameMemoryLink gameMemory;
-    private WebView web;private boolean visible,loaded,reading,closed;private long viewGeneration;
+    private WebView web;private boolean visible,loaded,reading,closed,mapVisible,mapReading;private long viewGeneration;
     private final Handler main=new Handler(Looper.getMainLooper());
     private final ExecutorService io=Executors.newSingleThreadExecutor(),performanceIo=Executors.newSingleThreadExecutor();
     private EdenLinkStore saves;private EdenRequests requests;private CourseResearch research;private ProfileStore profiles;
@@ -27,6 +27,11 @@ public final class MainActivity extends Activity {
     private Map<String,PersonalGallery.Photo> cachedImages=Map.of();
     private final PriorityMonitor priority=new PriorityMonitor(new PriorityMonitor.Scheduler(){public void post(Runnable r,long delay){main.postDelayed(r,delay);}public void cancel(Runnable r){main.removeCallbacks(r);}},performanceIo,EdenPerformance::refresh,EdenPerformance::release);
     private final Runnable pulse=new Runnable(){public void run(){if(!visible||closed)return;gameMemory.beat();refresh();main.postDelayed(this,500);}};
+    private final Runnable mapPulse=new Runnable(){public void run(){
+        if(!visible||closed||!mapVisible||!loaded)return;
+        if(!mapReading){mapReading=true;long generation=viewGeneration;io.execute(()->{JSONObject next=EdenLinkService.trusted(System.currentTimeMillis())&&EdenLinkService.gameVisible?GameMemoryLink.uiSnapshot(gameMemory.current(System.currentTimeMillis())):new JSONObject();main.post(()->{mapReading=false;if(visible&&!closed&&mapVisible&&loaded&&generation==viewGeneration)web.evaluateJavascript("window.SnapMaps && SnapMaps.live("+next+")",null);});});}
+        main.postDelayed(this,50);
+    }};
     @Override public void onCreate(Bundle state){
         super.onCreate(state);EdenPerformance.initialize(getCacheDir());saves=new EdenLinkStore(this);requests=new EdenRequests(this);research=new CourseResearch(this);profiles=new ProfileStore(getSharedPreferences("snap",0));
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN|WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
@@ -46,12 +51,12 @@ public final class MainActivity extends Activity {
     @Override protected void onStart(){super.onStart();visible=true;viewGeneration++;if(loaded)web.evaluateJavascript("window.SnapApp.visibility(true)",null);controllerFeed.start();gameMemory.start();LiveSession.appOpened(this);if(EdenPerformance.supported())try{startForegroundService(new Intent(this,EdenLinkService.class));}catch(RuntimeException ignored){}main.removeCallbacks(pulse);main.post(pulse);}
     @Override protected void onResume(){super.onResume();if(Build.VERSION.SDK_INT>=30){WindowInsetsController c=getWindow().getInsetsController();if(c!=null){c.hide(WindowInsets.Type.systemBars());c.setSystemBarsBehavior(WindowInsetsController.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE);}}if(EdenPerformance.supported())priority.start();}
     @Override protected void onPause(){priority.stop();super.onPause();}
-    @Override protected void onStop(){visible=false;viewGeneration++;controllerFeed.stop();gameMemory.stop();main.removeCallbacks(pulse);if(loaded&&!closed)web.evaluateJavascript("window.SnapApp.visibility(false)",null);super.onStop();}
+    @Override protected void onStop(){visible=false;viewGeneration++;controllerFeed.stop();gameMemory.stop();main.removeCallbacks(pulse);main.removeCallbacks(mapPulse);mapVisible=false;if(loaded&&!closed)web.evaluateJavascript("window.SnapApp.visibility(false)",null);super.onStop();}
     @Override protected void onDestroy(){closed=true;if(controllerFeed!=null)controllerFeed.close();if(gameMemory!=null)gameMemory.close();priority.stop();main.removeCallbacksAndMessages(null);io.shutdownNow();performanceIo.shutdownNow();if(web!=null){web.stopLoading();web.destroy();}super.onDestroy();}
     // Android 13+ uses the registered gesture callback; this is the API30–32 fallback.
     @android.annotation.SuppressLint("GestureBackNavigation")
     @Override public void onBackPressed(){back();}
-    public final class TouchFeedback { @JavascriptInterface public void tap(){main.post(()->{if(visible&&!closed)web.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);});} }
+    public final class TouchFeedback { @JavascriptInterface public void tool(String action){main.post(()->{if(visible&&!closed&&loaded)io.execute(()->{boolean queued=gameMemory.requestTool(action);android.util.Log.i("SnapTool",queued?"tool-queued":"tool-not-ready");main.post(()->{if(visible&&!closed&&loaded)web.evaluateJavascript("window.SnapMaps && SnapMaps.toolQueued("+JSONObject.quote(action)+","+queued+")",null);});});});} @JavascriptInterface public void mapVisible(boolean value){main.post(()->{if(closed||!loaded)return;mapVisible=value&&visible;main.removeCallbacks(mapPulse);if(mapVisible)main.post(mapPulse);});} @JavascriptInterface public void tap(){main.post(()->{if(visible&&!closed)web.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);});} }
     private void back(){if(!loaded){finish();return;}web.evaluateJavascript("Boolean(window.SnapApp && SnapApp.back())",result->{if(!"true".equals(result))finish();});}
     private void refresh(){
         if(!loaded||reading||closed||!visible)return;reading=true;long generation=viewGeneration;
@@ -76,7 +81,7 @@ public final class MainActivity extends Activity {
         EdenRequests.Snapshot received=requests.snapshot(profile);JSONArray ids=new JSONArray(),completed=new JSONArray(),rewardReady=new JSONArray();if(received!=null){for(String id:new TreeSet<>(received.received()))ids.put(id);for(String id:new TreeSet<>(received.completed()))completed.put(id);for(String id:new TreeSet<>(received.rewardReady()))rewardReady.put(id);}
         EdenFps.Sample fps=EdenFps.latest;Float value=connected&&EdenLinkService.gameVisible&&CaptureService.active&&fps!=null&&fresh&&fps.profile().equals(profile)&&fps.fresh(now)?fps.fps():null;
         JSONObject out=new JSONObject().put("sourceKey",profile+":"+saves.bound(profile)).put("connected",connected).put("visible",connected&&EdenLinkService.gameVisible).put("phase",current.phase()).put("course",current.course()).put("level",current.level()).put("subject",current.subject()).put("film",current.film()==null?JSONObject.NULL:current.film()).put("fps",value==null?JSONObject.NULL:value).put("playtime",CocoonTime.latest).put("checkedAt",EdenLinkService.lastConnectedAt).put("syncedAt",saves.updatedAt(profile)).put("requestSyncedAt",requests.updatedAt(profile)).put("requestVersion",saves.hash(profile)).put("requestsKnown",received!=null).put("received",ids).put("completed",completed).put("rewardReady",rewardReady).put("rewardConditionsKnown",received!=null&&received.rewardConditionsKnown()).put("completionsKnown",received!=null&&received.completionKnown()).put("photos",collection).put("researchCourses",research.snapshot(profile)).put("photoPhase",connected&&EdenLinkService.gameVisible&&fresh?PhotoPhaseState.read(reading,stable,profile,now):new JSONObject());
-        JSONArray moments=new JSONArray();JSONArray history=saves.history(profile);for(int i=history.length()-1;i>=0&&moments.length()<3;i--){JSONObject h=history.optJSONObject(i);if(h==null||!h.optBoolean("present")||now-h.optLong("at")>86400000L)continue;moments.put(new JSONObject().put("key",h.optString("key")).put("before",h.optInt("before")).put("score",h.optInt("after")).put("at",h.optLong("at")));}out.put("moments",moments).put("gameReading",memory);return out;
+        JSONArray moments=new JSONArray();JSONArray history=saves.history(profile);for(int i=history.length()-1;i>=0&&moments.length()<3;i--){JSONObject h=history.optJSONObject(i);if(h==null||!h.optBoolean("present")||now-h.optLong("at")>86400000L)continue;moments.put(new JSONObject().put("key",h.optString("key")).put("before",h.optInt("before")).put("score",h.optInt("after")).put("at",h.optLong("at")));}out.put("moments",moments).put("gameReading",connected&&EdenLinkService.gameVisible?GameMemoryLink.uiSnapshot(memory):new JSONObject());return out;
     }
     WebResourceResponse resource(Uri uri){
         if("file".equals(uri.getScheme())&&uri.toString().startsWith("file:///android_asset/"))return null;

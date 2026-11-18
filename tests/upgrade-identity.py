@@ -38,6 +38,11 @@ def main():
         native=apk.read('lib/arm64-v8a/libsnapmemory.so')
         assert native[:6]==b'\x7fELF\x02\x01','ARM64 native reader missing or invalid'
         assert native[18:20]==b'\xb7\x00','Reader must target AArch64'
+        for method in ('open','sample','close','physicalReleased','pressTool'):
+            assert ('Java_dev_gbppimentel_snapbridge_GameMemoryReader_'+method).encode() in native,'Missing JNI method: '+method
+        assert len([n for n in apk.namelist() if n.startswith('assets/game-art/maps/') and n.endswith('.webp')])==143
+        for name in ('assets/ui/map-data.js','assets/licenses/game-memory-GPL-3.0.txt','assets/licenses/NDK-LLVM-NOTICE.txt'):
+            assert apk.read(name),'Missing map/license asset: '+name
     if args.require_baseline_signer:
         cert=subprocess.check_output([str(build/'apksigner'),'verify','--print-certs',str(args.apk)],text=True)
         hashes=re.findall(r'certificate SHA-256 digest: ([a-fA-F0-9]{64})',cert)

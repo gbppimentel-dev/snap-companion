@@ -2,8 +2,8 @@
   "name": "Snap Companion",
   "channel": "development",
   "applicationId": "dev.gbppimentel.snapcompanion",
-  "version": "0.5.25-dev.2",
-  "versionCode": 38,
+  "version": "0.5.26-dev.2",
+  "versionCode": 40,
   "base": {
     "version": "0.5.24",
     "versionCode": 36,
@@ -19,7 +19,7 @@
     "updatesExistingApp": true,
     "requiredDuoMod": false,
     "reader": "bundled Thor-specific persistent read-only native sampler (20 Hz)",
-    "status": "development; course/selected-level dashboard integration and limited Thor validation; illustrated maps and product touch shortcuts unfinished",
+    "status": "development; 30 illustrated maps, 1403 authored locations, direct course/level and live route tracker, guarded photography tools; illustrated player alignment and camera-view tracking pending",
     "supersedes": "separate Next APK and mod-only delivery"
   }
 }
