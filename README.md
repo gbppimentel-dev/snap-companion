@@ -1,10 +1,10 @@
-# Snap Companion Next
+# Snap Companion
 
-**Optional development fork of stable [v0.5.24](https://github.com/gbppimentel-dev/snap-companion/releases/tag/v0.5.24).**
+**SCN development now continues as normal APK updates to the original Snap Companion app.** The user lifted the separate-fork/freeze requirement on 2026-11-18. Future builds retain `dev.gbppimentel.snapcompanion`, the existing signing certificate, private data and established interface. No separate Next installation or mandatory Eden Duo mod is required by this delivery plan.
 
-The stable app is frozen and stays on its original package, data and release. **SCN is now being developed as an Eden Duo companion mod in [eden-duo/](eden-duo/README.md)**. It will run inside Eden Duo as a `.dsmod.zip`, reading supported game state and the player's own game files. Live course and position mappings are still unverified; this is a local development foundation, not a finished tracking mod.
+The current development APK is **0.5.25-dev.2 / code38**. It bundles an automatically started, read-only Thor memory reader for active course, selected level, rail distance, position and forward direction. Course/level readings feed the existing dashboard; position is internal groundwork, not a finished illustrated map. Hardware checks cover Park Day level 2, pause/movement, leaving the course the installed dashboard showing Park Night level 2, and cold reopening while paused mid-course. All-course acceptance, map calibration/expansion, Pokémon overlays and product touch shortcuts remain unfinished. Native research in [eden-duo/](eden-duo/README.md) is reused behind this APK. See [hardware validation and remaining work](docs/THOR_READER_VALIDATION.md).
 
-The previous separately installable Next Android foundation is retained as reference. It is superseded by the mod direction. Nothing is automatically installed, published or migrated. See [fork rules](docs/NEXT.md). The documentation below describes inherited v0.5.24, not features already ported to the mod.
+Build with `scripts/build-local.sh`. It verifies original-package upgrade identity and the v0.5.24 signing certificate. Historical v0.5.24 tag, release, APK and backups remain unchanged. No automatic uninstall, data clearing, device installation or publication occurs. See [current delivery rules](docs/NEXT.md). Documentation below describes the inherited v0.5.24 feature baseline.
 
 ---
 

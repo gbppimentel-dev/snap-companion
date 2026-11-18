@@ -1,23 +1,25 @@
 {
-  "name": "Snap Companion Next",
-  "channel": "next",
-  "applicationId": "dev.gbppimentel.snapcompanion.next",
-  "version": "0.5.24-next.1",
-  "versionCode": 1,
+  "name": "Snap Companion",
+  "channel": "development",
+  "applicationId": "dev.gbppimentel.snapcompanion",
+  "version": "0.5.25-dev.2",
+  "versionCode": 38,
   "base": {
     "version": "0.5.24",
     "versionCode": 36,
     "applicationId": "dev.gbppimentel.snapcompanion",
     "tag": "v0.5.24",
     "commit": "b87fbbfe3e3d33dbdd09a55c9b190895a70a569a",
-    "apkSha256": "2f28fa4fa9e59825b38495b68c7b63bb4b7d15fbcdbca8e290c1be7b83a0f8c3"
+    "apkSha256": "2f28fa4fa9e59825b38495b68c7b63bb4b7d15fbcdbca8e290c1be7b83a0f8c3",
+    "certificateSha256": "a59a575f5e7525500e003e9bba01b92195c57af78b6acbb7abc3593648029e77"
   },
-  "policy": "Optional separate app/storage. Never replace, migrate from, modify or merge into the stable build without an explicit new user request.",
+  "policy": "User authorized normal in-place APK updates. Preserve original app identity, signer and data; preserve historical v0.5.24 artifacts. No automatic device installation or publication.",
   "delivery": {
-    "kind": "eden-duo-dsmod",
-    "source": "eden-duo",
-    "titleId": "0100F4300BF2C000",
-    "status": "development; live mappings unverified",
-    "supersedes": "Android Next APK foundation"
+    "kind": "android-apk",
+    "updatesExistingApp": true,
+    "requiredDuoMod": false,
+    "reader": "bundled Thor-specific persistent read-only native sampler (20 Hz)",
+    "status": "development; course/selected-level dashboard integration and limited Thor validation; illustrated maps and product touch shortcuts unfinished",
+    "supersedes": "separate Next APK and mod-only delivery"
   }
 }

@@ -17,5 +17,3 @@ dialog.credits-dialog{width:min(480px,calc(100vw - 18px));max-height:calc(100dvh
 .credits-section small{display:block;font:9px/1.6 DIN;color:#9a8c70;margin-top:4px}
 .credits-foot{display:flex;justify-content:space-between;gap:10px;margin-top:13px;padding-top:9px;border-top:1px solid #dfd4b9;font:8px DIN;color:#9b8b6c}
 @media(max-width:400px){.credits-brand{gap:10px}.credits-brand .credits-logo{width:76px}.credits-brand h3{font-size:15px}.credits-foot{font-size:7px}}
-
-.brand h1 .next-badge{display:inline-block;vertical-align:middle;margin-left:3px;padding:2px 4px;border-radius:3px;background:#dce6d4;color:#4e7359;font:8px DIN;letter-spacing:.5px}

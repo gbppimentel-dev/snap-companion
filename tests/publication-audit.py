@@ -2,6 +2,7 @@
 from pathlib import Path
 import json
 import re
+import subprocess
 
 ROOT = Path(__file__).resolve().parents[1]
 IGNORED = {'.git', '.gradle', '.idea', 'build', 'dist', '__pycache__', 'node_modules'}
@@ -10,10 +11,13 @@ required = ['README.md', 'LICENSE', 'THIRD_PARTY_NOTICES.md', 'compatibility.jso
             'docs/SETUP.md', 'docs/COMPATIBILITY.md', 'docs/PRIVACY.md', 'docs/BUILDING.md', 'packaging/package_release.py']
 for name in required: assert (ROOT/name).is_file(), name
 count = 0
-for path in ROOT.rglob('*'):
+files=subprocess.check_output(['git','ls-files','-z','--cached','--others','--exclude-standard'],cwd=ROOT).decode().split('\0')
+for name in sorted(set(filter(None,files))):
+    path=ROOT/name
     relative = path.relative_to(ROOT)
     if not path.is_file() or any(p in IGNORED for p in relative.parts) or relative.as_posix() == 'local.properties': continue
     assert relative.parts[0] not in {'artifacts', 'research', 'device-tuning', '.toolchains', '.local-android'}, relative
+    assert 'private' not in relative.parts and '.deps' not in relative.parts, relative
     assert path.suffix.lower() not in FORBIDDEN, relative
     assert not path.name.startswith('.env'), relative
     assert path.stat().st_size < 100_000_000, relative

@@ -1,5 +1,7 @@
 # Preserve the original companion experience
 
+**Latest override — 2026-11-18:** the user chose APK delivery and lifted the separate-package/freeze requirement. The original Android interface is retained, future builds update the original app identity, and the new reader will be bundled with the APK. A Duo mod and native UI port are not mandatory. Earlier integration alternatives below are historical; implement the standalone Thor reader adapter and validate its live fields, preserving the existing UI and data.
+
 The user's clarification on 2026-11-18 is binding: SCN should still look like the original companion, with the new direct game-reading features added. The native map foundation does not authorize a redesign or the loss of existing app features.
 
 ## Presentation contract

@@ -12,7 +12,7 @@ import java.lang.reflect.Method;
 
 /** Root-side, fixed-package broker for the owner's explicitly authorized always-live Thor setup. */
 public final class LiveProjection {
-    private static final String PACKAGE = "dev.gbppimentel.snapcompanion.next";
+    private static final String PACKAGE = "dev.gbppimentel.snapcompanion";
     public static void main(String[] args) {
         try {
             if (Process.myUid() != 0 || !"AYN Thor".equalsIgnoreCase(Build.MODEL.replace('_', ' '))) {

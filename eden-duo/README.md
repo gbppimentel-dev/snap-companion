@@ -1,8 +1,10 @@
-# SCN • Eden Duo companion mod
+> APK implementation update: the Android adapter is now bundled in development APK0.5.25-dev.2 and feeds fresh course/selected-level values into the original dashboard. Park Day and Night/cold-reopening checks were performed on the owner's original Eden installation. Position is internal groundwork; maps and product touch shortcuts remain unfinished. This does not validate the separate native Duo module. See [the hardware record](../docs/THOR_READER_VALIDATION.md).
 
-SCN is the optional successor to the frozen Snap Companion v0.5.24. Its new delivery target is an Eden Duo `.dsmod.zip`, not an Android APK. Stable main, tag, APK, private data and release remain unchanged. The old app source is retained; its Photodex, LenTalk, Guide and photo-selection features have **not yet been ported into this mod**.
+# SCN native reader research and diagnostics
 
-**Presentation requirement:** preserve the original v0.5.24 interface and existing features, adding direct game readings and map expansion. The current native layout is an engineering placeholder, not a replacement design. Whether the original interface runs inside Duo or remains an Android interface paired with its reader mod is awaiting clarification. See [UI and compatibility contract](docs/UI-COMPATIBILITY.md).
+**Delivery override — 2026-11-18:** SCN will be an APK update to the original Snap Companion package. The user lifted the freeze and separate-app restriction. This folder retains reusable native reader research and an optional read-only Duo validation package; a Duo mod is not a mandatory end-user dependency. The original APK screens/features are retained in the Android source, so a native Duo UI port is no longer the delivery plan. See [APK update rules](../docs/NEXT.md).
+
+**Presentation requirement:** preserve the original v0.5.24 interface and existing features, adding direct game readings and map expansion. The current native layout is an engineering placeholder, not a replacement design. The original Android interface stays in the APK; the standalone Thor memory-reader adapter is still pending. See [UI and compatibility contract](docs/UI-COMPATIBILITY.md).
 
 **Current status: Android ARM64 reader implementation and a separate read-only validation package. The requested companion is not finished.** Static analysis identified candidate current-course and chosen-level fields; the rail-position calculation matches the original getter in 240 isolated synthetic cases. Live ownership/lifetime, illustrated-map calibration, the original interface integration and device behavior remain unverified. The validation package is for checking those findings, not a completed-feature release. The user is currently using regular Eden; there has been no device access, emulator migration or installation for this work.
 
@@ -10,7 +12,7 @@ The requested experience is automatic: the main screen shows the actual course, 
 
 ## Checklist
 
-- [x] Preserve stable v0.5.24 and isolate development on `next`.
+- [x] Preserve historical v0.5.24 artifacts and keep active development on `next`; future APKs now use the original app identity.
 - [x] Study Eden Duo's contribution, package, native module, map and touch APIs.
 - [x] Inspect Skyward Sword HD, Super Mario Odyssey and Echoes of Wisdom implementations.
 - [x] Pin the ABI headers and decoder dependencies; preserve their licenses.

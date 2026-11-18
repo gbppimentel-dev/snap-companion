@@ -1,24 +1,19 @@
-# Optional Next fork
+# SCN continues as an APK update
 
-**Current direction — 2026-11-18:** SCN is now an Eden Duo companion mod, not a new Android app. Its implementation and checklist are in [eden-duo/README.md](../eden-duo/README.md). The APK information below describes the previous isolated foundation, retained for reference only. It is not the new deliverable.
+The user clarified on 2026-11-18 that the freeze existed only because a Duo-specific mod was thought necessary. That restriction is lifted. Future builds may update the original Snap Companion APK in place.
 
-Stable v0.5.24 is the preserved working baseline. Its source tag, main branch, published release, APK and private app data remain unchanged.
+- Application ID, namespace and launcher: `dev.gbppimentel.snapcompanion` / Snap Companion.
+- Signing certificate: match historical v0.5.24. An update must never require uninstalling or replacing the key.
+- Current development identity: 0.5.25-dev.2, versionCode38, updating the original package.
+- Private preferences, records, saved images, helper paths and the established UI remain in the original app sandbox. No separate-package import is needed.
+- Preserve the historical v0.5.24 tag, APK, release assets and existing backups; they are reference/rollback artifacts, not a prohibition on new app builds.
+- The worktree/branch and `fork.json` filenames are historical. They no longer describe a second installed app. Continue development here until repository consolidation is requested.
+- Build using `scripts/build-local.sh`; `scripts/build-next.sh` forwards to it for compatibility. Output: `dist/development/SnapCompanion-0.5.25-dev.2.apk`.
+- Native build dependency: Android NDK28.2.13676358 (`sdkmanager 'ndk;28.2.13676358'`), or point `ANDROID_NDK_HOME` at an existing r28c installation. No archive decoder or game executable is linked into the APK reader.
+- Keep the original appearance and feature flow. Replace screen-reading inputs with verified direct memory inputs where supported; do not redesign or pretend unmapped fields are live.
 
-| | Stable | Optional fork |
-| --- | --- | --- |
-| Name | Snap Companion | Snap Companion Next |
-| Android package | dev.gbppimentel.snapcompanion | dev.gbppimentel.snapcompanion.next |
-| Base/current version | 0.5.24 | 0.5.24-next.1 |
-| Source | main / v0.5.24 | next worktree |
-| Private data | Original Android sandbox | Separate Android sandbox; no migration |
-| APK output | Existing frozen release | dist/next/SnapCompanionNext-0.5.24-next.1.apk |
+The existing Thor-specific privileged helper demonstrated game-memory access. The APK now bundles a persistent native adapter, started automatically through the existing Thor helper. It verifies the v2.0.1 fingerprint and samples read-only course/selected-level/rail/world fields at 20 Hz. The original dashboard consumes fresh course/level values; unknown, wrong-process, stale and prior-session packets are rejected. Position remains internal until illustrated-map alignment is validated. All-course acceptance, map expansion, Pokémon markers and product touch gameplay actions remain unfinished. The `eden-duo/` module is development/research code, not a required installed component of the intended APK.
 
-The first Next build only establishes separation and an identifying badge. It adds no gameplay features and does not resume the old feature backlog. Choose the optional app in Cocoon only when you want to test a requested improvement. Creating/building the fork does not install it or change the current shortcut.
+The user subsequently explicitly authorized Thor control, gameplay diagnostics and APK installation on 2026-11-18. Development APKs are being validated in place without clearing data or changing emulator settings. That device authorization does not authorize GitHub publication or a game/save migration. New releases may proceed normally when separately requested and validated; no permanent prerelease/separate-package restriction remains.
 
-Capture and controller helpers target only the fork package and its private paths. Baseline release packaging is disabled here. Build with `scripts/build-next.sh`; it verifies the built identity, helper paths and pinned base tag. Publishing/installing still requires a separate request.
-
-Both apps share the same physical Thor, game and Android capture resources. They are alternatives, not simultaneous live sessions. Future testing must not silently stop stable, replace its APK, import/change its private records or claim experimental performance is independent of other running work.
-
-Do not merge Next into stable, retag v0.5.24 or replace its release assets without explicit new user instructions. Future Next versions keep a distinct app identity and artifact name.
-
-If a Next publication is requested later, publish it as a clearly named prerelease without making it the latest stable release. The main/default download remains stable v0.5.24. This local foundation has not been pushed or installed.
+Current hardware checks and remaining acceptance work are recorded in [THOR_READER_VALIDATION.md](THOR_READER_VALIDATION.md).

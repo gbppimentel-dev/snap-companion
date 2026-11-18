@@ -29,3 +29,9 @@ The prepared reference data draws on [Serebii](https://www.serebii.net/newpokemo
 ## other marks
 
 GitHub's mark identifies the creator credit and remains GitHub's. AYN, Eden and Cocoon names identify the supported environment and remain their owners' marks. The credit panel follows the author's Underworld Companion presentation with Snap's own styling.
+
+## Native game-memory helper
+
+The separately executed memory helper (`bridge/src/dev/gbppimentel/snapbridge/GameMemoryReader.java`, `app/src/main/cpp/snap_memory.cpp` and `eden-duo/native/snap_runtime.*`) is GPL-3.0-or-later. It reuses the Eden DSMod ABI header under GPL-3.0-or-later; copyright and complete license are retained in `eden-duo/vendor/eden/` and `eden-duo/LICENSE`. The APK shell communicates with that process through private JSON snapshots. Other original companion files retain their existing notices. Native reader source and build scripts must accompany any future distribution of this development reader.
+
+The Android NDK C++ runtime includes LLVM/Apache-2.0 with LLVM exceptions and third-party notices retained in `eden-duo/vendor/ndk/LLVM-NOTICE`. The decoder research dependencies are documented under `eden-duo/`; the APK memory reader does not link the archive decoder.

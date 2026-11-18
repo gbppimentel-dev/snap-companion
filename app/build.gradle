@@ -1,14 +1,14 @@
 plugins { id 'com.android.application' }
 
 android {
-    namespace 'dev.gbppimentel.snapcompanion.next'
+    namespace 'dev.gbppimentel.snapcompanion'
     compileSdk 36
     defaultConfig {
-        applicationId 'dev.gbppimentel.snapcompanion.next'
+        applicationId 'dev.gbppimentel.snapcompanion'
         minSdk 30
         targetSdk 36
-        versionCode 1
-        versionName '0.5.24-next.1'
+        versionCode 38
+        versionName '0.5.25-dev.2'
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
     }
     compileOptions { sourceCompatibility JavaVersion.VERSION_17; targetCompatibility JavaVersion.VERSION_17 }
@@ -31,15 +31,26 @@ android {
     lint { abortOnError true }
     androidResources { ignoreAssetsPattern = '!*.svn:!.git:!.ds_store:!*.scc:.*:!CVS:!thumbs.db:!picasa.ini:!*~:demo.json:feature-coverage.json' }
     sourceSets.main.assets.srcDir layout.buildDirectory.dir('generated/liveBridge/assets')
+    sourceSets.main.jniLibs.srcDir layout.buildDirectory.dir('generated/memoryReader/jniLibs')
+    packaging { jniLibs { useLegacyPackaging = true } }
+}
+tasks.register('buildMemoryReader', Exec) {
+    inputs.file rootProject.file('scripts/build-memory-reader.sh')
+    inputs.file rootProject.file('app/src/main/cpp/snap_memory.cpp')
+    inputs.file rootProject.file('eden-duo/native/snap_runtime.cpp')
+    inputs.file rootProject.file('eden-duo/native/snap_runtime.h')
+    inputs.file rootProject.file('eden-duo/vendor/eden/dsmod_module_abi.h')
+    outputs.file layout.buildDirectory.file('generated/memoryReader/jniLibs/arm64-v8a/libsnapmemory.so')
+    commandLine 'sh', rootProject.file('scripts/build-memory-reader.sh').absolutePath
 }
 tasks.register('buildLiveBridge', Exec) {
     inputs.files rootProject.fileTree('bridge/src').matching { include '**/*.java' }
     inputs.file rootProject.file('scripts/build-live-bridge.sh')
-    inputs.file rootProject.file('app/src/main/java/dev/gbppimentel/snapcompanion/next/ControllerButtons.java')
+    inputs.file rootProject.file('app/src/main/java/dev/gbppimentel/snapcompanion/ControllerButtons.java')
     outputs.file layout.buildDirectory.file('generated/liveBridge/assets/bridge/live-projection.jar')
     commandLine 'sh', rootProject.file('scripts/build-live-bridge.sh').absolutePath
 }
-tasks.named('preBuild').configure { dependsOn tasks.named('buildLiveBridge') }
+tasks.named('preBuild').configure { dependsOn tasks.named('buildLiveBridge'), tasks.named('buildMemoryReader') }
 dependencies {
     implementation 'com.google.mlkit:text-recognition:16.0.1'
     androidTestImplementation 'androidx.test:runner:1.6.2'

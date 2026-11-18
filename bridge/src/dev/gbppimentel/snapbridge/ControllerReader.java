@@ -1,9 +1,9 @@
 package dev.gbppimentel.snapbridge;
-import dev.gbppimentel.snapcompanion.next.ControllerButtons;
+import dev.gbppimentel.snapcompanion.ControllerButtons;
 import java.io.*;import java.nio.*;import java.nio.channels.*;import java.nio.charset.StandardCharsets;import java.util.*;import org.json.JSONObject;
 /** Fixed-package passive input observer, owned by the visible companion's heartbeat. */
 public final class ControllerReader {
- static final File DIR=new File("/data/user/0/dev.gbppimentel.snapcompanion.next/files"),WATCH=new File(DIR,"controller.watch"),STATE=new File(DIR,"controller.json");
+ static final File DIR=new File("/data/user/0/dev.gbppimentel.snapcompanion/files"),WATCH=new File(DIR,"controller.watch"),STATE=new File(DIR,"controller.json");
  static final ControllerButtons buttons=new ControllerButtons();static String token;static volatile boolean axesDirty;static volatile long publishedAt;
  static String text(File f)throws IOException{if(f.length()>8192)throw new IOException("Oversized input state");return new String(java.nio.file.Files.readAllBytes(f.toPath()),StandardCharsets.UTF_8).trim();}
  static boolean alive(){try{long age=System.currentTimeMillis()-WATCH.lastModified();return WATCH.exists()&&age>=0&&age<4000&&text(WATCH).equals(token);}catch(Exception e){return false;}}

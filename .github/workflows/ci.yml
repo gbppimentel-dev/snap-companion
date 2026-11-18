@@ -9,8 +9,38 @@ concurrency:
   group: checks-${{ github.ref }}
   cancel-in-progress: true
 jobs:
+  android:
+    name: Snap Companion APK checks
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: '24'
+      - uses: actions/setup-java@d1374f8ac74474200d16ef8ecee22c7ae7a51880 # v6.3.0
+        with:
+          distribution: temurin
+          java-version: '21'
+      - name: model, diagnostics and source boundary
+        run: |
+          node --test tests/ui-model.cjs
+          python -m unittest discover -s diagnostics -p 'test_*.py'
+          python tests/publication-audit.py
+      - name: Android checks and update identity
+        run: |
+          sdkmanager 'platforms;android-36' 'build-tools;36.0.0' 'ndk;28.2.13676358'
+          ./gradlew :app:testDebugUnitTest :app:assembleRelease :app:lintRelease --console=plain
+          python tests/upgrade-identity.py --apk app/build/outputs/apk/release/app-release.apk
+          # CI uses a disposable debug key. Only local build-local.sh checks the owner's signer.
   checks:
-    name: SCN native mod checks
+    name: Native reader research checks
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:

@@ -41,12 +41,10 @@ class Contract(unittest.TestCase):
         self.assertEqual(actual,allowed)
     def test_stable_identity_and_tag_preserved(self):
         fork=json.loads((ROOT.parent/'fork.json').read_text())
-        self.assertEqual(fork['delivery']['kind'],'eden-duo-dsmod')
+        self.assertEqual(fork['delivery']['kind'],'android-apk')
+        self.assertTrue(fork['delivery']['updatesExistingApp'])
+        self.assertFalse(fork['delivery']['requiredDuoMod'])
         result=subprocess.check_output(['git','rev-parse','v0.5.24^{commit}'],cwd=ROOT,text=True).strip()
         self.assertEqual(result,fork['base']['commit'])
-        main_ref='refs/heads/main'
-        if subprocess.run(['git','show-ref','--verify','--quiet',main_ref],cwd=ROOT).returncode:
-            main_ref='refs/remotes/origin/main'
-        stable=subprocess.check_output(['git','rev-parse',main_ref],cwd=ROOT,text=True).strip()
-        self.assertEqual(stable,fork['base']['commit'])
+        self.assertEqual(fork['applicationId'],fork['base']['applicationId'])
 if __name__=='__main__':unittest.main()
