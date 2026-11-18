@@ -2,6 +2,8 @@
 
 SCN is the optional successor to the frozen Snap Companion v0.5.24. Its new delivery target is an Eden Duo `.dsmod.zip`, not an Android APK. Stable main, tag, APK, private data and release remain unchanged. The old app source is retained; its Photodex, LenTalk, Guide and photo-selection features have **not yet been ported into this mod**.
 
+**Presentation requirement:** preserve the original v0.5.24 interface and existing features, adding direct game readings and map expansion. The current native layout is an engineering placeholder, not a replacement design. Whether the original interface runs inside Duo or remains an Android interface paired with its reader mod is awaiting clarification. See [UI and compatibility contract](docs/UI-COMPATIBILITY.md).
+
 **Current status: local native foundation. Live course detection and player tracking are not working yet.** Snap's exact current-run memory roots, pose and map projection still need verification. No installable mod has been produced. The user is currently using regular Eden; there has been no device access, emulator migration or installation for this work.
 
 The requested experience is automatic: the main screen shows the actual course, variant and selected research level. Tapping its map expands it, with pan, pinch zoom, NEO-ONE position and optional Pokémon locations. No route selector, timing estimate or OCR fallback will pretend to supply a missing live value.
