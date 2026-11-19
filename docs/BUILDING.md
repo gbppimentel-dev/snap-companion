@@ -41,3 +41,5 @@ The APK build uses committed calibration assets and does not require scientific 
 ## Map interaction regression
 
 With Playwright available locally, run `node --test tests/map-browser.cjs`. Set `NODE_PATH` if Playwright is installed outside this checkout, and optionally `SNAP_BROWSER_EXECUTABLE` for a local Chromium executable. This isolated browser test checks zoom retention through missing/recovered game readings, actual course changes, full-resolution portrait sources and fixed-size unscaled map overlays. It does not contact Thor or count as gameplay acceptance.
+
+The local build also runs the read-only native scope/counter regression executable with a host C++17 compiler. Run it alone with `sh scripts/test-memory-reader.sh`; it uses synthetic memory and does not access a device or game files.

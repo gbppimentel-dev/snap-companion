@@ -14,4 +14,12 @@ public class GameMemoryLinkTest {
  private JSONObject camera()throws Exception{return new JSONObject().put("forward",new org.json.JSONArray("[0,0,-1]")).put("up",new org.json.JSONArray("[0,1,0]")).put("fovY",Math.PI/5).put("aspect",16.0/9);}
  @Test public void cameraProjectionWhitelistsOnlyValidatedViewingFields()throws Exception{JSONObject row=sample().put("phaseRva",0x62e180).put("camera",camera().put("address","private").put("eye",new org.json.JSONArray("[1,2,3]")));JSONObject c=GameMemoryLink.uiSnapshot(row).getJSONObject("camera");assertEquals(4,c.length());assertFalse(c.has("address"));assertFalse(c.has("eye"));assertTrue(GameMemoryLink.uiSnapshot(row.put("phaseRva",0x630240)).has("camera"));assertFalse(GameMemoryLink.uiSnapshot(row.put("phaseRva",0)).has("camera"));assertFalse(GameMemoryLink.uiSnapshot(row.put("phaseRva",0x62e180).put("status","idle")).has("camera"));}
  @Test public void malformedCameraNeverBecomesAViewDirection()throws Exception{assertNull(GameMemoryLink.cameraSnapshot(camera().put("fovY",0)));assertNull(GameMemoryLink.cameraSnapshot(camera().put("aspect",9)));assertNull(GameMemoryLink.cameraSnapshot(camera().put("forward",new org.json.JSONArray("[0,0,0]"))));assertNull(GameMemoryLink.cameraSnapshot(camera().put("up",new org.json.JSONArray("[0,0,-1]"))));assertNull(GameMemoryLink.cameraSnapshot(camera().put("forward",new org.json.JSONArray("[0,1]"))));}
+ @Test public void nativeFilmRequiresFreshReadyGameplayAndAnExactBoundedInteger()throws Exception{
+  JSONObject row=sample().put("phaseRva",0x62e180).put("remainingPhotos",71);
+  assertEquals(Integer.valueOf(71),GameMemoryLink.remainingPhotos(row));assertEquals(71,GameMemoryLink.uiSnapshot(row).getInt("remainingPhotos"));
+  for(Object n:new Object[]{-1,73,1.5,"71",JSONObject.NULL})assertNull(GameMemoryLink.remainingPhotos(row.put("remainingPhotos",n)));
+  row.put("remainingPhotos",0).put("phaseRva",0x630240);assertEquals(Integer.valueOf(0),GameMemoryLink.remainingPhotos(row));
+  assertNull(GameMemoryLink.remainingPhotos(row.put("phaseRva",0)));assertFalse(GameMemoryLink.uiSnapshot(row).has("remainingPhotos"));
+  assertNull(GameMemoryLink.remainingPhotos(row.put("phaseRva",0x62e180).put("status","idle")));
+ }
 }

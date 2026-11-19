@@ -110,3 +110,14 @@ Installed **0.5.30-dev.1/code47** in place with the original signer and data. AP
 - A validation-control mistake was identified: `am task focus` did not change Android's focused display from4 to0 after lower-screen taps. Subsequent physical-input checks explicitly focus the upper display and verify it; a task-selection acknowledgement alone does not prove that a pause/input reached the game.
 
 Broader game-reading and all-course/performance work continues in the current checklist. This checkpoint does not mark live actors, target/pose recognition, photo ranking or cold/restart acceptance complete. No game save, emulator graphics setting or GitHub release was changed.
+
+## Camp reader and counter — code48
+
+Installed **0.5.30-dev.2/code48**, original package/signer/data. APK SHA-256: `101856c14071904ad64c88d32dfe9e22d779464ea94ef61e382581581e8d92eb`.
+
+- Research Camp uses a different current-controller link from standard courses. The exact-build typed scene, shared allocation, reverse owner capture and controller's current-scene pair are all required. The scanner is still read-only and bounded; no high-budget/private graph traversal or resident-page experiment was shipped.
+- The shared scene render context provides the verified camera in Camp as well. The actual APK native library returned course30/Lv.1, measured rail distance/geometry, a valid camera and72 photos remaining while paused after retry.
+- Camp's current world contains the HUD in a16-byte shared-owner vector. The separate80-byte callback vector is not misidentified as an ownership list. HUD and allocation types, live ownership, matching current rail/control, bounds, uniqueness and repeated values are checked.
+- One temporary normal test photo changed both the visible game count and native reading from72 to71. Normal Retry discarded that shot and a new paused run returned72. No test photo was submitted or saved over a Photodex entry. No save edits or forced unlocks. Standard-course native counters still require their own world-path qualification.
+- Local checks:177 Android/JVM tests,73 Node tests,6 diagnostics, native scope/counter regression executable, release lint and original signer/identity checks passed.
+- During post-install acceptance Android's watchdog killed and restarted system_server. Logs show blocked ActivityManager, display and WindowManager locks; Eden and Companion subsequently received DeadSystemException. Cause is not established. The temporary test shot had already been discarded. Companion was reopened and the visible saved count remained114 Diamond categories and28.1 Thor hours. Eden was relaunched through its normal library; recovery acceptance continues. This is not a clean long-session/performance pass.

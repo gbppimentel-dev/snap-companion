@@ -6,7 +6,7 @@
 
 A second-screen companion for **New Pokémon Snap on AYN Thor**, running through Eden. Keep your Photodex, LenTalk requests and illustrated course map on the bottom screen while playing above. Everything runs locally, including offline.
 
-**Current development APK:0.5.30-dev.1 / code47.** Map zoom survives temporary course-reading gaps, and high-resolution portrait pins render in an unscaled overlay for clearer images during zoom. It updates the original `dev.gbppimentel.snapcompanion` package with the same signer and private data. No separate Next app or Eden Duo mod is required. The published [v0.5.24 release](docs/releases/v0.5.24.md) is a historical baseline; its APK, tag and backups are preserved. Development APKs are built locally and are not automatically published to GitHub.
+**Current development APK:0.5.30-dev.2 / code48.** Map zoom survives temporary course-reading gaps, and high-resolution portrait pins render in an unscaled overlay. Research Camp now has its own verified live scene/camera path and a native photos-left counter checked through a shot and retry. It updates the original `dev.gbppimentel.snapcompanion` package with the same signer and private data. No separate Next app or Eden Duo mod is required. The published [v0.5.24 release](docs/releases/v0.5.24.md) is a historical baseline; its APK, tag and backups are preserved. Development APKs are built locally and are not automatically published to GitHub.
 
 ## Features
 

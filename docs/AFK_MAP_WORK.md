@@ -1,4 +1,4 @@
-# Implementation checklist — 0.5.30-dev.1
+# Implementation checklist — 0.5.30-dev.2
 
 The user authorized extended unattended development, connected Thor control and in-place APK updates. The original app ID, signer, private data, appearance and historical v0.5.24 artifacts are preserved. This work is local; no GitHub release is published.
 
@@ -35,7 +35,8 @@ The user authorized extended unattended development, connected Thor control and 
 - [x] Expand locally reviewed alignment to portions of30 illustrations/121 rails, including Jungle main routes, Cave, Camp circuits/laboratory and three additional live-verified Forest rails.
 - [ ] Place the two withheld short rails and unverified Forest variants using reliable ownership/scene evidence. Verify new calibrations in gameplay; local artist review is not hardware acceptance.
 - [x] Verify render-camera direction and zoom on Thor; display the guarded view cone independently of the vehicle travel arrow.
-- [ ] Resolve active HUD ownership across retries before using its remaining-photo counter. A typed counter candidate was found, but the experiment was removed from the shipped reader because retry ownership is not proven. Existing screen-reading features retain their prior provider.
+- [x] Qualify Camp controller/scene ownership, universal scene render context and native Camp remaining-photo count across a normal shot and retry (72→71→72).
+- [ ] Qualify remaining-photo world/HUD ownership in standard courses; they retain their original screen-reading provider.
 - [ ] Validate all30 courses, every branch/Illumina/Forest variation, process restart and long/thermal sessions on hardware. Thirty local browser map checks are not thirty gameplay acceptance runs.
 - Removed from the requested scope: additional touch tools; the user requested removal of the map tool buttons. The passive controller strip remains.
 
@@ -54,7 +55,8 @@ No private packets were exported. Automatic review had previously rejected expor
 - [x] Reconcile current README/compatibility/architecture/privacy and historical Duo-module notes; the APK is the delivery target.
 - [x] Preserve map zoom across temporary missing/recovered course readings; real-browser regression added.
 - [x] Render high-resolution portrait pins in an unscaled screen overlay to avoid parent/inverse-transform blur; verify fixed size, native source resolution and gesture alignment.
-- [ ] Verify cold reader discovery/reconnection promptly in Research Camp and other courses after app/game restarts.
+- [x] Replace the tiny standard-only wrapper scan with bounded typed-scene discovery and controller-specific current-scene checks. The actual bundled reader reacquired paused Camp after a retry.
+- [ ] Complete full app/game restart acceptance across Camp and standard courses, including long-session performance.
 - [ ] Identify and validate live Pokémon ownership, identities and positions before offering actor-based map markers.
 - [ ] Identify the current camera target and verified request-pose/behavior facts; reference suggestions must not claim these readings meanwhile.
 - [ ] Read and validate current-run ungraded photo records before implementing automatic photo ranking. Preserve the saved-category comparison helper and never submit/replace photos automatically.

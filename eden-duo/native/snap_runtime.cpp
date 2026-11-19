@@ -90,6 +90,75 @@ std::optional<SnapObservation> ReadSnapCandidate(const EdenDsmodHostApi& h,uint6
        !Read(h,scene,vt)||vt!=DataAddress(h,scene_vtable))return {};
     return out;
 }
+std::optional<SnapScope> ReadSnapScope(const EdenDsmodHostApi& h,const SnapObservation& observation) {
+    const uint64_t scene=observation.scene;uint64_t vt=0;int64_t strong=-1;
+    if(!Read(h,scene,vt)||vt!=DataAddress(h,scene_vtable)||scene<32||
+       !Read(h,scene-32,vt)||vt!=DataAddress(h,scene_shared_vtable)||
+       !Read(h,scene-24,strong)||strong<0||strong>10000)return {};
+    struct Profile {SnapScopeKind kind;uint64_t type;unsigned capture,current;};
+    const Profile profiles[]={{SnapScopeKind::Course,0xc800b0,0x238,0x170},{SnapScopeKind::Camp,0xc89f88,0x228,0x90}};
+    std::optional<SnapScope> result;
+    for(const auto& p:profiles){
+        uint64_t owner=0,current=0,control=0,after=0;unsigned course=0;
+        if(p.kind==SnapScopeKind::Camp&&observation.course!=30)continue;
+        if(!Ptr(h,scene+p.capture,owner)||!Read(h,owner,vt)||vt!=DataAddress(h,p.type)||
+           !Read(h,owner+p.current,current)||current!=scene||!Read(h,owner+p.current+8,control)||control!=scene-32)continue;
+        if(p.kind==SnapScopeKind::Camp&&(!Read(h,owner+0x80,course)||course!=30))continue;
+        SnapScope scope{p.kind,owner,scene,control};
+        uint64_t render=0,render_control=0;
+        if(Ptr(h,scene+0x1a8,render)&&Ptr(h,scene+0x1b0,render_control)&&
+           Read(h,render_control+8,strong)&&strong>=0&&strong<10000){
+            if(!Read(h,scene+0x1a8,after)||after!=render||!Read(h,scene+0x1b0,after)||after!=render_control)return {};
+            scope.render=render;scope.render_control=render_control;
+        }
+        // Camp owns its HUD world separately from the shared render context.
+        // The standard course's owner+0x98 is that render context, not this world.
+        uint64_t world=0,world_control=0;
+        if(p.kind==SnapScopeKind::Camp&&Ptr(h,owner+0xa0,world)&&Ptr(h,owner+0xa8,world_control)&&
+           Read(h,world,vt)&&vt==DataAddress(h,0xc7f5e0)&&Read(h,world_control+8,strong)&&strong>=0&&strong<10000){
+            if(!Read(h,owner+0xa0,after)||after!=world||!Read(h,owner+0xa8,after)||after!=world_control)return {};
+            scope.world=world;scope.world_control=world_control;
+        }
+        if(!Read(h,owner,vt)||vt!=DataAddress(h,p.type)||!Read(h,scene+p.capture,after)||after!=owner||
+           !Read(h,owner+p.current,after)||after!=scene||!Read(h,owner+p.current+8,after)||after!=control)return {};
+        if(result)return {}; // Two different current owners are ambiguous, not a priority list.
+        result=scope;
+    }
+    return result;
+}
+bool SameSnapScope(const EdenDsmodHostApi& h,const SnapScope& scope,const SnapObservation& observation) {
+    auto current=ReadSnapScope(h,observation);
+    return current&&current->kind==scope.kind&&current->owner==scope.owner&&current->scene==scope.scene&&
+        current->scene_control==scope.scene_control&&current->render==scope.render&&current->render_control==scope.render_control&&current->world==scope.world&&current->world_control==scope.world_control;
+}
+std::optional<unsigned> ReadRemainingPhotos(const EdenDsmodHostApi& h,const SnapScope& scope,const SnapObservation& observation) {
+    uint64_t phase=0,begin=0,end=0,after=0,rail_control=0;int64_t strong=-1;
+    if(!scope.world||!SameSnapScope(h,scope,observation)||!Read(h,observation.scene+0x38,phase)||
+       (phase!=h.main_base+0x62e180&&phase!=h.main_base+0x630240)||
+       !Ptr(h,observation.scene+0x88,rail_control)||!Read(h,rail_control+8,strong)||strong<0||strong>10000||
+       !Ptr(h,scope.world+0xa8,begin)||!Read(h,scope.world+0xb0,end))return {};
+    // main+3f0edc destroys this vector of shared-owned objects (16-byte entries).
+    // The separate +0x60 callback list holds raw captures and is not an ownership list.
+    unsigned count=0;if(!Count(begin,end,16,128,count))return {};
+    unsigned matches=0,result=0;uint64_t selected=0,selected_entry=0;
+    for(unsigned i=0;i<count;i++){
+        const uint64_t entry=begin+16*i;uint64_t hud=0,control=0,vt=0,rail=0,weak=0;int remaining=-1;
+        if(!Ptr(h,entry,hud)||hud<32||!Read(h,entry+8,control)||control!=hud-32||
+           !Read(h,hud,vt)||vt!=DataAddress(h,0xc7df90)||!Read(h,control,vt)||vt!=DataAddress(h,0xc7e150)||
+           !Read(h,control+8,strong)||strong<0||strong>10000||!Read(h,hud+0x68,rail)||rail!=observation.rail||
+           !Read(h,hud+0x70,weak)||weak!=rail_control||!Read(h,hud+0x2b8,remaining)||remaining<0||remaining>72)continue;
+        ++matches;result=unsigned(remaining);selected=hud;selected_entry=entry;
+    }
+    int remaining=-1;
+    if(matches!=1||!Read(h,selected_entry,after)||after!=selected||!Read(h,selected_entry+8,after)||after!=selected-32||
+       !Read(h,selected,after)||after!=DataAddress(h,0xc7df90)||!Read(h,selected-32,after)||after!=DataAddress(h,0xc7e150)||
+       !Read(h,selected-24,strong)||strong<0||strong>10000||!Read(h,selected+0x2b8,remaining)||remaining!=int(result)||
+       !Read(h,selected+0x68,after)||after!=observation.rail||!Read(h,selected+0x70,after)||after!=rail_control||
+       !Read(h,scope.world+0xa8,after)||after!=begin||!Read(h,scope.world+0xb0,after)||after!=end||
+       !Read(h,observation.scene+0x80,after)||after!=observation.rail||!Read(h,observation.scene+0x88,after)||after!=rail_control||
+       !Read(h,observation.scene+0x38,after)||after!=phase||!SameSnapScope(h,scope,observation))return {};
+    return result;
+}
 std::optional<SnapObservation> SnapDiscovery::Step(const EdenDsmodHostApi& h) {
     // Diagnostic-only. One bounded sweep, with a 0.4 ms soft time slice checked every
     // 16 pages and an 8 MiB hard byte cap. Actual host/read costs still need measurement.

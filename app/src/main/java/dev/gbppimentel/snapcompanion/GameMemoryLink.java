@@ -41,9 +41,15 @@ final class GameMemoryLink implements AutoCloseable {
    if(row.has("at"))out.put("sampleAt",row.getLong("at"));
    long phase=row.optLong("phaseRva");out.put("tools",GameToolRules.gameplay(row.optString("status"),phase)&&row.optBoolean("inputAvailable"));JSONObject feedback=row.optJSONObject("lastAction");if(feedback!=null&&GameToolRules.key(feedback.optString("action"))>=0)out.put("lastAction",new JSONObject().put("action",feedback.optString("action")).put("accepted",feedback.optBoolean("accepted")).put("at",feedback.optLong("at")));out.put("phase",phase==0x62e180?"research":phase==0x630240?"paused":"transition");
    for(String key:new String[]{"world","forward"}){JSONArray value=row.optJSONArray(key);if(vector(value))out.put(key,value);}
+   Integer remaining=remainingPhotos(row);if(remaining!=null)out.put("remainingPhotos",remaining);
    JSONObject camera=row.optString("status").equals("ready")&&(phase==0x62e180||phase==0x630240)?cameraSnapshot(row.optJSONObject("camera")):null;if(camera!=null)out.put("camera",camera);
    JSONArray points=row.optJSONArray("routePoints");if(points!=null&&points.length()>=2&&points.length()<=97){boolean valid=true;for(int i=0;i<points.length();i++)if(!vector(points.optJSONArray(i)))valid=false;if(valid)out.put("routePoints",points);}
   }catch(JSONException ignored){return new JSONObject();}return out;
+ }
+ static Integer remainingPhotos(JSONObject row){
+  long phase=row.optLong("phaseRva");Object value=row.opt("remainingPhotos");
+  if(!row.optString("status").equals("ready")||(phase!=0x62e180&&phase!=0x630240)||!(value instanceof Number))return null;
+  double n=((Number)value).doubleValue();return Double.isFinite(n)&&n>=0&&n<=72&&n==Math.rint(n)?(int)n:null;
  }
  static JSONObject cameraSnapshot(JSONObject source){
   if(source==null)return null;try{

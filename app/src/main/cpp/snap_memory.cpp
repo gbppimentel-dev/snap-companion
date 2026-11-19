@@ -24,7 +24,7 @@ using Clock=std::chrono::steady_clock;
 struct Range {uint64_t begin,end;bool write;};
 struct Sweep {std::vector<Range> ranges;size_t index{};uint64_t cursor{},candidate{},owner{};bool ambiguous{};Clock::time_point retry{};};
 struct Reader {
- int pid{},fd{-1}; uint64_t base{},wrapper{};
+ int pid{},fd{-1}; uint64_t base{},anchor{},controller{};
  std::vector<Range> ranges;Sweep priority,rest;
  Clock::time_point maps_at{};
  EdenDsmodHostApi host{};uint64_t run_scene{},run_sequence{};uint64_t geometry_curve{};unsigned geometry_course{};float geometry_length{};std::string geometry_json;
@@ -66,8 +66,15 @@ struct Reader {
    if(near==nearby)sweep.ranges.push_back(r);
   }
  }
- bool Loader(uint64_t w,uint64_t& loader){
-  uint64_t vt=0;return !(w&7)&&Read(w,vt)&&vt==base+0xc80078&&Read(w+8,loader)&&loader>=0x10000&&!(loader&7)&&Read(loader,vt)&&vt==base+0xc800b0;
+ bool Anchor(uint64_t scene,uint64_t& owner){
+  auto observation=scn::ReadSnapCandidate(host,scene);auto scope=observation?scn::ReadSnapScope(host,*observation):std::nullopt;
+  if(!scope)return false;owner=scope->owner;return true;
+ }
+ bool CurrentScene(uint64_t owner,uint64_t& scene){
+  uint64_t vt=0,control=0;if(!Read(owner,vt))return false;
+  unsigned offset=vt==base+0xc800b0?0x170:vt==base+0xc89f88?0x90:0;
+  if(!offset||!Read(owner+offset,scene)||scene<32||!Read(owner+offset+8,control)||control!=scene-32)return false;
+  uint64_t currentOwner=0;return Anchor(scene,currentOwner)&&currentOwner==owner;
  }
  void Discover(Sweep& sweep,bool nearby,unsigned budget){
   if(Clock::now()<sweep.retry)return;
@@ -76,16 +83,16 @@ struct Reader {
    const auto&r=sweep.ranges[sweep.index];if(!sweep.cursor)sweep.cursor=r.begin;
    size_t n=std::min<uint64_t>(sizeof(bytes),r.end-sweep.cursor);
    if(n>=8&&Read(sweep.cursor,bytes,n))for(size_t off=0;off+8<=n;){
-    auto*hit=static_cast<const uint8_t*>(std::memchr(bytes+off,int((base+0xc80078)&255),n-off-7));if(!hit)break;
+    auto*hit=static_cast<const uint8_t*>(std::memchr(bytes+off,int((base+0xc8a050)&255),n-off-7));if(!hit)break;
     size_t at=size_t(hit-bytes);off=at+1;if((sweep.cursor+at)&7)continue;uint64_t vt;std::memcpy(&vt,hit,8);
-    if(vt!=base+0xc80078)continue;uint64_t owner=0;
-    if(Loader(sweep.cursor+at,owner)){if(sweep.owner&&sweep.owner!=owner)sweep.ambiguous=true;sweep.owner=owner;sweep.candidate=sweep.cursor+at;}
+    if(vt!=base+0xc8a050)continue;uint64_t owner=0;
+    if(Anchor(sweep.cursor+at,owner)){if(sweep.candidate&&sweep.candidate!=sweep.cursor+at)sweep.ambiguous=true;sweep.owner=owner;sweep.candidate=sweep.cursor+at;}
    }
    total+=n;sweep.cursor+=n;if(sweep.cursor>=r.end){++sweep.index;sweep.cursor=0;}
    if(Clock::now()>=end)break;
   }
   if(sweep.index==sweep.ranges.size()){
-   uint64_t owner=0;if(sweep.candidate&&!sweep.ambiguous&&Loader(sweep.candidate,owner)&&owner==sweep.owner){wrapper=sweep.candidate;return;}
+   uint64_t owner=0;if(sweep.candidate&&!sweep.ambiguous&&Anchor(sweep.candidate,owner)&&owner==sweep.owner){anchor=sweep.candidate;controller=owner;return;}
    BuildScan(sweep,nearby);sweep.retry=Clock::now()+std::chrono::seconds(nearby?1:5);
   }
  }
@@ -97,14 +104,15 @@ struct Reader {
   for(unsigned i=0;i<points.size();i++){auto&p=points[i];std::snprintf(part,sizeof(part),"%s[%.5f,%.5f,%.5f]",i?",":"",p[0],p[1],p[2]);result+=part;}
   result+="]";geometry_curve=value.curve;geometry_course=value.course;geometry_length=value.curve_length;geometry_json=result;return result;
  }
- std::string Camera(uint64_t owner,const scn::SnapObservation& value,uint64_t phase){
-  // The gameplay controller writes the primary camera through world+0x10 -> set[0].
-  // Never confuse world+0x50 (physics) with the render camera. All process reads stay read-only.
+ std::string Camera(const scn::SnapScope& scope,const scn::SnapObservation& value,uint64_t phase){
+  // The scene shares its render context with either course controller. It writes
+  // the primary camera through render-context+0x10 -> set[0].
+  // The HUD world is a separate object. All process reads stay read-only.
   if(!value.world||(phase!=base+0x62e180&&phase!=base+0x630240))return "";
   for(unsigned attempt=0;attempt<2;attempt++){
    uint64_t world=0,worldControl=0,set=0,setControl=0,camera=0,cameraControl=0,vt=0,method=0,after=0;int64_t strong=-1;
    auto alive=[&](uint64_t control){return control>=0x10000&&!(control&7)&&Read(control+8,strong)&&strong>=0&&strong<10000;};
-   if(!Read(owner+0x98,world)||!Read(owner+0xa0,worldControl)||!alive(worldControl)||
+   if(!Read(scope.scene+0x1a8,world)||world!=scope.render||!Read(scope.scene+0x1b0,worldControl)||worldControl!=scope.render_control||!alive(worldControl)||
       !Read(world+0x10,set)||!Read(world+0x18,setControl)||!alive(setControl)||
       !Read(set,camera)||!Read(set+8,cameraControl)||camera<32||cameraControl!=camera-32||!alive(cameraControl)||
       !Read(camera,vt)||vt!=base+0xc79f80||!Read(vt+16,method)||method!=base+0x295170)return "";
@@ -116,7 +124,7 @@ struct Reader {
    float norm=0,upNorm=0,offset=0;for(unsigned i=0;i<3;i++){norm+=forward[i]*forward[i];upNorm+=up[i]*up[i];float d=eye[i]-(*value.world)[i];offset+=d*d;}
    if(norm<.01f||norm>1e6f||upNorm<.25f||upNorm>2.25f||offset>100.f)return "";
    norm=std::sqrt(norm);upNorm=std::sqrt(upNorm);float dot=0;for(unsigned i=0;i<3;i++){forward[i]/=norm;up[i]/=upNorm;dot+=forward[i]*up[i];}if(std::abs(dot)>.1f)return "";
-   if(!Read(owner+0x98,after)||after!=world||!Read(owner+0xa0,after)||after!=worldControl||!alive(worldControl)||
+   if(!Read(scope.scene+0x1a8,after)||after!=world||!Read(scope.scene+0x1b0,after)||after!=worldControl||!alive(worldControl)||
       !Read(world+0x10,after)||after!=set||!Read(world+0x18,after)||after!=setControl||!alive(setControl)||
       !Read(set,after)||after!=camera||!Read(set+8,after)||after!=cameraControl||!alive(cameraControl)||!Read(camera,after)||after!=vt)continue;
    char out[330];std::snprintf(out,sizeof(out),",\"camera\":{\"forward\":[%.6f,%.6f,%.6f],\"up\":[%.6f,%.6f,%.6f],\"fovY\":%.6f,\"aspect\":%.6f}",forward[0],forward[1],forward[2],up[0],up[1],up[2],fov,aspect);return out;
@@ -124,20 +132,20 @@ struct Reader {
  }
  std::string Sample(){
   if(Clock::now()-maps_at>std::chrono::seconds(1)&&!Maps())return "{\"status\":\"unavailable\"}";
-  uint64_t owner=0;
-  if(wrapper&&!Loader(wrapper,owner)){wrapper=0;BuildScan(priority,true);BuildScan(rest,false);}
-  if(!wrapper){Discover(priority,true,800);if(!wrapper)Discover(rest,false,200);if(!wrapper)return "{\"status\":\"seeking\"}";}
-  uint64_t scene=0,control=0,parent=0,after=0;
-  if(!Loader(wrapper,owner)||!Read(owner+0x170,scene)||!Read(owner+0x178,control)||scene<32||control!=scene-32)return "{\"status\":\"idle\"}";
-  auto sample=scn::ReadSnapCandidate(host,scene);
-  if(!sample||!Read(scene+0x238,parent)||parent!=owner||!Read(owner+0x170,after)||after!=scene)return "{\"status\":\"idle\"}";
+  uint64_t scene=0,after=0;
+  if(controller&&!CurrentScene(controller,scene)){controller=anchor=0;BuildScan(priority,true);BuildScan(rest,false);}
+  if(!controller){Discover(priority,true,800);if(!controller)Discover(rest,false,200);if(!controller)return "{\"status\":\"seeking\"}";}
+  if(!CurrentScene(controller,scene))return "{\"status\":\"idle\"}";
+  auto sample=scn::ReadSnapCandidate(host,scene);auto scope=sample?scn::ReadSnapScope(host,*sample):std::nullopt;
+  if(!scope||scope->owner!=controller)return "{\"status\":\"idle\"}";
   if(run_scene!=scene){run_scene=scene;++run_sequence;geometry_curve=0;}
   uint64_t phase=0;Read(scene+0x38,phase);char out[1024];
   int n=std::snprintf(out,sizeof(out),"{\"status\":\"ready\",\"courseId\":%u,\"level\":%u,\"distance\":%.6f,\"length\":%.6f,\"phaseRva\":%llu,\"forward\":[%.6f,%.6f,%.6f]",sample->course,sample->selected_level,sample->distance,sample->curve_length,(unsigned long long)(phase-base),sample->forward[0],sample->forward[1],sample->forward[2]);
   std::string json(out,size_t(std::max(0,n)));json+=",\"run\":"+std::to_string(run_sequence);
   if(sample->world){auto&w=*sample->world;std::snprintf(out,sizeof(out),",\"world\":[%.6f,%.6f,%.6f]",w[0],w[1],w[2]);json+=out;}
-  json+=Geometry(*sample);json+=Camera(owner,*sample,phase);
-  if(!Read(owner+0x170,after)||after!=scene||!Read(scene+0x80,after)||after!=sample->rail||!Read(sample->rail+0x30,after)||after!=sample->curve)return "{\"status\":\"idle\"}";
+  json+=Geometry(*sample);json+=Camera(*scope,*sample,phase);
+  if(!scn::SameSnapScope(host,*scope,*sample)||!Read(scene+0x80,after)||after!=sample->rail||!Read(sample->rail+0x30,after)||after!=sample->curve)return "{\"status\":\"idle\"}";
+  auto remaining=scn::ReadRemainingPhotos(host,*scope,*sample);if(remaining)json+=",\"remainingPhotos\":"+std::to_string(*remaining);
   return json+"}";
  }
 };
@@ -168,9 +176,8 @@ extern "C" JNIEXPORT jboolean JNICALL Java_dev_gbppimentel_snapbridge_GameMemory
 }
 extern "C" JNIEXPORT jboolean JNICALL Java_dev_gbppimentel_snapbridge_GameMemoryReader_pressTool(JNIEnv*,jclass,jint code){
  if(getuid()!=0||!reader||!ToolCode(code))return JNI_FALSE;
- uint64_t owner=0,scene=0,phase=0,parent=0;
- if(!reader->Loader(reader->wrapper,owner)||!reader->Read(owner+0x170,scene)||!scn::ReadSnapCandidate(reader->host,scene)||
-    !reader->Read(scene+0x238,parent)||parent!=owner||!reader->Read(scene+0x38,phase)||phase!=reader->base+0x62e180)return JNI_FALSE;
+ uint64_t scene=0,phase=0;
+ if(!reader->CurrentScene(reader->controller,scene)||!reader->Read(scene+0x38,phase)||phase!=reader->base+0x62e180)return JNI_FALSE;
  auto device=BuiltInController();if(device.empty())return JNI_FALSE;int fd=open(device.c_str(),O_RDWR|O_NONBLOCK|O_CLOEXEC);if(fd<0)return JNI_FALSE;
  if(!Released(fd,code)){::close(fd);return JNI_FALSE;}
  bool down=WriteKey(fd,code,true);if(down){timespec duration{0,80000000};while(nanosleep(&duration,&duration)<0&&errno==EINTR){}}
