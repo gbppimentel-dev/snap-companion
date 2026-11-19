@@ -23,4 +23,4 @@ The code52 local UI refresh uses original game artwork and native controller gly
 
 Code53 / 0.5.31-dev.2 was subsequently installed following the user’s “push and open snap”. Snap was restored on the upper screen at its existing Retry Menu; Companion was visible below. The device had been asleep and was awakened without changing power settings.
 
-Code54 / 0.5.31-dev.3 corrects the reported missing close/zoom/stick artwork by rendering native glyph outlines inline instead of using external SVG masks. Playtime is a compact title and hours readout without the stretched ribbon. Pixel checks now run with normal file-origin restrictions. This correction is built locally; code53 remains installed until deployment is requested. See UI_REFRESH.md.
+Code54 / 0.5.31-dev.3 corrects the reported missing close/zoom/stick artwork by rendering native glyph outlines inline instead of using external SVG masks. Playtime is a compact title and hours readout without the stretched ribbon. Pixel checks now run with normal file-origin restrictions. Following the user’s “push”, code54 was installed in place on Thor and the installed package version verified. See UI_REFRESH.md.

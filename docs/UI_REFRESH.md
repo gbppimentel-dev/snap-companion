@@ -138,3 +138,16 @@ Final code54 local validation passed: 180 Android/JVM tests, 73 Node/model check
 publication audit and original package/baseline-signer upgrade checks. Packaged
 inline artwork was checked against source. APK SHA-256:
 `b0e097412850164a1d238ae36bbdd6a2acda76423a038b6499d754c7ea7b0f28`.
+
+
+## Code54 deployment
+
+Following the user’s “push”, the exact verified APK above was installed with
+`adb install -r`. Android reports versionCode54 / 0.5.31-dev.3. Original package,
+signer and APK hash were checked before installation. No app data was cleared,
+no save migration performed and no emulator settings changed. Companion was
+launched on display4; this installation does not count as gameplay acceptance.
+Cocoon remained visible after launch attempts while its library selection was
+changing; Companion’s final on-device artwork was not visually verified in this
+push. Further foreground changes were left alone. Installation/version
+verification succeeded independently of that visibility check.
