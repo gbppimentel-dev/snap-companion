@@ -19,4 +19,4 @@ The user subsequently explicitly authorized Thor control, gameplay diagnostics a
 
 Current hardware checks and remaining acceptance work are recorded in [THOR_READER_VALIDATION.md](THOR_READER_VALIDATION.md).
 
-The code52 local UI refresh uses original game artwork and native controller glyphs across the shared shell, Live cards and map sheets. See [UI_REFRESH.md](UI_REFRESH.md) for the requested scope and browser acceptance. It has not been installed on Thor during this UI pass; the prior code51 hardware checkpoint remains separate.
+The code52 local UI refresh uses original game artwork and native controller glyphs across the shared shell, Live cards and map sheets. See [UI_REFRESH.md](UI_REFRESH.md) for the requested scope and browser acceptance. Following the user’s “push”, code52 was installed on Thor and reopened below the same paused Eden process. The code51 stability checkpoint and broader gameplay acceptance remain separate from this UI deployment.

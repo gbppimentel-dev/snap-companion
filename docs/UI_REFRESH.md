@@ -63,3 +63,7 @@ These browser fixtures contain invented example progress, not personal saved
 photographs. They do not count as Thor gameplay or long-session crash acceptance.
 
 Final local build passed: 180 Android/JVM tests, 73 Node model checks, 6 diagnostics, native reader regressions, 3 browser acceptance tests, release lint, publication audit, and original-package/signer upgrade checks. APK SHA-256: `eff5c265ee3b8e905ab4dfd9a2b8b8e0d7e70ca271268b1dd5d031f5180844e9`. No Thor deployment or GitHub publication was performed in this UI pass.
+
+## Deployment after the user's “push”
+
+Code52 was installed in place on Thor and Companion reopened on display4. The original package and baseline signer were verified before installation. The same Eden process survived, with Snap still in its existing in-game Pause Menu; no gameplay inputs or settings changes were sent. The installed UI reacquired Park Day Lv.3 and 72 photos left, retained 114/936 Diamond categories and 28.2 Thor hours, and loaded the native controller glyphs and refreshed artwork. One Companion activity was present and the checked post-install crash buffer had no new entry. This is a deployment/startup check, not long-session or all-course gameplay acceptance.
