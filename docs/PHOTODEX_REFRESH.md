@@ -91,3 +91,39 @@ lower-display value. The Photodex grid is left open below the running game.
 
 Device captures remain private and are not repository previews. This deployment
 is a visual/startup check, not extended gameplay or performance acceptance.
+
+
+## Number and completion-ribbon correction — code57
+
+The user reported that Pokémon such as Taillow overlapped the upper index badge,
+and requested a better completion ribbon. The number now sits in the caption
+beside the Pokémon name, in a separate row below the art. The photo mounts and
+five-column density are retained. All 234 name/index boxes and art clearances
+were checked at the supported browser sizes; Taillow correctly shows Snap No.018.
+
+The diagonal sash uses the existing red Photodex fabric and a separately placed,
+upright native crown medallion from the original ribbon asset. The crown is
+larger and no longer rotates with the cloth. The same rendering is used for the
+expanded entry and for completion changes received while that entry is open.
+There is no added completion text or new status rule. No assets, readers, saved
+photos, model data, live inputs or emulator settings were changed.
+
+Final local previews explicitly include completed Taillow and other bird/large
+cutouts. All eight browser acceptance cases passed; the focused grid check also
+confirmed horizontal name fit beside the number. Standard build/identity checks
+and deployment results follow below.
+
+Code57 standard local build checks passed: 181 Android/JVM tests, 73 Node/model
+checks, 6 diagnostics, native regressions, release lint, publication audit and
+original-package/baseline-signer verification. The native helper, bridge, map UI,
+map model and guidebook were byte-for-byte identical to code56. APK SHA-256:
+`4b52dabbadeff1e3dd2d9a424d739899465a5c8796ac61e2a062fcfe6cf38a84`.
+
+Code57 was installed in place and reopened on Thor. Android reports
+0.5.32-dev.2 / versionCode57; the same Eden process remained running. Lower-screen
+Photodex navigation/scrolling verified Taillow No.018 with its full cutout clear
+of the number/name caption. Existing collection progress remained 114 Diamond
+categories. The grid is left showing Taillow and nearby entries. No game inputs,
+records or emulator settings were changed. Completion appearance was checked
+with invented completed entries in the local previews; no real completion state
+was modified for a screenshot.
