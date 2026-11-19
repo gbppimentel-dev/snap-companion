@@ -1,4 +1,4 @@
-# Implementation checklist — 0.5.29-dev.2
+# Implementation checklist — 0.5.30-dev.1
 
 The user authorized extended unattended development, connected Thor control and in-place APK updates. The original app ID, signer, private data, appearance and historical v0.5.24 artifacts are preserved. This work is local; no GitHub release is published.
 
@@ -48,3 +48,13 @@ The illustrated map is schematic. Reviewed per-course alignments plus per-interv
 The first Android synthetic event route could open Eden's menu because those events did not retain the required physical-controller identity. It was replaced with a narrowly scoped controller-port output. The memory descriptor remains read-only. Freshness/window/phase guards remain in front of that output.
 
 No private packets were exported. Automatic review had previously rejected exporting a packet containing session/process metadata; that export was not retried or bypassed. Hardware checks use visible app/game behavior and fixed-purpose released inputs. See [the hardware record](THOR_READER_VALIDATION.md).
+
+## Follow-up implementation and acceptance
+
+- [x] Reconcile current README/compatibility/architecture/privacy and historical Duo-module notes; the APK is the delivery target.
+- [x] Preserve map zoom across temporary missing/recovered course readings; real-browser regression added.
+- [x] Render high-resolution portrait pins in an unscaled screen overlay to avoid parent/inverse-transform blur; verify fixed size, native source resolution and gesture alignment.
+- [ ] Verify cold reader discovery/reconnection promptly in Research Camp and other courses after app/game restarts.
+- [ ] Identify and validate live Pokémon ownership, identities and positions before offering actor-based map markers.
+- [ ] Identify the current camera target and verified request-pose/behavior facts; reference suggestions must not claim these readings meanwhile.
+- [ ] Read and validate current-run ungraded photo records before implementing automatic photo ranking. Preserve the saved-category comparison helper and never submit/replace photos automatically.

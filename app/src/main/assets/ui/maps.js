@@ -1,8 +1,8 @@
 (function(){'use strict';
 const MM=SnapMapModel,DATA=SnapMapData,A='../game-art/';
 let api,dialog,cid='',follow=true,autoCourse=true,zoom=1,pan={x:0,y:0},frame={},selected=null,returnToMap=false;
-let resizeObserver,gesture=new Map(),drag=null,gestureMoved=false,lastMove=0,lastLiveCourse='',visibility=true;
-let layers={pokemon:'all',landmarks:true,routes:true},markerKey='',markerRevision=0,groups=new Map(),trailKey='',trailDistance=-1,pastKey='',playerStamp='';
+let resizeObserver,gesture=new Map(),drag=null,gestureMoved=false,lastMove=0,visibility=true;
+let layers={pokemon:'all',landmarks:true,routes:true},markerKey='',markerLayoutKey='',markerRevision=0,groups=new Map(),trailKey='',pastKey='',playerStamp='';
 const tracker=new MM.CourseTracker(SnapRouteData.courses,SnapRouteCalibration);
 try{const saved=JSON.parse(localStorage.getItem('snap-map-preferences')||'{}').layers||{};
  if(typeof saved.pokemon==='string'&&['all','missing','requests','off'].includes(saved.pokemon))layers.pokemon=saved.pokemon;
@@ -32,16 +32,16 @@ function init(options){api=options;dialog=document.createElement('dialog');dialo
  document.getElementById('detail').addEventListener('close',()=>{if(returnToMap){returnToMap=false;queueMicrotask(()=>open(cid,true));}});
 }
 function open(id,preserve=false){const current=state().course;if(preserve&&autoCourse&&DATA.courses.some(c=>c.id===current))id=current;if(!setMapCourse(id,preserve))return;if(!preserve){follow=true;autoCourse=id===state().course;}
- lastLiveCourse=state().course||'';render();if(!dialog.open)dialog.showModal();notify(true);requestAnimationFrame(()=>{measure();paint();});
+ render();if(!dialog.open)dialog.showModal();notify(true);requestAnimationFrame(()=>{measure();paint();});
 }
 function close(){if(!visible())return;dialog.close();notify(false);gesture.clear();drag=null;resizeObserver?.disconnect();}
 function back(){if(!visible())return false;if($('.map-layers')?.classList.contains('open')){toggleLayers(false);return true;}if(selected){selected=null;pin();return true;}close();return true;}
-function render(){const c=course(),d=data();if(!c||!d)return;markerKey='';trailKey='';pastKey='';trailDistance=-1;playerStamp='';
+function render(){const c=course(),d=data();if(!c||!d)return;markerKey='';markerLayoutKey='';trailKey='';pastKey='';playerStamp='';
  dialog.innerHTML=`<header class="map-head"><span class="map-title-icon">${icon('research')}</span><div class="map-heading"><span>${e(c.courseName||c.name)}</span><h2>${e(c.variant==='Any Time'?'Research Map':c.variant)}</h2></div><span class="map-course-coverage"></span><span class="map-level"></span><button class="map-close" data-map="close" aria-label="Close Course Map">${svg('close')}</button></header>
  <section class="map-stage ${c.variant==='Night'?'night-map':''}" aria-label="Illustrated course map with live route position">
  <div class="map-surface"><div class="map-board">${art(d.maps.at(-1).asset,'map-terrain','')}<div class="map-route-art">${d.routes.map(im=>art(im.asset)).join('')}</div>
  ${(d.starts||[]).map(p=>`<span class="map-start-label" style="left:${p.x*100}%;top:${p.y*100}%">Start</span>`).join('')}
- <svg class="map-live-route" viewBox="0 0 1600 900" aria-hidden="true"><g class="route-past"></g><path class="route-travelled"/><path class="route-head"/></svg><div class="map-marker-layer"></div></div>
+ <svg class="map-live-route" viewBox="0 0 1600 900" aria-hidden="true"><g class="route-past"></g><path class="route-travelled"/><path class="route-head"/></svg></div><div class="map-marker-layer"></div>
  <svg class="map-view-cone" viewBox="-76 -76 152 152" aria-label="Camera View" hidden><defs><radialGradient id="camera-fade"><stop offset="0" stop-color="#fff7a5" stop-opacity=".65"/><stop offset=".65" stop-color="#fff7a5" stop-opacity=".32"/><stop offset="1" stop-color="#fff7a5" stop-opacity="0"/></radialGradient></defs><path fill="url(#camera-fade)" stroke="#fff9b9" stroke-opacity=".4" stroke-width=".8"/></svg><div class="map-player" hidden>${icon('research')}<i></i></div></div>
  <div class="map-toolbar" role="toolbar" aria-label="Map Controls"><button class="map-layer-button" data-map="layers" aria-expanded="false">${svg('layers')}<span>Filters</span><i class="map-filter-dot" hidden></i></button>
  <div class="map-navigation"><button data-map="fit">${svg('fit')}<span>Overview</span></button><button data-map="follow" class="map-follow" aria-pressed="false">${svg('locate')}<span>Follow</span></button></div>
@@ -62,16 +62,20 @@ function measure(){const stage=$('.map-stage');if(!stage)return;const r=stage.ge
 function clampPan(){pan.x=MM.clamp(pan.x,-Math.max(0,(box.boardW*zoom-box.width)/2),Math.max(0,(box.boardW*zoom-box.width)/2));pan.y=MM.clamp(pan.y,-Math.max(0,(box.boardH*zoom-box.height)/2),Math.max(0,(box.boardH*zoom-box.height)/2));}
 function transform(p){return{x:(p.x-.5)*box.boardW*zoom+box.width/2+pan.x,y:(p.y-.5)*box.boardH*zoom+box.height/2+pan.y};}
 function positionBoard(){clampPan();const board=$('.map-board');board.style.transform=`translate(${pan.x}px,${pan.y}px) scale(${zoom})`;board.style.setProperty('--inverse-zoom',1/zoom);
+ positionMarkers();
  $('.map-follow').classList.toggle('following',follow);$('.map-follow').setAttribute('aria-pressed',String(follow));
  dialog.querySelector('[data-map=zoom][data-value="-1"]').disabled=zoom<=1;dialog.querySelector('[data-map=zoom][data-value="1"]').disabled=zoom>=4;
+}
+function positionMarkers(){const host=$('.map-marker-layer');if(!host)return;host.style.transform=`translate(${pan.x}px,${pan.y}px)`;const key=[zoom,box.width,box.height,box.boardW,box.boardH].join(':');if(key===markerLayoutKey)return;markerLayoutKey=key;
+ for(const anchor of host.children){const g=groups.get(anchor.dataset.anchor);if(!g)continue;anchor.style.left=((g.x-.5)*box.boardW*zoom+box.width/2)+'px';anchor.style.top=((g.y-.5)*box.boardH*zoom+box.height/2)+'px';}
 }
 function paint(refresh=true){if(!visible()||!box.width)return;positionBoard();if(refresh)markers();player();}
 function filteredPoints(){return MM.filterPoints(data().points,layers.pokemon,{photos:state().photos,hasRequest:id=>pending(id).length>0,landmarks:layers.landmarks});}
 function markers(){const host=$('.map-marker-layer');if(!host||!box.boardW)return;const bucket=MM.markerBucket(zoom),key=[cid,Math.round(box.boardW),bucket,layers.pokemon,layers.landmarks,markerRevision].join(':');if(key===markerKey)return;markerKey=key;
  const next=MM.markerGroups(filteredPoints(),{width:box.boardW,height:box.boardH,zoom:bucket},43);groups=new Map(next.map(g=>[g.key,g]));
  host.innerHTML=next.map(g=>{const p=g.points[0],ids=[...new Set(g.points.map(p=>p.pokemon).filter(Boolean))],stack=ids.length>1,name=stack?ids.length+' Pokémon':api.model.species.get(p.pokemon)?.name||(p.kind==='crystabloom'?'Crystabloom':'Landmark'),complete=p.kind==='pokemon'&&g.points.every(p=>MM.collection(state().photos,p.pokemon).diamond===4),count=stack?ids.length:g.points.length;
- return`<span class="map-pin-anchor" style="left:${g.x*100}%;top:${g.y*100}%"><button class="map-pin ${stack?'map-stack':p.kind} ${complete?'map-complete':''}" data-map="pin" data-value="${e(g.key)}" aria-label="${e(name)}${count>1?' · '+g.points.length+' Locations':''}">${stack?'<span class="map-stack-preview">'+ids.slice(0,2).map(portrait).join('')+'</span>':p.kind==='pokemon'?portrait(p.pokemon):icon(p.kind==='crystabloom'?orbArt():'tool-scan')}${count>1?`<b>${count}</b>`:complete?'<span class="map-diamond-dot"></span>':''}</button></span>`;
- }).join('');
+ return`<span class="map-pin-anchor" data-anchor="${e(g.key)}"><button class="map-pin ${stack?'map-stack':p.kind} ${complete?'map-complete':''}" data-map="pin" data-value="${e(g.key)}" aria-label="${e(name)}${count>1?' · '+g.points.length+' Locations':''}">${stack?'<span class="map-stack-preview">'+ids.slice(0,2).map(portrait).join('')+'</span>':p.kind==='pokemon'?portrait(p.pokemon):icon(p.kind==='crystabloom'?orbArt():'tool-scan')}${count>1?`<b>${count}</b>`:complete?'<span class="map-diamond-dot"></span>':''}</button></span>`;
+ }).join('');markerLayoutKey='';positionMarkers();
 }
 function zoomAt(next,x=box.width/2,y=box.height/2,refresh=true){next=MM.clamp(next,1,4);const k=next/zoom;pan={x:(pan.x+box.width/2-x)*k-(box.width/2-x),y:(pan.y+box.height/2-y)*k-(box.height/2-y)};zoom=next;paint(refresh);}
 function pointerDown(ev){toggleLayers(false);gesture.set(ev.pointerId,{x:ev.clientX,y:ev.clientY});if(gesture.size===1)gestureMoved=false;drag={points:new Map(gesture),pan:{...pan},zoom};}
@@ -124,7 +128,7 @@ function click(ev){const b=ev.target.closest('[data-map]');if(!b||b.disabled||Da
 }
 function update(snapshot,changed={}){if(!api)return;const next=snapshot.course||'';
  if(!visible()){frame=MM.sanitize(snapshot.gameReading||{});tracker.observe(frame,Date.now());return;}
- if(autoCourse&&next&&next!==lastLiveCourse&&DATA.courses.some(c=>c.id===next)){setMapCourse(next);render();measure();paint();}lastLiveCourse=next;
+ if(autoCourse&&next&&next!==cid&&DATA.courses.some(c=>c.id===next)){setMapCourse(next);render();measure();paint();}
  if(changed.collection||changed.requests){markerRevision++;updateCounts();markers();if(selected)pin();}live(snapshot.gameReading||{});
 }
 function setVisibility(value){visibility=value===true;if(!visibility&&visible())notify(false);else if(visible())notify(true);if(visible())player();}

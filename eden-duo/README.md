@@ -1,54 +1,14 @@
-> Current APK: **0.5.26-dev.2/code40** adds30 illustrated reference maps,1403 authored locations, a separate live measured Route Tracker and four guarded photography tools to the original Android interface. Park Day/Night and the four tool responses were checked on Thor. Illustrated player alignment and camera viewing direction remain pending. The historical research notes below predate these APK additions and do not establish separate Duo-module acceptance. See [the hardware record](../docs/THOR_READER_VALIDATION.md) and [current checklist](../docs/AFK_MAP_WORK.md).
+# Native reader research and diagnostics
 
-# SCN native reader research and diagnostics
+**Current delivery is the Android APK**, updating the original Snap Companion app. A separate Eden Duo mod is not required. This folder contains reused native-reader/map-decoder sources, pinned ABI/dependency research and historical diagnostic packaging. Its placeholder Duo interface is not the product UI.
 
-**Delivery override — 2026-11-18:** SCN will be an APK update to the original Snap Companion package. The user lifted the freeze and separate-app restriction. This folder retains reusable native reader research and an optional read-only Duo validation package; a Duo mod is not a mandatory end-user dependency. The original APK screens/features are retained in the Android source, so a native Duo UI port is no longer the delivery plan. See [APK update rules](../docs/NEXT.md).
+The installed APK development line is **0.5.29-dev.2/code46**. It bundles the verified20Hz Thor reader, active course/selected level, integrated approximate map position/trail, known branch/progress model and validated render-camera cone while preserving the original Android interface and saved data. See the authoritative [current checklist](../docs/AFK_MAP_WORK.md), [compatibility](../docs/COMPATIBILITY.md), [map scope](../docs/ROUTE_MAP.md) and [hardware evidence](../docs/THOR_READER_VALIDATION.md).
 
-**Presentation requirement:** preserve the original v0.5.24 interface and existing features, adding direct game readings and map expansion. The current native layout is an engineering placeholder, not a replacement design. The original Android interface stays in the APK; the standalone Thor memory-reader adapter is still pending. See [UI and compatibility contract](docs/UI-COMPATIBILITY.md).
+All30 illustrated maps and1,403 authored reference locations are included in the APK; reviewed alignment covers portions of121 of123 known rails. This is not all-course hardware acceptance. Two short rails, additional Forest variants, Forest/Camp overall continuations, native remaining-photo ownership and broad restart/performance checks remain open. Pokémon sightings are authored references, not live actors. Map photography-tool buttons were removed at the user's request; historical four-tool hardware checks do not imply those buttons remain in the UI.
 
-**Current status: Android ARM64 reader implementation and a separate read-only validation package. The requested companion is not finished.** Static analysis identified candidate current-course and chosen-level fields; the rail-position calculation matches the original getter in 240 isolated synthetic cases. Live ownership/lifetime, illustrated-map calibration, the original interface integration and device behavior remain unverified. The validation package is for checking those findings, not a completed-feature release. The user is currently using regular Eden; there has been no device access, emulator migration or installation for this work.
+## Research tools
 
-The requested experience is automatic: the main screen shows the actual course, variant and selected research level. Tapping its map expands it, with pan, pinch zoom, NEO-ONE position and optional Pokémon locations. No route selector, timing estimate or OCR fallback will pretend to supply a missing live value.
-
-## Checklist
-
-- [x] Preserve historical v0.5.24 artifacts and keep active development on `next`; future APKs now use the original app identity.
-- [x] Study Eden Duo's contribution, package, native module, map and touch APIs.
-- [x] Inspect Skyward Sword HD, Super Mario Odyssey and Echoes of Wisdom implementations.
-- [x] Pin the ABI headers and decoder dependencies; preserve their licenses.
-- [x] Confirm the owned executable's full NSO build ID for New Pokémon Snap 2.0.1.
-- [x] Native module builds on this Mac; exact title/build and ABI gates are implemented.
-- [x] Native module also compiles as a stripped Android ARM64 ELF using Google's checksum-verified NDK 28.2.13676358.
-- [x] Read encrypted DRP metadata containers and original English MSBT course text at runtime; all 30 owned course records decoded and checked locally.
-- [x] Trace candidate scene, course, chosen-level and rail fields against the owned 2.0.1 executable; keep them isolated from trusted production readings.
-- [x] Implement measured-distance curve sampling; compare cubic Hermite and linear positions against the unmodified original getter in 240 synthetic VM cases.
-- [x] Guarded memory-reader foundation with synthetic transition, pointer, relocation and projection checks.
-- [x] Worker-side DRP extraction, CRC validation, Oodle decompression and BC1/BC3/BC7 texture decoding.
-- [x] Original Florio map rendered locally from the owned game files, with no game artwork in this source tree.
-- [x] Byte-for-byte decompression checked against all 143 owned map/route textures across 30 archives.
-- [x] Full extraction/rendering compared against an independent texture renderer for all 143 maps/layers; alpha exact, colour difference at most 1/255.
-- [x] Author main/expanded map manifest, pan/zoom/reset and gated layer toggles. **Not visually validated in Eden Duo.**
-- [x] Block installable release packaging while live mapping or device validation is incomplete.
-- [x] Read the course catalog, map identity and labels from ROMFS at runtime.
-- [ ] Verify a current-run root, phase/lifetime and course/variant identity for this build.
-- [ ] Verify selected research level independently of saved/unlocked maximum level.
-- [ ] Verify active route, branch changes and course segments.
-- [ ] Verify NEO-ONE world position; establish camera/vehicle heading semantics.
-- [ ] Establish each course/segment's world-to-map projection using game metadata or independently checked calibration.
-- [ ] Connect those verified values to the main course card and moving map marker.
-- [ ] Clear course, images, route and marker on loading, exit, invalid reads and changed runs.
-- [ ] Provide map-layer and route recipes for every supported course/variant/segment, including update content.
-- [ ] Source Pokémon icons from the player's files and verify location/level/variant conditions.
-- [ ] Enable the Pokémon layer with clear location semantics; do not represent reference locations as live actors.
-- [ ] Verify player's marker and optional heading at map edges, route branches and multi-part courses.
-- [x] Build the Android ARM64 native library using the NDK.
-- [x] Prepare separately named, read-only diagnostic packaging for the later device-validation step; normal release packaging remains blocked.
-- [ ] Verify real Eden Duo rendering, touch hit targets, pan/zoom, reset and course changes.
-- [ ] Verify a second boot/ASLR, day/night, research levels, retries, exits and invalidated pointers.
-- [ ] Measure actual Thor sampling cost, decode stalls, CPU/memory usage and frame pacing under NCE.
-- [ ] Package and validate the final `.dsmod.zip`; installation/publication require a separate request.
-
-## Local work
+The native sources include the exact-build memory reader, measured-distance Hermite/linear rail sampling, DRP parsing, Oodle decompression and BC texture decoding. Decoder output was independently compared for143 owned map/route textures; that establishes decoding, not live world-to-map alignment. Source/dependency license notices must remain intact.
 
 ```sh
 cd eden-duo
@@ -57,16 +17,18 @@ python3 tools/build.py --fetch-deps
 python3 -m unittest discover -s tests -p 'test_*.py'
 ```
 
-The decoder fetch is pinned open-source code only. Set `SCN_OOZ_ROOT` to an existing checkout to avoid another download. The host build emits a native test library and an offline art verifier under ignored `build/host/`; it does not produce an Android-compatible `.so`.
+Dependencies are pinned open-source inputs. Set `SCN_OOZ_ROOT` for an existing checkout. The host build produces ignored native test/art-verifier tools. `ANDROID_NDK_HOME=/path/to/ndk python3 tools/build.py --android` builds an Android native library, not the product APK. Build the product with the repository-root `scripts/build-local.sh`.
 
-To privately verify a map from your own extracted ROMFS:
+An owner can privately verify extracted map data with:
 
 ```sh
 build/host/scn-art /path/to/own/romfs 1 course_map_l_001_1_A_1.nutexb /tmp/florio.pam
 ```
 
-Normal release packaging through `tools/package.py` refuses unverified builds until the build evidence and device-validation receipt pass. An Android build uses `ANDROID_NDK_HOME=/path/to/ndk python3 tools/build.py --android`; it is never an APK and never targets the stable app's storage. Packaging only admits its manifest, module and licenses.
+## Historical Duo package
 
-For development validation only, build with `--android --diagnostic-reader` and run `python3 tools/package.py --validation-build`. This creates `build/validation/0100F4300BF2C000.dsmod.zip`, labelled **SCN Read-only Validation**, with a Reader Check page. It exposes unverified candidate values separately, sends no controls, performs no guest writes and does not imply compatibility with the frozen Android app. Its native code can perform bounded object-discovery reads; its cost still needs measurement on Thor. See [static field/curve evidence](research/snap-static-profile.json). These are explicit development diagnostics, not a way to publish an unverified release.
+`--diagnostic-reader` and `tools/package.py --validation-build` retain a separately labelled read-only validation package for development. Its placeholder interface, offsets/evidence files and release gates must not be presented as a completed or device-qualified Duo mod. No Duo migration, save copying or standalone mod acceptance has been performed. APK validation does not automatically qualify the optional module's rendering, ABI, touch or lifecycle.
 
-See [access findings](docs/ACCESS.md), [live-validation requirements](docs/VALIDATION.md), [current evidence](research/builds.json) and [dependency provenance](research/upstream.lock.json). This subproject is GPL-3.0-or-later; the inherited app's license is unchanged.
+The earlier native-only plan is superseded; it is not an outstanding user-facing `.dsmod.zip` task. See [APK delivery rules](../docs/NEXT.md), [access research](docs/ACCESS.md), [validation boundaries](docs/VALIDATION.md), [static evidence](research/snap-static-profile.json) and [pinned provenance](research/upstream.lock.json). Do not fabricate a standalone module validation receipt from APK/model tests.
+
+This subproject is GPL-3.0-or-later. The inherited companion's license and third-party asset ownership are documented separately at the repository root. Raw game archives, keys, process packets, device captures and saves remain private and excluded from publication.

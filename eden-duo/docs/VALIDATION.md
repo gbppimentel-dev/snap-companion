@@ -1,8 +1,8 @@
-# Evidence required before live tracking is called complete
+# Standalone Duo-module validation boundaries
 
-No Thor inspection or Eden Duo installation has been performed for this mod. The current environment is regular Eden. A later authorized Eden Duo session is needed to identify and validate actual run objects. Read-only research must be distinguished from installing an emulator, copying saves, modifying settings or sending inputs.
+The product is now the APK, not this historical standalone module. Thor inspection, APK installation, direct course/level/route readings, illustrated tracking and render-camera checks have been performed; see [the current hardware record](../../docs/THOR_READER_VALIDATION.md) and [checklist](../../docs/AFK_MAP_WORK.md). Their versioned scope must not be confused with the optional module described below.
 
-A prebuilt **SCN Read-only Validation** package can be prepared locally for that session. The Reader Check page and `SCN_DIAGNOSTIC` log lines expose candidate course, selected level and measured-distance curve position. They are explicitly unverified; the normal companion's trusted fields remain unknown. This package does not draw a player pin on an uncalibrated illustration, implement Pokémon locations, port the existing interface or establish original-APK compatibility. Installation is a separate action and has not occurred.
+No Eden Duo migration, standalone module UI/touch acceptance or final `.dsmod.zip` qualification has occurred. The retained **SCN Read-only Validation** package is a diagnostic, not a required user-facing deliverable. The following gates still apply if that separate target is deliberately revived. They are not a duplicate list of unfinished APK implementation tasks.
 
 For each supported full NSO build ID, record the source function or object layout, field type, offset, ownership/lifetime, phase checks, bounded read size, NCE relocation behavior and confidence. Keep raw dumps, executable bytes and saves private. A readable string, pattern hit or a plausible number alone is insufficient.
 
@@ -10,7 +10,7 @@ For each supported full NSO build ID, record the source function or object layou
 2. Compare course/variant IDs to the game's own course display, including Florio day/night, alternate courses, Illumina courses and update content. Check at least two variants sharing a loaded LC archive.
 3. Compare selected research level to the level being played, using a lower unlocked level as a counterexample to saved maximum-level shortcuts.
 4. Verify actual NEO-ONE pose, ownership and heading independently of camera rotation. Check stopped, moving and accelerated travel, branches, exits and multi-segment maps.
-5. Establish world-to-map projection from actual game metadata where possible. Otherwise record independent calibration and held-out positions, including edges and branches. RouteData coordinate strings are not yet proof of this transform.
+5. Establish world-to-map projection from actual game metadata where possible. Otherwise record independent calibration and held-out positions, including edges and branches. RouteData coordinate strings alone do not prove this transform.
 6. Restart the game and emulator, then verify after ASLR/heap changes. An invalid or changed owner must clear the marker, image and previous course rather than hold stale state.
 7. Verify original map/route/variant associations. Pokémon locations must honor level, day/night, branch and trigger conditions. A reference marker must never be represented as a currently active actor.
 8. Verify bottom-screen layout and touch behavior in Eden Duo, including map expansion, pinch/pan/reset, toggles, pending images and leaving/reentering courses. Companion taps initially affect only the companion.

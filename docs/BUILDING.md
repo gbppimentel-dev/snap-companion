@@ -37,3 +37,7 @@ The command creates an APK, a ZIP with quick-start/notices/compatibility/validat
 ## Regenerating schematic route alignments
 
 The APK build uses committed calibration assets and does not require scientific Python packages. To regenerate them, use a local Python environment with NumPy, SciPy and Pillow, then run `python tools/test_route_alignment.py` and `python tools/prepare_route_calibrations.py`. Inputs are the committed factual rail catalog, bundled route artwork, affine guides and reviewed trace/landmark JSON. No game archives or live packets are published by this workflow. Keep the two withheld rails and uncertain seasonal scenes neutral until their placement is established; reducing rejection checks to inflate coverage is not validation.
+
+## Map interaction regression
+
+With Playwright available locally, run `node --test tests/map-browser.cjs`. Set `NODE_PATH` if Playwright is installed outside this checkout, and optionally `SNAP_BROWSER_EXECUTABLE` for a local Chromium executable. This isolated browser test checks zoom retention through missing/recovered game readings, actual course changes, full-resolution portrait sources and fixed-size unscaled map overlays. It does not contact Thor or count as gameplay acceptance.

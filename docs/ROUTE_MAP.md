@@ -1,4 +1,4 @@
-# Integrated route map — 0.5.29-dev.2
+# Integrated route map — 0.5.30-dev.1
 
 The route tracker is part of the illustrated course map. The separate tracker tab and diagnostic grid are gone. Existing terrain, Pokémon/landmark/request layers, location cards and fit/follow/pinch gestures remain available. Photography-tool buttons were removed at the user’s request; both progress bars use the full footer.
 
@@ -12,7 +12,7 @@ The route tracker is part of the illustrated course map. The separate tracker ta
 - The gold line shows measured travelled portions. An observed scripted rail transition can confirm travel up to its authored event. Nothing is drawn through a rejected alignment interval.
 - The small arrow follows the aligned route tangent. A separate fading cone follows the validated render-camera direction and narrows with the lens. It uses the same approximate illustration projection, hides when stale/unmapped or nearly vertical, and never falls back to vehicle heading.
 - All Pokémon, Missing Diamonds, LenTalk and Hidden are exclusive Pokémon modes. Landmarks and route artwork are independent switches. LenTalk is not accidentally intersected with collection status.
-- Map-coordinate clustering is deterministic and independent of panning. Pins counter-scale to35CSS pixels; zoom buckets expand groups without repeated regrouping during gestures/live samples. Dragging can begin on a pin without opening it. Compact controls provide Overview, Follow and zoom without a percentage readout. Follow defaults on for a new map opening; button zoom, double-tap zoom and Overview preserve it. Its own toggle and pan/pinch/wheel gestures can turn it off.
+- Map-coordinate clustering is deterministic and independent of panning. Pins render at35CSS pixels in an unscaled overlay, using high-resolution portraits. The overlay translates with map panning and its anchor coordinates follow the same artwork transform; images are not enlarged and shrunk again through ancestor transforms. Zoom buckets expand groups without repeated regrouping during gestures/live samples. Temporary missing/recovered readings for the same course preserve zoom and pan. Dragging can begin on a pin without opening it. Compact controls provide Overview, Follow and zoom without a percentage readout. Follow defaults on for a new map opening; button zoom, double-tap zoom and Overview preserve it. Its own toggle and pan/pinch/wheel gestures can turn it off.
 
 ## Split paths and progress
 

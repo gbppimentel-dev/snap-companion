@@ -2,8 +2,8 @@
   "name": "Snap Companion",
   "channel": "development",
   "applicationId": "dev.gbppimentel.snapcompanion",
-  "version": "0.5.29-dev.2",
-  "versionCode": 46,
+  "version": "0.5.30-dev.1",
+  "versionCode": 47,
   "base": {
     "version": "0.5.24",
     "versionCode": 36,
@@ -19,7 +19,7 @@
     "updatesExistingApp": true,
     "requiredDuoMod": false,
     "reader": "bundled Thor-specific persistent read-only native sampler (20 Hz)",
-    "status": "development; compact map controls and header, continuous measured trail, locally reviewed schematic alignments for portions of30 illustrations/121 rails; remaining Forest variants, two short rails and broad hardware acceptance remain open",
+    "status": "development; map view survives temporary reading gaps; screen-space HD portrait pins; remaining game-reading and gameplay acceptance tasks recorded in docs/AFK_MAP_WORK.md",
     "supersedes": "separate Next APK and mod-only delivery"
   }
 }
