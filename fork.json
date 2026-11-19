@@ -2,8 +2,8 @@
   "name": "Snap Companion",
   "channel": "development",
   "applicationId": "dev.gbppimentel.snapcompanion",
-  "version": "0.5.31-dev.2",
-  "versionCode": 53,
+  "version": "0.5.31-dev.3",
+  "versionCode": 54,
   "base": {
     "version": "0.5.24",
     "versionCode": 36,
@@ -19,7 +19,7 @@
     "updatesExistingApp": true,
     "requiredDuoMod": false,
     "reader": "bundled Thor-specific persistent read-only native sampler (20 Hz)",
-    "status": "development; local UI spacing and alignment corrections with high-contrast NEO-ONE marker; existing reader safeguards retained",
+    "status": "development; inline native control artwork and compact playtime readout; high-contrast NEO-ONE marker; existing reader safeguards retained",
     "supersedes": "separate Next APK and mod-only delivery"
   }
 }

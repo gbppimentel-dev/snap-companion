@@ -2,7 +2,19 @@
 // Optional browser acceptance: NODE_PATH=<Playwright modules> node --test tests/snap-skin-browser.cjs
 const {test}=require('node:test'),assert=require('node:assert/strict'),path=require('node:path'),fs=require('node:fs');
 const {chromium}=require('playwright');
-const options={headless:true,...(process.env.SNAP_BROWSER_EXECUTABLE?{executablePath:process.env.SNAP_BROWSER_EXECUTABLE}:{}),args:['--allow-file-access-from-files']};
+const {PNG}=require('pngjs');
+const options={headless:true,...(process.env.SNAP_BROWSER_EXECUTABLE?{executablePath:process.env.SNAP_BROWSER_EXECUTABLE}:{}),args:[]};
+// A nonempty element box did not catch WebView's file-origin mask rejection.
+// Compare painted pixels with/without the artwork under normal file restrictions.
+async function paintedPixels(page,selector){
+ const node=page.locator(selector),host=node.locator('..');
+ const before=PNG.sync.read(await host.screenshot({animations:'disabled'}));
+ await node.evaluate(e=>e.style.visibility='hidden');
+ const after=PNG.sync.read(await host.screenshot({animations:'disabled'}));
+ await node.evaluate(e=>e.style.removeProperty('visibility'));
+ let changed=0;for(let i=0;i<before.data.length;i+=4)if([0,1,2].some(c=>Math.abs(before.data[i+c]-after.data[i+c])>20))changed++;
+ return changed;
+}
 async function start(browser,width=540,height=470){
  const page=await browser.newPage({viewport:{width,height},deviceScaleFactor:2,hasTouch:true});
  const errors=[];page.on('pageerror',e=>errors.push(e.message));
@@ -108,8 +120,8 @@ test('corrected controls keep inner artwork clear, playtime readable and NEO-ONE
    assert.equal(await page.locator('#playtime small').textContent(),'Playtime');
    for(const hours of [0,28.2,999.9,9999.9,10000,1200000]){
     await page.evaluate(hours=>SnapApp.update({...fixture,playtime:{totalMs:hours*3600000}}),hours);
-    const bounds=await page.locator('#playtime').evaluate(e=>{const a=e.querySelector('.hours-value').getBoundingClientRect(),b=e.querySelector('b').getBoundingClientRect(),h=e.querySelector('em').getBoundingClientRect(),caption=e.querySelector('small'),c=caption.getBoundingClientRect();return{clear:b.left>=a.left+10&&h.right<=a.right-10&&b.top>=a.top&&b.bottom<=a.bottom&&h.top>=a.top&&h.bottom<=a.bottom,caption:caption.scrollWidth<=caption.clientWidth&&c.bottom<=innerHeight,screen:e.getBoundingClientRect().right<=innerWidth}});
-    assert(bounds.clear&&bounds.caption&&bounds.screen,width+'px playtime '+hours+' fits its ticket');
+    const bounds=await page.locator('#playtime').evaluate(e=>{const a=e.querySelector('.hours-value').getBoundingClientRect(),b=e.querySelector('b').getBoundingClientRect(),h=e.querySelector('em').getBoundingClientRect(),caption=e.querySelector('small'),c=caption.getBoundingClientRect();return{clear:b.left>=a.left&&h.right<=a.right&&b.top>=a.top&&b.bottom<=a.bottom&&h.top>=a.top&&h.bottom<=a.bottom,caption:caption.scrollWidth<=caption.clientWidth&&c.bottom<=innerHeight,screen:e.getBoundingClientRect().right<=innerWidth}});
+    assert(bounds.clear&&bounds.caption&&bounds.screen,width+'px playtime '+hours+' fits its compact readout');
    }
    assert(await page.locator('#nav .tab-art').evaluateAll(es=>es.every(e=>getComputedStyle(e).backgroundImage==='none')));
    assert(await page.locator('#nav').evaluate(e=>parseFloat(getComputedStyle(e).columnGap)<=1));
@@ -139,5 +151,24 @@ test('corrected controls keep inner artwork clear, playtime readable and NEO-ONE
   assert(await page.locator('.map-player').evaluate(e=>getComputedStyle(e).animationName==='none'),'Visibility needs no continuous animation');
   await page.evaluate(()=>{clearInterval(markerFeed);SnapMaps.live({...markerReading,sampleAt:Date.now(),phase:'transition'})});
   assert(await page.locator('.map-player').isHidden());assert(await page.locator('.neo-label').isHidden(),'Transition also hides the new marker label');
+ }finally{await browser.close();}
+});
+
+test('native close, zoom and stick artwork actually paints with file access restricted',async()=>{
+ const browser=await chromium.launch(options);
+ try{
+  const {page,errors}=await start(browser);
+  await page.evaluate(()=>SnapApp.controller({available:true,at:Date.now(),buttons:{},axes:{}}));
+  for(const selector of ['[data-stick=l] .analog-cap','[data-stick=r] .analog-cap','[data-pad-key=SELECT] .pad-rest','[data-pad-key=START] .pad-rest'])assert(await paintedPixels(page,selector)>30,selector+' paints visible pixels');
+  await page.getByRole('button',{name:/Open .* Course Map/}).click();
+  await page.getByRole('button',{name:'Filters',exact:true}).click();
+  for(const selector of ['.map-close .ui-symbol','.map-layers header>button .ui-symbol','[aria-label="Zoom In"] .ui-symbol','[aria-label="Zoom Out"] .ui-symbol'])assert(await paintedPixels(page,selector)>30,selector+' paints visible pixels');
+  await page.getByRole('button',{name:'Close Course Map',exact:true}).click();
+  await page.locator('.photo-book-route').click();
+  assert(await paintedPixels(page,'#detail .close .ui-symbol')>30,'Photodex close paints visible pixels');
+  await page.locator('#detail .close').click();
+  await page.locator('.credits-button').click();
+  assert(await paintedPixels(page,'#detail .close .ui-symbol')>30,'Credits close paints visible pixels');
+  assert.deepEqual(errors,[]);
  }finally{await browser.close();}
 });

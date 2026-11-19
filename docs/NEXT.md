@@ -4,11 +4,11 @@ The user clarified on 2026-11-18 that the freeze existed only because a Duo-spec
 
 - Application ID, namespace and launcher: `dev.gbppimentel.snapcompanion` / Snap Companion.
 - Signing certificate: match historical v0.5.24. An update must never require uninstalling or replacing the key.
-- Current development identity: 0.5.31-dev.2, versionCode53, updating the original package.
+- Current development identity: 0.5.31-dev.3, versionCode54, updating the original package.
 - Private preferences, records, saved images, helper paths and the established UI remain in the original app sandbox. No separate-package import is needed.
 - Preserve the historical v0.5.24 tag, APK, release assets and existing backups; they are reference/rollback artifacts, not a prohibition on new app builds.
 - The worktree/branch and `fork.json` filenames are historical. They no longer describe a second installed app. Continue development here until repository consolidation is requested.
-- Build using `scripts/build-local.sh`; `scripts/build-next.sh` forwards to it for compatibility. Output: `dist/development/SnapCompanion-0.5.31-dev.2.apk`.
+- Build using `scripts/build-local.sh`; `scripts/build-next.sh` forwards to it for compatibility. Output: `dist/development/SnapCompanion-0.5.31-dev.3.apk`.
 - Native build dependency: Android NDK28.2.13676358 (`sdkmanager 'ndk;28.2.13676358'`), or point `ANDROID_NDK_HOME` at an existing r28c installation. No archive decoder or game executable is linked into the APK reader.
 - Keep the user-requested native-asset UI skin and existing feature/data flow. Replace screen-reading inputs with verified direct memory inputs where supported; do not present unverified fields as live. The code52 visual direction supersedes the earlier appearance freeze; original identity, data and historical artifacts stay protected.
 
@@ -21,4 +21,6 @@ Current hardware checks and remaining acceptance work are recorded in [THOR_READ
 
 The code52 local UI refresh uses original game artwork and native controller glyphs across the shared shell, Live cards and map sheets. See [UI_REFRESH.md](UI_REFRESH.md) for the requested scope and browser acceptance. Following the user’s “push”, code52 was installed on Thor and reopened below the same paused Eden process. The code51 stability checkpoint and broader gameplay acceptance remain separate from this UI deployment.
 
-Code53 / 0.5.31-dev.2 is the subsequent local spacing/alignment and NEO-ONE visibility correction. The user is using Thor and explicitly requested local-only work; code52 remains the last recorded installed build. See UI_REFRESH.md for the correction scope.
+Code53 / 0.5.31-dev.2 was subsequently installed following the user’s “push and open snap”. Snap was restored on the upper screen at its existing Retry Menu; Companion was visible below. The device had been asleep and was awakened without changing power settings.
+
+Code54 / 0.5.31-dev.3 corrects the reported missing close/zoom/stick artwork by rendering native glyph outlines inline instead of using external SVG masks. Playtime is a compact title and hours readout without the stretched ribbon. Pixel checks now run with normal file-origin restrictions. This correction is built locally; code53 remains installed until deployment is requested. See UI_REFRESH.md.

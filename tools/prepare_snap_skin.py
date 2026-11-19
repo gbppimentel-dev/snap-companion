@@ -9,7 +9,7 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 def control_symbols(font_path, target):
-    """Center original game glyph ink in a square, independent of font bearings."""
+    """Inline original glyph ink; file-origin WebViews cannot use external masks."""
     from fontTools.ttLib import TTFont
     from fontTools.pens.boundsPen import BoundsPen
     from fontTools.pens.svgPathPen import SVGPathPen
@@ -17,6 +17,7 @@ def control_symbols(font_path, target):
     glyphs, cmap = font.getGlyphSet(), font.getBestCmap()
     names = {'close': 0xe14c, 'plus': 0xe0b5, 'minus': 0xe0b6,
              'stick-well': 0xe0c0, 'stick-left': 0xe101, 'stick-right': 0xe102}
+    symbols = {}
     for name, code in names.items():
         glyph = glyphs[cmap[code]]
         bounds = BoundsPen(glyphs)
@@ -26,9 +27,14 @@ def control_symbols(font_path, target):
         x, y = (x0 + x1 - side) / 2, -(y0 + y1 + side) / 2
         pen = SVGPathPen(glyphs)
         glyph.draw(pen)
-        svg = (f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="{x:g} {y:g} {side:g} {side:g}">'
-               f'<path fill="white" transform="scale(1 -1)" d="{pen.getCommands()}"/></svg>\n')
-        (target / f'control-{name}.svg').write_text(svg)
+        symbols[name] = {'box': f'{x:g} {y:g} {side:g} {side:g}', 'path': pen.getCommands()}
+    script = ("// Generated from the owned game's controller font by prepare_snap_skin.py.\n"
+              "// Inline paths paint with file-origin restrictions enabled; no external SVG masks.\n"
+              "window.SnapControlArt=(()=>{'use strict';const symbols=" + json.dumps(symbols, separators=(',', ':')) + ";\n"
+              "return Object.freeze({render(name,classes=''){const s=symbols[name];if(!s)return '';"
+              "return `<svg class=\"ui-symbol ${classes}\" viewBox=\"${s.box}\" aria-hidden=\"true\" focusable=\"false\">"
+              "<path fill=\"currentColor\" transform=\"scale(1 -1)\" d=\"${s.path}\"/></svg>`;}});})();\n")
+    (ROOT / 'app/src/main/assets/ui/control-art.js').write_text(script)
 
 
 def main():
@@ -55,7 +61,7 @@ def main():
     font = ROOT / 'app/src/main/assets/game-art/fonts/snap-controls.ttf'
     font.write_bytes(decoded)
     control_symbols(font, target)
-    print(f'Prepared {len(selected)} original UI textures, native controller font and six centered control SVGs')
+    print(f'Prepared {len(selected)} original UI textures, native controller font and six inline control paths')
 
 
 if __name__ == '__main__':

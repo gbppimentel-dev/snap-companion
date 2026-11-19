@@ -98,4 +98,43 @@ map symbols, analogue travel bounds, filter content containment and marker
 zoom/stale behavior in addition to the earlier navigation/map regressions.
 These checks use offline fixtures and do not count as Thor gameplay acceptance.
 
-Final code53 local checks passed: 180 Android/JVM tests, 73 Node/model checks, 6 diagnostics, native regressions, 4 real-browser tests, release lint, publication boundary and original package/signer checks. APK SHA-256: `43a1ba750f5b9e98176eecd6384bcf649d2c405765213a315c0dd75be9ebd993`. Code53 is ready locally; code52 remains the last recorded Thor installation.
+Final code53 local checks passed: 180 Android/JVM tests, 73 Node/model checks, 6 diagnostics, native regressions, 4 real-browser tests, release lint, publication boundary and original package/signer checks. APK SHA-256: `43a1ba750f5b9e98176eecd6384bcf649d2c405765213a315c0dd75be9ebd993`. Code53 was ready locally at that checkpoint; its subsequent deployment is recorded below.
+
+
+## Code53 deployment and code54 control correction
+
+Following “push and open snap”, code53 was installed in place with the baseline
+signer. Snap was visible on the upper screen at its existing Retry Menu, with
+Companion below. Android had been asleep; a wake action and a tap on Eden’s visible
+resume overlay restored rendering. No save clearing or emulator configuration
+change was performed.
+
+The user then reported that L/R sticks, map +/− and close X artwork was missing,
+and that the Playtime ribbon still looked wrong. All missing symbols used external
+SVG masks. Earlier desktop checks allowed file access and checked their boxes,
+which did not establish that the symbols painted under the APK’s restricted file
+origin. The WebView security settings remain unchanged.
+
+Code54 / 0.5.31-dev.3 renders the same six original, ink-centered font outlines as
+inline SVG paths with inherited color. The generated control-art.js replaces the
+six external SVG-mask files. All shared modal/map close buttons, zoom controls and
+passive analog caps/wells use these paths. Existing controller state, expiry,
+movement and button glyphs are retained. No gameplay input is added.
+
+Playtime now groups a readable title directly above the number and `hrs` unit,
+with no ribbon, stretched asset, floating caption or surrounding box. The FPS
+readout is retained.
+
+Local acceptance now runs without the permissive file-access launch flag. A new
+pixel-difference check verifies that left/right stick caps, controller +/−, map
++/−, map/filter close and Photodex/credits close symbols actually paint visible
+pixels. The existing layout, routing, controller expiry and map zoom regressions
+remain in place. Local Live and map/filter previews were visually inspected.
+Thor was not accessed during this correction; hardware visual acceptance remains
+pending installation.
+
+Final code54 local validation passed: 180 Android/JVM tests, 73 Node/model checks,
+6 diagnostics, native reader regressions, 5 real-browser tests, release lint,
+publication audit and original package/baseline-signer upgrade checks. Packaged
+inline artwork was checked against source. APK SHA-256:
+`b0e097412850164a1d238ae36bbdd6a2acda76423a038b6499d754c7ea7b0f28`.
