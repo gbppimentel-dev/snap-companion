@@ -67,3 +67,35 @@ Final local build passed: 180 Android/JVM tests, 73 Node model checks, 6 diagnos
 ## Deployment after the user's “push”
 
 Code52 was installed in place on Thor and Companion reopened on display4. The original package and baseline signer were verified before installation. The same Eden process survived, with Snap still in its existing in-game Pause Menu; no gameplay inputs or settings changes were sent. The installed UI reacquired Park Day Lv.3 and 72 photos left, retained 114/936 Diamond categories and 28.2 Thor hours, and loaded the native controller glyphs and refreshed artwork. One Companion activity was present and the checked post-install crash buffer had no new entry. This is a deployment/startup check, not long-session or all-course gameplay acceptance.
+
+## Local corrections — 0.5.31-dev.2 / code53
+
+The user reported clipping/alignment issues after code52 and requested local work
+while using Thor. This pass does not access, control or update the device.
+
+- Tighter main tabs; icon diamond backplates removed.
+- Content-sized playtime ticket, corrected number/unit baselines and a separate
+  readable Playtime caption. The approved FPS treatment is retained.
+- Inset Current Course label clears viewfinder strokes; the map action has a
+  rectangular paper frame with explicit, padded icon/text columns.
+- Single open refresh arrow, clearer star-category mounts and an inset Photo Book
+  emblem/arrow; slightly straighter print mount. Recent Snapshots and Course
+  Request designs are retained.
+- Controller row has upper clearance; native L/R stick caps move inside separate
+  wells instead of receiving a dot over the letter. Passive feedback still
+  expires as before and sends no gameplay input.
+- Close/+/- symbols are original font outlines in ink-centered SVG view boxes,
+  removing font-bearing offsets. Zoom's shared divider keeps both cells equal.
+- Map filters use explicit icon/text/checkmark columns and padded option frames;
+  decorative ribbon notches no longer intersect their contents.
+- NEO-ONE has a larger fixed-size coral badge, white/teal outline, legible label
+  and outlined heading arrow. It remains subordinate to controls/filter sheets,
+  follows the same verified position, and hides with stale/transition readings.
+  No continuous animation or new location estimate is introduced.
+
+Browser checks now include long playtime values, inner icon clearance, centered
+map symbols, analogue travel bounds, filter content containment and marker
+zoom/stale behavior in addition to the earlier navigation/map regressions.
+These checks use offline fixtures and do not count as Thor gameplay acceptance.
+
+Final code53 local checks passed: 180 Android/JVM tests, 73 Node/model checks, 6 diagnostics, native regressions, 4 real-browser tests, release lint, publication boundary and original package/signer checks. APK SHA-256: `43a1ba750f5b9e98176eecd6384bcf649d2c405765213a315c0dd75be9ebd993`. Code53 is ready locally; code52 remains the last recorded Thor installation.

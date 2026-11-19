@@ -11,3 +11,7 @@ The selected source member names are recorded in tools/data/snap-skin-assets.jso
 The APK contains prepared presentation assets, not game archives or an extractor.
 This asset preparation does not read or change gameplay memory, saved progress,
 personal photographs, emulator configuration, or controller input behavior.
+
+The control-*.svg presentation symbols preserve outlines from the same native
+controller font. Their view boxes center the original glyph ink for alignment;
+no replacement icon font or third-party controller artwork is used.

@@ -100,3 +100,44 @@ test('map assets, filter choices, progress and sighting routes remain usable wit
   assert.deepEqual(errors,[]);
  }finally{await browser.close();}
 });
+test('corrected controls keep inner artwork clear, playtime readable and NEO-ONE distinct',async()=>{
+ const browser=await chromium.launch(options);
+ try{
+  for(const [width,height]of [[540,470],[540,405],[412,640]]){
+   const {page,errors}=await start(browser,width,height);
+   assert.equal(await page.locator('#playtime small').textContent(),'Playtime');
+   for(const hours of [0,28.2,999.9,9999.9,10000,1200000]){
+    await page.evaluate(hours=>SnapApp.update({...fixture,playtime:{totalMs:hours*3600000}}),hours);
+    const bounds=await page.locator('#playtime').evaluate(e=>{const a=e.querySelector('.hours-value').getBoundingClientRect(),b=e.querySelector('b').getBoundingClientRect(),h=e.querySelector('em').getBoundingClientRect(),caption=e.querySelector('small'),c=caption.getBoundingClientRect();return{clear:b.left>=a.left+10&&h.right<=a.right-10&&b.top>=a.top&&b.bottom<=a.bottom&&h.top>=a.top&&h.bottom<=a.bottom,caption:caption.scrollWidth<=caption.clientWidth&&c.bottom<=innerHeight,screen:e.getBoundingClientRect().right<=innerWidth}});
+    assert(bounds.clear&&bounds.caption&&bounds.screen,width+'px playtime '+hours+' fits its ticket');
+   }
+   assert(await page.locator('#nav .tab-art').evaluateAll(es=>es.every(e=>getComputedStyle(e).backgroundImage==='none')));
+   assert(await page.locator('#nav').evaluate(e=>parseFloat(getComputedStyle(e).columnGap)<=1));
+   await page.evaluate(()=>SnapApp.update(fixture));
+   const course=await page.locator('.scenic-course').evaluate(e=>{const a=e.getBoundingClientRect(),label=e.querySelector('.scenic-label').getBoundingClientRect();const button=e.querySelector('.scenic-map-button').getBoundingClientRect();return{label:label.left-a.left>=17&&label.top-a.top>=16,contents:[...e.querySelectorAll('.scenic-map-symbol,.map-expand')].every(i=>{const r=i.getBoundingClientRect();return r.left>=button.left+4&&r.right<=button.right-4&&r.top>=button.top+3&&r.bottom<=button.bottom-3})}});
+   assert(course.label&&course.contents,'Course controls clear the viewfinder and their own edges');
+   const book=await page.locator('.photo-book-route').evaluate(e=>{const b=e.getBoundingClientRect();return[...e.querySelectorAll('img,svg')].every(c=>{const r=c.getBoundingClientRect();return r.left>=b.left+4&&r.right<=b.right-4&&r.top>=b.top+3&&r.bottom<=b.bottom-3})});
+   assert(book,'Photo Book emblem/arrow stays inside its frame');
+   await page.evaluate(()=>SnapApp.controller({available:true,at:Date.now(),buttons:{L3:true},axes:{lx:1,ly:-1,rx:-1,ry:1}}));
+   const controls=await page.locator('#controller-strip').evaluate(e=>{const r=e.getBoundingClientRect();return[...e.querySelectorAll('kbd')].every(k=>k.getBoundingClientRect().top>=r.top+6)&&[...e.querySelectorAll('.analog-cap')].every(k=>{const a=k.getBoundingClientRect(),b=k.parentElement.getBoundingClientRect();return a.left>=b.left&&a.right<=b.right&&a.top>=b.top&&a.bottom<=b.bottom})});
+   assert(controls,'Controller row has upper clearance and bounded stick travel');
+   await page.getByRole('button',{name:/Open .* Course Map/}).click();
+   await page.getByRole('button',{name:'Zoom In',exact:true}).click();
+   await page.getByRole('button',{name:'Filters',exact:true}).click();
+   const symbols=await page.locator('.map-close,.map-layers header>button,.map-zoom button').evaluateAll(es=>es.map(e=>{const b=e.getBoundingClientRect(),i=e.querySelector('.ui-symbol').getBoundingClientRect();return{dx:i.x+i.width/2-b.x-b.width/2,dy:i.y+i.height/2-b.y-b.height/2,inside:i.left>b.left&&i.right<b.right&&i.top>b.top&&i.bottom<b.bottom}}));
+   assert(symbols.every(s=>Math.abs(s.dx)<=.2&&Math.abs(s.dy)<=1&&s.inside),'Original glyph artwork is optically centered and inset: '+JSON.stringify(symbols));
+   const choices=await page.locator('[data-map=pokemon-mode]').evaluateAll(es=>es.every(e=>{const b=e.getBoundingClientRect();return[...e.children].every(c=>{const r=c.getBoundingClientRect();return r.left>=b.left+3&&r.right<=b.right-3&&r.top>=b.top+2&&r.bottom<=b.bottom-2})}));
+   assert(choices,'Filter artwork and checkmarks stay clear of every option edge');
+   assert.deepEqual(errors,[]);await page.close();
+  }
+  const {page}=await start(browser);
+  await page.evaluate(()=>{const c=SnapRouteData.courses.find(c=>c.id==='park-day'),p=c.paths.find(p=>p.id===c.main);const sample=d=>{let t=0;for(let i=1;i<p.points.length;i++){const a=p.points[i-1],b=p.points[i],n=Math.hypot(...a.map((v,k)=>b[k]-v));if(t+n>=d||i===p.points.length-1){const f=n?Math.max(0,Math.min(1,(d-t)/n)):0;return a.map((v,k)=>v+(b[k]-v)*f)}t+=n}};window.markerReading={status:'ready',phase:'paused',course:'park-day',level:3,run:1,routeKey:'visibility-fixture',distance:30,length:p.length,world:sample(30),forward:[1,0,0],routePoints:Array.from({length:41},(_,i)=>sample(p.length*i/40))};window.markerFeed=setInterval(()=>SnapMaps.live({...markerReading,sampleAt:Date.now()}),50);SnapMaps.open('park-day');});
+  await page.waitForFunction(()=>!document.querySelector('.map-player').hidden);
+  assert.equal(await page.locator('.neo-label').textContent(),'NEO-ONE');
+  const size=await page.locator('.map-player').boundingBox();assert(size.width>=44);
+  await page.getByRole('button',{name:'Zoom In',exact:true}).click();const zoomed=await page.locator('.map-player').boundingBox();assert.equal(zoomed.width,size.width,'Visibility marker stays fixed in screen pixels');
+  assert(await page.locator('.map-player').evaluate(e=>getComputedStyle(e).animationName==='none'),'Visibility needs no continuous animation');
+  await page.evaluate(()=>{clearInterval(markerFeed);SnapMaps.live({...markerReading,sampleAt:Date.now(),phase:'transition'})});
+  assert(await page.locator('.map-player').isHidden());assert(await page.locator('.neo-label').isHidden(),'Transition also hides the new marker label');
+ }finally{await browser.close();}
+});

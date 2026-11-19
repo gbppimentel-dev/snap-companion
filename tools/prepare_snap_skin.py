@@ -8,6 +8,29 @@ from PIL import Image
 ROOT = Path(__file__).resolve().parents[1]
 
 
+def control_symbols(font_path, target):
+    """Center original game glyph ink in a square, independent of font bearings."""
+    from fontTools.ttLib import TTFont
+    from fontTools.pens.boundsPen import BoundsPen
+    from fontTools.pens.svgPathPen import SVGPathPen
+    font = TTFont(font_path)
+    glyphs, cmap = font.getGlyphSet(), font.getBestCmap()
+    names = {'close': 0xe14c, 'plus': 0xe0b5, 'minus': 0xe0b6,
+             'stick-well': 0xe0c0, 'stick-left': 0xe101, 'stick-right': 0xe102}
+    for name, code in names.items():
+        glyph = glyphs[cmap[code]]
+        bounds = BoundsPen(glyphs)
+        glyph.draw(bounds)
+        x0, y0, x1, y1 = bounds.bounds
+        side = max(x1 - x0, y1 - y0) * 1.12
+        x, y = (x0 + x1 - side) / 2, -(y0 + y1 + side) / 2
+        pen = SVGPathPen(glyphs)
+        glyph.draw(pen)
+        svg = (f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="{x:g} {y:g} {side:g} {side:g}">'
+               f'<path fill="white" transform="scale(1 -1)" d="{pen.getCommands()}"/></svg>\n')
+        (target / f'control-{name}.svg').write_text(svg)
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--owned-root', type=Path, required=True)
@@ -29,8 +52,10 @@ def main():
     decoded = bytes(c ^ key[i % 4] for i, c in enumerate(raw[8:]))
     if decoded[:4] != b'\x00\x01\x00\x00':
         raise ValueError('Unexpected owned controller font format')
-    (ROOT / 'app/src/main/assets/game-art/fonts/snap-controls.ttf').write_bytes(decoded)
-    print(f'Prepared {len(selected)} original UI textures and native controller font')
+    font = ROOT / 'app/src/main/assets/game-art/fonts/snap-controls.ttf'
+    font.write_bytes(decoded)
+    control_symbols(font, target)
+    print(f'Prepared {len(selected)} original UI textures, native controller font and six centered control SVGs')
 
 
 if __name__ == '__main__':
