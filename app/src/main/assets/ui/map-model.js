@@ -83,7 +83,12 @@ function transitions(catalog,source,after,target,limit=256){
 }
 function calibrationPoint(calibration,d){
  const points=calibration?.anchors;if(!Array.isArray(points)||points.length<2||!finite(d))return null;if(d<points[0][0]&&d>=points[0][0]-.01)d=points[0][0];if(d>points.at(-1)[0]&&d<=points.at(-1)[0]+.1)d=points.at(-1)[0];
- for(let i=1;i<points.length;i++){const a=points[i-1],b=points[i];if(d<a[0]||d>b[0])continue;if(![...a,...b].every(finite)||b[0]<=a[0]||a.length!==3||b.length!==3)return null;const t=(d-a[0])/(b[0]-a[0]);const p={x:a[1]+(b[1]-a[1])*t,y:a[2]+(b[2]-a[2])*t};return p.x>=0&&p.x<=1&&p.y>=0&&p.y<=1?p:null;}return null;
+ let lo=1,hi=points.length-1;while(lo<hi){const mid=(lo+hi)>>1;if(points[mid][0]<d)lo=mid+1;else hi=mid;}const a=points[lo-1],b=points[lo];if(d<a[0]||d>b[0]||![...a,...b].every(finite)||b[0]<=a[0]||a.length!==3||b.length!==3)return null;const t=(d-a[0])/(b[0]-a[0]);const p={x:a[1]+(b[1]-a[1])*t,y:a[2]+(b[2]-a[2])*t};return p.x>=0&&p.x<=1&&p.y>=0&&p.y<=1?p:null;
+}
+function trailBase(calibration,d,chunk=16){const a=calibration?.anchors;if(!a?.length||!finite(d))return null;let lo=0,hi=a.length;while(lo<hi){const mid=(lo+hi)>>1;if(a[mid][0]<=d)lo=mid+1;else hi=mid;}const index=Math.floor(Math.max(0,lo-1)/chunk)*chunk;return{index,distance:a[index][0]};}
+function trailPath(calibration,to,from=0){
+ if(!finite(to)||!finite(from)||from<0||to<from)return'';const a=calibration?.anchors||[],start=trailBase(calibration,from,1);if(!start)return'';let started=false,path='';const append=p=>{if(!p){started=false;return;}path+=(started?'L':'M')+(p.x*1600).toFixed(2)+' '+(p.y*900).toFixed(2);started=true;};
+ append(calibrationPoint(calibration,from));for(let i=start.index+1;i<a.length;i++){const row=a[i];if(row[0]>to)break;append(finite(row[1])&&finite(row[2])?{x:row[1],y:row[2]}:null);}append(calibrationPoint(calibration,to));return path;
 }
 class CourseTracker {
  constructor(catalogs=[],calibrations=[]){this.catalogs=catalogs;this.calibrations=calibrations;this.reset();}
@@ -117,6 +122,7 @@ class CourseTracker {
   const sections=calibration?.sections||[{from:0,to:end,name:this.path.id===catalog.main?'Main Trail':'Alternate Trail'}],section=sections.find((s,i)=>v.distance>=s.from&&(v.distance<s.to||i===sections.length-1&&v.distance<=s.to+.1));
   const sectionProgress=section&&section.to>section.from?clamp((v.distance-section.from)/(section.to-section.from),0,1):null,left=remaining(catalog,this.path.id,v.distance);let overall=null;
   if(this.prefix&&left!=null){overall=this.prefix.map(p=>{const travelled=p+v.distance,total=travelled+left;return total>0?clamp(travelled/total,0,1):null;});if(overall.some(x=>x==null))overall=null;}
+  if(this.calibrations.some(c=>c.course===this.course&&c.courseProgress===false))overall=null;
   const player=calibrationPoint(calibration,v.distance),next=calibrationPoint(calibration,Math.min(v.distance+.3,end)),before=calibrationPoint(calibration,Math.max(0,v.distance-.3));
   const direction=vector(v.forward)&&Math.hypot(v.forward[0],v.forward[2])>1e-4&&next&&before&&Math.hypot(next.x-before.x,next.y-before.y)>1e-6?{x:next.x-before.x,y:next.y-before.y}:null;
   return{path:this.path.id,section:section?.name||'Current Section',sectionProgress,overall,approximate:this.approximate,player,direction,calibration,past:this.past,pastRevision:this.revision,split:validEdges(this.path).some(e=>e.conditional&&e.at>v.distance),alternate:this.path.id!==catalog.main};
@@ -133,11 +139,12 @@ function cameraReading(v){
 // Render-camera rays projected through the same schematic transform as the route.
 // Vehicle travel direction is deliberately not a fallback for the player's view.
 function viewCone(v,calibration,now=Date.now()){
- const camera=cameraReading(v?.camera),m=calibration?.projection;
- if(!frame(v,now,calibration?.course)||!camera||!Array.isArray(m)||m.length!==6||!m.every(finite)||Math.abs(m[0]*m[3]-m[1]*m[2])<1e-6||!calibrationPoint(calibration,v.distance))return null;
+ const camera=cameraReading(v?.camera),matrix=calibration?.projection,m=matrix?.length===8?[matrix[0],matrix[1],matrix[4],matrix[5],matrix[6],matrix[7]]:matrix;
+ if(!frame(v,now,calibration?.course)||!camera||!Array.isArray(matrix)||![6,8].includes(matrix.length)||!Array.isArray(m)||m.length!==6||!matrix.every(finite)||Math.abs(m[0]*m[3]-m[1]*m[2])<1e-6||!calibrationPoint(calibration,v.distance))return null;
+ let angle=0;if(calibration.heading){const h=calibration.heading;let lo=1,hi=h.length-1;while(lo<hi){const mid=(lo+hi)>>1;if(h[mid][0]<v.distance)lo=mid+1;else hi=mid;}const a=h[lo-1],b=h[lo];if(!a||!b||![...a,...b].every(finite)||b[0]<=a[0])return null;angle=a[1]+(b[1]-a[1])*clamp((v.distance-a[0])/(b[0]-a[0]),0,1);}
  const f=camera.forward,u=camera.up;if(Math.hypot(f[0],f[2])<.25)return null;
  const right=[f[1]*u[2]-f[2]*u[1],f[2]*u[0]-f[0]*u[2],f[0]*u[1]-f[1]*u[0]],spread=Math.tan(camera.fovY/2)*camera.aspect;
- const project=a=>({x:(a[0]*m[0]+a[2]*m[2])/960,y:(a[0]*m[1]+a[2]*m[3])/540});
+ const project=a=>{const x=a[0]*m[0]+a[2]*m[2],y=a[0]*m[1]+a[2]*m[3];return{x:(x*Math.cos(angle)-y*Math.sin(angle))/960,y:(x*Math.sin(angle)+y*Math.cos(angle))/540};};
  const cone={center:project(f),left:project(f.map((n,i)=>n-right[i]*spread)),right:project(f.map((n,i)=>n+right[i]*spread))};
  return Object.values(cone).every(p=>Math.hypot(p.x,p.y)>1e-7)?cone:null;
 }
@@ -151,5 +158,5 @@ function conePath(cone,width,height,radius=72){
  return'M0 0L'+xy(l)+'A'+radius+' '+radius+' 0 0 '+sweep+' '+xy(r)+'Z';
 }
 function sanitize(v){if(!v||typeof v!=='object')return{};const out={};for(const k of['status','course','courseId','level','distance','length','world','forward','routeKey','routePoints','sampleAt','phase','tools','lastAction','run'])if(k in v)out[k]=v[k];const camera=cameraReading(v.camera);if(camera)out.camera=camera;return out;}
-return{cameraReading,viewCone,conePath,markerGroups,markerBucket,filterPoints,transitions,CourseTracker,matchRail,endOf,remaining,prefixes,calibrationPoint,RunTracker,finite,clamp,vector,frame,collection,clusters,bounds,point,route,follow,sanitize};
+return{trailPath,trailBase,cameraReading,viewCone,conePath,markerGroups,markerBucket,filterPoints,transitions,CourseTracker,matchRail,endOf,remaining,prefixes,calibrationPoint,RunTracker,finite,clamp,vector,frame,collection,clusters,bounds,point,route,follow,sanitize};
 });

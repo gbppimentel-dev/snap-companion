@@ -1,0 +1,24 @@
+{
+  "schema": 1,
+  "scope": "Scene-script-selected NEO-ONE rails matched to the verified live player curve on the owned game. No inferred continuation edges or runtime packets.",
+  "courses": {
+    "forest": [
+      {
+        "node": "883275728",
+        "entity": 449362410,
+        "length": 54.266791
+      },
+      {
+        "node": "730494900",
+        "entity": 1425798366,
+        "length": 54.679588
+      },
+      {
+        "node": "980161516",
+        "entity": 2199450050,
+        "length": 46.043803,
+        "stem": "006_2_A"
+      }
+    ]
+  }
+}

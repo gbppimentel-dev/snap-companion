@@ -1,4 +1,4 @@
-# Implementation checklist — 0.5.28-dev.2
+# Implementation checklist — 0.5.29-dev.2
 
 The user authorized extended unattended development, connected Thor control and in-place APK updates. The original app ID, signer, private data, appearance and historical v0.5.24 artifacts are preserved. This work is local; no GitHub release is published.
 
@@ -26,19 +26,24 @@ The user authorized extended unattended development, connected Thor control and 
 - [x] Map photography-tool buttons removed; full-width section/course progress retained.
 - [x]49 shared branch/rejoin seams aligned with bounded corrections; skipped short rails, ambiguous transitions, unrelated cycles and loop history covered by model regressions.
 
+- [x] Remove zoom percentage; Follow defaults on and only yields to its toggle or map gestures.
+- [x] Prominent Live map-expansion entry, smaller FPS/Thor-hour readings and symmetric compact credits.
+- [x] Continuous measured trail tip, cached longer body and bounded gap-preserving alignment smoothing.
+
 ## Still open
 
-- [ ] Complete the remaining illustration alignments: Jungle main rails, disconnected Forest seasonal scenes, Outaway Cave and Research Camp. Portions of27 course illustrations/92 rails have bounded schematic alignments; rejected intervals remain unknown.
+- [x] Expand locally reviewed alignment to portions of30 illustrations/121 rails, including Jungle main routes, Cave, Camp circuits/laboratory and three additional live-verified Forest rails.
+- [ ] Place the two withheld short rails and unverified Forest variants using reliable ownership/scene evidence. Verify new calibrations in gameplay; local artist review is not hardware acceptance.
 - [x] Verify render-camera direction and zoom on Thor; display the guarded view cone independently of the vehicle travel arrow.
 - [ ] Resolve active HUD ownership across retries before using its remaining-photo counter. A typed counter candidate was found, but the experiment was removed from the shipped reader because retry ownership is not proven. Existing screen-reading features retain their prior provider.
 - [ ] Validate all30 courses, every branch/Illumina/Forest variation, process restart and long/thermal sessions on hardware. Thirty local browser map checks are not thirty gameplay acceptance runs.
-- [ ] Any further touch controls such as aiming/turbo/shutter need separate state/input validation; there is no arbitrary-key or guest-memory write surface.
+- Removed from the requested scope: additional touch tools; the user requested removal of the map tool buttons. The passive controller strip remains.
 
 ## Evidence and scope
 
 EcologicalBookData has1403 location records across30 course IDs. The fields encode model/feature ID, sighting serial and artist coordinates in a3840×2160 reference space. The sighting serial is **not** a research level. Model IDs resolve through the existing saved-species index+1 mapping. Feature IDs1001/1003/1005/1007/1009/1011 are displayed as Crystablooms; other special records retain the neutral Landmark label. Sightings describe authored map locations across levels, not current Pokémon actors or request-specific poses.
 
-The illustrated map is schematic. Reviewed per-course alignments plus per-interval rejection produce approximate route positions; this is not a surveyed world projection. The fixed vehicle symbols remain labelled Start. See [ROUTE_MAP.md](ROUTE_MAP.md) for the120-rail catalog, branch/progress handling and exact coverage limits.
+The illustrated map is schematic. Reviewed per-course alignments plus per-interval rejection produce approximate route positions; this is not a surveyed world projection. The fixed vehicle symbols remain labelled Start. See [ROUTE_MAP.md](ROUTE_MAP.md) for the123-rail catalog, branch/progress handling and exact coverage limits.
 
 The first Android synthetic event route could open Eden's menu because those events did not retain the required physical-controller identity. It was replaced with a narrowly scoped controller-port output. The memory descriptor remains read-only. Freshness/window/phase guards remain in front of that output.
 

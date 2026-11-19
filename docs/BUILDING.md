@@ -33,3 +33,7 @@ python3 packaging/package_release.py --apk /path/to/SnapCompanion-v0.5.24.apk
 ```
 
 The command creates an APK, a ZIP with quick-start/notices/compatibility/validation, a compatibility JSON, release manifest and SHA256 checksums in ignored `dist/`. It does not install or publish. Release metadata states the actual test scope and does not convert local checks into hardware acceptance.
+
+## Regenerating schematic route alignments
+
+The APK build uses committed calibration assets and does not require scientific Python packages. To regenerate them, use a local Python environment with NumPy, SciPy and Pillow, then run `python tools/test_route_alignment.py` and `python tools/prepare_route_calibrations.py`. Inputs are the committed factual rail catalog, bundled route artwork, affine guides and reviewed trace/landmark JSON. No game archives or live packets are published by this workflow. Keep the two withheld rails and uncertain seasonal scenes neutral until their placement is established; reducing rejection checks to inflate coverage is not validation.

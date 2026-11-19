@@ -7,8 +7,8 @@ android {
         applicationId 'dev.gbppimentel.snapcompanion'
         minSdk 30
         targetSdk 36
-        versionCode 44
-        versionName '0.5.28-dev.2'
+        versionCode 46
+        versionName '0.5.29-dev.2'
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
     }
     compileOptions { sourceCompatibility JavaVersion.VERSION_17; targetCompatibility JavaVersion.VERSION_17 }

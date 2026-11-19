@@ -7,6 +7,7 @@ import argparse,json,math
 from pathlib import Path
 from prepare_owned_maps import Flat
 ROOT=Path(__file__).resolve().parents[1]
+SUPPLEMENTAL=ROOT/'tools/data/route-owned-supplemental.json'
 
 class RouteFlat(Flat):
     def u(self,t,s,default=0):
@@ -24,7 +25,7 @@ class RouteFlat(Flat):
 
 def distance(a,b):return math.sqrt(sum((x-y)**2 for x,y in zip(a,b)))
 
-def read_course(path,course):
+def read_course(path,course,supplemental=(),include_defaults=True):
     f=RouteFlat(path);r=f.root()
     if f.u(r,0)!=6:raise ValueError('Level schema')
     entities={f.u(e,1):e for e in f.rows(r,2)}
@@ -60,14 +61,23 @@ def read_course(path,course):
         if not 0<offset<1e6:raise ValueError('Rail length')
         paths[node]={'id':str(node),'length':round(offset,6),'points':[[round(v,6)for v in p]for p in points],'edges':events}
         for event in events:load(int(event['to']))
-    load(main)
-    for group in groups.values():
-        for node in changes(group):load(node)
+    if include_defaults:
+        load(main)
+        for group in groups.values():
+            for node in changes(group):load(node)
+    # Some scene-script-selected NEO rails have no ordinary PathAction reference.
+    # Include only explicitly reviewed nodes matched to a live, owned NEO curve.
+    for row in supplemental:
+        node=int(row['node'])
+        if nodes.get(node)!=row['entity']:raise ValueError('Supplemental rail identity changed')
+        load(node)
+        if abs(paths[node]['length']-row['length'])>.001:raise ValueError('Supplemental rail geometry changed')
     return {'id':course['id'],'gameId':course['gameId'],'main':str(main),'paths':list(paths.values())}
 
 def main():
     p=argparse.ArgumentParser(description=__doc__);p.add_argument('--level-root',type=Path,required=True);a=p.parse_args()
     data=json.loads((ROOT/'app/src/main/assets/ui/map-data.js').read_text().split('window.SnapMapData=')[1].removesuffix(';\n'))
+    supplemental=json.loads(SUPPLEMENTAL.read_text())['courses']
     out=[]
     for c in data['courses']:
         folder=a.level_root/str(c['gameId']);path=folder/('LV_MAP_'+c['stem']+'.levelb')
@@ -75,7 +85,15 @@ def main():
             choices=list(folder.glob('*.levelb'))
             if len(choices)!=1:raise ValueError('Ambiguous map level identity')
             path=choices[0]
-        out.append(read_course(path,c))
+        reviewed=supplemental.get(c['id'],[])
+        result=read_course(path,c,[r for r in reviewed if r.get('stem',c['stem'])==c['stem']])
+        for stem in sorted({r['stem']for r in reviewed if r.get('stem',c['stem'])!=c['stem']}):
+            extra=read_course(folder/('LV_MAP_'+stem+'.levelb'),c,[r for r in reviewed if r.get('stem')==stem],False)
+            for rail in extra['paths']:
+                existing=next((p for p in result['paths']if p['id']==rail['id']),None)
+                if existing is not None and existing!=rail:raise ValueError('Conflicting supplemental rail')
+                if existing is None:result['paths'].append(rail)
+        out.append(result)
     value={'schema':1,'courses':out}
     (ROOT/'app/src/main/assets/ui/route-data.js').write_text('/* Factual NEO-ONE rail geometry and rail-change events from owned course metadata. */\nwindow.SnapRouteData='+json.dumps(value,separators=(',',':'))+';\n')
     print(json.dumps({'courses':len(out),'rails':sum(len(c['paths'])for c in out),'changes':sum(len(p['edges'])for c in out for p in c['paths'])}))

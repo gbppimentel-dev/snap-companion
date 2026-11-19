@@ -2,8 +2,8 @@
   "name": "Snap Companion",
   "channel": "development",
   "applicationId": "dev.gbppimentel.snapcompanion",
-  "version": "0.5.28-dev.2",
-  "versionCode": 44,
+  "version": "0.5.29-dev.2",
+  "versionCode": 46,
   "base": {
     "version": "0.5.24",
     "versionCode": 36,
@@ -19,7 +19,7 @@
     "updatesExistingApp": true,
     "requiredDuoMod": false,
     "reader": "bundled Thor-specific persistent read-only native sampler (20 Hz)",
-    "status": "development; integrated illustrated route tracking, exclusive Pok\u00e9mon map modes, stable markers, refined branch/rejoin progress and validated render-camera view cone; complex map alignments and broad branch hardware validation pending",
+    "status": "development; compact map controls and header, continuous measured trail, locally reviewed schematic alignments for portions of30 illustrations/121 rails; remaining Forest variants, two short rails and broad hardware acceptance remain open",
     "supersedes": "separate Next APK and mod-only delivery"
   }
 }
