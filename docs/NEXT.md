@@ -4,11 +4,11 @@ The user clarified on 2026-11-18 that the freeze existed only because a Duo-spec
 
 - Application ID, namespace and launcher: `dev.gbppimentel.snapcompanion` / Snap Companion.
 - Signing certificate: match historical v0.5.24. An update must never require uninstalling or replacing the key.
-- Current development identity: 0.5.31-dev.4, versionCode55, updating the original package.
+- Current development identity: 0.5.32-dev.1, versionCode56, updating the original package.
 - Private preferences, records, saved images, helper paths and the established UI remain in the original app sandbox. No separate-package import is needed.
 - Preserve the historical v0.5.24 tag, APK, release assets and existing backups; they are reference/rollback artifacts, not a prohibition on new app builds.
 - The worktree/branch and `fork.json` filenames are historical. They no longer describe a second installed app. Continue development here until repository consolidation is requested.
-- Build using `scripts/build-local.sh`; `scripts/build-next.sh` forwards to it for compatibility. Output: `dist/development/SnapCompanion-0.5.31-dev.4.apk`.
+- Build using `scripts/build-local.sh`; `scripts/build-next.sh` forwards to it for compatibility. Output: `dist/development/SnapCompanion-0.5.32-dev.1.apk`.
 - Native build dependency: Android NDK28.2.13676358 (`sdkmanager 'ndk;28.2.13676358'`), or point `ANDROID_NDK_HOME` at an existing r28c installation. No archive decoder or game executable is linked into the APK reader.
 - Keep the user-requested native-asset UI skin and existing feature/data flow. Replace screen-reading inputs with verified direct memory inputs where supported; do not present unverified fields as live. The code52 visual direction supersedes the earlier appearance freeze; original identity, data and historical artifacts stay protected.
 
@@ -26,3 +26,5 @@ Code53 / 0.5.31-dev.2 was subsequently installed following the user’s “push 
 Code54 / 0.5.31-dev.3 corrects the reported missing close/zoom/stick artwork by rendering native glyph outlines inline instead of using external SVG masks. Playtime is a compact title and hours readout without the stretched ribbon. Pixel checks now run with normal file-origin restrictions. Following the user’s “push”, code54 was installed in place on Thor and the installed package version verified. See UI_REFRESH.md.
 
 Code55 / 0.5.31-dev.4 addresses slow cold course discovery and a heartbeat publication race while retaining the code54 interface. See [READER_RECOVERY.md](READER_RECOVERY.md) for diagnosis, bounded scheduling and the hardware acceptance limits.
+
+Code56 / 0.5.32-dev.1 compacts the native-asset Photodex, shared location filters and expanded entries. Code55’s reader recovery is retained unchanged. The user requested direct Thor installation after validation. See [PHOTODEX_REFRESH.md](PHOTODEX_REFRESH.md).

@@ -11,7 +11,7 @@
 .appearance-grid.single .reference-appearance{flex-basis:200px;max-width:240px}.appearance-grid.pair .reference-appearance{flex-basis:200px;max-width:240px}
 /* Course choice narrows from six islands to a few courses, then day/night. Search jumps across the hierarchy. */
 .filter-options[data-section=course] .course-breadcrumb{display:flex;align-items:center;flex-wrap:wrap;gap:3px;padding:0 0 5px;border-bottom:1px solid #dac6a3;margin-bottom:3px;min-width:0}
-.course-breadcrumb button{min-height:31px!important;width:auto!important;background:#f0e6cf!important;border:1px solid #d8c4a0!important;border-radius:3px;padding:5px 8px!important;font:10px DIN;color:#816444;display:block!important}
+.course-breadcrumb button{min-height:31px;width:auto;background:#f0e6cf;border:1px solid #d8c4a0;border-radius:3px;padding:5px 8px;font:10px DIN;color:#816444;display:block!important}
 .course-breadcrumb>i{font:17px DIN;color:#b7a078}.course-breadcrumb>span{font:10px DIN;color:#568074;padding:4px 7px}
 .filter-options .course-all{min-height:42px;width:100%;display:flex;align-items:center;gap:7px;padding:8px 10px;border:1px dashed #bdac86;border-radius:3px;background:#f4efde;font:11px DIN;color:#8d7957;text-align:left}
 .course-all img{width:23px;height:23px;object-fit:contain;opacity:.6}.course-all small{margin-left:auto;font:8px DIN;color:#ae9670}.filter-options .course-all.active{border:1px solid #83a18a;color:#4c7762;background:#e5eddd}

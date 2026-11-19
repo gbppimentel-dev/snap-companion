@@ -172,3 +172,82 @@ test('native close, zoom and stick artwork actually paints with file access rest
   assert.deepEqual(errors,[]);
  }finally{await browser.close();}
 });
+
+test('compact Photodex keeps clear star mounts, pinned search and a one-tap missing view',async()=>{
+ const browser=await chromium.launch(options);
+ try{
+  for(const [width,height]of [[540,470],[540,405],[620,540],[412,640]]){
+   const {page,errors}=await start(browser,width,height);
+   await page.evaluate(()=>{const photos={};for(let n=1;n<=4;n++)photos['666:'+n]={score:4300,medal:'Diamond'};photos['172:1']={score:3900,medal:'Gold'};SnapApp.update({...fixture,photos});});
+   await page.locator('#nav [data-id=dex]').click();await page.evaluate(()=>document.fonts.ready);
+   const density=await page.locator('.dex-grid').evaluate(e=>{const area=e.closest('.browse-scroll').getBoundingClientRect();return{columns:getComputedStyle(e).gridTemplateColumns.split(' ').length,height:e.firstElementChild.getBoundingClientRect().height,visible:[...e.children].filter(c=>{const r=c.getBoundingClientRect();return r.top>=area.top&&r.bottom<=area.bottom}).length}});
+   assert(density.columns>=(width>=500?5:4),'Compact column count at '+width+': '+JSON.stringify(density));assert(density.height<=96);
+   assert(density.visible>=(height>=470?10:5),'More complete entries visible: '+JSON.stringify(density));
+   assert((await page.locator('.dex-totals').boundingBox()).height<=56,'Collection counts stay compact');
+   const stars=await page.locator('.dex-card .slot').evaluateAll(es=>es.every(e=>{const b=e.getBoundingClientRect(),c=e.querySelector('.star-cluster').getBoundingClientRect();return c.left>=b.left-.5&&c.right<=b.right+.5&&c.top>=b.top-.5&&c.bottom<=b.bottom+.5}));assert(stars,'Every category cluster stays inside its own mount');
+   const names=await page.locator('.dex-card h3').evaluateAll(es=>es.every(e=>e.scrollHeight<=e.clientHeight+1));assert(names,'All Pokémon names fit their namecards');assert(await page.locator('.dex-card').evaluateAll(es=>es.every(e=>e.querySelector('.portrait').getBoundingClientRect().bottom<=e.querySelector('h3').getBoundingClientRect().top+1)),'Cutout image areas stay clear of the Pokémon names');
+   const tools=await page.locator('.browse-tools').boundingBox();await page.locator('.browse-scroll').evaluate(e=>e.scrollTop=500);assert.deepEqual(await page.locator('.browse-tools').boundingBox(),tools,'Search is outside the scrolling list');
+   await page.locator('.missing-quick').click();assert.equal(await page.locator('.dex-card[data-id="666"]').count(),0);assert.equal(await page.locator('.dex-card[data-id="172"]').count(),1);assert.equal(await page.locator('.missing-quick').getAttribute('aria-pressed'),'true');
+   await page.locator('.missing-quick').click();assert.equal(await page.locator('.dex-card[data-id="666"]').count(),1);
+   await page.locator('#browse-search').fill('Grookey');await page.waitForFunction(()=>document.querySelectorAll('.dex-card').length===1);assert.equal(await page.locator('.dex-card h3').textContent(),'Grookey');
+   await page.getByRole('button',{name:'Clear Search',exact:true}).click();assert.equal(await page.locator('.dex-card').count(),234);
+   assert.deepEqual(errors,[]);await page.close();
+  }
+ }finally{await browser.close();}
+});
+
+test('shared filters fit the six islands and preserve draft, location, time and level choices',async()=>{
+ const browser=await chromium.launch(options);
+ try{
+  for(const [width,height]of [[540,470],[540,405],[412,640]]){
+   const {page,errors}=await start(browser,width,height);await page.locator('#nav [data-id=dex]').click();await page.locator('.compact-filter-trigger').click();
+   assert.equal(await page.locator('[data-action=pick-island]').count(),6);
+   assert(await page.locator('#filters .filter-options').evaluate(e=>e.scrollHeight<=e.clientHeight+1),'All six islands fit at '+width+'×'+height);
+   assert(await paintedPixels(page,'#filters .close .ui-symbol')>30,'Native filter close paints');
+   await page.getByRole('button',{name:'Use Current Course',exact:true}).click();assert.equal(await page.locator('[data-action=pick-course][data-id=park-day]').getAttribute('aria-pressed'),'true');assert.equal(await page.locator('[data-action=filter-level][data-id="3"]').getAttribute('aria-pressed'),'true');
+   await page.locator('.filter-apply').click();assert((await page.locator('.active-filter').textContent()).includes('Day'));
+   await page.locator('.compact-filter-trigger').click();await page.locator('#option-search').fill('Beach Night');
+   assert.equal(await page.locator('[data-action=pick-course]').count(),1);await page.locator('[data-action=pick-course]').click();
+   await page.getByRole('button',{name:'Cancel Filters',exact:true}).click();
+   assert((await page.locator('.active-filter').textContent()).includes('Day'),'Cancel discards the new night-course draft');
+   await page.locator('#nav [data-id=requests]').click();assert((await page.locator('.active-filter').first().textContent()).includes('Day'),'LenTalk shares the same location selection');
+   await page.locator('.compact-filter-trigger').click();assert.equal(await page.locator('#filters .level-choices').count(),0);await page.locator('[data-action=filter-section][data-id=receipt]').click();assert.equal(await page.locator('#filters .filter-option').count(),5);await page.getByRole('button',{name:'Cancel Filters',exact:true}).click();
+   await page.locator('#nav [data-id=dex]').click();await page.locator('.compact-filter-trigger').click();await page.locator('[data-action=reset-draft]').click();await page.locator('.filter-apply').click();assert.equal(await page.locator('.dex-card').count(),234);
+   await page.evaluate(()=>SnapApp.update({...fixture,phase:'camp',course:'',level:0}));await page.locator('.compact-filter-trigger').click();assert.equal(await page.locator('.course-current').count(),0,'Unknown course never supplies a guessed shortcut');await page.evaluate(()=>SnapApp.update(fixture));assert.equal(await page.locator('.course-current').count(),1,'A newly acquired course appears without reopening filters');await page.evaluate(()=>SnapApp.update({...fixture,visible:false}));assert.equal(await page.locator('.course-current').count(),0,'Background game context cannot supply a current-course shortcut');
+   assert.deepEqual(errors,[]);await page.close();
+  }
+ }finally{await browser.close();}
+});
+
+test('Photodex entry keeps landscape photos and four official prints fixed, with grouped notes and loose appearances',async()=>{
+ const browser=await chromium.launch(options);
+ const photo='data:image/webp;base64,'+fs.readFileSync(path.resolve('app/src/main/assets/game-art/courses/stage_001_thumbnail.webp')).toString('base64');
+ try{
+  for(const [width,height]of [[540,470],[540,405],[412,640]]){
+   const {page,errors}=await start(browser,width,height);
+   await page.evaluate(image=>{const photos={};for(let n=1;n<=4;n++)photos['666:'+n]={score:4000+n*100,medal:['Bronze','Silver','Gold','Diamond'][n-1],image};window.bookFixture={...fixture,photos};SnapApp.update(bookFixture);},photo);
+   await page.locator('#nav [data-id=dex]').click();await page.locator('.dex-card[data-id="666"]').click();await images(page,'.photo-canvas img');
+   const body=()=>page.locator('#detail .book-body');assert(await body().evaluate(e=>e.scrollHeight<=e.clientHeight+1),'Photodex photo spread is fixed');
+   const canvas=await page.locator('.photo-canvas').boundingBox();assert(Math.abs(canvas.width/canvas.height-1.5)<.01,'Registered photo has its original 3:2 area');
+   assert(await page.locator('.entry-head').evaluate(e=>{const b=e.getBoundingClientRect();return[...e.querySelectorAll('.entry-identity,.type-list')].every(c=>{const r=c.getBoundingClientRect();return r.top>=b.top&&r.bottom<=b.bottom})}),'Name and types clear the book header');
+   assert(await page.locator('.photo-hint').evaluate(e=>{const a=e.getBoundingClientRect(),b=e.querySelector('[data-action=tips]').getBoundingClientRect();return b.top>=a.top&&b.bottom<=a.bottom}),'Photo Tips is inside its note');
+   await page.locator('[data-action=tips]').click();assert(await page.locator('#photo-tip').evaluate(e=>e.open));assert(await page.locator('#photo-tip .reference-box').evaluate(e=>e.scrollWidth<=e.clientWidth+1),'Photo Tip reference artwork also fits');await page.locator('[data-action=close-photo-tip]').click();
+   await page.locator('[data-action=category][data-id="4"]').click();assert.equal(await page.locator('.photo-canvas img').getAttribute('alt'),'Vivillon 4 Star Photo');
+   await page.locator('.book-nav [data-id=album]').click();
+   for(const count of [4,3,1]){
+    await page.evaluate(count=>{const photos={};for(let n=1;n<=count;n++)photos['666:'+n]=bookFixture.photos['666:'+n];SnapApp.update({...bookFixture,photos});},count);await page.waitForTimeout(50);
+    assert.equal(await page.locator('.album-print').count(),count);assert(await body().evaluate(e=>e.scrollHeight<=e.clientHeight+1),'My Photos remains fixed for '+count+' prints');
+    const prints=await page.locator('.album-image').evaluateAll(es=>es.map(e=>{const r=e.getBoundingClientRect(),b=e.closest('.album-grid').getBoundingClientRect();return{ratio:r.width/r.height,inside:r.top>=b.top-1&&r.bottom<=b.bottom+1&&r.left>=b.left-1&&r.right<=b.right+1}}));assert(prints.every(p=>p.inside&&Math.abs(p.ratio-1.5)<.03),JSON.stringify(prints));
+   }
+   await page.locator('.album-print').click();assert(await page.locator('.album-expanded-image').isVisible());await page.locator('[data-action=album-back]').click();
+   await page.locator('.book-nav [data-id=locations]').click();
+   const grouping=await page.evaluate(()=>{const p=SNAP_CONTENT.species.find(p=>p.id===666),unique=new Set(p.locations.map(l=>l.course+':'+(l.form||''))),courses=new Set(p.locations.map(l=>l.course));return{moments:unique.size,courses:courses.size}});
+   assert.equal(await page.locator('.about-place').count(),grouping.courses);assert.equal(await page.locator('.place-moment').count(),grouping.moments,'Grouping preserves every former location/form note');
+   assert.equal(await page.locator('#detail a[href]').count(),0);await page.locator('.about-place summary').first().click();assert(await page.locator('.about-place[open] .place-moment-head').count()>0);
+   await page.locator('.book-nav [data-id=appearances]').click();assert.equal(await page.locator('.loose-look').count(),20);assert(await page.locator('.loose-look').evaluateAll(es=>es.every(e=>getComputedStyle(e).borderTopWidth==='0px')),'Appearance cutouts stay free of card containers');
+   const next=await page.locator('.book-turn.next b').textContent();await page.locator('.book-turn.next').click();assert.equal(await page.locator('.entry-identity h2').textContent(),next);
+   await page.locator('.book-nav [data-id=photos]').click();assert(await page.locator('.photo-score-card.missing-photo').isVisible());assert(await page.locator('.photo-score-card.missing-photo').evaluate(e=>e.scrollHeight<=e.clientHeight+1),'Unregistered-photo caption does not overflow');
+   assert.deepEqual(errors,[]);await page.close();
+  }
+ }finally{await browser.close();}
+});
