@@ -1,0 +1,13 @@
+Original New Pokémon Snap interface assets
+
+The selected UI textures and Nintendo controller-symbol font were prepared from
+the owner's supplied New Pokémon Snap 2.0.1 archives for this local companion.
+Pokémon, graphics and game interface artwork remain the property of Nintendo,
+Creatures Inc., GAME FREAK inc., and Bandai Namco Studios, as applicable.
+The native Nintendo button-symbol font remains its owner's property.
+No ownership or permissive artwork/font license is claimed.
+
+The selected source member names are recorded in tools/data/snap-skin-assets.json.
+The APK contains prepared presentation assets, not game archives or an extractor.
+This asset preparation does not read or change gameplay memory, saved progress,
+personal photographs, emulator configuration, or controller input behavior.

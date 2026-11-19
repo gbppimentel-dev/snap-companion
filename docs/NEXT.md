@@ -4,13 +4,13 @@ The user clarified on 2026-11-18 that the freeze existed only because a Duo-spec
 
 - Application ID, namespace and launcher: `dev.gbppimentel.snapcompanion` / Snap Companion.
 - Signing certificate: match historical v0.5.24. An update must never require uninstalling or replacing the key.
-- Current development identity: 0.5.30-dev.5, versionCode51, updating the original package.
+- Current development identity: 0.5.31-dev.1, versionCode52, updating the original package.
 - Private preferences, records, saved images, helper paths and the established UI remain in the original app sandbox. No separate-package import is needed.
 - Preserve the historical v0.5.24 tag, APK, release assets and existing backups; they are reference/rollback artifacts, not a prohibition on new app builds.
 - The worktree/branch and `fork.json` filenames are historical. They no longer describe a second installed app. Continue development here until repository consolidation is requested.
-- Build using `scripts/build-local.sh`; `scripts/build-next.sh` forwards to it for compatibility. Output: `dist/development/SnapCompanion-0.5.30-dev.5.apk`.
+- Build using `scripts/build-local.sh`; `scripts/build-next.sh` forwards to it for compatibility. Output: `dist/development/SnapCompanion-0.5.31-dev.1.apk`.
 - Native build dependency: Android NDK28.2.13676358 (`sdkmanager 'ndk;28.2.13676358'`), or point `ANDROID_NDK_HOME` at an existing r28c installation. No archive decoder or game executable is linked into the APK reader.
-- Keep the original appearance and feature flow. Replace screen-reading inputs with verified direct memory inputs where supported; do not redesign or pretend unmapped fields are live.
+- Keep the user-requested native-asset UI skin and existing feature/data flow. Replace screen-reading inputs with verified direct memory inputs where supported; do not present unverified fields as live. The code52 visual direction supersedes the earlier appearance freeze; original identity, data and historical artifacts stay protected.
 
 The APK bundles a persistent Thor adapter that validates the v2.0.1 fingerprint and reads course/selected level/rail/world fields at20Hz. The established dashboard receives course/level readings; an expandable illustrated map with integrated schematic route position and section/current-path course progress are implemented. The game-only WebView feed excludes session tokens, process IDs and raw addresses. The map no longer presents touch photography tools. The existing guarded four-action backend remains for compatibility, with no map dispatcher. No game-memory write API exists.
 
@@ -18,3 +18,5 @@ All30 illustrated course views,1403 authored locations, saved-category coverage,
 The user subsequently explicitly authorized Thor control, gameplay diagnostics and APK installation on 2026-11-18. Development APKs are being validated in place without clearing data or changing emulator settings. That device authorization does not authorize GitHub publication or a game/save migration. New releases may proceed normally when separately requested and validated; no permanent prerelease/separate-package restriction remains.
 
 Current hardware checks and remaining acceptance work are recorded in [THOR_READER_VALIDATION.md](THOR_READER_VALIDATION.md).
+
+The code52 local UI refresh uses original game artwork and native controller glyphs across the shared shell, Live cards and map sheets. See [UI_REFRESH.md](UI_REFRESH.md) for the requested scope and browser acceptance. It has not been installed on Thor during this UI pass; the prior code51 hardware checkpoint remains separate.

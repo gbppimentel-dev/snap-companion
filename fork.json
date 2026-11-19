@@ -2,8 +2,8 @@
   "name": "Snap Companion",
   "channel": "development",
   "applicationId": "dev.gbppimentel.snapcompanion",
-  "version": "0.5.30-dev.5",
-  "versionCode": 51,
+  "version": "0.5.31-dev.1",
+  "versionCode": 52,
   "base": {
     "version": "0.5.24",
     "versionCode": 36,
@@ -19,7 +19,7 @@
     "updatesExistingApp": true,
     "requiredDuoMod": false,
     "reader": "bundled Thor-specific persistent read-only native sampler (20 Hz)",
-    "status": "development; single-instance launcher and guarded startup resume; owned Camp and standard-course HUD counters; broader gameplay acceptance remains",
+    "status": "development; native-asset UI refresh built locally; single-instance and reader safeguards retained; broader gameplay acceptance remains",
     "supersedes": "separate Next APK and mod-only delivery"
   }
 }
