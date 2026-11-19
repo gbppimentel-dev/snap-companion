@@ -16,6 +16,7 @@ enum class SnapScopeKind { Course, Camp };
 struct SnapScope {
     SnapScopeKind kind{};
     uint64_t owner{},scene{},scene_control{},render{},render_control{},world{},world_control{};
+    bool expedition{true};
 };
 // Exact-build layouts. APK hardware evidence and the optional Duo-module's separate
 // qualification are recorded in docs/THOR_READER_VALIDATION.md.

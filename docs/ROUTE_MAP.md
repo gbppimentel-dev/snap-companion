@@ -1,4 +1,4 @@
-# Integrated route map — 0.5.30-dev.2
+# Integrated route map — 0.5.30-dev.3
 
 The route tracker is part of the illustrated course map. The separate tracker tab and diagnostic grid are gone. Existing terrain, Pokémon/landmark/request layers, location cards and fit/follow/pinch gestures remain available. Photography-tool buttons were removed at the user’s request; both progress bars use the full footer.
 

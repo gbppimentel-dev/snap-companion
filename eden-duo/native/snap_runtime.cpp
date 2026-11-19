@@ -104,7 +104,13 @@ std::optional<SnapScope> ReadSnapScope(const EdenDsmodHostApi& h,const SnapObser
         if(!Ptr(h,scene+p.capture,owner)||!Read(h,owner,vt)||vt!=DataAddress(h,p.type)||
            !Read(h,owner+p.current,current)||current!=scene||!Read(h,owner+p.current+8,control)||control!=scene-32)continue;
         if(p.kind==SnapScopeKind::Camp&&(!Read(h,owner+0x80,course)||course!=30))continue;
-        SnapScope scope{p.kind,owner,scene,control};
+        SnapScope scope{p.kind,owner,scene,control};uint64_t owner_phase=0,owner_adjust=0;
+        if(p.kind==SnapScopeKind::Camp){
+            if(!Read(h,owner+0x38,owner_phase)||!Read(h,owner+0x40,owner_adjust))return {};
+            // The hub owns the same typed Camp scene, but leaves its controller in
+            // the no-op state. main+61e8d0 drives the actual photo expedition.
+            scope.expedition=owner_phase==h.main_base+0x61e8d0&&owner_adjust==0;
+        }
         uint64_t render=0,render_control=0;
         if(Ptr(h,scene+0x1a8,render)&&Ptr(h,scene+0x1b0,render_control)&&
            Read(h,render_control+8,strong)&&strong>=0&&strong<10000){
@@ -121,6 +127,7 @@ std::optional<SnapScope> ReadSnapScope(const EdenDsmodHostApi& h,const SnapObser
         }
         if(!Read(h,owner,vt)||vt!=DataAddress(h,p.type)||!Read(h,scene+p.capture,after)||after!=owner||
            !Read(h,owner+p.current,after)||after!=scene||!Read(h,owner+p.current+8,after)||after!=control)return {};
+        if(p.kind==SnapScopeKind::Camp&&(!Read(h,owner+0x38,after)||after!=owner_phase||!Read(h,owner+0x40,after)||after!=owner_adjust))return {};
         if(result)return {}; // Two different current owners are ambiguous, not a priority list.
         result=scope;
     }
@@ -128,12 +135,12 @@ std::optional<SnapScope> ReadSnapScope(const EdenDsmodHostApi& h,const SnapObser
 }
 bool SameSnapScope(const EdenDsmodHostApi& h,const SnapScope& scope,const SnapObservation& observation) {
     auto current=ReadSnapScope(h,observation);
-    return current&&current->kind==scope.kind&&current->owner==scope.owner&&current->scene==scope.scene&&
+    return current&&current->expedition==scope.expedition&&current->kind==scope.kind&&current->owner==scope.owner&&current->scene==scope.scene&&
         current->scene_control==scope.scene_control&&current->render==scope.render&&current->render_control==scope.render_control&&current->world==scope.world&&current->world_control==scope.world_control;
 }
 std::optional<unsigned> ReadRemainingPhotos(const EdenDsmodHostApi& h,const SnapScope& scope,const SnapObservation& observation) {
     uint64_t phase=0,begin=0,end=0,after=0,rail_control=0;int64_t strong=-1;
-    if(!scope.world||!SameSnapScope(h,scope,observation)||!Read(h,observation.scene+0x38,phase)||
+    if(!scope.expedition||!scope.world||!SameSnapScope(h,scope,observation)||!Read(h,observation.scene+0x38,phase)||
        (phase!=h.main_base+0x62e180&&phase!=h.main_base+0x630240)||
        !Ptr(h,observation.scene+0x88,rail_control)||!Read(h,rail_control+8,strong)||strong<0||strong>10000||
        !Ptr(h,scope.world+0xa8,begin)||!Read(h,scope.world+0xb0,end))return {};

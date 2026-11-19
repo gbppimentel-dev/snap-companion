@@ -48,6 +48,8 @@ int main(){
     assert(!scn::ReadSnapScope(h,observation));m.Q(scene+0x238,0);
     m.Q(camp+0xa0,world);m.Q(camp+0xa8,world_control);m.Q(world,m.main+0xc7f5e0);m.Q(world_control+8,0);
     auto scope=scn::ReadSnapScope(h,observation);assert(scope&&scope->kind==scn::SnapScopeKind::Camp&&scope->world==world);
+    assert(!scope->expedition);assert(!scn::ReadRemainingPhotos(h,*scope,observation));
+    m.Q(camp+0x38,m.main+0x61e8d0);assert(!scn::SameSnapScope(h,*scope,observation));scope=scn::ReadSnapScope(h,observation);assert(scope&&scope->expedition);
     m.Q(world+0xa8,records);m.Q(world+0xb0,records+16);m.Q(records,hud);m.Q(records+8,hud-32);
     m.Q(hud,m.main+0xc7df90);m.Q(hud-32,m.main+0xc7e150);m.Q(hud-24,0);m.Q(hud+0x68,rail);m.Q(hud+0x70,rail_control);
     m.Q(scene+0x88,rail_control);m.Q(rail_control+8,0);m.Q(scene+0x38,m.main+0x630240);m.W(hud+0x2b8,72);
@@ -63,6 +65,7 @@ int main(){
     m.Q(camp+0x90,scene+0x3000);assert(!scn::SameSnapScope(h,*scope,observation));assert(!scn::ReadRemainingPhotos(h,*scope,observation));m.Q(camp+0x90,scene);
     m.Q(scene+0x38,m.main+0x62e100);assert(!scn::ReadRemainingPhotos(h,*scope,observation));
     m.Q(world+0xb0,records+32);m.Q(records+16,hud);m.Q(records+24,hud-32);m.Q(scene+0x38,m.main+0x62e180);assert(!scn::ReadRemainingPhotos(h,*scope,observation));
+    m.Q(camp+0x38,m.main+0x454ee0);assert(!scn::SameSnapScope(h,*scope,observation));assert(!scn::ReadRemainingPhotos(h,*scope,observation));
     uint64_t second=m.base+0x18020;std::memcpy(m.bytes.data()+second-m.base-32,m.bytes.data()+scene-m.base-32,0x2f0);
     scn::SnapDiscovery ambiguous;for(unsigned i=0;i<128;i++){++m.tick;assert(!ambiguous.Step(h));}
     std::cout<<"Snap candidate checks passed: bounded discovery, controller ownership/ambiguity, shared HUD lifetime/rail/retry guards, counter bounds and curve identity. No live-game validation claimed.\n";

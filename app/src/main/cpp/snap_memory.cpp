@@ -133,19 +133,20 @@ struct Reader {
  std::string Sample(){
   if(Clock::now()-maps_at>std::chrono::seconds(1)&&!Maps())return "{\"status\":\"unavailable\"}";
   uint64_t scene=0,after=0;
-  if(controller&&!CurrentScene(controller,scene)){controller=anchor=0;BuildScan(priority,true);BuildScan(rest,false);}
+  if(controller&&!CurrentScene(controller,scene)){controller=anchor=0;run_scene=geometry_curve=0;BuildScan(priority,true);BuildScan(rest,false);}
   if(!controller){Discover(priority,true,800);if(!controller)Discover(rest,false,200);if(!controller)return "{\"status\":\"seeking\"}";}
   if(!CurrentScene(controller,scene))return "{\"status\":\"idle\"}";
   auto sample=scn::ReadSnapCandidate(host,scene);auto scope=sample?scn::ReadSnapScope(host,*sample):std::nullopt;
   if(!scope||scope->owner!=controller)return "{\"status\":\"idle\"}";
+  if(!scope->expedition){run_scene=geometry_curve=0;return "{\"status\":\"idle\"}";}
   if(run_scene!=scene){run_scene=scene;++run_sequence;geometry_curve=0;}
   uint64_t phase=0;Read(scene+0x38,phase);char out[1024];
   int n=std::snprintf(out,sizeof(out),"{\"status\":\"ready\",\"courseId\":%u,\"level\":%u,\"distance\":%.6f,\"length\":%.6f,\"phaseRva\":%llu,\"forward\":[%.6f,%.6f,%.6f]",sample->course,sample->selected_level,sample->distance,sample->curve_length,(unsigned long long)(phase-base),sample->forward[0],sample->forward[1],sample->forward[2]);
   std::string json(out,size_t(std::max(0,n)));json+=",\"run\":"+std::to_string(run_sequence);
   if(sample->world){auto&w=*sample->world;std::snprintf(out,sizeof(out),",\"world\":[%.6f,%.6f,%.6f]",w[0],w[1],w[2]);json+=out;}
   json+=Geometry(*sample);json+=Camera(*scope,*sample,phase);
-  if(!scn::SameSnapScope(host,*scope,*sample)||!Read(scene+0x80,after)||after!=sample->rail||!Read(sample->rail+0x30,after)||after!=sample->curve)return "{\"status\":\"idle\"}";
   auto remaining=scn::ReadRemainingPhotos(host,*scope,*sample);if(remaining)json+=",\"remainingPhotos\":"+std::to_string(*remaining);
+  if(!scn::SameSnapScope(host,*scope,*sample)||!Read(scene+0x38,after)||after!=phase||!Read(scene+0x80,after)||after!=sample->rail||!Read(sample->rail+0x30,after)||after!=sample->curve)return "{\"status\":\"idle\"}";
   return json+"}";
  }
 };
@@ -178,6 +179,7 @@ extern "C" JNIEXPORT jboolean JNICALL Java_dev_gbppimentel_snapbridge_GameMemory
  if(getuid()!=0||!reader||!ToolCode(code))return JNI_FALSE;
  uint64_t scene=0,phase=0;
  if(!reader->CurrentScene(reader->controller,scene)||!reader->Read(scene+0x38,phase)||phase!=reader->base+0x62e180)return JNI_FALSE;
+ auto observation=scn::ReadSnapCandidate(reader->host,scene);auto scope=observation?scn::ReadSnapScope(reader->host,*observation):std::nullopt;if(!scope||!scope->expedition)return JNI_FALSE;
  auto device=BuiltInController();if(device.empty())return JNI_FALSE;int fd=open(device.c_str(),O_RDWR|O_NONBLOCK|O_CLOEXEC);if(fd<0)return JNI_FALSE;
  if(!Released(fd,code)){::close(fd);return JNI_FALSE;}
  bool down=WriteKey(fd,code,true);if(down){timespec duration{0,80000000};while(nanosleep(&duration,&duration)<0&&errno==EINTR){}}

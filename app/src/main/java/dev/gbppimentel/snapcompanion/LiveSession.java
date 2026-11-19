@@ -48,8 +48,13 @@ final class LiveSession {
         }catch(Exception e){gameIdentity="Game compatibility check unavailable";}finally{synchronized(LiveSession.class){proving=false;}}});
     }
     static String observedIdentity(){return EdenLinkService.gameRunning&&EdenLinkService.gamePid.equals(identityPid)?gameIdentity:"No verified current game identity";}
-    static synchronized void resumeOnOpen(Context source){
-        if(!resumeRequested||!EdenPerformance.supported()||!EdenLinkService.gameVisible)return;resumeRequested=false;Context context=source.getApplicationContext();
+    static synchronized void resumeOnOpen(Context source){resumeOnOpen(source,false);}
+    static synchronized void resumeOnOpen(Context source,boolean nativeGameplay){
+        if(!resumeRequested||!EdenPerformance.supported()||!EdenLinkService.gameVisible)return;
+        long now=System.currentTimeMillis();String profile=new ProfileStore(source.getSharedPreferences("snap",0)).active();
+        LiveReading reading=CaptureService.currentSource(profile,now)?CaptureService.currentReading():null;
+        if(!ResumeGate.ready(EdenLinkService.gameVisible,nativeGameplay,reading==null?null:reading.scene(),reading==null?0:reading.capturedAt(),now))return;
+        resumeRequested=false;Context context=source.getApplicationContext();
         WORK.execute(()->{try{File jar=bridge(context);String path="'"+jar.getAbsolutePath().replace("'","'\\''")+"'";AynBridge.run(context.getCacheDir(),"CLASSPATH="+path+" app_process /system/bin dev.gbppimentel.snapbridge.ResumeVisibleEden\n");}catch(Exception ignored){}});
     }
     static synchronized File bridge(Context context)throws Exception{

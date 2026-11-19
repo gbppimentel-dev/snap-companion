@@ -71,6 +71,8 @@ public final class MainActivity extends Activity {
         JSONObject memory=gameMemory==null?new JSONObject():gameMemory.current(now);
         if(connected&&EdenLinkService.gameVisible&&memory.optString("status").equals("ready")){
             String phase=Set.of("selection","evaluation","results").contains(current.phase())?current.phase():"research";
+            long nativePhase=memory.optLong("phaseRva");
+            LiveSession.resumeOnOpen(this,nativePhase==0x62e180||nativePhase==0x630240);
             Integer nativeFilm=GameMemoryLink.remainingPhotos(memory);
             current=new SnapUiState.View(phase,memory.getString("course"),memory.getInt("level"),current.subject(),nativeFilm==null?current.film():nativeFilm);
         }else if(memory.optString("status").equals("idle")&&Set.of("research","playing","paused").contains(current.phase())){

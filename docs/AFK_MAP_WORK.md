@@ -1,4 +1,4 @@
-# Implementation checklist — 0.5.30-dev.2
+# Implementation checklist — 0.5.30-dev.3
 
 The user authorized extended unattended development, connected Thor control and in-place APK updates. The original app ID, signer, private data, appearance and historical v0.5.24 artifacts are preserved. This work is local; no GitHub release is published.
 
@@ -60,3 +60,10 @@ No private packets were exported. Automatic review had previously rejected expor
 - [ ] Identify and validate live Pokémon ownership, identities and positions before offering actor-based map markers.
 - [ ] Identify the current camera target and verified request-pose/behavior facts; reference suggestions must not claim these readings meanwhile.
 - [ ] Read and validate current-run ungraded photo records before implementing automatic photo ranking. Preserve the saved-category comparison helper and never submit/replace photos automatically.
+
+## Startup and hub safeguards — code49
+
+- [x] Require the verified Camp expedition controller state; its animated hub's background scene cannot publish a player location or photos-left counter. Ownership remains cached so a real expedition can reconnect without a new broad sweep.
+- [x] Defer the automatic native pause-overlay inspector until a fresh recognized game frame or verified native gameplay exists. Loading/unknown/stale/hidden contexts do not trigger it; live startup remains automatic.
+- [x] One controlled paired-shortcut cold launch reached the title with both apps alive and no new crash in the checked interval.
+- [ ] Complete repeated foreground/background and long-session stability acceptance. Android's system-server watchdog and Eden's native pause deadlock were observed during recovery; they are not counted as passing long-session tests.
