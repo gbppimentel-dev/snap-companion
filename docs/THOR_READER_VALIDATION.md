@@ -40,3 +40,24 @@ Private runtime captures, packets and backups are excluded from source publicati
 ## Consolidated installation
 
 Installed in place successfully: **0.5.26-dev.2/code40**. Package manager confirmed the version and original application ID; baseline signer was checked before installation. The Eden process remained unchanged and Snap remained in its in-game Pause Menu. APK SHA-256: `69d916834132e1dedf4a7de5a14e10224e6f84823e89b965ef7d73e039ec8bc9`. Final lower-display check recovered **Florio Nature Park / Night / Lv.2**, retained114 Diamond categories, and opened the measured Route Tracker at the held27% position. Tool buttons were disabled in the game Pause Menu. The companion remains open below Snap.
+
+# Integrated map validation — 2026-11-19
+
+This section supersedes the separate-tracker UI described in the code40 historical record above. Final target: **0.5.27-dev.2/code42**, installed in place with the original identity/signer and no app-data clearing or emulator setting changes. APK SHA-256: `50194bf85ce8525f36a3cecb5ef8db42f9c979707870c5959de51e77038ded9d`.
+
+- Sweltering Sands Night Lv.2 was already open. The updated map placed the NEO-ONE directly on the illustrated route, retained its measured trail and showed Oasis63% with course41% while paused. The position held and tools were disabled. After resuming, the marker advanced, Oasis progress rose, the label changed to Sand Pits, and a later view showed Sand Pits88% /course94%.
+- A lower-map Scan request passed the fixed tool dispatcher. The four tool implementations/native reader are unchanged from the prior hardware-validated build; the dispatch log alone is not a new visual proof of every tool effect.
+- On leaving research, the player/trail, course/section percentages, selected-level reading and tools became neutral/disabled instead of retaining a stale live position.
+- The Sands diagnostic run ended with **zero photos taken** and zero expedition points. No Photodex entry was submitted or replaced.
+- After selecting Park Day at the game's existing Lv.3, the already-open map automatically changed course, time variant, level, terrain, saved-category coverage and island Orb asset. Park Trail13% /course9% correctly included the later required continuation; a later view showed Park Trail63% /course46%.
+- The required transition into the **Flower Field** appeared on hardware with Flower Field66% /course91%, without resetting overall progress to zero. An independent fixed-purpose game-only read matched the actual43.052486-unit rail to catalog node1553600842. This establishes that checked required transition, not every optional fork on hardware.
+- The independent diagnostic validates the owned v2.0.1 fingerprint internally and emits only whitelisted game fields. It never opens or exports the companion's private memory packet, token or process metadata. Temporary diagnostic files are removed from Thor after validation; private captures remain excluded from publication.
+- The original dashboard retained **114/936 Diamond categories**, saved suggestions, images and Cocoon Thor playtime after installation. Empty diagnostic runs did not alter the submitted Photodex.
+- The final redraw optimization keeps fast position/phase updates while redrawing the longer SVG trail only after measured advancement. Isolated browser observation confirmed zero paused-trail rewrites across continued20Hz samples. Marker clusters are not rebuilt on every position sample.
+- Final local checks passed: **174 Android/JVM tests,57 UI/model tests,6 diagnostics**, release lint and original-package/signing checks. Thirty browser reference-map views passed asset/navigation checks; integrated marker/progress and transition guards were checked separately. These are not thirty gameplay acceptance runs.
+
+Schematic alignment is approximate and currently covers portions of27 illustrations/92 rails. Jungle's two main rails, disconnected Forest areas, Outaway Cave and Research Camp remain incomplete. Course progress follows the current default continuation and re-evaluates after an observed alternate path; cold rejoins can show a range, and missing interactive-trigger history is explicitly approximate/unknown. See [ROUTE_MAP.md](ROUTE_MAP.md).
+
+Observed gameplay FPS varied by course/scene (Sands screenshots around57 and Park screenshots around47–48, with result/menu screens near60). No sustained60FPS claim or attribution to this UI change is established by those screenshots; emulator configuration was not changed.
+
+Final handoff: code42 is installed and open below Snap. Park Day was retried at **Lv.2**, below its saved maximum3; the map recovered the selected2 correctly. Snap is left in its in-game Pause Menu with **Park Trail27% /course20%**, the integrated marker visible and touch tools disabled. The user's established map-layer preferences are retained. Temporary Thor validation JARs/library/script were removed. No GitHub publication occurred.

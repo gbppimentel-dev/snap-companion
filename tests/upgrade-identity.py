@@ -41,7 +41,7 @@ def main():
         for method in ('open','sample','close','physicalReleased','pressTool'):
             assert ('Java_dev_gbppimentel_snapbridge_GameMemoryReader_'+method).encode() in native,'Missing JNI method: '+method
         assert len([n for n in apk.namelist() if n.startswith('assets/game-art/maps/') and n.endswith('.webp')])==143
-        for name in ('assets/ui/map-data.js','assets/licenses/game-memory-GPL-3.0.txt','assets/licenses/NDK-LLVM-NOTICE.txt'):
+        for name in ('assets/ui/map-data.js','assets/ui/route-data.js','assets/ui/route-calibration.js','assets/licenses/game-memory-GPL-3.0.txt','assets/licenses/NDK-LLVM-NOTICE.txt'):
             assert apk.read(name),'Missing map/license asset: '+name
     if args.require_baseline_signer:
         cert=subprocess.check_output([str(build/'apksigner'),'verify','--print-certs',str(args.apk)],text=True)
