@@ -159,3 +159,16 @@ The final crash-buffer check from code51's launch time contained no new entries.
 ## Native-asset UI deployment — code52
 
 At the user's explicit “push”, **0.5.31-dev.1/code52** installed successfully in place. SHA-256: `eff5c265ee3b8e905ab4dfd9a2b8b8e0d7e70ca271268b1dd5d031f5180844e9`. Original identity/signer checks passed. Eden remained in the same process and the existing Park Day Pause Menu with 72 photos; no game input or emulator/power setting change was made. Companion reopened below, reacquired Park Day Lv.3 and 72 remaining photos, retained 114 Diamond categories and 28.2 Cocoon hours, and displayed the refreshed assets/native controller font. A single Companion activity and an empty post-install crash-buffer interval were checked. No additional gameplay/thermal acceptance or GitHub publication is claimed.
+
+## Cold-reader recovery — code55
+
+Code54’s course detection failure was reproduced with the game paused in Park
+Day. Reader/bridge/guidebook/map-model hashes matched the earlier working code51;
+installed native paths matched too. A far-memory discovery scheduling weakness
+and a non-atomic heartbeat writer were corrected. Code55 was installed in place;
+the same Eden process remained alive, with 70 photos and the existing records.
+The dashboard reacquired Day Lv.3; the map showed its NEO-ONE/camera and
+Park Trail9% / current-path course7%. Only a Companion map-opening touch was sent.
+See [READER_RECOVERY.md](READER_RECOVERY.md) for independent timing, code changes,
+validation and remaining acceptance limits. No moving-game FPS or universal
+restart/long-session claim follows from this paused-course recovery check.

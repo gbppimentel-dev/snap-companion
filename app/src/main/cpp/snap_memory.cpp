@@ -19,14 +19,15 @@
 #include <sys/ioctl.h>
 #include <cerrno>
 #include <time.h>
+#include <sys/uio.h>
 namespace {
 using Clock=std::chrono::steady_clock;
 struct Range {uint64_t begin,end;bool write;};
-struct Sweep {std::vector<Range> ranges;size_t index{};uint64_t cursor{},candidate{},owner{};bool ambiguous{};Clock::time_point retry{};};
+struct Sweep {std::vector<Range> ranges;size_t index{};uint64_t cursor{},candidate{},owner{};bool ambiguous{},complete{};};
 struct Reader {
- int pid{},fd{-1}; uint64_t base{},anchor{},controller{};
+ int pid{},fd{-1}; bool vm_reads{true};uint64_t base{},anchor{},controller{};
  std::vector<Range> ranges;Sweep priority,rest;
- Clock::time_point maps_at{};
+ Clock::time_point maps_at{},discovery_retry{};
  EdenDsmodHostApi host{};uint64_t run_scene{},run_sequence{};uint64_t geometry_curve{};unsigned geometry_course{};float geometry_length{};std::string geometry_json;
  ~Reader(){if(fd>=0)::close(fd);}
  bool Maps(){
@@ -46,7 +47,17 @@ struct Reader {
   auto it=std::upper_bound(ranges.begin(),ranges.end(),a,[](uint64_t p,const Range&r){return p<r.begin;});
   return it!=ranges.begin()&&a>=(--it)->begin&&a+n<=it->end;
  }
- bool Read(uint64_t a,void*out,size_t n){return Mapped(a,n)&&pread(fd,out,n,off_t(a))==ssize_t(n);}
+ bool Read(uint64_t a,void*out,size_t n){
+  if(!Mapped(a,n))return false;
+  if(vm_reads&&n>=4096){
+   iovec local{out,n},remote{reinterpret_cast<void*>(a),n};
+   ssize_t count=process_vm_readv(pid,&local,1,&remote,1,0);
+   if(count>=0)return count==ssize_t(n);
+   if(errno!=ENOSYS&&errno!=EPERM&&errno!=EACCES)return false;
+   vm_reads=false; // Firmware without this read-only syscall keeps the existing path.
+  }
+  return pread(fd,out,n,off_t(a))==ssize_t(n);
+ }
  template<class T>bool Read(uint64_t a,T&v){v={};return Read(a,&v,sizeof(v));}
  bool Init(int target){
   if(getuid()!=0||target<=0)return false;pid=target;
@@ -76,10 +87,10 @@ struct Reader {
   if(!offset||!Read(owner+offset,scene)||scene<32||!Read(owner+offset+8,control)||control!=scene-32)return false;
   uint64_t currentOwner=0;return Anchor(scene,currentOwner)&&currentOwner==owner;
  }
- void Discover(Sweep& sweep,bool nearby,unsigned budget){
-  if(Clock::now()<sweep.retry)return;
+ void Discover(Sweep& sweep,unsigned budget){
+  if(sweep.complete)return;
   auto end=Clock::now()+std::chrono::microseconds(budget);uint8_t bytes[65536];size_t total=0;
-  while(sweep.index<sweep.ranges.size()&&total<2*1024*1024){
+  while(sweep.index<sweep.ranges.size()&&total<4*1024*1024){
    const auto&r=sweep.ranges[sweep.index];if(!sweep.cursor)sweep.cursor=r.begin;
    size_t n=std::min<uint64_t>(sizeof(bytes),r.end-sweep.cursor);
    if(n>=8&&Read(sweep.cursor,bytes,n))for(size_t off=0;off+8<=n;){
@@ -92,8 +103,8 @@ struct Reader {
    if(Clock::now()>=end)break;
   }
   if(sweep.index==sweep.ranges.size()){
+   sweep.complete=true;
    uint64_t owner=0;if(sweep.candidate&&!sweep.ambiguous&&Anchor(sweep.candidate,owner)&&owner==sweep.owner){anchor=sweep.candidate;controller=owner;return;}
-   BuildScan(sweep,nearby);sweep.retry=Clock::now()+std::chrono::seconds(nearby?1:5);
   }
  }
  std::string Geometry(const scn::SnapObservation& value){
@@ -133,8 +144,17 @@ struct Reader {
  std::string Sample(){
   if(Clock::now()-maps_at>std::chrono::seconds(1)&&!Maps())return "{\"status\":\"unavailable\"}";
   uint64_t scene=0,after=0;
-  if(controller&&!CurrentScene(controller,scene)){controller=anchor=0;run_scene=geometry_curve=0;BuildScan(priority,true);BuildScan(rest,false);}
-  if(!controller){Discover(priority,true,800);if(!controller)Discover(rest,false,200);if(!controller)return "{\"status\":\"seeking\"}";}
+  if(controller&&!CurrentScene(controller,scene)){controller=anchor=0;run_scene=geometry_curve=0;discovery_retry={};BuildScan(priority,true);BuildScan(rest,false);}
+  if(!controller){
+   if(Clock::now()<discovery_retry)return "{\"status\":\"seeking\"}";
+   if(priority.complete&&rest.complete){BuildScan(priority,true);BuildScan(rest,false);}
+   // Complete each half once. Repeating the near sweep starved far-heap objects
+   // after a cold Eden launch. Discovery has a 2 ms soft time slice checked
+   // between 64 KiB reads, only until an unambiguous owner is found.
+   const bool near_done=priority.complete;Discover(priority,600);
+   if(!controller)Discover(rest,near_done?2000:1400);
+   if(!controller){if(priority.complete&&rest.complete)discovery_retry=Clock::now()+std::chrono::seconds(5);return "{\"status\":\"seeking\"}";}
+  }
   if(!CurrentScene(controller,scene))return "{\"status\":\"idle\"}";
   auto sample=scn::ReadSnapCandidate(host,scene);auto scope=sample?scn::ReadSnapScope(host,*sample):std::nullopt;
   if(!scope||scope->owner!=controller)return "{\"status\":\"idle\"}";

@@ -20,6 +20,7 @@ public final class GameMemoryReader {
  public static void main(String[]args){
   try{
    if(android.os.Process.myUid()!=0||!"AYN Thor".equalsIgnoreCase(Build.MODEL.replace('_',' '))||args.length!=1||!args[0].matches("/data/app/[A-Za-z0-9_~+./=-]+/lib/arm64/libsnapmemory\\.so"))throw new SecurityException();
+   android.os.Process.setThreadPriority(android.os.Process.THREAD_PRIORITY_BACKGROUND);
    token=text(WATCH);if(!token.matches("[a-f0-9-]{36}")||!alive())return;
    try(RandomAccessFile file=new RandomAccessFile(new File(DIR,"memory.lock"),"rw");FileLock lock=file.getChannel().tryLock()){
     if(lock==null)return;
@@ -27,7 +28,9 @@ public final class GameMemoryReader {
     String[] proof=bytes.toString("UTF-8").trim().split("\\|");
     if(proof.length!=4||!proof[1].equals("compatible-2.0.1")||!proof[2].matches("[0-9]+")){publish(new JSONObject().put("status","unsupported"));return;}
     int pid=Integer.parseInt(proof[2]);System.load(args[0]);if(!open(pid)){publish(new JSONObject().put("status","unavailable"));return;}
-    try{int failures=0;while(alive()){long start=System.nanoTime();JSONObject row=new JSONObject(sample()).put("pid",pid);try{GameToolInput.handle(token,row);GameToolInput.addFeedback(row);}catch(Throwable e){android.util.Log.w("SnapTool","tool-guard-error:"+e.getClass().getSimpleName());}publish(row);failures=row.optString("status").equals("unavailable")?failures+1:0;if(failures>=20)break;long remaining=50-(System.nanoTime()-start)/1000000;if(remaining>0)Thread.sleep(remaining);}}
+    try{int failures=0;while(alive()){long start=System.nanoTime();JSONObject row=new JSONObject(sample()).put("pid",pid);try{GameToolInput.handle(token,row);GameToolInput.addFeedback(row);}catch(Throwable e){android.util.Log.w("SnapTool","tool-guard-error:"+e.getClass().getSimpleName());}publish(row);String status=row.optString("status");failures=status.equals("unavailable")?failures+1:0;if(failures>=20)break;
+      // Low-priority discovery advances in short slices; live reads remain 20 Hz.
+      long remaining=(status.equals("seeking")?10:50)-(System.nanoTime()-start)/1000000;if(remaining>0)Thread.sleep(remaining);}}
     finally{close();}
    }
   }catch(Throwable e){try{if(token!=null)publish(new JSONObject().put("status","unavailable"));}catch(Exception ignored){}}

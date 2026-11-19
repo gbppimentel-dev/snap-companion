@@ -17,7 +17,7 @@ final class GameMemoryLink implements AutoCloseable {
  synchronized void beat(){
   if(!active||!EdenPerformance.supported())return;long now=System.currentTimeMillis();
   String pid=EdenLinkService.gamePid;if(!pid.isEmpty()&&!seenPid.isEmpty()&&!pid.equals(seenPid)){token=UUID.randomUUID().toString();lastBeat=nextStart=0;}if(!pid.isEmpty())seenPid=pid;
-  if(now<lastBeat||now-lastBeat>=1000){try{try(FileOutputStream out=new FileOutputStream(watch)){out.write(token.getBytes(StandardCharsets.UTF_8));}lastBeat=now;}catch(IOException e){return;}}
+  if(now<lastBeat||now-lastBeat>=1000){try{writeHeartbeat(watch,token);lastBeat=now;}catch(IOException e){return;}}
   if(starting||now<nextStart||samplerAlive(now))return;starting=true;nextStart=now+10000;String generation=token;
   work.execute(()->{try{
    File jar=LiveSession.bridge(context);String library=context.getApplicationInfo().nativeLibraryDir+"/libsnapmemory.so";
@@ -25,6 +25,10 @@ final class GameMemoryLink implements AutoCloseable {
    String script="CLASSPATH="+quote(jar.getAbsolutePath())+" app_process /system/bin dev.gbppimentel.snapbridge.GameMemoryReader "+quote(library)+" >/dev/null 2>&1 &\necho memory-reader-started\n";
    AynBridge.run(context.getCacheDir(),script);
   }catch(Exception ignored){}finally{starting=false;}});
+ }
+ static void writeHeartbeat(File watch,String token)throws IOException{
+  android.util.AtomicFile file=new android.util.AtomicFile(watch);FileOutputStream out=file.startWrite();
+  try{out.write(token.getBytes(StandardCharsets.UTF_8));file.finishWrite(out);}catch(IOException e){file.failWrite(out);throw e;}
  }
  synchronized JSONObject current(long now){
   if(!active||token.isEmpty())return new JSONObject();
