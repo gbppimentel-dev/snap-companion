@@ -227,6 +227,10 @@ test('Photodex entry keeps landscape photos and four official prints fixed, with
    const {page,errors}=await start(browser,width,height);
    await page.evaluate(image=>{const photos={};for(let n=1;n<=4;n++)photos['666:'+n]={score:4000+n*100,medal:['Bronze','Silver','Gold','Diamond'][n-1],image};window.bookFixture={...fixture,photos};SnapApp.update(bookFixture);},photo);
    await page.locator('#nav [data-id=dex]').click();await page.locator('.dex-card[data-id="666"]').click();await images(page,'.photo-canvas img');
+   await images(page,'.category-saved-photo,.type-art');assert.equal(await page.locator('.category-saved-photo').count(),4,'Each category previews its registered photo');
+   assert(await paintedPixels(page,'.book-turn.previous .turn-arrow .glyph')>10,'Separate native arrow button paints');
+   const turns=await page.evaluate(()=>SNAP_CONTENT.species.map(p=>{SnapApp.openPokemon(p.id);return[...document.querySelectorAll('.book-turn')].every(e=>{const b=e.getBoundingClientRect(),a=e.querySelector('.turn-arrow').getBoundingClientRect(),c=e.querySelector('.turn-copy').getBoundingClientRect(),i=e.querySelector('.turn-portrait').getBoundingClientRect();return a.left>=b.left&&a.right<=b.right&&c.left>=b.left&&c.right<=b.right&&(e.classList.contains('next')?c.right<=i.left&&i.right<=a.left:a.right<=i.left&&i.right<=c.left)});}));assert(turns.every(Boolean),'All 234 entries keep arrow, portrait and text in separate footer areas');
+   await page.evaluate(()=>SnapApp.openPokemon(666));await images(page,'.photo-canvas img');
    const body=()=>page.locator('#detail .book-body');assert(await body().evaluate(e=>e.scrollHeight<=e.clientHeight+1),'Photodex photo spread is fixed');
    const canvas=await page.locator('.photo-canvas').boundingBox();assert(Math.abs(canvas.width/canvas.height-1.5)<.01,'Registered photo has its original 3:2 area');
    assert(await page.locator('.entry-head').evaluate(e=>{const b=e.getBoundingClientRect();return[...e.querySelectorAll('.entry-identity,.type-list')].every(c=>{const r=c.getBoundingClientRect();return r.top>=b.top&&r.bottom<=b.bottom})}),'Name and types clear the book header');
@@ -246,7 +250,52 @@ test('Photodex entry keeps landscape photos and four official prints fixed, with
    assert.equal(await page.locator('#detail a[href]').count(),0);await page.locator('.about-place summary').first().click();assert(await page.locator('.about-place[open] .place-moment-head').count()>0);
    await page.locator('.book-nav [data-id=appearances]').click();assert.equal(await page.locator('.loose-look').count(),20);assert(await page.locator('.loose-look').evaluateAll(es=>es.every(e=>getComputedStyle(e).borderTopWidth==='0px')),'Appearance cutouts stay free of card containers');
    const next=await page.locator('.book-turn.next b').textContent();await page.locator('.book-turn.next').click();assert.equal(await page.locator('.entry-identity h2').textContent(),next);
-   await page.locator('.book-nav [data-id=photos]').click();assert(await page.locator('.photo-score-card.missing-photo').isVisible());assert(await page.locator('.photo-score-card.missing-photo').evaluate(e=>e.scrollHeight<=e.clientHeight+1),'Unregistered-photo caption does not overflow');
+   await page.locator('.book-nav [data-id=photos]').click();assert(await page.locator('.photo-score-card.missing-photo').isVisible());assert(await page.locator('.photo-score-card.missing-photo').evaluate(e=>e.scrollHeight<=e.clientHeight+1),'Unregistered-photo caption does not overflow');await images(page,'.category-tabs img');assert(await page.locator('.category-print').evaluateAll(es=>es.every(e=>{const a=e.getBoundingClientRect(),b=e.parentElement.getBoundingClientRect();return a.width>=b.width-8&&a.height>=30})), 'Missing category placeholders keep full-width tracks');assert.equal(await page.locator('.category-stars img').count(),10);assert(await paintedPixels(page,'.category-tabs button:last-child .category-stars')>20,'Missing four-star category actually paints');assert(await page.locator('.photo-display').evaluate(e=>{const r=e.getBoundingClientRect(),canvas=e.querySelector('.photo-canvas').getBoundingClientRect(),page=e.parentElement.getBoundingClientRect();return r.width>=page.width-20&&canvas.width>=Math.min(r.width-4,(r.height-4)*1.5)-2}),'Missing photos use the full available photo pane');
+   assert.deepEqual(errors,[]);await page.close();
+  }
+ }finally{await browser.close();}
+});
+
+test('LenTalk postcards retain course art, clear completion badges and full live-status solutions',async()=>{
+ const browser=await chromium.launch(options);
+ try{
+  for(const [width,height]of [[540,470],[540,405],[412,640]]){
+   const {page,errors}=await start(browser,width,height);await page.locator('#nav [data-id=requests]').click();
+   const first=await page.locator('.talk-card').first().getAttribute('data-id');
+   await page.evaluate(id=>SnapApp.update({...fixture,completed:[id]}),first);await images(page,'.talk-course-art,.talk-cutout');
+   assert.equal(await page.locator('.talk-card').count(),234);
+   assert.equal(await page.locator('.request-grid').evaluate(e=>getComputedStyle(e).gridTemplateColumns.split(' ').length),width>460?4:3);
+   const art=await page.locator('.talk-art').evaluateAll(es=>es.every(e=>{const b=e.getBoundingClientRect(),p=e.querySelector('.talk-cutout').getBoundingClientRect();return Math.abs(b.width/b.height-16/9)<.02&&p.left>=b.left&&p.right<=b.right&&p.top>=b.top&&p.bottom<=b.bottom}));assert(art,'Landscape backgrounds and whole Pokémon cutouts fit every postcard');
+   const card=page.locator('.talk-card').first();assert(await card.locator('.request-complete').isVisible());assert.equal(await card.locator('.request-complete').getAttribute('aria-label'),'Request Completed');
+   assert(await card.evaluate(e=>e.querySelector('.talk-level-stamp').getBoundingClientRect().top>=e.querySelector('.talk-art').getBoundingClientRect().bottom),'Level stays clear of the corner ribbon');
+   const pinned=await page.locator('.browse-tools').boundingBox();await page.locator('.browse-scroll').evaluate(e=>e.scrollTop=400);assert.deepEqual(await page.locator('.browse-tools').boundingBox(),pinned);
+   await page.evaluate(id=>SnapApp.openRequest(id),first);assert.equal(await page.locator('.talk-head-actions .receipt-status').textContent(),'Completed');
+   assert((await page.locator('#detail').boundingBox()).height<height*.8,'A one-step request shrinks to its content');
+   assert(await paintedPixels(page,'#detail .close .ui-symbol')>30);
+   await page.evaluate(()=>SnapApp.update(fixture));assert.equal(await page.locator('.talk-head-actions .receipt-status').textContent(),'In Progress');assert.equal(await page.locator('.talk-hero-image .request-complete').count(),0,'Completion changes update the open request');
+   const longest=await page.evaluate(()=>SNAP_CONTENT.requests.slice().sort((a,b)=>b.solution.length-a.solution.length)[0]);await page.evaluate(id=>SnapApp.openRequest(id),longest.id);await images(page,'#detail img');
+   assert.equal((await page.locator('.solution-steps p').allTextContents()).join(' ').replace(/\s+/g,' ').trim(),longest.solution.replace(/\s+/g,' ').trim(),'Every word of the full solution remains available');
+   assert(await fits(page,'.talk-dialog-head,.talk-hero,.talk-reader'),'Long solutions stay inside the screen');assert(await page.locator('.talk-reader').evaluate(e=>e.scrollHeight>e.clientHeight),'Long solutions scroll inside their own reader');
+   assert.equal(await page.locator('#detail a[href]').count(),0);
+   const rewarded=await page.evaluate(()=>SNAP_CONTENT.requests.find(r=>r.rewardArt?.some(a=>a.image)));await page.evaluate(id=>SnapApp.openRequest(id),rewarded.id);await images(page,'.reward-asset');assert(await page.locator('.reward-asset').count()>0,'Native reward preview loads');
+   assert.deepEqual(errors,[]);await page.close();
+  }
+ }finally{await browser.close();}
+});
+
+test('Guide keeps compact island courses, separate time badges and large four-category encounter cards',async()=>{
+ const browser=await chromium.launch(options);
+ try{
+  for(const [width,height]of [[540,470],[412,640]]){
+   const {page,errors}=await start(browser,width,height);await page.locator('#nav [data-id=guide]').click();await images(page,'.course-row img,.island-section>h2>img');
+   assert.equal(await page.locator('.course-row').count(),30);assert.equal(await page.locator('.island-section').count(),6);
+   assert(await page.locator('.island-section').evaluateAll(es=>es.every(e=>getComputedStyle(e).gridTemplateColumns.split(' ').length===2)));
+   const day=page.locator('.course-row[data-id=park-day]'),night=page.locator('.course-row[data-id=park-night]');assert((await day.textContent()).includes('(Day)'));assert((await night.textContent()).includes('(Night)'));assert.notEqual(await day.locator('.time-emblem img').getAttribute('src'),await night.locator('.time-emblem img').getAttribute('src'));
+   await day.click();await images(page,'#detail img');assert.equal(await page.locator('.encounter-grid').evaluate(e=>getComputedStyle(e).gridTemplateColumns.split(' ').length),width>460?5:4);
+   assert(await page.locator('.encounter .slot').evaluateAll(es=>es.every(e=>{const b=e.getBoundingClientRect(),s=e.querySelector('.star-cluster').getBoundingClientRect();return s.left>=b.left-.5&&s.right<=b.right+.5&&s.top>=b.top-.5&&s.bottom<=b.bottom+.5})),'Four star categories stay within each encounter');
+   for(const n of [1,3,0]){await page.locator('[data-action=course-level][data-id="'+n+'"]').click();const expected=await page.evaluate(n=>SnapModel.create(SNAP_CONTENT).courseSpecies('park-day',n).length,n);assert.equal(await page.locator('.encounter').count(),expected);assert.equal(await page.locator('[data-action=course-level][data-id="'+n+'"]').getAttribute('aria-pressed'),'true');}
+   await page.getByRole('button',{name:'Open Course Map',exact:true}).click();assert(await page.locator('#course-map').evaluate(e=>e.open));await page.getByRole('button',{name:'Close Course Map',exact:true}).click();
+   await page.evaluate(()=>SnapApp.openCourse('park-day'));const name=await page.locator('.encounter strong').first().textContent();await page.locator('.encounter').first().click();assert.equal(await page.locator('.entry-identity h2').textContent(),name);
    assert.deepEqual(errors,[]);await page.close();
   }
  }finally{await browser.close();}
