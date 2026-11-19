@@ -8,11 +8,12 @@ namespace {
 struct Memory {
     uint64_t base=0x40000000,main=0x10000000,tick=0;
     std::vector<uint8_t> bytes=std::vector<uint8_t>(0x40000);
+    uint64_t trigger{},change{},replacement{};unsigned reads{},on_read{1};
     template<class T>void Put(uint64_t p,const T& v){assert(p>=base&&p-base+sizeof(v)<=bytes.size());std::memcpy(bytes.data()+p-base,&v,sizeof(v));}
     void Q(uint64_t p,uint64_t v){Put(p,v);}void W(uint64_t p,uint32_t v){Put(p,v);}void F(uint64_t p,float v){Put(p,v);}
 };
 EdenDsmodBool Mapped(void* p,uint64_t a,uint64_t n){auto& m=*static_cast<Memory*>(p);return a>=m.base&&a-m.base<=m.bytes.size()&&n<=m.bytes.size()-(a-m.base);}
-EdenDsmodBool Read(void* p,uint64_t a,void* b,size_t n){if(!Mapped(p,a,n))return false;auto& m=*static_cast<Memory*>(p);std::memcpy(b,m.bytes.data()+a-m.base,n);return true;}
+EdenDsmodBool Read(void* p,uint64_t a,void* b,size_t n){if(!Mapped(p,a,n))return false;auto& m=*static_cast<Memory*>(p);std::memcpy(b,m.bytes.data()+a-m.base,n);if(a==m.trigger&&++m.reads==m.on_read)m.Q(m.change,m.replacement);return true;}
 const uint8_t* Pointer(void* p,uint64_t a,size_t n){auto& m=*static_cast<Memory*>(p);return Mapped(p,a,n)?m.bytes.data()+a-m.base:nullptr;}
 uint64_t Begin(void* p){return static_cast<Memory*>(p)->base;}uint64_t End(void* p){auto& m=*static_cast<Memory*>(p);return m.base+m.bytes.size();}uint64_t Tick(void* p){return static_cast<Memory*>(p)->tick;}
 }
@@ -37,7 +38,7 @@ int main(){
     m.Q(curve+0x48,part+57);assert(!scn::ReadRailPosition(h,curve,5));m.Q(curve+0x48,part+56);
     // Scope qualification rejects a retained scene, wrong controller and ambiguous owners.
     const uint64_t owner=m.base+0x6000,camp=m.base+0x6500,render=m.base+0x7000,render_control=m.base+0x7800,
-        world=m.base+0x8000,world_control=m.base+0x9000,hud=m.base+0xa020,records=m.base+0xb000,rail_control=m.base+0xc000;
+        world=m.base+0x8000,world_control=world-32,hud=m.base+0xa020,records=m.base+0xb000,rail_control=m.base+0xc000;
     auto observation=*scn::ReadSnapCandidate(h,scene);
     m.Q(owner,m.main+0xc800b0);m.Q(owner+0x170,scene);m.Q(owner+0x178,scene-32);m.Q(scene+0x238,owner);
     m.Q(scene+0x1a8,render);m.Q(scene+0x1b0,render_control);m.Q(render_control+8,0);
@@ -46,7 +47,7 @@ int main(){
     m.Q(camp,m.main+0xc89f88);m.Q(camp+0x90,scene);m.Q(camp+0x98,scene-32);m.W(camp+0x80,30);m.Q(scene+0x228,camp);
     m.W(scene+0x25c,30);m.W(rail+0x1e0,30);observation=*scn::ReadSnapCandidate(h,scene);
     assert(!scn::ReadSnapScope(h,observation));m.Q(scene+0x238,0);
-    m.Q(camp+0xa0,world);m.Q(camp+0xa8,world_control);m.Q(world,m.main+0xc7f5e0);m.Q(world_control+8,0);
+    m.Q(camp+0xa0,world);m.Q(camp+0xa8,world_control);m.Q(world,m.main+0xc7f5e0);m.Q(world_control,m.main+0xc7ac38);m.Q(world_control+8,0);
     auto scope=scn::ReadSnapScope(h,observation);assert(scope&&scope->kind==scn::SnapScopeKind::Camp&&scope->world==world);
     assert(!scope->expedition);assert(!scn::ReadRemainingPhotos(h,*scope,observation));
     m.Q(camp+0x38,m.main+0x61e8d0);assert(!scn::SameSnapScope(h,*scope,observation));scope=scn::ReadSnapScope(h,observation);assert(scope&&scope->expedition);
@@ -66,7 +67,39 @@ int main(){
     m.Q(scene+0x38,m.main+0x62e100);assert(!scn::ReadRemainingPhotos(h,*scope,observation));
     m.Q(world+0xb0,records+32);m.Q(records+16,hud);m.Q(records+24,hud-32);m.Q(scene+0x38,m.main+0x62e180);assert(!scn::ReadRemainingPhotos(h,*scope,observation));
     m.Q(camp+0x38,m.main+0x454ee0);assert(!scn::SameSnapScope(h,*scope,observation));assert(!scn::ReadRemainingPhotos(h,*scope,observation));
+    // Standard courses find the exact named HUD alias, then independently prove
+    // its weak world is alive and that world's shared-owned list contains it.
+    m.Q(scene+0x228,0);m.Q(scene+0x238,owner);m.W(scene+0x25c,1);m.W(rail+0x1e0,1);
+    observation=*scn::ReadSnapCandidate(h,scene);course_scope=scn::ReadSnapScope(h,observation);assert(course_scope);
+    const uint64_t registry=m.base+0xd000,registry_control=m.base+0xd100,root=m.base+0xe000,node=m.base+0xe100;
+    m.Q(render+0x30,registry);m.Q(render+0x38,registry_control);m.Q(registry_control+8,0);m.Q(registry+8,root);m.Q(registry+0x10,2);
+    m.W(root+0x20,0xc0000000);m.Q(root+8,node);m.W(node+0x20,0xcfc2a4c4);m.Q(node+0x28,hud+0x40);m.Q(node+0x30,hud-32);
+    m.Q(hud+0x40,m.main+0xc7e038);m.Q(hud+0x20,world);m.Q(hud+0x28,world_control);m.Q(world+0xb0,records+16);
+    assert(scn::ReadRemainingPhotos(h,*course_scope,observation)==72);
+    m.W(hud+0x2b8,71);assert(scn::ReadRemainingPhotos(h,*course_scope,observation)==71);m.W(hud+0x2b8,72);
+    m.W(node+0x38,1);assert(!scn::ReadRemainingPhotos(h,*course_scope,observation));m.W(node+0x38,0);
+    m.W(node+0x20,0xcfc2a4c5);assert(!scn::ReadRemainingPhotos(h,*course_scope,observation));m.W(node+0x20,0xcfc2a4c4);
+    m.Q(root+8,root);assert(!scn::ReadRemainingPhotos(h,*course_scope,observation));m.Q(root+8,node);
+    m.Q(registry+0x10,513);assert(!scn::ReadRemainingPhotos(h,*course_scope,observation));m.Q(registry+0x10,2);
+    m.Q(node+0x30,hud);assert(!scn::ReadRemainingPhotos(h,*course_scope,observation));m.Q(node+0x30,hud-32);
+    m.Q(hud+0x40,0);assert(!scn::ReadRemainingPhotos(h,*course_scope,observation));m.Q(hud+0x40,m.main+0xc7e038);
+    m.Q(world_control+8,UINT64_MAX);assert(!scn::ReadRemainingPhotos(h,*course_scope,observation));m.Q(world_control+8,0);
+    m.Q(world_control,0);assert(!scn::ReadRemainingPhotos(h,*course_scope,observation));m.Q(world_control,m.main+0xc7ac38);
+    m.Q(registry_control+8,UINT64_MAX);assert(!scn::ReadRemainingPhotos(h,*course_scope,observation));m.Q(registry_control+8,0);
+    m.Q(records+8,hud);assert(!scn::ReadRemainingPhotos(h,*course_scope,observation));m.Q(records+8,hud-32);
+    // Simulate concurrent retry/replacement after reading the counter. A valid
+    // first observation cannot authorize the value from a replaced registry,
+    // reallocated owned list, changed counter or scene transition.
+    m.trigger=hud+0x2b8;m.change=node+0x28;m.replacement=hud+0x48;m.reads=0;
+    assert(!scn::ReadRemainingPhotos(h,*course_scope,observation));m.Q(node+0x28,hud+0x40);
+    m.change=world+0xb0;m.replacement=records+32;m.reads=0;
+    assert(!scn::ReadRemainingPhotos(h,*course_scope,observation));m.Q(world+0xb0,records+16);
+    m.change=hud+0x2b8;m.replacement=70;m.reads=0;
+    assert(!scn::ReadRemainingPhotos(h,*course_scope,observation));m.W(hud+0x2b8,72);
+    m.change=scene+0x38;m.replacement=m.main+0x62e100;m.reads=0;
+    assert(!scn::ReadRemainingPhotos(h,*course_scope,observation));m.Q(scene+0x38,m.main+0x62e180);m.trigger=0;
+    assert(scn::ReadRemainingPhotos(h,*course_scope,observation)==72);
     uint64_t second=m.base+0x18020;std::memcpy(m.bytes.data()+second-m.base-32,m.bytes.data()+scene-m.base-32,0x2f0);
     scn::SnapDiscovery ambiguous;for(unsigned i=0;i<128;i++){++m.tick;assert(!ambiguous.Step(h));}
-    std::cout<<"Snap candidate checks passed: bounded discovery, controller ownership/ambiguity, shared HUD lifetime/rail/retry guards, counter bounds and curve identity. No live-game validation claimed.\n";
+    std::cout<<"Snap candidate checks passed: bounded discovery, controller ownership/ambiguity, named HUD registry, shared world/HUD lifetime, concurrent replacement/retry guards, counter bounds and curve identity. No live-game validation claimed.\n";
 }

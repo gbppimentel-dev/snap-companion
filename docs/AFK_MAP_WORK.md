@@ -1,4 +1,4 @@
-# Implementation checklist — 0.5.30-dev.3
+# Implementation checklist — 0.5.30-dev.5
 
 The user authorized extended unattended development, connected Thor control and in-place APK updates. The original app ID, signer, private data, appearance and historical v0.5.24 artifacts are preserved. This work is local; no GitHub release is published.
 
@@ -36,7 +36,7 @@ The user authorized extended unattended development, connected Thor control and 
 - [ ] Place the two withheld short rails and unverified Forest variants using reliable ownership/scene evidence. Verify new calibrations in gameplay; local artist review is not hardware acceptance.
 - [x] Verify render-camera direction and zoom on Thor; display the guarded view cone independently of the vehicle travel arrow.
 - [x] Qualify Camp controller/scene ownership, universal scene render context and native Camp remaining-photo count across a normal shot and retry (72→71→72).
-- [ ] Qualify remaining-photo world/HUD ownership in standard courses; they retain their original screen-reading provider.
+- [x] Qualify the named HUD registry and shared-owned world/HUD path in Park Day Lv.3; retain screen recognition when native guards reject a counter. Broad standard-course coverage remains part of hardware acceptance.
 - [ ] Validate all30 courses, every branch/Illumina/Forest variation, process restart and long/thermal sessions on hardware. Thirty local browser map checks are not thirty gameplay acceptance runs.
 - Removed from the requested scope: additional touch tools; the user requested removal of the map tool buttons. The passive controller strip remains.
 
@@ -67,3 +67,11 @@ No private packets were exported. Automatic review had previously rejected expor
 - [x] Defer the automatic native pause-overlay inspector until a fresh recognized game frame or verified native gameplay exists. Loading/unknown/stale/hidden contexts do not trigger it; live startup remains automatic.
 - [x] One controlled paired-shortcut cold launch reached the title with both apps alive and no new crash in the checked interval.
 - [ ] Complete repeated foreground/background and long-session stability acceptance. Android's system-server watchdog and Eden's native pause deadlock were observed during recovery; they are not counted as passing long-session tests.
+
+
+## Closing-report follow-up — code51
+
+- [x] Reproduce and prevent stacked dashboard activities after mixed launcher/explicit reopen intents using Android's single-task policy; three installed-build reopens retained one activity, its zoomed map and the same Eden process.
+- [x] Extend the typed remaining-photo provider to standard-course named HUD ownership, independently checked in Park Day Lv.3. Reject expired/deleted/changed ownership and concurrent retry states in native regressions.
+- [x] Check a full empty Park Day run, map zoom/movement, and original 114 Diamond-category preservation. The run spans codes50–51; it is not a complete all-course or long thermal acceptance claim.
+- [ ] Long-session and broad firmware/Eden recovery acceptance remains open. A defensive startup guard and successful short checks cannot prove the earlier system watchdog/native pause failures eliminated.

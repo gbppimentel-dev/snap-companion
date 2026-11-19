@@ -25,6 +25,46 @@ bool Count(uint64_t begin,uint64_t end,size_t stride,unsigned max,unsigned& out)
     if(end<begin||(end-begin)%stride||(end-begin)/stride>max)return false;
     out=unsigned((end-begin)/stride);return out>0&&Address(begin,size_t(end-begin));
 }
+bool OwnedWorld(const EdenDsmodHostApi& h,uint64_t world,uint64_t control) {
+    uint64_t vt=0;int64_t strong=-1;
+    return world>=32&&control==world-32&&Read(h,world,vt)&&vt==DataAddress(h,0xc7f5e0)&&
+        Read(h,control,vt)&&vt==DataAddress(h,0xc7ac38)&&Read(h,control+8,strong)&&strong>=0&&strong<10000;
+}
+struct RegisteredHud {
+    uint64_t registry{},registry_control{},root{},entries{},node{},hud{},control{},world{},world_control{};
+    bool operator==(const RegisteredHud& b) const {
+        return registry==b.registry&&registry_control==b.registry_control&&root==b.root&&entries==b.entries&&node==b.node&&
+            hud==b.hud&&control==b.control&&world==b.world&&world_control==b.world_control;
+    }
+};
+std::optional<RegisteredHud> ReadRegisteredHud(const EdenDsmodHostApi& h,const SnapScope& scope,
+                                             const SnapObservation& observation,uint64_t rail_control) {
+    // main+440a24 registers the HUD+0x40 alias under "InGameComponentListencer"
+    // (the game's spelling). main+427030 indexes this name by CRC32, not by a
+    // guessed global or an unbounded object graph search.
+    constexpr uint32_t hud_key=0xcfc2a4c4;
+    RegisteredHud r;int64_t strong=-1;uint64_t alias=0,vt=0,after=0;uint32_t key=0;uint8_t deleted=1;
+    if(!scope.render||!Ptr(h,scope.render+0x30,r.registry)||!Ptr(h,scope.render+0x38,r.registry_control)||
+       !Read(h,r.registry_control+8,strong)||strong<0||strong>=10000||!Ptr(h,r.registry+8,r.root)||
+       !Read(h,r.registry+0x10,r.entries)||!r.entries||r.entries>512)return {};
+    r.node=r.root;bool found=false;
+    for(unsigned visited=0;visited<32;visited++){
+        if(!Read(h,r.node+0x20,key))return {};
+        if(key==hud_key){found=true;break;}
+        uint64_t next=0;if(!Ptr(h,r.node+(key<hud_key?8:0),next)||next==r.node)return {};r.node=next;
+    }
+    if(!found||!Read(h,r.node+0x38,deleted)||deleted||!Ptr(h,r.node+0x28,alias)||alias<0x60||
+       !Read(h,alias,vt)||vt!=DataAddress(h,0xc7e038)||!Ptr(h,r.node+0x30,r.control))return {};
+    r.hud=alias-0x40;
+    if(r.control!=r.hud-32||!Read(h,r.hud,vt)||vt!=DataAddress(h,0xc7df90)||
+       !Read(h,r.control,vt)||vt!=DataAddress(h,0xc7e150)||!Read(h,r.control+8,strong)||strong<0||strong>=10000||
+       !Read(h,r.hud+0x68,after)||after!=observation.rail||!Read(h,r.hud+0x70,after)||after!=rail_control||
+       !Ptr(h,r.hud+0x20,r.world)||!Ptr(h,r.hud+0x28,r.world_control)||!OwnedWorld(h,r.world,r.world_control)||
+       !Read(h,scope.render+0x30,after)||after!=r.registry||!Read(h,scope.render+0x38,after)||after!=r.registry_control||
+       !Read(h,r.registry_control+8,strong)||strong<0||strong>=10000||!Read(h,r.registry+8,after)||after!=r.root||
+       !Read(h,r.registry+0x10,after)||after!=r.entries)return {};
+    return r;
+}
 struct Node { Vec3 point{},tangent{};float end{},length{}; };
 bool GetNode(const EdenDsmodHostApi& h,uint64_t p,Node& n) {
     return Read(h,p,n.point)&&Read(h,p+16,n.tangent)&&Read(h,p+32,n.end)&&Read(h,p+36,n.length)&&
@@ -140,10 +180,15 @@ bool SameSnapScope(const EdenDsmodHostApi& h,const SnapScope& scope,const SnapOb
 }
 std::optional<unsigned> ReadRemainingPhotos(const EdenDsmodHostApi& h,const SnapScope& scope,const SnapObservation& observation) {
     uint64_t phase=0,begin=0,end=0,after=0,rail_control=0;int64_t strong=-1;
-    if(!scope.expedition||!scope.world||!SameSnapScope(h,scope,observation)||!Read(h,observation.scene+0x38,phase)||
+    if(!scope.expedition||!SameSnapScope(h,scope,observation)||!Read(h,observation.scene+0x38,phase)||
        (phase!=h.main_base+0x62e180&&phase!=h.main_base+0x630240)||
-       !Ptr(h,observation.scene+0x88,rail_control)||!Read(h,rail_control+8,strong)||strong<0||strong>10000||
-       !Ptr(h,scope.world+0xa8,begin)||!Read(h,scope.world+0xb0,end))return {};
+       !Ptr(h,observation.scene+0x88,rail_control)||!Read(h,rail_control+8,strong)||strong<0||strong>10000)return {};
+    uint64_t world=scope.world,world_control=scope.world_control;std::optional<RegisteredHud> registered;
+    if(scope.kind==SnapScopeKind::Course){
+        registered=ReadRegisteredHud(h,scope,observation,rail_control);if(!registered)return {};
+        world=registered->world;world_control=registered->world_control;
+    }
+    if(!OwnedWorld(h,world,world_control)||!Ptr(h,world+0xa8,begin)||!Read(h,world+0xb0,end))return {};
     // main+3f0edc destroys this vector of shared-owned objects (16-byte entries).
     // The separate +0x60 callback list holds raw captures and is not an ownership list.
     unsigned count=0;if(!Count(begin,end,16,128,count))return {};
@@ -157,13 +202,16 @@ std::optional<unsigned> ReadRemainingPhotos(const EdenDsmodHostApi& h,const Snap
         ++matches;result=unsigned(remaining);selected=hud;selected_entry=entry;
     }
     int remaining=-1;
-    if(matches!=1||!Read(h,selected_entry,after)||after!=selected||!Read(h,selected_entry+8,after)||after!=selected-32||
+    if(matches!=1||(registered&&selected!=registered->hud)||
+       !Read(h,selected_entry,after)||after!=selected||!Read(h,selected_entry+8,after)||after!=selected-32||
        !Read(h,selected,after)||after!=DataAddress(h,0xc7df90)||!Read(h,selected-32,after)||after!=DataAddress(h,0xc7e150)||
        !Read(h,selected-24,strong)||strong<0||strong>10000||!Read(h,selected+0x2b8,remaining)||remaining!=int(result)||
        !Read(h,selected+0x68,after)||after!=observation.rail||!Read(h,selected+0x70,after)||after!=rail_control||
-       !Read(h,scope.world+0xa8,after)||after!=begin||!Read(h,scope.world+0xb0,after)||after!=end||
+       !OwnedWorld(h,world,world_control)||!Read(h,world+0xa8,after)||after!=begin||!Read(h,world+0xb0,after)||after!=end||
        !Read(h,observation.scene+0x80,after)||after!=observation.rail||!Read(h,observation.scene+0x88,after)||after!=rail_control||
+       !Read(h,observation.rail+0x30,after)||after!=observation.curve||
        !Read(h,observation.scene+0x38,after)||after!=phase||!SameSnapScope(h,scope,observation))return {};
+    if(registered){auto current=ReadRegisteredHud(h,scope,observation,rail_control);if(!current||!(*current==*registered))return {};}
     return result;
 }
 std::optional<SnapObservation> SnapDiscovery::Step(const EdenDsmodHostApi& h) {
