@@ -97,6 +97,31 @@ struct Reader {
   for(unsigned i=0;i<points.size();i++){auto&p=points[i];std::snprintf(part,sizeof(part),"%s[%.5f,%.5f,%.5f]",i?",":"",p[0],p[1],p[2]);result+=part;}
   result+="]";geometry_curve=value.curve;geometry_course=value.course;geometry_length=value.curve_length;geometry_json=result;return result;
  }
+ std::string Camera(uint64_t owner,const scn::SnapObservation& value,uint64_t phase){
+  // The gameplay controller writes the primary camera through world+0x10 -> set[0].
+  // Never confuse world+0x50 (physics) with the render camera. All process reads stay read-only.
+  if(!value.world||(phase!=base+0x62e180&&phase!=base+0x630240))return "";
+  for(unsigned attempt=0;attempt<2;attempt++){
+   uint64_t world=0,worldControl=0,set=0,setControl=0,camera=0,cameraControl=0,vt=0,method=0,after=0;int64_t strong=-1;
+   auto alive=[&](uint64_t control){return control>=0x10000&&!(control&7)&&Read(control+8,strong)&&strong>=0&&strong<10000;};
+   if(!Read(owner+0x98,world)||!Read(owner+0xa0,worldControl)||!alive(worldControl)||
+      !Read(world+0x10,set)||!Read(world+0x18,setControl)||!alive(setControl)||
+      !Read(set,camera)||!Read(set+8,cameraControl)||camera<32||cameraControl!=camera-32||!alive(cameraControl)||
+      !Read(camera,vt)||vt!=base+0xc79f80||!Read(vt+16,method)||method!=base+0x295170)return "";
+   struct Pose {float values[24];} pose{},again{};
+   if(!Read(camera+0xd0,pose)||!Read(camera+0xd0,again)||std::memcmp(&pose,&again,sizeof(pose)))continue;
+   scn::Vec3 eye{},forward{},up{};for(unsigned i=0;i<3;i++){eye[i]=pose.values[i];forward[i]=pose.values[4+i]-eye[i];up[i]=pose.values[8+i];}
+   auto valid=[](const scn::Vec3&v){return std::all_of(v.begin(),v.end(),[](float n){return std::isfinite(n)&&std::abs(n)<1e5f;});};
+   float fov=pose.values[22],aspect=pose.values[23];if(!valid(eye)||!valid(forward)||!valid(up)||!std::isfinite(fov)||fov<.1f||fov>2.8f||!std::isfinite(aspect)||aspect<.5f||aspect>3.f)return "";
+   float norm=0,upNorm=0,offset=0;for(unsigned i=0;i<3;i++){norm+=forward[i]*forward[i];upNorm+=up[i]*up[i];float d=eye[i]-(*value.world)[i];offset+=d*d;}
+   if(norm<.01f||norm>1e6f||upNorm<.25f||upNorm>2.25f||offset>100.f)return "";
+   norm=std::sqrt(norm);upNorm=std::sqrt(upNorm);float dot=0;for(unsigned i=0;i<3;i++){forward[i]/=norm;up[i]/=upNorm;dot+=forward[i]*up[i];}if(std::abs(dot)>.1f)return "";
+   if(!Read(owner+0x98,after)||after!=world||!Read(owner+0xa0,after)||after!=worldControl||!alive(worldControl)||
+      !Read(world+0x10,after)||after!=set||!Read(world+0x18,after)||after!=setControl||!alive(setControl)||
+      !Read(set,after)||after!=camera||!Read(set+8,after)||after!=cameraControl||!alive(cameraControl)||!Read(camera,after)||after!=vt)continue;
+   char out[330];std::snprintf(out,sizeof(out),",\"camera\":{\"forward\":[%.6f,%.6f,%.6f],\"up\":[%.6f,%.6f,%.6f],\"fovY\":%.6f,\"aspect\":%.6f}",forward[0],forward[1],forward[2],up[0],up[1],up[2],fov,aspect);return out;
+  }return "";
+ }
  std::string Sample(){
   if(Clock::now()-maps_at>std::chrono::seconds(1)&&!Maps())return "{\"status\":\"unavailable\"}";
   uint64_t owner=0;
@@ -111,7 +136,7 @@ struct Reader {
   int n=std::snprintf(out,sizeof(out),"{\"status\":\"ready\",\"courseId\":%u,\"level\":%u,\"distance\":%.6f,\"length\":%.6f,\"phaseRva\":%llu,\"forward\":[%.6f,%.6f,%.6f]",sample->course,sample->selected_level,sample->distance,sample->curve_length,(unsigned long long)(phase-base),sample->forward[0],sample->forward[1],sample->forward[2]);
   std::string json(out,size_t(std::max(0,n)));json+=",\"run\":"+std::to_string(run_sequence);
   if(sample->world){auto&w=*sample->world;std::snprintf(out,sizeof(out),",\"world\":[%.6f,%.6f,%.6f]",w[0],w[1],w[2]);json+=out;}
-  json+=Geometry(*sample);
+  json+=Geometry(*sample);json+=Camera(owner,*sample,phase);
   if(!Read(owner+0x170,after)||after!=scene||!Read(scene+0x80,after)||after!=sample->rail||!Read(sample->rail+0x30,after)||after!=sample->curve)return "{\"status\":\"idle\"}";
   return json+"}";
  }

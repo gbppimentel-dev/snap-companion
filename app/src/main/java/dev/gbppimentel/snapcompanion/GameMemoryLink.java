@@ -41,8 +41,18 @@ final class GameMemoryLink implements AutoCloseable {
    if(row.has("at"))out.put("sampleAt",row.getLong("at"));
    long phase=row.optLong("phaseRva");out.put("tools",GameToolRules.gameplay(row.optString("status"),phase)&&row.optBoolean("inputAvailable"));JSONObject feedback=row.optJSONObject("lastAction");if(feedback!=null&&GameToolRules.key(feedback.optString("action"))>=0)out.put("lastAction",new JSONObject().put("action",feedback.optString("action")).put("accepted",feedback.optBoolean("accepted")).put("at",feedback.optLong("at")));out.put("phase",phase==0x62e180?"research":phase==0x630240?"paused":"transition");
    for(String key:new String[]{"world","forward"}){JSONArray value=row.optJSONArray(key);if(vector(value))out.put(key,value);}
+   JSONObject camera=row.optString("status").equals("ready")&&(phase==0x62e180||phase==0x630240)?cameraSnapshot(row.optJSONObject("camera")):null;if(camera!=null)out.put("camera",camera);
    JSONArray points=row.optJSONArray("routePoints");if(points!=null&&points.length()>=2&&points.length()<=97){boolean valid=true;for(int i=0;i<points.length();i++)if(!vector(points.optJSONArray(i)))valid=false;if(valid)out.put("routePoints",points);}
   }catch(JSONException ignored){return new JSONObject();}return out;
+ }
+ static JSONObject cameraSnapshot(JSONObject source){
+  if(source==null)return null;try{
+   JSONArray forward=source.optJSONArray("forward"),up=source.optJSONArray("up");double fov=source.optDouble("fovY"),aspect=source.optDouble("aspect");
+   if(!vector(forward)||!vector(up)||!Double.isFinite(fov)||fov<.1||fov>2.8||!Double.isFinite(aspect)||aspect<.5||aspect>3)return null;
+   double norm=0,upNorm=0,dot=0;for(int i=0;i<3;i++){norm+=forward.getDouble(i)*forward.getDouble(i);upNorm+=up.getDouble(i)*up.getDouble(i);dot+=forward.getDouble(i)*up.getDouble(i);}
+   if(Math.abs(norm-1)>.02||Math.abs(upNorm-1)>.02||Math.abs(dot)>.1)return null;
+   return new JSONObject().put("forward",forward).put("up",up).put("fovY",fov).put("aspect",aspect);
+  }catch(JSONException e){return null;}
  }
  private static boolean vector(JSONArray values){if(values==null||values.length()!=3)return false;for(int i=0;i<3;i++){double n=values.optDouble(i,Double.NaN);if(!Double.isFinite(n)||Math.abs(n)>=1e6)return false;}return true;}
  private boolean samplerAlive(long now){

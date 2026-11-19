@@ -21,3 +21,9 @@ One OCR request is in flight. Duplicate suppression, adaptive cost/thermal budge
 The existing AYN priority helper can adjust scheduling groups for visible Eden and performs a guarded startup focus/pause repair. These are fixed firmware operations, not saved-game edits or ordinary game-input injection. Their firmware dependence is part of the compatibility boundary.
 
 The UI permits only bundled assets and private current-photo responses. It blocks arbitrary file/content/network navigation. Original saves are not written. Private diagnostic metrics contain opaque sessions/epochs and counters rather than OCR text, profile IDs or photographs.
+
+## live route and view
+
+A Thor-specific read-only native helper validates the owned game fingerprint and active object ownership before supplying course, selected level, rail geometry/distance, pose and render-camera orientation/lens readings at20Hz. Java and the map model whitelist and validate the game fields; session/process metadata never enters the WebView feed. The camera follows an owned world/primary-camera chain, verifies type/update identity and consistent pose reads, then revalidates ownership. Its normalized forward/up vectors, vertical FOV and aspect produce a guarded schematic cone.
+
+The illustrated map matches directed rail geometry against the factual catalog. Branch prefixes, mandatory continuations and observed transitions drive section/current-path progress; uncertain histories retain ranges or stay unknown. Bounded calibration intervals map measured rail distance to the illustration. Shared measured junctions receive small local alignment corrections; rejected gaps are never interpolated. Map-coordinate marker groups are deterministic under panning, and pins counter-scale through zoom. Photography-tool buttons are absent from the map; the original passive controller feedback remains.

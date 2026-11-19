@@ -1,4 +1,4 @@
-# Implementation checklist — 0.5.27-dev.2
+# Implementation checklist — 0.5.28-dev.2
 
 The user authorized extended unattended development, connected Thor control and in-place APK updates. The original app ID, signer, private data, appearance and historical v0.5.24 artifacts are preserved. This work is local; no GitHub release is published.
 
@@ -15,17 +15,21 @@ The user authorized extended unattended development, connected Thor control and 
 - [x] Integrated illustrated route position/travelled trail; separate tracker tab removed. Named section and current-path course progress.
 - [x] Geometry-based rail identity, required/conditional rail-change graph, unequal-branch/rejoin progress and honest cold-opening ranges. Broad branch hardware acceptance is still pending.
 - [x] Fast game-only map feed; no reader token, PID, raw pointer or timing metadata reaches WebView.
-- [x] Stale, future, other-course and transition samples cannot drive the player marker or touch buttons.
-- [x] Four fixed touch tools: Fluffruit, Illumina Orb, Melody and Scan. All four produced their visible game effects on Thor.
+- [x] Stale, future, other-course and transition samples cannot drive the player marker or camera cone.
+- [x] Historical code40 tool validation (map buttons subsequently removed at user request): Fluffruit, Illumina Orb, Melody and Scan. All four produced their visible game effects on Thor.
 - [x] Tool requests check fresh native gameplay, the upper Eden window, visible drawer/paused overlays, exact built-in controller and held-key state; each press has a fixed80ms duration and always attempts release.
 - [x] Original passive controller feedback and saved-data/photo-selection features retained.
 - [x] GPL/NDK notices bundled, native symbol/map packaging checks and original signer/upgrade checks.
 - [x] Consolidated code42 APK installed in place. Sands Night movement/section progress, Park Day automatic detection and required Flower Field transition checked on Thor; original114 Diamond categories retained.
 
+- [x] Exclusive All/Missing Diamonds/LenTalk/Hidden modes, fixed-size map-anchored clusters and a compact horizontal control bar.
+- [x] Map photography-tool buttons removed; full-width section/course progress retained.
+- [x]49 shared branch/rejoin seams aligned with bounded corrections; skipped short rails, ambiguous transitions, unrelated cycles and loop history covered by model regressions.
+
 ## Still open
 
 - [ ] Complete the remaining illustration alignments: Jungle main rails, disconnected Forest seasonal scenes, Outaway Cave and Research Camp. Portions of27 course illustrations/92 rails have bounded schematic alignments; rejected intervals remain unknown.
-- [ ] Verify the camera viewing direction and view cone. Current heading is vehicle travel direction.
+- [x] Verify render-camera direction and zoom on Thor; display the guarded view cone independently of the vehicle travel arrow.
 - [ ] Resolve active HUD ownership across retries before using its remaining-photo counter. A typed counter candidate was found, but the experiment was removed from the shipped reader because retry ownership is not proven. Existing screen-reading features retain their prior provider.
 - [ ] Validate all30 courses, every branch/Illumina/Forest variation, process restart and long/thermal sessions on hardware. Thirty local browser map checks are not thirty gameplay acceptance runs.
 - [ ] Any further touch controls such as aiming/turbo/shutter need separate state/input validation; there is no arbitrary-key or guest-memory write surface.
