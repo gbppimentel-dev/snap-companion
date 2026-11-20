@@ -5,8 +5,9 @@ import java.util.*;
 /** Immutable OCR observations. Confidence is a recognition/heuristic score, not a measured probability. */
 public record LiveReading(long capturedAt, String source, String profileId, Scene scene, Map<String, Value> fields) {
     public enum Scene { UNKNOWN, TITLE, MENU, COURSE_SELECTION, COURSE_INTRO, EXPEDITION, PHOTO_SELECTION, EVALUATION, RESULTS, PHOTODEX, REQUEST_COMPLETE, UNLOCK, PAUSED }
-    public record Word(String text, double left, double top, double right, double bottom, float confidence,boolean filmProbe) {
-        public Word(String text,double left,double top,double right,double bottom,float confidence){this(text,left,top,right,bottom,confidence,false);}
+    public record Word(String text, double left, double top, double right, double bottom, float confidence,boolean filmProbe,boolean selectionProbe) {
+        public Word(String text,double left,double top,double right,double bottom,float confidence){this(text,left,top,right,bottom,confidence,false,false);}
+        public Word(String text,double left,double top,double right,double bottom,float confidence,boolean filmProbe){this(text,left,top,right,bottom,confidence,filmProbe,false);}
         public double x() { return (left + right) / 2; }
         public double y() { return (top + bottom) / 2; }
     }

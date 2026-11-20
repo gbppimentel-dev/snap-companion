@@ -366,3 +366,18 @@ test('star-photo specifics follow the selected category and course, preserve ste
   }
  }finally{await browser.close();}
 });
+
+test('Photo Selection replaces subjects immediately, clears unknown references and updates its notice',async()=>{
+ const browser=await chromium.launch(options);
+ try{
+  for(const [width,height]of [[540,470],[540,405],[412,640]]){
+   const {page,errors}=await start(browser,width,height);
+   await page.evaluate(()=>SnapApp.update({...fixture,phase:'selection',photoPhase:{subject:810,category:1,photosTaken:12}}));assert.equal(await page.locator('.selection-identity h2').textContent(),'Grookey');assert.equal(await page.locator('.selection-reference.registered').count(),3);
+   await page.evaluate(()=>SnapApp.update({...fixture,phase:'selection',photoPhase:{subject:172,category:3,photosTaken:12}}));assert.equal(await page.locator('.selection-identity h2').textContent(),'Pichu');assert.equal(await page.locator('.selection-reference.registered').count(),0);assert.equal(await page.locator('.selection-reference.current').getAttribute('data-id'),'3');
+   await page.evaluate(()=>SnapApp.update({...fixture,phase:'selection',photoPhase:{}}));assert.equal(await page.locator('.selection-identity h2').textContent(),'Reading Selection');assert.equal(await page.locator('.selection-reference.registered,.selection-reference.current').count(),0);assert.equal(await page.locator('.selection-reference:disabled').count(),4);
+   assert(await fits(page,'.selection-head,.selection-ledger,.selection-footer'));await page.locator('#nav [data-id=dex]').click();assert(await page.locator('#selection-notice').isVisible());assert.equal(await page.locator('#selection-notice small').count(),0);
+   await page.evaluate(()=>SnapApp.update({...fixture,phase:'selection',photoPhase:{subject:810,category:4}}));assert.equal(await page.locator('#selection-notice small').textContent(),'Grookey');await page.evaluate(()=>SnapApp.update({...fixture,phase:'selection',photoPhase:{subject:172}}));assert.equal(await page.locator('#selection-notice small').textContent(),'Pichu');
+   await page.locator('#selection-notice').click();assert.equal(await page.locator('.selection-identity h2').textContent(),'Pichu');assert.equal(await page.locator('.selection-reference.current').count(),0);await page.evaluate(()=>SnapApp.update({...fixture,phase:'evaluation',photoPhase:{subject:172,category:4}}));assert.equal(await page.locator('.selection-desk').count(),0);assert.deepEqual(errors,[]);await page.close();
+  }
+ }finally{await browser.close();}
+});

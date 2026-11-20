@@ -9,7 +9,12 @@ final class SnapUiState {
         if(!running||!visible){previous=LiveReading.Scene.UNKNOWN;lastRecognizedAt=lastFrameAt=finishedAt=0;clear(now);return new View(running?"background":"waiting","",0,0,null);}
         if(!fresh){if(now<lastFrameAt||now-lastFrameAt>10000)clear(now);return new View("playing",course,level,0,null);}
         if(lastFrameAt>0&&sceneAt-lastFrameAt>10000)clear(sceneAt-2500);
-        if(scene==LiveReading.Scene.UNKNOWN){if(sceneAt<lastRecognizedAt||sceneAt-lastRecognizedAt>10000)clear(Math.max(resetAt,sceneAt));return new View("playing",course,Math.max(0,level),0,null);}
+        if(scene==LiveReading.Scene.UNKNOWN){
+            // Keep only the desk presentation through a short unreadable transition.
+            // Subject/category are deliberately absent until a current reading confirms them.
+            if(previous==LiveReading.Scene.PHOTO_SELECTION&&lastRecognizedAt>0&&sceneAt>=lastRecognizedAt&&now>=lastRecognizedAt&&now-lastRecognizedAt<=1500)return new View("selection",course,Math.max(0,level),0,null);
+            if(sceneAt<lastRecognizedAt||sceneAt-lastRecognizedAt>10000)clear(Math.max(resetAt,sceneAt));return new View("playing",course,Math.max(0,level),0,null);
+        }
         lastRecognizedAt=sceneAt;
         if((scene==LiveReading.Scene.COURSE_SELECTION||scene==LiveReading.Scene.COURSE_INTRO)&&previous!=scene)clear(Math.max(resetAt,sceneAt));
         if(scene==LiveReading.Scene.EXPEDITION&&previous!=scene&&finishedAt>courseAt)clear(Math.max(resetAt,finishedAt));

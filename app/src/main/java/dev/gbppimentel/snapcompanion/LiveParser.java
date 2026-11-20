@@ -31,7 +31,7 @@ public final class LiveParser {
         else if (contains(text,"professor s evaluation") || scoreLabels >= 3 && any(text,"total", "total score", "evaluation")) scene=LiveReading.Scene.EVALUATION;
         else if (any(text,"registered to the photodex", "registered in your photodex")) scene=LiveReading.Scene.PHOTODEX;
         else if (any(text,"expedition results", "research results", "course score", "research points", "expedition points")) scene=LiveReading.Scene.RESULTS;
-        else if (any(text,"choose photos", "choose photographs", "select photos", "photo selection", "choose a pokemon", "select a pokemon", "choose a photo", "select a photo", "photos to show", "show the selected photos to the professor", "have your photos chosen automatically", "remove checks from all photos", "you cannot select a photo with no subject", "you cannot select a photo in which the subject is not clearly visible", "remove check marks from selected photos", "you cannot select photos in which the illumina phenomenon isn t shown")) scene=LiveReading.Scene.PHOTO_SELECTION;
+        else if (PhotoSelectionText.innerPicker(identityWords)||PhotoSelectionText.highlightedOverview(identityWords)||any(text,"choose photos", "choose photographs", "select photos", "photo selection", "choose a pokemon", "select a pokemon", "choose a photo", "select a photo", "photos to show", "show the selected photos to the professor", "have your photos chosen automatically", "remove checks from all photos", "you cannot select a photo with no subject", "you cannot select a photo in which the subject is not clearly visible", "remove check marks from selected photos", "you cannot select photos in which the illumina phenomenon isn t shown")) scene=LiveReading.Scene.PHOTO_SELECTION;
         else if (any(text,"photodex score", "registered photos")) scene=LiveReading.Scene.PHOTODEX;
         else if(cameraHud) scene=LiveReading.Scene.EXPEDITION;
         else if (any(text,"select a course to research", "select research level and start", "change research level") || any(text,"research level","research lv") && (detectedCourse!=null||courses.hasName(text))) scene=LiveReading.Scene.COURSE_SELECTION;
@@ -55,8 +55,12 @@ public final class LiveParser {
         }
         if(scene==LiveReading.Scene.PAUSED||requestList)return new LiveReading(at,source,profileId,scene,fields);
         Set<Integer> subjects=new LinkedHashSet<>();
-        for(Catalog.Species s:catalog.species) if(contains(text,s.name())) subjects.add(s.id());
-        if(subjects.size()==1) put(fields,"subject",subjects.iterator().next().toString(),CourseText.quality(words,catalog.species(subjects.iterator().next()).name()),"One species name visible; no visual species recognition");
+        boolean selection=scene==LiveReading.Scene.PHOTO_SELECTION,highlighted=selection&&PhotoSelectionText.highlightedOverview(identityWords);
+        List<LiveReading.Word> subjectWords=highlighted?identityWords.stream().filter(LiveReading.Word::selectionProbe).collect(java.util.stream.Collectors.toList()):identityWords;
+        String subjectText=highlighted?CourseText.ordered(subjectWords):text;
+        boolean noSubject=selection&&any(text,"you cannot select a photo with no subject","you cannot select a photo in which the subject is not clearly visible");
+        if(!noSubject)for(Catalog.Species s:catalog.species)if(contains(subjectText,s.name())&&(!selection||highlighted||CourseText.quality(subjectWords,s.name())>=.8f))subjects.add(s.id());
+        if(subjects.size()==1)put(fields,"subject",subjects.iterator().next().toString(),CourseText.quality(subjectWords,catalog.species(subjects.iterator().next()).name()),highlighted?"Highlighted selection label; exact OCR name on gold folder paper":selection?"Selection subject; single strong exact species label":"One species name visible; no visual species recognition");
         if(scene==LiveReading.Scene.EXPEDITION) {
             Set<String> counts=new HashSet<>();
             float filmQuality=quality;

@@ -12,4 +12,18 @@ public class SnapUiStateTest {
  @Test public void replayingAnOldSelectionAfterBackgroundCannotLowerTheResetBoundary(){var state=new SnapUiState();state.update("default","1",true,true,true,LiveReading.Scene.COURSE_SELECTION,1000,course(1000),1000);state.update("default","1",true,false,false,LiveReading.Scene.COURSE_SELECTION,1000,course(1000),2000);var stale=state.update("default","1",true,true,true,LiveReading.Scene.COURSE_SELECTION,1000,course(1000),2500);assertEquals("",stale.course());assertEquals(0,stale.level());}
  @Test public void continuouslyUnrecognizedFramesDoNotKeepAnOldCourseAlive(){var state=new SnapUiState();state.update("default","1",true,true,true,LiveReading.Scene.COURSE_SELECTION,1000,course(1000),1000);state.update("default","1",true,true,true,LiveReading.Scene.EXPEDITION,2000,Map.of(),2000);assertEquals("park-day",state.update("default","1",true,true,true,LiveReading.Scene.UNKNOWN,5000,course(1000),5000).course());assertEquals("",state.update("default","1",true,true,true,LiveReading.Scene.UNKNOWN,13000,course(1000),13000).course());assertEquals("",state.update("default","1",true,true,true,LiveReading.Scene.EXPEDITION,13500,course(1000),13500).course());assertEquals("park-day",state.update("default","1",true,true,true,LiveReading.Scene.EXPEDITION,14000,course(14000),14000).course());}
  @Test public void introCannotReuseAnOlderLevelEvenWhenCourseEvidenceBeganOnTheMap(){var state=new SnapUiState();state.update("default","1",true,true,true,LiveReading.Scene.COURSE_SELECTION,1000,course(1000),1000);var c=new LiveStabilizer.Stable("course","park-day",.99f,1000,2000,3,"screen","default","course title");var intro=state.update("default","1",true,true,true,LiveReading.Scene.COURSE_INTRO,2000,Map.of("course",c,"researchLevel",field("researchLevel","2",1000)),2000);assertEquals("park-day",intro.course());assertEquals(0,intro.level());}
+ @Test public void briefUnreadableSelectionKeepsOnlyTheDeskAndNeverAnOldSubject(){
+  var state=new SnapUiState();var prior=Map.of("subject",field("subject","810",1000),"category",field("category","3",1000));
+  state.update("default","1",true,true,true,LiveReading.Scene.PHOTO_SELECTION,1000,prior,1000);
+  var brief=state.update("default","1",true,true,true,LiveReading.Scene.UNKNOWN,1500,prior,1500);assertEquals("selection",brief.phase());assertEquals(0,brief.subject());
+  assertEquals("playing",state.update("default","1",true,true,true,LiveReading.Scene.UNKNOWN,2600,prior,2600).phase());
+  assertEquals("playing",state.update("default","1",true,true,false,LiveReading.Scene.UNKNOWN,1500,prior,2700).phase());
+ }
+ @Test public void knownExitBackgroundAndNewProcessEndSelectionContinuityImmediately(){
+  for(var scene:List.of(LiveReading.Scene.EVALUATION,LiveReading.Scene.MENU,LiveReading.Scene.EXPEDITION,LiveReading.Scene.PAUSED)){
+   var state=new SnapUiState();state.update("default","1",true,true,true,LiveReading.Scene.PHOTO_SELECTION,1000,Map.of(),1000);assertNotEquals("selection",state.update("default","1",true,true,true,scene,1200,Map.of(),1200).phase());
+  }
+  var state=new SnapUiState();state.update("default","1",true,true,true,LiveReading.Scene.PHOTO_SELECTION,1000,Map.of(),1000);assertEquals("background",state.update("default","1",true,false,true,LiveReading.Scene.UNKNOWN,1200,Map.of(),1200).phase());
+  state.update("default","1",true,true,true,LiveReading.Scene.PHOTO_SELECTION,2000,Map.of(),2000);assertNotEquals("selection",state.update("default","2",true,true,true,LiveReading.Scene.UNKNOWN,2200,Map.of(),2200).phase());
+ }
 }

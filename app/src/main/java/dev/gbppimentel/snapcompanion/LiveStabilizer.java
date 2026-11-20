@@ -35,6 +35,10 @@ public final class LiveStabilizer {
             Stable old=pending.get(key);boolean same=old!=null&&old.value().equals(value.value())&&reading.capturedAt()-old.lastSeen()<3000;
             Stable next=new Stable(key,value.value(),value.confidence(),same?old.firstSeen():reading.capturedAt(),reading.capturedAt(),same?old.frames()+1:1,reading.source(),reading.profileId(),value.evidence());pending.put(key,next);
             int needed=reading.scene()==LiveReading.Scene.COURSE_INTRO&&value.confidence()>=.9f&&(key.equals("course")||key.equals("researchLevel"))?Math.min(requiredFrames,2):requiredFrames;
+            // Menu focus changes faster than course identity. Two distinct strong readings
+            // confirm subject/category; a different or missing subject still clears both first.
+            if(reading.scene()==LiveReading.Scene.PHOTO_SELECTION&&value.confidence()>=.9f
+                &&(key.equals("subject")||key.equals("category")))needed=Math.min(requiredFrames,2);
             if(next.frames()>=needed) {
                 Stable existing=stable.put(key,next);
                 if(existing==null||!existing.value().equals(next.value())||!existing.fresh(reading.capturedAt()))changed.add(next);

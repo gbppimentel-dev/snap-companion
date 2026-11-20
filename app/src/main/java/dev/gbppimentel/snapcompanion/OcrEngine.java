@@ -45,7 +45,7 @@ public final class OcrEngine implements AutoCloseable {
         });
         return true;
     }
-    private void deliver(Bitmap bitmap,List<LiveReading.Word> words,long start,boolean cameraHud,OcrDelivery callback){if(cameraHud)readFilm(bitmap,words,start,callback);else callback.success(List.copyOf(words),android.os.SystemClock.elapsedRealtime()-start);}
+    private void deliver(Bitmap bitmap,List<LiveReading.Word> words,long start,boolean cameraHud,OcrDelivery callback){if(cameraHud)readFilm(bitmap,words,start,callback);else callback.success(PhotoSelectionDetector.annotate(bitmap,words),android.os.SystemClock.elapsedRealtime()-start);}
     private void readOverlay(Bitmap bitmap,List<LiveReading.Word> words,long start,boolean cameraHud,OcrDelivery callback){
         // Eden's small magenta overlay disappears in a full-frame 960px read. Reuse this
         // frame, isolate the configured-color pixels and magnify; at most once/second.
