@@ -88,3 +88,13 @@ content remain unchanged.
 - Thor was absent from the final ADB inventory. This build is local only;
   installation and validation against the user's actual selection screen remain
   pending. These local checks do not establish live OCR accuracy or latency.
+
+### Deployment follow-up — 2026-11-20
+
+On the user's subsequent push/open request, Thor reconnected and the APK was
+installed in place with `adb install -r` (Success). Package metadata confirms
+`0.5.34-dev.1` / code61. Snap is open at its title screen on display0 and the
+updated companion is open on display4. No save clearing, emulator configuration
+changes or photo submissions were performed. This supersedes the local-only
+delivery status above; actual Photo Selection recognition remains unverified
+in-game because the game was left at its title screen for the user.
