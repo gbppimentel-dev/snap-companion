@@ -40,4 +40,7 @@ assert (ROOT/'app/src/main/assets/ui/github.svg').is_file()
 notes = runpy.run_path(str(ROOT/'tools/prepare_request_walkthroughs.py'))['prepare']()
 assert (ROOT/'app/src/main/assets/ui/request-details.js').read_text() == notes
 assert 'https://' not in notes and 'http://' not in notes
+photos = runpy.run_path(str(ROOT/'tools/prepare_photo_walkthroughs.py'))['prepare']()
+assert (ROOT/'app/src/main/assets/ui/photo-details.js').read_text() == photos
+assert 'https://' not in photos and 'http://' not in photos
 print(f'Publication audit passed: {count} source/documentation files; private inputs excluded.')

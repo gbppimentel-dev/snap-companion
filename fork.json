@@ -2,8 +2,8 @@
   "name": "Snap Companion",
   "channel": "development",
   "applicationId": "dev.gbppimentel.snapcompanion",
-  "version": "0.5.33-dev.2",
-  "versionCode": 59,
+  "version": "0.5.33-dev.3",
+  "versionCode": 60,
   "base": {
     "version": "0.5.24",
     "versionCode": 36,
@@ -19,7 +19,7 @@
     "updatesExistingApp": true,
     "requiredDuoMod": false,
     "reader": "bundled Thor-specific persistent read-only native sampler (20 Hz)",
-    "status": "development; refined Live/photo notebooks and optional reviewed LenTalk walkthroughs; newest saved image prioritized; native reader retained",
+    "status": "development; star-photo setup/timing readers with reviewed methods and scoped references; native reader retained",
     "supersedes": "separate Next APK and mod-only delivery"
   }
 }

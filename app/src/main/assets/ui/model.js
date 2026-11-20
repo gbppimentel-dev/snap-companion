@@ -29,6 +29,13 @@ function create(data){
  function photoBrief(text){let t=String(text||'').split(/ (?=(?:Prompt|Throw|Use|Play|Find|Look|Wait|Hit|Wake|Give|When|Start|After|First|Scan|During|Feed|Once)\b)/)[0];return brief(t,90);}
  function location(p,star,course){const cue=p.cues.find(c=>c.stars===star);if(cue)return{...cue,course:cue.course||'',level:cue.course?cue.level:0};return{course:'',level:0,description:'Watch for a different side of this Pokémon.',tools:[]};}
  function photoExamples(p,star,currentCourse=''){return(p.photoExamples||[]).filter(row=>row.stars===star&&courses.has(row.course)).slice().sort((a,b)=>(b.course===currentCourse)-(a.course===currentCourse)||data.courses.findIndex(c=>c.id===a.course)-data.courses.findIndex(c=>c.id===b.course)||a.exampleLevel-b.exampleLevel);}
+ function photoMethods(p,star,reviewed={},currentCourse=''){
+  if(!p||![1,2,3,4].includes(star))return[];
+  const known=id=>courses.has(id)&&p.locations.some(l=>l.course===id),level=(id,n)=>courses.get(id)?.levels.includes(n)?n:0;
+  const source=reviewed[p.id+':'+star],rows=(Array.isArray(source)?source:[]).filter(r=>r.species===p.id&&r.stars===star&&known(r.course)&&Array.isArray(r.steps)&&r.steps.length&&r.steps.every(s=>typeof s==='string'&&s.trim())).map(r=>({...r,exampleLevel:level(r.course,r.exampleLevel),reviewed:true}));
+  if(!rows.length){const cue=location(p,star);if(known(cue.course)&&cue.description?.trim())rows.push({species:p.id,stars:star,course:cue.course,exampleLevel:level(cue.course,cue.level),title:'Photo Setup',where:'',tools:cue.tools||[],steps:[cue.description],shot:'',reviewed:false});}
+  return rows.sort((a,b)=>(b.course===currentCourse)-(a.course===currentCourse));
+ }
  function currentPhotos(s,id){return[1,2,3,4].flatMap(n=>{const p=photo(s,id,n);return p?[{...p,id:id+':'+n,species:id,stars:n}]:[];});}
  function summary(s,rows=data.species){const photos=rows.flatMap(p=>currentPhotos(s,p.id)),medals={Bronze:0,Silver:0,Gold:0,Diamond:0};for(const p of photos)if(p.medal in medals)medals[p.medal]++;return{count:photos.length,total:rows.length*4,missing:rows.length*4-photos.length,medals,diamond:medals.Diamond,complete:rows.filter(p=>diamonds(s,p.id)===4).length};}
  function courseSpecies(id,n=0){return data.species.filter(p=>p.locations.some(l=>l.course===id&&(!n||(l.level||1)<=n)));}
@@ -45,7 +52,7 @@ function create(data){
  function controllerDelay(state,now){if(!controllerView(state,now).available)return null;let until=state.at+1500;for(const [key,at]of Object.entries(state.pulses||{}))if(state.buttons?.[key]!==true&&Number.isFinite(at)&&at<=now&&at+140>now)until=Math.min(until,at+140);return Math.max(1,until-now);}
  function rewardConditionMet(s,item){return s.requestsKnown===true&&s.completionsKnown===true&&s.rewardConditionsKnown===true&&item?.conditionCode===103&&requests.has(item.unlockRequest)&&(s.received||[]).includes(item.unlockRequest)&&(s.completed||[]).includes(item.unlockRequest)&&(s.rewardReady||[]).includes(item.unlockRequest);}
  function requestStatus(s,id){if(!s.requestsKnown)return'unknown';if(!(s.received||[]).includes(id))return'unreceived';if(!s.completionsKnown)return'received';return(s.completed||[]).includes(id)?'completed':'progress';}
- return{controllerDelay,filterCourses,photoExamples,forestSeasons,rewardConditionMet,nextRequest,savedResearch,pendingRequests,requestStatus,suggestions,currentPhotos,courseSpecies,courseSummary,courseMatches,levelMatches,controllerView,photoHelper,searchText,thorHours,settle,data,species,courses,requests,photo,missing,diamonds,filterDex,filterRequests,opportunity,titles,brief,photoBrief,location,summary};
+ return{controllerDelay,filterCourses,photoExamples,photoMethods,forestSeasons,rewardConditionMet,nextRequest,savedResearch,pendingRequests,requestStatus,suggestions,currentPhotos,courseSpecies,courseSummary,courseMatches,levelMatches,controllerView,photoHelper,searchText,thorHours,settle,data,species,courses,requests,photo,missing,diamonds,filterDex,filterRequests,opportunity,titles,brief,photoBrief,location,summary};
 }
 if(typeof module!=='undefined'&&module.exports)module.exports={create};else root.SnapModel={create};
 })(globalThis);

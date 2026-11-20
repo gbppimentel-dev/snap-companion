@@ -340,3 +340,29 @@ test('Photo Tips and reviewed request expansions keep reference context, centere
   }
  }finally{await browser.close();}
 });
+
+test('star-photo specifics follow the selected category and course, preserve steps and route out of Photo Tips',async()=>{
+ const browser=await chromium.launch(options);
+ try{
+  for(const [width,height]of [[540,470],[540,405],[412,640]]){
+   const {page,errors}=await start(browser,width,height);
+   for(const [id,n]of [[666,4],[810,4],[813,3],[10,3],[346,3],[346,4],[810,1]]){
+    await page.evaluate(([id,n])=>SnapApp.openPokemon(id,n),[id,n]);await page.locator('[data-action=tips]').click();
+    const expected=await page.evaluate(([id,n])=>SnapModel.create(SNAP_CONTENT).photoMethods(SNAP_CONTENT.species.find(p=>p.id===id),n,SnapPhotoDetails,'park-day'),[id,n]);
+    assert.equal(await page.locator('.photo-method').count(),expected.length);assert((await page.locator('.photo-methods>header').boundingBox()).height<=26,'Method heading stays compact');assert.equal(await page.locator('#photo-tip .tip-category .star-cluster img').count(),n,'The reader retains the selected star count');
+    for(let i=0;i<expected.length;i++){
+     const method=page.locator('.photo-method').nth(i),r=expected[i];assert((await method.locator('.photo-method-name b').textContent()).includes(r.title));assert.equal(await method.locator('.photo-method-level').count(),r.exampleLevel?1:0);
+     assert.equal(await method.getAttribute('open'),null);await method.locator('summary').click();assert.deepEqual(await method.locator('.solution-steps p').allTextContents(),r.steps);if(r.shot)assert.equal(await method.locator('.photo-method-shot b').textContent(),r.shot);
+     assert.equal(await method.locator('.photo-method-tools .tool-chip').count(),r.tools.length);assert(await fits(page,'#photo-tip .tip-dialog-head,#photo-tip .tip-cover,#photo-tip .photo-tip-reader'));
+     await method.locator('summary').click();
+    }
+    assert.equal(await page.locator('#photo-tip a[href]').count(),0);await page.locator('[data-action=close-photo-tip]').click();
+   }
+   // A second valid photo method is not a second tab or a guessed source for a saved image.
+   await page.evaluate(()=>{SnapApp.update({...fixture,course:'cave',level:2});SnapApp.openPokemon(666,4);});assert((await page.locator('.photo-hint-copy p').textContent()).includes('Jungle Pattern'));
+   await page.locator('[data-action=tips]').click();assert.equal(await page.locator('.photo-method-name b').first().textContent(),'Jungle Pattern');assert.equal(await page.locator('.photo-method-name em').first().textContent(),'Current Course');
+   await page.locator('.photo-method summary').first().click();await page.locator('.photo-method-guide').first().click();assert(await page.locator('#photo-tip').evaluate(e=>!e.open),'Course Guide closes the tip before routing');assert(await page.locator('#detail.course-reader').evaluate(e=>e.open));assert.equal(await page.locator('.course-identity h2').textContent(),'Outaway Cave');
+   assert.deepEqual(errors,[]);await page.close();
+  }
+ }finally{await browser.close();}
+});
