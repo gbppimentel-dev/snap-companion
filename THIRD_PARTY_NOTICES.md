@@ -14,6 +14,8 @@ New Pokémon Snap, Pokémon characters, game art, branding, text, game-derived f
 
 The prepared reference data draws on [Serebii](https://www.serebii.net/newpokemonsnap/), [PowerPyx](https://www.powerpyx.com/new-pokemon-snap-all-pokemon-locations-stars-photos/), [Bisafans](https://www.bisafans.de/spiele/spin-offs/new-snap/fotodex/), [Bulbapedia](https://bulbapedia.bulbagarden.net/wiki/LenTalk), [PokéAPI](https://pokeapi.co/docs/v2), and independently checked game tables. Sources retain their rights. Photo-course example levels are examples, not guaranteed minimum levels; conflicting labels are withheld. These references do not establish live route timing or recognition accuracy.
 
+Optional LenTalk route/setup/timing notes are independently phrased factual instructions checked against the pages recorded in `tools/data/request-walkthroughs.json`, including Serebii, Neoseeker, Gamer Journalist, Samurai Gamers, NightlyGamingBinge, Gamerpillar, ComicBook.com, ISK Mogul and Bulbapedia. No source screenshots, full articles or verbatim walkthroughs are bundled. Source links are provenance in the repository, not app hyperlinks. The additional notes are reference guidance, not live game readings or new device gameplay validation.
+
 ## save-format work
 
 [kwsch/NewSnap](https://github.com/kwsch/NewSnap): ISC License, copyright 2021 SciresM and Kaphotics. The save-envelope/checksum implementation and small public test vectors are acknowledged in [`third_party/newsnap/LICENSE`](third_party/newsnap/LICENSE) and [`app/src/main/assets/licenses/newsnap.txt`](app/src/main/assets/licenses/newsnap.txt). Save-format constants are part of that independent implementation; no private console keyset is included.

@@ -1,0 +1,199 @@
+{
+  "schema": 1,
+  "reviewed": "2026-11-20",
+  "method": "Independently phrased factual route/setup/timing notes; original general solutions retained. Sources are provenance, never in-app hyperlinks. Not verified through new device gameplay.",
+  "requests": [
+    {
+      "id": "request-3-000-degree-flames",
+      "course": "volcano",
+      "where": "Blue magma route",
+      "shot": "Flareon breathing fire onto its next fluffruit.",
+      "steps": [
+        "Take the alternate route into the blue magma chamber.",
+        "Light the Crystabloom with an Illumina Orb, then choose one of the Flareon nearby.",
+        "Feed that same Flareon two fluffruit. Keep watching after the first one is eaten.",
+        "Photograph the fire attack used to toast the second fruit."
+      ],
+      "sources": [
+        "https://www.neoseeker.com/new-pokemon-snap/walkthrough/Volcano"
+      ]
+    },
+    {
+      "id": "request-a-bite-for-the-bully-of-the-sea",
+      "course": "reef-day",
+      "where": "Opening stretch of Reef (Day)",
+      "shot": "Sharpedo breaking the surface to eat the fruit.",
+      "steps": [
+        "Look for Sharpedo near the beginning of the course.",
+        "Toss a fluffruit close enough for Sharpedo to reach it.",
+        "Keep your camera on it and photograph the leap as it bites the fruit."
+      ],
+      "sources": [
+        "https://gamerjournalist.com/new-pokemon-snap-maricopia-reef-day-walkthrough-guide/"
+      ]
+    },
+    {
+      "id": "request-a-cheeky-pose",
+      "course": "camp",
+      "where": "Lab-side starting point",
+      "shot": "Cutiefly holding its cheeks, rather than simply flying.",
+      "steps": [
+        "Start beside the research lab and look to the flowers on your right.",
+        "Hit a Cutiefly with an Illumina Orb and follow it as it moves behind you.",
+        "Play Melody, then photograph the pose with its hands against its cheeks."
+      ],
+      "sources": [
+        "https://gamerjournalist.com/new-pokemon-snap-a-cheeky-pose-and-4-star-cutiefly-photo-guide/"
+      ]
+    },
+    {
+      "id": "request-a-figure-of-beauty",
+      "course": "jungle-night",
+      "where": "Arbok tree → treetops → Liepard gathering",
+      "shot": "A Liepard rearing onto its hind legs.",
+      "steps": [
+        "Knock the sleeping Arbok from its branch with fluffruit to send a Liepard running.",
+        "Light the Liepard hidden in the nearby tall grass with an Illumina Orb.",
+        "Find the sleeping Liepard in the treetops farther along. Use Melody to wake it.",
+        "At the gathering ahead, hit a Liepard with an Illumina Orb.",
+        "Photograph the Liepard that stands upright on its hind legs."
+      ],
+      "sources": [
+        "https://samurai-gamers.com/new-pokemon-snap/a-figure-of-beauty-request-walkthrough/"
+      ]
+    },
+    {
+      "id": "request-a-finicky-flame",
+      "course": "sands-day",
+      "where": "Torchic by the oasis",
+      "shot": "Torchic scorching the fruit with Flamethrower.",
+      "steps": [
+        "Find Torchic and hit it with three Illumina Orbs.",
+        "Give it a fluffruit after the orbs.",
+        "Photograph the burst of flame as it burns the fruit."
+      ],
+      "sources": [
+        "https://serebii.net/newpokemonsnap/missions/afinickyflame.shtml"
+      ]
+    },
+    {
+      "id": "request-a-goofy-pose",
+      "course": "volcano",
+      "where": "High rock near the course entrance",
+      "shot": "Monferno taunting Tyrantrum with its rear.",
+      "steps": [
+        "Near the start, watch Tyrantrum chasing the two Monferno.",
+        "Look above and to the right for a Monferno perched on a high rock.",
+        "Hit that Monferno with an Illumina Orb, then photograph its taunt toward Tyrantrum."
+      ],
+      "sources": [
+        "https://nightlygamingbinge.com/new-pokemon-snap-fireflow-volcano-lentalk-requests/"
+      ]
+    },
+    {
+      "id": "request-an-eevee-party",
+      "course": "camp",
+      "where": "Inside the research lab",
+      "shot": "Eevee sitting and playing after the Cutiefly chase.",
+      "steps": [
+        "Use the lab-entry route and enter the building.",
+        "Wake Stoutland and Eevee with Illumina Orbs and repeated scans.",
+        "Scan near the television to reveal Cutiefly. Light two of them with Illumina Orbs.",
+        "Watch Eevee chase the Cutiefly. Hit Eevee with an Illumina Orb before it jumps.",
+        "Photograph Eevee as it sits up and moves its head from side to side."
+      ],
+      "sources": [
+        "https://gamerjournalist.com/new-pokemon-snap-research-camp-walkthrough-guide/"
+      ]
+    },
+    {
+      "id": "request-an-unusual-spot",
+      "course": "jungle-night",
+      "where": "Jungle ruins detour",
+      "shot": "The grounded Ledian eating a fluffruit.",
+      "steps": [
+        "At the first fork, stay on the right rather than entering the swamp.",
+        "After the fork, light the Liepard sleeping on the high rocks with an Illumina Orb.",
+        "At the large tree by the ruins, hit the high-branch Liepard with another orb. It knocks the NEO-ONE onto the lower route.",
+        "Light the Crystabloom below the ruins to bring in the Ledian.",
+        "Give fruit to the Ledian walking on the ground and photograph it eating."
+      ],
+      "sources": [
+        "https://comicbook.com/gaming/news/new-pokemon-snap-third-jungle-route-night/",
+        "https://www.iskmogul.com/how-to-complete-an-unusual-spot-in-new-pokemon-snap/amp/"
+      ]
+    },
+    {
+      "id": "request-a-new-way-to-dance",
+      "course": "undersea",
+      "where": "Main route through the seaweed field",
+      "shot": "Cradily swaying with its neck extended.",
+      "steps": [
+        "Stay on the main route instead of entering the tunnel opened by Clawitzer.",
+        "In the seaweed field, find the awake Cradily toward the far end.",
+        "Hit it with an Illumina Orb, then play Melody.",
+        "Photograph its side-to-side dance."
+      ],
+      "sources": [
+        "https://www.neoseeker.com/new-pokemon-snap/walkthrough/Undersea"
+      ]
+    },
+    {
+      "id": "request-a-calming-air",
+      "course": "forest",
+      "where": "Sunny alternate ending of Elsewhere Forest",
+      "shot": "Espeon eating the fluffruit after coming off its ledge.",
+      "steps": [
+        "Reach the sunny alternate ending by helping Deerling through the second foggy area.",
+        "Before the stream, scan toward the ledge on your left to bring Espeon down.",
+        "Offer a fluffruit and photograph Espeon eating it."
+      ],
+      "sources": [
+        "https://bulbapedia.bulbagarden.net/wiki/Elsewhere_Forest",
+        "https://serebii.net/newpokemonsnap/missions/acalmingair.shtml"
+      ]
+    },
+    {
+      "id": "request-don-t-be-scared",
+      "course": "park-day",
+      "where": "Flower field at the end of Park (Day)",
+      "shot": "Comfey eating beside the illuminated flowers.",
+      "steps": [
+        "Use Park (Day) at Research Level 3 and reach the final flower field.",
+        "Hit the Crystabloom with an Illumina Orb to draw the Comfey closer.",
+        "Throw fluffruit nearby and photograph a Comfey while it eats."
+      ],
+      "sources": [
+        "https://gamerpillar.com/dont-be-scared-request-new-pokemon-snap-how-to-guide/"
+      ]
+    },
+    {
+      "id": "hide-flowers",
+      "course": "park-day",
+      "where": "Blue flowers on the left of the final field",
+      "shot": "Pichu posing above the flowers after coming out of hiding.",
+      "steps": [
+        "At the last flower field, look for Pichu concealed in the blue flowers on the left.",
+        "Hit Pichu with an Illumina Orb.",
+        "Keep the camera ready and photograph it posing on top of the flowers."
+      ],
+      "sources": [
+        "https://gamerpillar.com/hide-and-seek-in-the-flowers-new-pokemon-snap/"
+      ]
+    },
+    {
+      "id": "request-adorable-water-spray",
+      "course": "reef-day",
+      "where": "Late course, after the swimming race",
+      "shot": "Wailmer spraying a jet of water.",
+      "steps": [
+        "Continue past the Machamp and Sharpedo swimming race.",
+        "Watch for Wailmer farther along the course and hit it with an Illumina Orb.",
+        "Photograph the water spray that follows."
+      ],
+      "sources": [
+        "https://gamerjournalist.com/new-pokemon-snap-maricopia-reef-day-walkthrough-guide/"
+      ]
+    }
+  ]
+}

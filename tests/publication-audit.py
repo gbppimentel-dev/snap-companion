@@ -3,6 +3,7 @@ from pathlib import Path
 import json
 import re
 import subprocess
+import runpy
 
 ROOT = Path(__file__).resolve().parents[1]
 IGNORED = {'.git', '.gradle', '.idea', 'build', 'dist', '__pycache__', 'node_modules'}
@@ -35,4 +36,8 @@ assert validation['noInternetPermission'] and validation['releaseHasNoDebugHarne
 assert validation['certificateSha256']
 assert not (ROOT/'app/src/androidTest/assets').exists(), 'Private fixture captures must not be published'
 assert (ROOT/'app/src/main/assets/ui/github.svg').is_file()
+# Reviewed reference notes ship without their source URLs and match the generator.
+notes = runpy.run_path(str(ROOT/'tools/prepare_request_walkthroughs.py'))['prepare']()
+assert (ROOT/'app/src/main/assets/ui/request-details.js').read_text() == notes
+assert 'https://' not in notes and 'http://' not in notes
 print(f'Publication audit passed: {count} source/documentation files; private inputs excluded.')

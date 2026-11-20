@@ -235,7 +235,7 @@ test('Photodex entry keeps landscape photos and four official prints fixed, with
    const canvas=await page.locator('.photo-canvas').boundingBox();assert(Math.abs(canvas.width/canvas.height-1.5)<.01,'Registered photo has its original 3:2 area');
    assert(await page.locator('.entry-head').evaluate(e=>{const b=e.getBoundingClientRect();return[...e.querySelectorAll('.entry-identity,.type-list')].every(c=>{const r=c.getBoundingClientRect();return r.top>=b.top&&r.bottom<=b.bottom})}),'Name and types clear the book header');
    assert(await page.locator('.photo-hint').evaluate(e=>{const a=e.getBoundingClientRect(),b=e.querySelector('[data-action=tips]').getBoundingClientRect();return b.top>=a.top&&b.bottom<=a.bottom}),'Photo Tips is inside its note');
-   await page.locator('[data-action=tips]').click();assert(await page.locator('#photo-tip').evaluate(e=>e.open));assert(await page.locator('#photo-tip .reference-box').evaluate(e=>e.scrollWidth<=e.clientWidth+1),'Photo Tip reference artwork also fits');await page.locator('[data-action=close-photo-tip]').click();
+   await page.locator('[data-action=tips]').click();assert(await page.locator('#photo-tip').evaluate(e=>e.open));assert(await page.locator('#photo-tip .photo-examples').evaluate(e=>e.scrollWidth<=e.clientWidth+1),'Photo Tip reference artwork also fits');await page.locator('[data-action=close-photo-tip]').click();
    await page.locator('[data-action=category][data-id="4"]').click();assert.equal(await page.locator('.photo-canvas img').getAttribute('alt'),'Vivillon 4 Star Photo');
    await page.locator('.book-nav [data-id=album]').click();
    for(const count of [4,3,1]){
@@ -297,6 +297,46 @@ test('Guide keeps compact island courses, separate time badges and large four-ca
    await page.getByRole('button',{name:'Open Course Map',exact:true}).click();assert(await page.locator('#course-map').evaluate(e=>e.open));await page.getByRole('button',{name:'Close Course Map',exact:true}).click();
    await page.evaluate(()=>SnapApp.openCourse('park-day'));const name=await page.locator('.encounter strong').first().textContent();await page.locator('.encounter').first().click();assert.equal(await page.locator('.entry-identity h2').textContent(),name);
    assert.deepEqual(errors,[]);await page.close();
+  }
+ }finally{await browser.close();}
+});
+
+test('Live bounds developing snapshots, replaces them when ready, and keeps sync as a label',async()=>{
+ const browser=await chromium.launch(options);
+ try{
+  const image='data:image/webp;base64,'+fs.readFileSync(path.resolve('app/src/main/assets/game-art/courses/stage_001_thumbnail.webp')).toString('base64');
+  for(const [width,height]of [[540,470],[540,405],[412,640]]){
+   const {page,errors}=await start(browser,width,height);
+   assert.equal(await page.locator('#last-sync').evaluate(e=>e.tagName),'SPAN');assert.equal(await page.locator('#last-sync').getAttribute('data-action'),null);await page.locator('#last-sync').click();assert(await page.locator('#detail').evaluate(e=>!e.open));
+   for(const id of [95,321,666]){
+    await page.evaluate(id=>SnapApp.update({...fixture,moments:[{key:id+':1',score:4336}],photos:{}}),id);await images(page,'.moment-print img');
+    assert(await page.locator('.moment-print').evaluate(e=>{const b=e.getBoundingClientRect(),p=e.querySelector('img').getBoundingClientRect();return getComputedStyle(e).overflow==='hidden'&&p.left>=b.left&&p.right<=b.right&&p.top>=b.top&&p.bottom<=b.bottom&&getComputedStyle(e.querySelector('img')).objectFit==='contain'}),'Developing portrait stays inside its print for '+id);
+   }
+   await page.evaluate(image=>SnapApp.update({...fixture,moments:[{key:'666:1',score:4336}],photos:{'666:1':{score:4336,medal:'Diamond',image}}}),image);await images(page,'.moment-print.has-photo img');assert.equal(await page.locator('.moment-print.has-photo img').getAttribute('src'),image,'Available saved photograph replaces the placeholder on the next update');
+   await page.evaluate(image=>SnapApp.update({...fixture,moments:[{key:'666:1',score:4400}],photos:{'666:1':{score:4400,medal:'Diamond',image}}}),image);assert.equal((await page.locator('.snapshot-score b').textContent()).replace(',',''),'4400');
+   assert(await fits(page,'.moment-print,.suggestion-print,.photo-book-route'));assert.deepEqual(errors,[]);await page.close();
+  }
+ }finally{await browser.close();}
+});
+
+test('Photo Tips and reviewed request expansions keep reference context, centered close artwork and every step',async()=>{
+ const browser=await chromium.launch(options);
+ try{
+  for(const [width,height]of [[540,470],[540,405],[412,640]]){
+   const {page,errors}=await start(browser,width,height);await page.evaluate(()=>SnapApp.openPokemon(666));await images(page,'.entry-head img');
+   assert((await page.locator('.entry-head').boundingBox()).height<=46,'Shorter entry header leaves room for the photographs');
+   assert(await page.locator('.entry-head').evaluate(e=>{const name=e.querySelector('.entry-identity').getBoundingClientRect(),types=e.querySelector('.type-list').getBoundingClientRect();return types.left>=name.right&&types.top>=e.getBoundingClientRect().top}),'Typing has its own header area');
+   assert((await page.locator('.entry-spots .example-caption').textContent()).includes('not your saved'));
+   await page.locator('[data-action=tips]').click();await images(page,'#photo-tip img');assert(await fits(page,'#photo-tip .tip-dialog-head,#photo-tip .tip-cover,#photo-tip .photo-tip-reader'));
+   assert((await page.locator('#photo-tip .example-caption').textContent()).includes('location is not recorded'));assert.equal(await page.locator('#photo-tip a[href]').count(),0);
+   const centered=selector=>page.locator(selector).evaluate(e=>{const b=e.getBoundingClientRect(),r=e.querySelector('.ui-symbol').getBoundingClientRect();return Math.abs(r.left+r.width/2-b.left-b.width/2)<.1&&Math.abs(r.top+r.height/2-b.top-b.height/2)<.1&&r.width<=b.width*.4;});
+   assert(await centered('#photo-tip .close'));assert(await paintedPixels(page,'#photo-tip .close .ui-symbol')>10);await page.locator('[data-action=close-photo-tip]').click();assert(await centered('#detail .close'));await page.locator('#detail .close').click();
+   const details=await page.evaluate(()=>Object.entries(SnapRequestDetails));for(const [id,note]of details){
+    await page.evaluate(id=>SnapApp.openRequest(id),id);assert.equal(await page.locator('.request-walkthrough').getAttribute('open'),null,'Extra route steps are optional');
+    const original=await page.evaluate(id=>SNAP_CONTENT.requests.find(r=>r.id===id).solution,id);assert.equal((await page.locator('.talk-solution>.solution-steps p').allTextContents()).join(' '),original.replace(/\s+/g,' ').trim());
+    await page.locator('.request-walkthrough summary').click();assert.equal(await page.locator('.walkthrough-body .solution-steps p').count(),note.steps.length);assert.deepEqual(await page.locator('.walkthrough-body .solution-steps p').allTextContents(),note.steps);assert.equal(await page.locator('.walkthrough-shot b').textContent(),note.shot);assert(await fits(page,'.talk-reader'));assert.equal(await page.locator('#detail a[href]').count(),0);
+   }
+   const basic=await page.evaluate(()=>SNAP_CONTENT.requests.find(r=>!SnapRequestDetails[r.id]).id);await page.evaluate(id=>SnapApp.openRequest(id),basic);assert.equal(await page.locator('.request-walkthrough').count(),0,'No invented detailed route for unreviewed requests');assert(await centered('#detail .close'));assert.deepEqual(errors,[]);await page.close();
   }
  }finally{await browser.close();}
 });

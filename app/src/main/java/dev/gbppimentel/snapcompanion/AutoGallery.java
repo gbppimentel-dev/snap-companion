@@ -22,8 +22,8 @@ final class AutoGallery implements AutoCloseable {
   offered=key;reconciledAt=now;pending.clear();
   Set<String> copies=new HashSet<>();try{PersonalGallery g=new PersonalGallery(context,profile);for(var p:g.all())if(g.file(p).isFile()&&g.file(p).length()>0)copies.add(p.linkedHash());}catch(Exception ignored){}
   // Replacements and newly registered images come before the older uncopied backlog.
-  Set<String> changes=new HashSet<>();try{var history=store.history(profile);for(int i=Math.max(0,history.length()-12);i<history.length();i++){var h=history.optJSONObject(i);if(h!=null)changes.add(h.optString("key"));}}catch(Exception ignored){}
-  var photos=new ArrayList<>(snapshot.photos().values());photos.sort(Comparator.<EdenPhotodex.Photo>comparingInt(p->changes.contains(p.key())?0:1).thenComparingInt(p->checkpoints.contains(profile+"."+p.key())?0:1).thenComparing(EdenPhotodex.Photo::key));
+  Map<String,Integer> changes=new HashMap<>();try{var history=store.history(profile);for(int i=history.length()-1;i>=Math.max(0,history.length()-12);i--){var h=history.optJSONObject(i);if(h!=null&&h.optBoolean("present"))changes.putIfAbsent(h.optString("key"),history.length()-1-i);}}catch(Exception ignored){}
+  var photos=new ArrayList<>(snapshot.photos().values());photos.sort(Comparator.<EdenPhotodex.Photo>comparingInt(p->changes.getOrDefault(p.key(),Integer.MAX_VALUE)).thenComparingInt(p->checkpoints.contains(profile+"."+p.key())?0:1).thenComparing(EdenPhotodex.Photo::key));
   for(var p:photos)if(!copies.contains(identity(user,p))){Job next=new Job(profile,user,hash,p),old=earlier.get(identity(user,p));if(old!=null){next.attempts=old.attempts;next.readyAt=old.readyAt;}pending.add(next);}
   status=pending.isEmpty()?"Saved photos ready":pending.size()+" photos waiting";
  }
