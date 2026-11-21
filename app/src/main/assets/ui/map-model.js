@@ -1,7 +1,7 @@
 (function(root,factory){'use strict';const api=factory();if(typeof module==='object'&&module.exports)module.exports=api;root.SnapMapModel=api;})(typeof window==='object'?window:globalThis,function(){'use strict';
 const finite=v=>Number.isFinite(v),clamp=(n,a,b)=>Math.max(a,Math.min(b,n));
 function vector(v){return Array.isArray(v)&&v.length===3&&v.every(x=>finite(x)&&Math.abs(x)<1e6);}
-function frame(v,now,course){return !!v&&v.status==='ready'&&['research','paused'].includes(v.phase)&&v.course===course&&finite(v.sampleAt)&&now>=v.sampleAt&&now-v.sampleAt<=1000&&finite(v.distance)&&finite(v.length)&&v.length>0&&v.distance>=0&&v.distance<=v.length+.1;}
+function frame(v,now,course){return !!v&&v.status==='ready'&&['research','paused','event'].includes(v.phase)&&v.course===course&&finite(v.sampleAt)&&now>=v.sampleAt&&now-v.sampleAt<=1000&&finite(v.distance)&&finite(v.length)&&v.length>0&&v.distance>=0&&v.distance<=v.length+.1;}
 function collection(photos,id){const medals=[1,2,3,4].map(n=>photos?.[id+':'+n]?.medal||'Missing');return{medals,found:medals.filter(m=>m!=='Missing').length,diamond:medals.filter(m=>m==='Diamond').length};}
 function clusters(points,view,size=56){const groups=new Map();for(const p of points){const x=(p.x*view.width-view.width/2)*view.zoom+view.width/2+view.x,y=(p.y*view.height-view.height/2)*view.zoom+view.height/2+view.y;if(x< -size||y< -size||x>(view.clipWidth||view.width)+size||y>(view.clipHeight||view.height)+size)continue;const key=Math.floor(x/size)+':'+Math.floor(y/size);let g=groups.get(key);if(!g){g={x:0,y:0,points:[]};groups.set(key,g);}g.x+=x;g.y+=y;g.points.push(p);}return Array.from(groups.values(),g=>({x:g.x/g.points.length,y:g.y/g.points.length,points:g.points}));}
 // Cluster against map coordinates, not viewport cells. Panning never changes membership.
@@ -94,12 +94,12 @@ class CourseTracker {
  constructor(catalogs=[],calibrations=[]){this.catalogs=catalogs;this.calibrations=calibrations;this.reset();}
  reset(){this.course='';this.run=null;this.last=null;this.path=null;this.prefix=null;this.approximate=false;this.matchKey='';this.matchPath=null;this.past=[];this.revision=(this.revision||0)+1;}
  observe(v,now){
-  if(!frame(v,now,v?.course)||!vector(v.world)||typeof v.routeKey!=='string'||!v.routeKey||!Number.isSafeInteger(v.run)||v.run<1||!Array.isArray(v.routePoints)||v.routePoints.length<2||v.routePoints.length>97||!v.routePoints.every(vector))return false;
+  if(!frame(v,now,v?.course)||v.world!==undefined&&!vector(v.world)||typeof v.routeKey!=='string'||!v.routeKey||!Number.isSafeInteger(v.run)||v.run<1||!Array.isArray(v.routePoints)||v.routePoints.length<2||v.routePoints.length>97||!v.routePoints.every(vector))return false;
   const catalog=this.catalogs.find(c=>c.id===v.course);if(!catalog)return false;
   if(this.last&&v.course===this.course&&v.run===this.run&&v.sampleAt<=this.last.sampleAt)return false;
   const backwards=this.last&&v.routeKey===this.last.routeKey&&v.distance<this.last.distance-.5;
   const loop=backwards&&this.path&&validEdges(this.path).some(e=>e.to===this.path.id&&e.at>=this.last.distance-.1);
-  if(this.course!==v.course||this.run!==v.run||this.last&&v.sampleAt-this.last.sampleAt>1000||backwards&&!loop){this.reset();this.course=v.course;this.run=v.run;}
+  if(this.course!==v.course||this.run!==v.run||this.last&&v.sampleAt-this.last.sampleAt>5000||backwards&&!loop){this.reset();this.course=v.course;this.run=v.run;}
   const key=v.course+':'+v.routeKey+':'+v.length;if(key!==this.matchKey){this.matchKey=key;this.matchPath=matchRail(v,catalog);}const path=this.matchPath;
   if(!path){this.path=null;this.prefix=null;this.past=[];this.revision++;this.last=v;return true;}
   if(!this.path){this.prefix=prefixes(catalog,path.id);this.approximate=false;}
@@ -117,7 +117,7 @@ class CourseTracker {
  }
  addMeasuredPast(){const calibration=this.calibrations.find(c=>c.course===this.course&&c.rail===this.path.id);if(calibration)this.past.push({calibration,from:0,to:this.last.distance});}
  view(v,now){
-  if(!frame(v,now,this.course)||!vector(v.world)||!this.path||!this.last||v.routeKey!==this.last.routeKey||v.sampleAt!==this.last.sampleAt)return null;
+  if(!frame(v,now,this.course)||v.world!==undefined&&!vector(v.world)||!this.path||!this.last||v.routeKey!==this.last.routeKey||v.sampleAt!==this.last.sampleAt)return null;
   const catalog=this.catalogs.find(c=>c.id===this.course),end=endOf(this.path),calibration=this.calibrations.find(c=>c.course===this.course&&c.rail===this.path.id);
   const sections=calibration?.sections||[{from:0,to:end,name:this.path.id===catalog.main?'Main Trail':'Alternate Trail'}],section=sections.find((s,i)=>v.distance>=s.from&&(v.distance<s.to||i===sections.length-1&&v.distance<=s.to+.1));
   const sectionProgress=section&&section.to>section.from?clamp((v.distance-section.from)/(section.to-section.from),0,1):null,left=remaining(catalog,this.path.id,v.distance);let overall=null;
@@ -126,6 +126,21 @@ class CourseTracker {
   const player=calibrationPoint(calibration,v.distance),next=calibrationPoint(calibration,Math.min(v.distance+.3,end)),before=calibrationPoint(calibration,Math.max(0,v.distance-.3));
   const direction=vector(v.forward)&&Math.hypot(v.forward[0],v.forward[2])>1e-4&&next&&before&&Math.hypot(next.x-before.x,next.y-before.y)>1e-6?{x:next.x-before.x,y:next.y-before.y}:null;
   return{path:this.path.id,section:section?.name||'Current Section',sectionProgress,overall,approximate:this.approximate,player,direction,calibration,past:this.past,pastRevision:this.revision,split:validEdges(this.path).some(e=>e.conditional&&e.at>v.distance),alternate:this.path.id!==catalog.main};
+ }
+}
+
+// A short, explicitly labelled stationary hold prevents a blank marker during a
+// rail handoff. It never extrapolates movement or crosses a course/run boundary.
+class PositionContinuity {
+ constructor(){this.clear();}
+ clear(){this.last=null;}
+ read(v,now,course,view,allowed=true){
+  let prior=this.last;
+  if(!allowed||v?.status==='idle'||v?.course&&v.course!==course||v?.status==='ready'&&!['research','paused','event'].includes(v.phase)){this.clear();return null;}
+  if(prior&&(prior.course!==course||v?.run!=null&&v.run!==prior.row.run)){this.clear();prior=null;}
+  if(frame(v,now,course)&&view?.player){this.last={course,row:v,view};return{row:v,view,held:false};}
+  if(!prior||now<prior.row.sampleAt||now-prior.row.sampleAt>2500){this.clear();return null;}
+  return{row:prior.row,view:prior.view,held:true};
  }
 }
 
@@ -140,7 +155,7 @@ function cameraReading(v){
 // Vehicle travel direction is deliberately not a fallback for the player's view.
 function viewCone(v,calibration,now=Date.now()){
  const camera=cameraReading(v?.camera),matrix=calibration?.projection,m=matrix?.length===8?[matrix[0],matrix[1],matrix[4],matrix[5],matrix[6],matrix[7]]:matrix;
- if(!frame(v,now,calibration?.course)||!camera||!Array.isArray(matrix)||![6,8].includes(matrix.length)||!Array.isArray(m)||m.length!==6||!matrix.every(finite)||Math.abs(m[0]*m[3]-m[1]*m[2])<1e-6||!calibrationPoint(calibration,v.distance))return null;
+ if(v?.phase==='event'||!frame(v,now,calibration?.course)||!camera||!Array.isArray(matrix)||![6,8].includes(matrix.length)||!Array.isArray(m)||m.length!==6||!matrix.every(finite)||Math.abs(m[0]*m[3]-m[1]*m[2])<1e-6||!calibrationPoint(calibration,v.distance))return null;
  let angle=0;if(calibration.heading){const h=calibration.heading;let lo=1,hi=h.length-1;while(lo<hi){const mid=(lo+hi)>>1;if(h[mid][0]<v.distance)lo=mid+1;else hi=mid;}const a=h[lo-1],b=h[lo];if(!a||!b||![...a,...b].every(finite)||b[0]<=a[0])return null;angle=a[1]+(b[1]-a[1])*clamp((v.distance-a[0])/(b[0]-a[0]),0,1);}
  const f=camera.forward,u=camera.up;if(Math.hypot(f[0],f[2])<.25)return null;
  const right=[f[1]*u[2]-f[2]*u[1],f[2]*u[0]-f[0]*u[2],f[0]*u[1]-f[1]*u[0]],spread=Math.tan(camera.fovY/2)*camera.aspect;
@@ -158,5 +173,5 @@ function conePath(cone,width,height,radius=72){
  return'M0 0L'+xy(l)+'A'+radius+' '+radius+' 0 0 '+sweep+' '+xy(r)+'Z';
 }
 function sanitize(v){if(!v||typeof v!=='object')return{};const out={};for(const k of['status','course','courseId','level','distance','length','world','forward','routeKey','routePoints','sampleAt','phase','tools','lastAction','run'])if(k in v)out[k]=v[k];const camera=cameraReading(v.camera);if(camera)out.camera=camera;return out;}
-return{trailPath,trailBase,cameraReading,viewCone,conePath,markerGroups,markerBucket,filterPoints,transitions,CourseTracker,matchRail,endOf,remaining,prefixes,calibrationPoint,RunTracker,finite,clamp,vector,frame,collection,clusters,bounds,point,route,follow,sanitize};
+return{PositionContinuity,trailPath,trailBase,cameraReading,viewCone,conePath,markerGroups,markerBucket,filterPoints,transitions,CourseTracker,matchRail,endOf,remaining,prefixes,calibrationPoint,RunTracker,finite,clamp,vector,frame,collection,clusters,bounds,point,route,follow,sanitize};
 });

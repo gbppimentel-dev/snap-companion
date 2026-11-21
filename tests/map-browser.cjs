@@ -20,3 +20,27 @@ test('map retains user zoom through missing/recovered readings and renders portr
   await page.evaluate(()=>SnapApp.update({...snapshot,course:'park-night'}));assert.equal(await scale(),1,'A different course deliberately starts at its overview');assert.deepEqual(errors,[]);
  }finally{await browser.close();}
 });
+
+test('NEO-ONE remains visible through owned events and a bounded handoff without drifting or losing zoom',async()=>{
+ const browser=await chromium.launch({headless:true,...(process.env.SNAP_BROWSER_EXECUTABLE?{executablePath:process.env.SNAP_BROWSER_EXECUTABLE}:{}),args:[]});
+ try{
+  const page=await browser.newPage({viewport:{width:540,height:470},deviceScaleFactor:2});const errors=[];page.on('pageerror',e=>errors.push(e.message));await page.clock.install();
+  await page.goto('file://'+path.resolve('app/src/main/assets/ui/index.html'));
+  await page.evaluate(()=>{
+   window.SnapTouch={tap(){},mapVisible(){}};const c=SnapRouteData.courses.find(c=>c.id==='park-day'),p=c.paths.find(p=>p.id===c.main);
+   const sample=d=>{let t=0;for(let i=1;i<p.points.length;i++){const a=p.points[i-1],b=p.points[i],n=Math.hypot(...a.map((v,k)=>b[k]-v));if(t+n>=d||i===p.points.length-1){const f=n?Math.max(0,Math.min(1,(d-t)/n)):0;return a.map((v,k)=>v+(b[k]-v)*f)}t+=n}};
+   window.row={status:'ready',phase:'research',course:'park-day',level:3,run:1,routeKey:'handoff-fixture',distance:30,length:p.length,routePoints:Array.from({length:41},(_,i)=>sample(p.length*i/40)),sampleAt:Date.now()};
+   window.snapshot={sourceKey:'handoff',connected:true,visible:true,phase:'research',course:'park-day',level:3,photos:{},playtime:{},gameReading:row};SnapApp.update(snapshot);SnapMaps.open('park-day');
+  });
+  await page.waitForFunction(()=>!document.querySelector('.map-player').hidden);await page.getByRole('button',{name:'Zoom In',exact:true}).click();
+  const scale=await page.locator('.map-board').evaluate(e=>new DOMMatrix(getComputedStyle(e).transform).a);
+  await page.evaluate(()=>SnapMaps.live({...row,phase:'event',distance:31,sampleAt:Date.now()}));assert(await page.locator('.map-player').isVisible());assert(await page.locator('.map-view-cone').isHidden());
+  const measured=await page.locator('.map-player').evaluate(e=>({left:e.style.left,top:e.style.top}));
+  await page.evaluate(()=>SnapMaps.live({}));assert(await page.locator('.map-player.last-position').isVisible());assert.equal(await page.locator('.map-position-note').textContent(),'Last Position · Reconnecting');
+  await page.clock.fastForward(1500);assert.deepEqual(await page.locator('.map-player').evaluate(e=>({left:e.style.left,top:e.style.top})),measured,'The held marker never advances from time alone');
+  await page.evaluate(()=>SnapMaps.live({...row,phase:'event',distance:32,sampleAt:Date.now()}));assert(await page.locator('.map-player').isVisible());assert.equal(await page.locator('.map-player.last-position').count(),0);
+  await page.evaluate(()=>SnapMaps.live({}));await page.clock.fastForward(3000);assert(await page.locator('.map-player').isHidden());assert.equal(await page.locator('.map-board').evaluate(e=>new DOMMatrix(getComputedStyle(e).transform).a),scale);
+  await page.evaluate(()=>{SnapMaps.live({...row,sampleAt:Date.now()});SnapMaps.live({status:'idle'});});assert(await page.locator('.map-player').isHidden());
+  await page.evaluate(()=>{SnapMaps.live({...row,sampleAt:Date.now()});SnapApp.update({...snapshot,sourceKey:'new-process',gameReading:{}});});assert(await page.locator('.map-player').isHidden());assert.deepEqual(errors,[]);
+ }finally{await browser.close();}
+});

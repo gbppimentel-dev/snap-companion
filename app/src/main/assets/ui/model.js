@@ -28,6 +28,7 @@ function create(data){
  function brief(text,max=130){const t=String(text||'').replace(/\bLv\.\s*/g,'Level ').replace(/\s+/g,' ').trim();const first=t.match(/^.*?[.!?](?:\s|$)/)?.[0]?.trim()||t;return first.length>max?first.slice(0,max-1).replace(/\s+\S*$/,'')+'…':first;}
  function photoBrief(text){let t=String(text||'').split(/ (?=(?:Prompt|Throw|Use|Play|Find|Look|Wait|Hit|Wake|Give|When|Start|After|First|Scan|During|Feed|Once)\b)/)[0];return brief(t,90);}
  function location(p,star,course){const cue=p.cues.find(c=>c.stars===star);if(cue)return{...cue,course:cue.course||'',level:cue.course?cue.level:0};return{course:'',level:0,description:'Watch for a different side of this Pokémon.',tools:[]};}
+ function hintOptions(p,star,groups={}){const text=location(p,star).description,parts=groups[p.id+':'+star];return Array.isArray(parts)&&parts.length>1&&parts.every(s=>typeof s==='string'&&s.trim())&&parts.join(' ').replace(/\s+/g,' ').trim()===text.replace(/\s+/g,' ').trim()?[...parts]:[text];}
  function photoExamples(p,star,currentCourse=''){return(p.photoExamples||[]).filter(row=>row.stars===star&&courses.has(row.course)).slice().sort((a,b)=>(b.course===currentCourse)-(a.course===currentCourse)||data.courses.findIndex(c=>c.id===a.course)-data.courses.findIndex(c=>c.id===b.course)||a.exampleLevel-b.exampleLevel);}
  function photoMethods(p,star,reviewed={},currentCourse=''){
   if(!p||![1,2,3,4].includes(star))return[];
@@ -52,7 +53,7 @@ function create(data){
  function controllerDelay(state,now){if(!controllerView(state,now).available)return null;let until=state.at+1500;for(const [key,at]of Object.entries(state.pulses||{}))if(state.buttons?.[key]!==true&&Number.isFinite(at)&&at<=now&&at+140>now)until=Math.min(until,at+140);return Math.max(1,until-now);}
  function rewardConditionMet(s,item){return s.requestsKnown===true&&s.completionsKnown===true&&s.rewardConditionsKnown===true&&item?.conditionCode===103&&requests.has(item.unlockRequest)&&(s.received||[]).includes(item.unlockRequest)&&(s.completed||[]).includes(item.unlockRequest)&&(s.rewardReady||[]).includes(item.unlockRequest);}
  function requestStatus(s,id){if(!s.requestsKnown)return'unknown';if(!(s.received||[]).includes(id))return'unreceived';if(!s.completionsKnown)return'received';return(s.completed||[]).includes(id)?'completed':'progress';}
- return{controllerDelay,filterCourses,photoExamples,photoMethods,forestSeasons,rewardConditionMet,nextRequest,savedResearch,pendingRequests,requestStatus,suggestions,currentPhotos,courseSpecies,courseSummary,courseMatches,levelMatches,controllerView,photoHelper,searchText,thorHours,settle,data,species,courses,requests,photo,missing,diamonds,filterDex,filterRequests,opportunity,titles,brief,photoBrief,location,summary};
+ return{hintOptions,controllerDelay,filterCourses,photoExamples,photoMethods,forestSeasons,rewardConditionMet,nextRequest,savedResearch,pendingRequests,requestStatus,suggestions,currentPhotos,courseSpecies,courseSummary,courseMatches,levelMatches,controllerView,photoHelper,searchText,thorHours,settle,data,species,courses,requests,photo,missing,diamonds,filterDex,filterRequests,opportunity,titles,brief,photoBrief,location,summary};
 }
 if(typeof module!=='undefined'&&module.exports)module.exports={create};else root.SnapModel={create};
 })(globalThis);

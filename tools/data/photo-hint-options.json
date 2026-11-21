@@ -1,0 +1,2424 @@
+{
+  "schema": 1,
+  "boundary": "Original reference line breaks; wording already present in guidebook",
+  "hints": [
+    {
+      "species": 666,
+      "stars": 3,
+      "options": [
+        "Photograph Ocean Pattern Vivillon up close to the camera.",
+        "Photograph Jungle or Archipelago Vivillon in the Cave",
+        "Photograph Sun Pattern Vivillonor Fancy Pattern Vivillon"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/vivillon.shtml"
+    },
+    {
+      "species": 172,
+      "stars": 3,
+      "options": [
+        "Prompt Pichu to electrocute a fluffruit",
+        "Photograph Pichu dancing after waking it up next to Torterra in Park (Night)",
+        "Photograph Pichu dancing to the music by the sign in Park (Day) by playing Melody and having Grookey bang its stick to the beat",
+        "Photograph Pichu happy with Scorbunny and Torterra in the shrunken path"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/pichu.shtml"
+    },
+    {
+      "species": 172,
+      "stars": 4,
+      "options": [
+        "Prompt Pichu to play with Scorbunny and Grookey by the Crystabloom in the Flowerfield",
+        "Photograph Pichu with a flowercrown in the flower field in Park (Day)"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/pichu.shtml"
+    },
+    {
+      "species": 810,
+      "stars": 3,
+      "options": [
+        "Photograph Grookey happy with Pichu",
+        "Photograph Grookey dancing after waking it up next to Torterra in Park (Night)"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/grookey.shtml"
+    },
+    {
+      "species": 810,
+      "stars": 4,
+      "options": [
+        "Photograph Grookey doing a handstand",
+        "Prompt Grookey to play with Scorbunny and Pichu by the Crystabloom in the Flowerfield",
+        "In research Lv. 3, play Melody while it is running past the sign at the start for Grookey to jump on the sign and hit it with its stick and photograph the response"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/grookey.shtml"
+    },
+    {
+      "species": 813,
+      "stars": 3,
+      "options": [
+        "Photograph Scorbunny showing off in Park (Night) at the start",
+        "Photograph Scorbunny talking to Bidoof in the lake",
+        "Photograph Scorbunny digging Trapinch in Sands (Day)",
+        "Photograph Pichu happy with Scorbunny and Torterra in the shrunken path"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/scorbunny.shtml"
+    },
+    {
+      "species": 813,
+      "stars": 4,
+      "options": [
+        "Photograph a happy Scorbunny by the Crystabloom in the Flower Field in Park (Day)",
+        "Throw an Illumina orb at the Scorbunny showing off its kicks in Park (Night) and Photograph its blue flames"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/scorbunny.shtml"
+    },
+    {
+      "species": 626,
+      "stars": 3,
+      "options": [
+        "Photograph Bouffalant bucking after being hit with an Illumina orb",
+        "Photograph two Bouffalant fighting"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/bouffalant.shtml"
+    },
+    {
+      "species": 18,
+      "stars": 3,
+      "options": [
+        "Photograph Pidgeot with its wingsopen after being hit by an Illumina orb",
+        "Photograph Pidgeot defending itself from the Murkrow in Side Path (Night)"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/pidgeot.shtml"
+    },
+    {
+      "species": 18,
+      "stars": 4,
+      "options": [
+        "Photograph Pidgeot at the end of Park (Night) after feeding it a fluffruit at the start",
+        "Photograph Pidgeot carrying Magikarp"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/pidgeot.shtml"
+    },
+    {
+      "species": 465,
+      "stars": 3,
+      "options": [
+        "Photograph an angry Tangrowth",
+        "Photograph Tangrowth reaching for a fluffruit"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/tangrowth.shtml"
+    },
+    {
+      "species": 587,
+      "stars": 3,
+      "options": [
+        "Photograph Emolga rushing to the fluffruit",
+        "Lure Emolga to the fruit under the tree and then distract it with another fruit. Throw an Illumina orb to Prompt it to stumble. Take a picture during this process"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/emolga.shtml"
+    },
+    {
+      "species": 587,
+      "stars": 4,
+      "options": [
+        "Photograph Emolga eating a fluffruit",
+        "Photograph Emolga electrocuting a fluffruit using a fluffruit down under the tree"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/emolga.shtml"
+    },
+    {
+      "species": 265,
+      "stars": 3,
+      "options": [
+        "Photograph Wurmple fighting with Taillow after luring Taillow there with a photo as it flies out from the bushes",
+        "When you see Wurmple climbing up a tree, use Scan to make it wobble"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/wurmple.shtml"
+    },
+    {
+      "species": 198,
+      "stars": 4,
+      "options": [
+        "Photograph Murkrow eating a fluffruit",
+        "Grab a picture of the murder of Murkrow attacking Pidgeot after hitting them with Illumina orbs"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/murkrow.shtml"
+    },
+    {
+      "species": 10,
+      "stars": 3,
+      "options": [
+        "Photograph Caterpie startled by the Murkrow",
+        "Photograph Caterpie sleeping in the tunnel in the Secret Side Path"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/caterpie.shtml"
+    },
+    {
+      "species": 10,
+      "stars": 4,
+      "options": [
+        "Photograph Caterpie using its String Shot",
+        "Photograph Caterpie dancing from behind the sign by using the Melody"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/caterpie.shtml"
+    },
+    {
+      "species": 85,
+      "stars": 4,
+      "options": [
+        "Photograph Dodrio flexing its fighting moves in various parts of the stages",
+        "In Park (Day), give Dodrioa fluffruit and Photograph it missing eating it and causing its heads to argue",
+        "Photograph Dodrio jumping into the Side Path"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/dodrio.shtml"
+    },
+    {
+      "species": 580,
+      "stars": 4,
+      "options": [
+        "Photograph Ducklett flying in Park (Day)",
+        "Photograph the wedge of Swanna & Ducklett flying away at night by playing the music box as you get to the dam area"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/ducklett.shtml"
+    },
+    {
+      "species": 399,
+      "stars": 3,
+      "options": [
+        "Photograph 3 Bidoof swimming",
+        "Photograph Bidoof building the dam with sticks in its mouth",
+        "If Bidoof is swimming in Park (Night), throw an Illumina orb at it and Photograph it swimming on its back",
+        "Photograph Bidoof from behind in the shrunken secret path"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/bidoof.shtml"
+    },
+    {
+      "species": 276,
+      "stars": 3,
+      "options": [
+        "Photograph Taillow dancing on the sign towards the flower fields",
+        "Photograph Wurmple fighting with Taillow after luring Taillow there with a photo as it flies out from the bushes"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/taillow.shtml"
+    },
+    {
+      "species": 389,
+      "stars": 3,
+      "options": [
+        "Photograph the flower covered Torterra in the Flower Field",
+        "Photograph Torterra walking in the flower field",
+        "Photograph Torterra after the fight with Dodrio in the secret pat"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/torterra.shtml"
+    },
+    {
+      "species": 389,
+      "stars": 4,
+      "options": [
+        "Photograph the Torterra walking with Scorbunny on its back",
+        "Wake a Torterra Up with a fluffruit and get a picture",
+        "Photograph Torterra sleeping with Sylveon, Pichu, Grookey, Scorbunny and Shaymin",
+        "Photograph Torterra fighting with Dodrio in the hidden path"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/torterra.shtml"
+    },
+    {
+      "species": 129,
+      "stars": 3,
+      "options": [
+        "Photograph Magikarp eating a fluffruit",
+        "Photograph Magikarp being woken up",
+        "Get a distance picture of Magikarp being carried off by Pidgeot",
+        "Lure Magikarp out in Side Path (Night) by removing Pidgeot and using an Illumina orb. Then activate the Crystabloom and it will appear in the final park. Wake it up with Illumina orbs and taek a picture of it flopping in the flowers",
+        "In research Lv. 3, use Scan when Magikarp is under the Ursaring sleeping on the branch and Photograph Ursaring being knocked off the branch"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/magikarp.shtml"
+    },
+    {
+      "species": 129,
+      "stars": 4,
+      "options": [
+        "Photograph Magikarp being taken by Pidgeot",
+        "Photograph Magikarp being grabbed and taken underwater by Frillish in Undersea",
+        "Photograph Magikarp being lifted psychicly by Psyduck in River (Day) by rescuing Psyduck and knocking Magikarp out the water",
+        "Photograph Magikarp slapping Urasring in the face"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/magikarp.shtml"
+    },
+    {
+      "species": 764,
+      "stars": 4,
+      "options": [
+        "Photograph Comfey dancing after activating a Crystabloom and then playing the Melody",
+        "Photograph Comfey eating a fluffruit"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/comfey.shtml"
+    },
+    {
+      "species": 700,
+      "stars": 3,
+      "options": [
+        "Photograph Sylveon jumping down after being awakened in the Illumina Spot or jumping down ahead of Pinsir",
+        "Photograph Sylveon eating a fluffruit"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/sylveon.shtml"
+    },
+    {
+      "species": 700,
+      "stars": 4,
+      "options": [
+        "Photograph Sylveon stopping the Pinsir & Heracross fight in Park (Night) by waking it up while they are approaching eachother",
+        "Photograph Sylveon sleeping alongside Grookey, Scorbunny, Pichu and Shaymin at the end of Park (Night) by waking them all up"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/sylveon.shtml"
+    },
+    {
+      "species": 492,
+      "stars": 3,
+      "options": [
+        "Photograph Shaymin happy and dancing by Scorbunny's kick display",
+        "Photograph Shaymin sleeping alongside Pichu, Scorbunny and Grookey in the Flower Field"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/shaymin.shtml"
+    },
+    {
+      "species": 492,
+      "stars": 4,
+      "options": [
+        "Photograph Shaymin alongside Scorbunny, Pichu and Grookey lit up with the Crystabloom",
+        "Photograph Shaymin sleeping alongside Sylveon, Pichu, Scorbunny and Grookey in the Flower Field",
+        "Photograph Shaymin mid-course. Let Shaymin run by you then throw Shaymin a fluffruit and then an Illumina orb. It'll jump and then do a pose"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/shaymin.shtml"
+    },
+    {
+      "species": 154,
+      "stars": 4,
+      "options": [
+        "Photograph Meganium being hit on the head by a falling Hoothoot",
+        "Photograph Meganium with Shaymin on its head going very happy after hitting the second Crystabloom and it sniffing it"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/meganium.shtml"
+    },
+    {
+      "species": 133,
+      "stars": 3,
+      "options": [
+        "Throw a fluffruit at Trubbish and get a photo of Eevee getting hit by its poison gas",
+        "Photograph Eevee dancing on Meganium in the Illumina Spot",
+        "Wake Eevee up inside the lab with an Illumina orb and a scan",
+        "Photograph Eevee sleeping at the end of the Side Path"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/eevee.shtml"
+    },
+    {
+      "species": 25,
+      "stars": 3,
+      "options": [
+        "Photograph Pikachu riding on Mantine",
+        "Photograph Pikachu investigating a Sandygast shovel",
+        "Lure Pikachu to the water trough in Route 1 and Photograph it drinking",
+        "Photograph Pikachu balancing on NEO-ONE in the Research Camp",
+        "Photograph Pikachu sleeping at the end of the Side Path"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/pikachu.shtml"
+    },
+    {
+      "species": 25,
+      "stars": 4,
+      "options": [
+        "Photograph Pikachu riding on Stunfisk",
+        "Photograph the two Pikachu on the beach in Beach (Night)",
+        "Lure Pikachu to NEO-ONE in the Research Camp and throw an Illumina orb"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/pikachu.shtml"
+    },
+    {
+      "species": 742,
+      "stars": 3,
+      "options": [
+        "Scan the TV inside the lab for Cutiefly to appear. Then, after Eevee is awake, hit the Cutiefly with Illumina orbs for it to chase. At the end of the chase, throw an Illumina orb at Eevee for a 3 Star photo",
+        "Lure Cutiefly over to Audino with fluffruit and Prompt them to dance"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/cutiefly.shtml"
+    },
+    {
+      "species": 742,
+      "stars": 4,
+      "options": [
+        "In Route 1, throw Illumina orbs at the ones in the bushes. Then, play the Melody and Photograph them dancing",
+        "Lure Cutiefly to a Crystabloom using fluffruit and take pictures of it after activating"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/cutiefly.shtml"
+    },
+    {
+      "species": 659,
+      "stars": 3,
+      "options": [
+        "In the first path, Photograph Bunnelby jumping in the air from the hole",
+        "In the second path, throw an Illumina orb when Bunnelby is jumping between posts. Its next jump will have it do a flip and photograph the response"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/bunnelby.shtml"
+    },
+    {
+      "species": 508,
+      "stars": 3,
+      "options": [
+        "Photograph Stoutland running around outside in the first route",
+        "Wake Stoutland up inside the lab"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/stoutland.shtml"
+    },
+    {
+      "species": 396,
+      "stars": 3,
+      "options": [
+        "Photograph Starly on the water feeder about to take off",
+        "Lure the Starly flock out of a tree and see one at the end. It will dance around the fluffruit and photograph the response"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/starly.shtml"
+    },
+    {
+      "species": 52,
+      "stars": 4,
+      "options": [
+        "In the first route, lure Meowth to the decking to Prompt Rattata out and chase to the fire pit. When at the firepit, give it some fluffruit and it will eventually roll on its back and photograph the response",
+        "In the first route, lure Meowth to the decking to Prompt Rattata out and chase to the fire pit. Then, lure it to Sudowoodo and it will use Sudowoodo as a scratching post for an animation"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/meowth.shtml"
+    },
+    {
+      "species": 531,
+      "stars": 3,
+      "options": [
+        "Photograph Audino dancing by playing Melody",
+        "Lure Cutiefly over to Audino with fluffruit and Prompt them to dance"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/audino.shtml"
+    },
+    {
+      "species": 531,
+      "stars": 4,
+      "options": [
+        "Throw Illumina orbs at Audino wile its dancing with Cutiefly to knock it off balance",
+        "Lure Audino to the sofa inside the laboratory and Photograph it sitting down"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/audino.shtml"
+    },
+    {
+      "species": 19,
+      "stars": 3,
+      "options": [
+        "Throw an Illumina orb into the fire when Rattata is near and Photograph it startled.",
+        "Lure Rattata out of the camp with the Crystabloom and play music and it'll dance"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/rattata.shtml"
+    },
+    {
+      "species": 568,
+      "stars": 3,
+      "options": [
+        "Throw an Illumina orb into the fire when Trubbish is near and Photograph it startled.",
+        "Throw a fluffruit at Trubbish on the Picnic Table and Photograph it using poison gas"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/trubbish.shtml"
+    },
+    {
+      "species": 702,
+      "stars": 3,
+      "options": [
+        "Photograph Dedenne knocked off the NEO ONE",
+        "Use scan while Dedenne is walking to Prompt it to slam its tail on the ground"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/dedenne.shtml"
+    },
+    {
+      "species": 190,
+      "stars": 3,
+      "options": [
+        "Photograph Aipom swinging from a vine",
+        "Annoy the Aipom in your right in River (Day) and follow it through to the end. Photograph it sleeping with Tropius, Sobble and Grookey",
+        "In River (Night), Illumina orb the two Aipom at the start then get them again by Ursaring. Illumina orb them there and Photograph them scared when it wakes up"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/aipom.shtml"
+    },
+    {
+      "species": 190,
+      "stars": 4,
+      "options": [
+        "Prompt Aipom to cut the leaves in the Swamp Path in Jungle Day",
+        "In River (Night), when the Aipom calls its friends to look down at you mid-course, play melody. It will be happy and follow you down. Photograph it happily celebrating"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/aipom.shtml"
+    },
+    {
+      "species": 761,
+      "stars": 4,
+      "options": [
+        "Lure Bounsweet into Ariados' cobwebs by using Melody and take a picture as it wakes up",
+        "Lure Bounsweet out by playing Melody near Leafeon and take the picture as the dance"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/bounsweet.shtml"
+    },
+    {
+      "species": 24,
+      "stars": 4,
+      "options": [
+        "In Jungle (Night) research Lv. 1, throw multiple fluffruit at Arbok to knock it off the tree for a 4 star photo",
+        "In River (Day), Prompt Arbok to fight with Ursaring by using scan to knock it out of the water. Then, they will fight slightly later. Use an Illumina orb and Arbok will attack. Photograph the attack",
+        "In River (Day), Prompt Arbok to win the fight against Ursaring. near the course exitm it will be found sleeping with Psyduck"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/arbok.shtml"
+    },
+    {
+      "species": 469,
+      "stars": 3,
+      "options": [
+        "Photograph Yanmega sleeping on a tree",
+        "Photograph Yanmega fighting Ariados"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/yanmega.shtml"
+    },
+    {
+      "species": 731,
+      "stars": 4,
+      "options": [
+        "Photograph Pikipeck carrying some fluffruit to its nest",
+        "If you got the Toucannon to leave the tree in Jungle (Night), near the course exit a flock of Toucannon will fly through for a 4 star photo"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/pikipek.shtml"
+    },
+    {
+      "species": 733,
+      "stars": 3,
+      "options": [
+        "Photograph Tocuannon commanding the Pikipek in the tree nest",
+        "Prompt Toucannon to scream at you in River (Day) by luring it with a Crystabloom then throwing a fluffruit at it",
+        "Photograph the Toucannon at the start of River (Night) as it takes off by playing Melody"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/toucannon.shtml"
+    },
+    {
+      "species": 733,
+      "stars": 4,
+      "options": [
+        "In Jungle (Night), hit the Crystabloom with an Illumina orb. When it goes out, hit it again. Repeat until the Toucannon start to fly away. Photograph them flying away.",
+        "If you got the Toucannon to leave the tree in Jungle (Night), near the course exit a flock of Toucannon will fly through for a 4 star photo",
+        "In River (Night), lure the Toucannon to the part opposite the cliffside by knocking away the Beautifly and playing Melody near the course entrance by the island. They will land. Play Melody and hit them with an Illumina orb for a 4 star photo"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/toucannon.shtml"
+    },
+    {
+      "species": 168,
+      "stars": 3,
+      "options": [
+        "Photograph Ariados hanging down",
+        "Photograph Ariados fighting with Yanmega"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/ariados.shtml"
+    },
+    {
+      "species": 168,
+      "stars": 4,
+      "options": [
+        "Photograph Ariados using its string shot against Yanmega",
+        "Wake the Ariados on the web up and Photograph it blowing away the Bounsweet"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/ariados.shtml"
+    },
+    {
+      "species": 755,
+      "stars": 3,
+      "options": [
+        "Photograph Morelull eating a fluffruit",
+        "Towards the end of research Lv. 1, hit the Morelull at the end of the level with an Illumina orb and then a fluffruit to knock the Morelull outt by releasing spores",
+        "Photograph Morelull running from Ariados"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/morelull.shtml"
+    },
+    {
+      "species": 289,
+      "stars": 3,
+      "options": [
+        "Photograph Slaking eat a fluffruit in Jungle (Night)",
+        "Get an image of Slaking eating fluffruit in Jungle (Day)"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/slaking.shtml"
+    },
+    {
+      "species": 289,
+      "stars": 4,
+      "options": [
+        "Photograph Slaking by the lake in Jungle (Night) after feeding it a fluffruit near the course entrance",
+        "Photograph Slaking taking things from a tree"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/slaking.shtml"
+    },
+    {
+      "species": 510,
+      "stars": 4,
+      "options": [
+        "In Jungle (Night) research Lv. 1, use Illumina orbs on the Liepard you see until you Prompt to the field. Throw an Illumina orb to get it on its hind legs and photograph the response",
+        "Hit the two Liepard in Jungle (Night) research Lv. 2 with fluffruit and Photograph them jumping off cliffs"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/liepard.shtml"
+    },
+    {
+      "species": 194,
+      "stars": 4,
+      "options": [
+        "Play Melody by the SLaking to lure out Bounsweet. Then, scare the Arbok away and get a photo of Wooper and Bounsweet reuniting.",
+        "Photograph Wooper riding on Tropius in River (Day)"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/wooper.shtml"
+    },
+    {
+      "species": 195,
+      "stars": 3,
+      "options": [
+        "Photograph Quagsire sleeping by the Crystabloom in Jungle (Night) research Lv. 1",
+        "Photograph Quagsire after hitting it with an Illumina orb next to Wooper in River (Night)"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/quagsire.shtml"
+    },
+    {
+      "species": 260,
+      "stars": 4,
+      "options": [
+        "After awakening it in the Swamp Path, throw an Illumina orb at Swampert and Photograph it playing with Leafeon",
+        "In River (day), Illumina orb all the Swampert in Research research Lv. 3, and then throw an Illumina orb at the bubbles and they will appear at the end and jump out the water"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/swampert.shtml"
+    },
+    {
+      "species": 166,
+      "stars": 4,
+      "options": [
+        "Photograph Ledian eating a fluffruit when on the ground by the ruins",
+        "Awaken the three Ledian on the path to the ruins with Melody, and hit them with Illumina orbs. Then, when you reach the waterfall, the Ledian will fly around the waterfalls in acrobatic style. You can get a better view from behind the Waterfall. This is a 4 Star photo",
+        "In River (Night), Crystabloom the Ledian that land near Ursaring and Photograph their dance"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/ledian.shtml"
+    },
+    {
+      "species": 816,
+      "stars": 3,
+      "options": [
+        "Photograph Sobble eating a fluffruit behind the waterfall",
+        "Photograph Sobble using Water Gun into the lake",
+        "Photograph Sobble sleeping"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/sobble.shtml"
+    },
+    {
+      "species": 816,
+      "stars": 4,
+      "options": [
+        "Throw a fluffruit at Sobble behind the waterfall and Photograph it crying",
+        "Photograph Sobble using Water Gun on Venusaur by luring it to the lake and then hitting a Crystabloom by it with an Illumina orb"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/sobble.shtml"
+    },
+    {
+      "species": 470,
+      "stars": 4,
+      "options": [
+        "Photograph Leafeon playing with Swampert after luring it into the Swamp Path and awakening Swampert",
+        "Photograph Leafeon as it approaches Sobble to be friends",
+        "Photograph Leafeon after you have hit Sobble in the face with a fluffruit making it cry and thus making Leafeon cry before it runs away",
+        "When Leafeon meets the Liepard in Jungle (Night), play Melody. The Morelull will release their spores and fall asleep"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/leafeon.shtml"
+    },
+    {
+      "species": 151,
+      "stars": 3,
+      "options": [
+        "Photograph Mew eating a fluffruit in Jungle (Day) using Illumina orbs at it throughout the stage",
+        "Photograph Mew in Jungle (Day) after using an Illumina orb on it"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/mew.shtml"
+    },
+    {
+      "species": 151,
+      "stars": 4,
+      "options": [
+        "Photograph Mew after following it through Jungle (Night). It will stop you and do many poses closes up",
+        "In Jungle Night research Lv. 1, when Mew is near the three Morelull, play Melody to Prompt them to release spores and Photograph Mew Sleeping"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/mew.shtml"
+    },
+    {
+      "species": 677,
+      "stars": 3,
+      "options": [
+        "Photograph Espurr using its psychic powers",
+        "Photograph Espurr sleeping in the Sunny Area"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/espurr.shtml"
+    },
+    {
+      "species": 677,
+      "stars": 4,
+      "options": [
+        "In the second foggy area, throw an Illumina orb at the third Crystabloom so Espurr will appear. Photograph it when Deerling is nearby",
+        "Use a scan to get Espurr down in front of the Trevenant at the crossroad"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/espurr.shtml"
+    },
+    {
+      "species": 275,
+      "stars": 3,
+      "options": [
+        "Photograph Shiftry training Pancham",
+        "If you go through the Spring Area and Prompt Shiftry to use Gust, it will then appear in the Sunny Area. If you hit it with an Illumina orb at the start, it will then run through the stage and go towards the Bulbasaur and Lotad. Throw another Illumina orb and it will show its power, causing Lotad and Bulbasaur to celebrate. Photograph for a 3 Star photo"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/shiftry.shtml"
+    },
+    {
+      "species": 275,
+      "stars": 4,
+      "options": [
+        "Knock Shiftry off its tree in the Spring Area and use an Illumina orb to Prompt it to use Gust",
+        "Knock Shiftry off a tree with a fluffruit, then hit it with an Illumina orb as it hits the last tree. Then when it gets to the big tree, throw an Illumina orb at the Crystabloom and Photograph Shiftry blowing Petals around with its gust"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/shiftry.shtml"
+    },
+    {
+      "species": 352,
+      "stars": 3,
+      "options": [
+        "Photograph Kecleon hanging upsidedown in the Spring Area",
+        "In the Ruins Area, feed the Kecleon at the end and Photograph it with its tongue out"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/kecleon.shtml"
+    },
+    {
+      "species": 352,
+      "stars": 4,
+      "options": [
+        "In research Lv. 2 in the Foggy Area, Photograph 3 Kecleon together and running away after being spotted",
+        "In the Autumn Area,knock Kecleon out of one of the leaf piles and take a photo",
+        "Photograph the sleeping Kecleon to the left in the second Foggy Area"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/kecleon.shtml"
+    },
+    {
+      "species": 585,
+      "stars": 4,
+      "options": [
+        "Photograph Deerling reuniting with Sawsbuck in the second foggy area",
+        "Lure Deerling to the front of two Crystabloom in the second foggy area and Photograph it happy with Espurr",
+        "First, take the alternate route by the Trevenant and follow Espeon to the Winter area. When you Prompt to the second foggy area, light up the Crystablooms to lure Deerling to Espeon. When there, Espeon, Deerling and Sawsbuck will have a reunion. Take the path to the Sunny Area. To the left of the Sunny Area you will see Espeon. Knock it down with a scan and feed it, then give it an Illumina orb. It will then move over to the plains for all seasons. Hit the Crystabloom to attact all the Deerling and Sawsbuck in. Take the photo with all four around the Crystabloom"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/deerling.shtml"
+    },
+    {
+      "species": 586,
+      "stars": 4,
+      "options": [
+        "Photograph Deerling reuniting with Sawsbuck in the second foggy area",
+        "First, take the alternate route by the Trevenant and follow Espeon to the Winter area. When you Prompt to the second foggy area, light up the Crystablooms to lure Deerling to Espeon. When there, Espeon, Deerling and Sawsbuck will have a reunion. Take the path to the Sunny Area. To the left of the Sunny Area you will see Espeon. Knock it down with a scan and feed it, then give it an Illumina orb. It will then move over to the plains for all seasons. Hit the Crystabloom to attact all the Deerling and Sawsbuck in. Take the photo with all four around the Crystabloom and Prompt them to sing with Melody"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/sawsbuck.shtml"
+    },
+    {
+      "species": 674,
+      "stars": 3,
+      "options": [
+        "Photograph Pancham training with Shiftry after being hit with an Illumina orb",
+        "Photograph Pancham playing in the water or happy with Bulbasaur in the Summer area"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/pancham.shtml"
+    },
+    {
+      "species": 1,
+      "stars": 3,
+      "options": [
+        "Photograph the happy Bulbasaur by the waterfall but photographing them and luring them to it",
+        "In the Ruins of the Forest, lure Bulbasaur over to Lotad with Illumina orbs and Photograph it riding the Lotad"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/bulbasaur.shtml"
+    },
+    {
+      "species": 497,
+      "stars": 4,
+      "options": [
+        "In the ruins, you will spot Serperior's tail. Throw a fluffruit at it, then give it a fluffruit. Play Melody and it will fall asleep",
+        "In the Autumn Area, throw Illumina orbs at Serperior and play the Melody. It will go over to Deerling and use Leaf Storm"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/serperior.shtml"
+    },
+    {
+      "species": 840,
+      "stars": 4,
+      "options": [
+        "Get a photo of Applin facing off against Deerling in the Autumn Area",
+        "Photograph Applin out the apple by knocking it off trees and grabbing it in shot before it re-enters the apple"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/applin.shtml"
+    },
+    {
+      "species": 760,
+      "stars": 4,
+      "options": [
+        "Get a photo of Bewear rubbing its eyes in front of the Crystabloom in the ruins area",
+        "In the ruins area, hit a Bewear with multiple fluffruit. Then Photograph it chasing you"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/bewear.shtml"
+    },
+    {
+      "species": 270,
+      "stars": 3,
+      "options": [
+        "Play Melody by the Lotad in the water in the Sunny Area",
+        "In the Ruins of the Forest, lure Bulbasaur over to Lotad with Illumina orbs and Photograph it riding the Lotad"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/lotad.shtml"
+    },
+    {
+      "species": 196,
+      "stars": 3,
+      "options": [
+        "Give Espeon a fluffruit in the Sunny Area",
+        "Photograph Espeon and Deerling by the Crystabloom by luring Deerling over in the second foggy area",
+        "In the ruins, Photograph Espeon sleeping alongside Applin by luring it there after reuniting Deerling and Sawsbuck in the second Foggy Area"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/espeon.shtml"
+    },
+    {
+      "species": 196,
+      "stars": 4,
+      "options": [
+        "Throw an Illumina orb at Espeon as it's running down the path",
+        "Wake Espeon up while Milotic is interacting with Serperior. Photograph Milotic interacting with Espeon after"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/espeon.shtml"
+    },
+    {
+      "species": 251,
+      "stars": 4,
+      "options": [
+        "Photograph 4 Celebi together by hitting Celebi with an Illumina orb then luring it with fluffruit. Then, when Celebi has appeared on the ruins to the left, hit the Celebi and the Crystabloom when it's sitting by the ruins with Illumina orbs for the Celebi to appear. If you play music, they will dance for a 4 star photo",
+        "Photograph 4 Celebi together by hitting Celebi with an Illumina orb then luring it with fluffruit. Then, when Celebi has appeared on the ruins to the left, hit the Celebi and the Crystabloom when it's sitting by the ruins with Illumina orbs for the Celebi to appear.Photograph them flying through the exit together for a 4 star photo"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/celebi.shtml"
+    },
+    {
+      "species": 350,
+      "stars": 3,
+      "options": [
+        "Get a photo of Milotic using Twister",
+        "Photograph Milotic interacting with Serperior"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/milotic.shtml"
+    },
+    {
+      "species": 350,
+      "stars": 4,
+      "options": [
+        "When Milotic is using Twister, keep throwing Illumina orbs to Prompt it to do another move",
+        "After going over the branch, hit Milotic on the head to Prompt it to use Surf"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/milotic.shtml"
+    },
+    {
+      "species": 278,
+      "stars": 3,
+      "options": [
+        "Photograph a happy Wingull",
+        "Photograph Wingull doing a loop-de-loop by playing Melody",
+        "In Reef (Day), throw orbs at the nest to the left of the Wailord and you will awaken a Wingull for a 3 Star Photo",
+        "Photograph Wingull eating a fluffruit"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/wingull.shtml"
+    },
+    {
+      "species": 103,
+      "stars": 4,
+      "options": [
+        "Photograph Exeggutor chasing Crabrawler after it being awakened in Beach (Night)",
+        "Lure the three Exeggutor together on the Beach in Beach (Day) and Photograph them together"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/exeggutor.shtml"
+    },
+    {
+      "species": 739,
+      "stars": 4,
+      "options": [
+        "Photograph Exeggutor chasing Crabrawler after it being awakened in Beach (Night)",
+        "Lure Crabrawler over to Sandygast and Photograph them fighting",
+        "Photograph Crabrawler fighting with Pikachu in Beach (Night)"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/crabrawler.shtml"
+    },
+    {
+      "species": 335,
+      "stars": 4,
+      "options": [
+        "Photograph Zangoose fighting with Seviper in Beach (Night)",
+        "Lure Primarina over to the Secret Beach by hitting it with an Illumina orb. In the Secret Beach, hit the Crystabloom by Primarina and Photograph Zangoose's reaction"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/zangoose.shtml"
+    },
+    {
+      "species": 336,
+      "stars": 3,
+      "options": [
+        "Photograph Seviper swimming after knocking it off the island",
+        "Photograph Seviper fighting with Octillery"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/seviper.shtml"
+    },
+    {
+      "species": 336,
+      "stars": 4,
+      "options": [
+        "Photograph Zangoose & Seviper fighting",
+        "Photograph Seviper sharpening its tail after luring it out from the bushes"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/seviper.shtml"
+    },
+    {
+      "species": 686,
+      "stars": 4,
+      "options": [
+        "Photograph Inkay jumping out of the water by using a Crystabloom in Reef (Evening)",
+        "Lure the 5 Inkay together using fluffruit at them to feed them in Beach (Night). Then when together on the standard path, play Melody and Photograph them in the air dancing"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/inkay.shtml"
+    },
+    {
+      "species": 771,
+      "stars": 4,
+      "options": [
+        "Photograph Pyukumuku being thrown from Pelipper's mouth in Reef (Day) using fluffruit at it",
+        "Throw an Illumina orb at the Pelipper with a Pyukumuku in its mouth and get a the Pyukumuku putting its hand out"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/pyukumuku.shtml"
+    },
+    {
+      "species": 68,
+      "stars": 4,
+      "options": [
+        "Photograph Machamp flexing its muscles in Beach (Day) using Illumina orbs",
+        "In Beach (Day), Prompt the Machamp flexing to swim away using fluffruit in front of it and end up on the beach next to Blastoise. Throw Illumina orbs at Blastoise and Machamp will start doing pushups"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/machamp.shtml"
+    },
+    {
+      "species": 618,
+      "stars": 3,
+      "options": [
+        "Photograph Octillery jumping out of the sand in the Secret Beach by using the Scan feature",
+        "Photograph Stunfisk happy after eating a fluffruit"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/stunfisk.shtml"
+    },
+    {
+      "species": 224,
+      "stars": 3,
+      "options": [
+        "Photograph Octillery scratching its head by using scan in Beach (Night) on the island",
+        "Photograph Octillery spraying its ink upwards by activating the Illumina orb by it in Beach (Night) research Lv. 1",
+        "Photograph Octillery getting hit by electricity from Stunfisk in Beach (Day) by dropping a fluffruit on the Stunfisk and getting it to use its electricity",
+        "Photograph Octillery being blown away by Wailmer undersea, either from the Wailmer or it landing on the way down"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/octillery.shtml"
+    },
+    {
+      "species": 224,
+      "stars": 4,
+      "options": [
+        "Photograph Octillery using its ink against Seviper in Beach (Night) by using an Illumina orb on the Crystabloom when Seviper starts to attack",
+        "Photograph Octillery using its ink against Stunfisk by dropping a fluffruit on the Stunfisk underwater and having it use Electric attacks"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/octillery.shtml"
+    },
+    {
+      "species": 222,
+      "stars": 3,
+      "options": [
+        "Photograph Corsola with Luvdisc in its corals around the corner in Undersea",
+        "Photograph Corsola dancing with Mareanie to Primarina's song after hitting the Crystabloom in the Secret Beach in Beach (Night)",
+        "Photograph Corsola dancing with Finneon in Beach (Day) by luring Finneon to the Corsola on the shore with fluffruit and hit it with an Illumina orb"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/corsola.shtml"
+    },
+    {
+      "species": 456,
+      "stars": 3,
+      "options": [
+        "Photograph Finneon chasing its tail in Beach (Night)",
+        "Photograph Finneon being carried away by WingullGet eaten by Wishiwashi in the Illumina Spot and Photograph Finneon from its mouth",
+        "Photograph Finneon jumping out of the water in Beach (Day) by using an Illumina orb in the Crystabloom in the Secret Beach"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/finneon.shtml"
+    },
+    {
+      "species": 456,
+      "stars": 4,
+      "options": [
+        "Photograph Finneon jumping out of the water by hitting it with an Illumina orb and playing Melody in Beach (Night)",
+        "Photograph Finneon dancing with Corsola in Beach (Day) by luring it to the Corsola on the shore with fluffruit and hit it with an Illumina orb"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/finneon.shtml"
+    },
+    {
+      "species": 366,
+      "stars": 4,
+      "options": [
+        "Unearth the Clamperl in the Undersea Cave part and Photograph it swimming",
+        "In Reef (Evening), hit the Drifblim floating by Clamperl with fluffruit and Illumina orb. Photograph the Mareanie that comes to attack the Clamperl"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/clamperl.shtml"
+    },
+    {
+      "species": 730,
+      "stars": 3,
+      "options": [
+        "Photograph Primarina blowing bubbles in Reef (Evening)",
+        "Photograph Primarina preparing its concert in Beach (Night) by playing Melody"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/primarina.shtml"
+    },
+    {
+      "species": 730,
+      "stars": 4,
+      "options": [
+        "Photograph Primarina performing its concert in Beach (Night) using an Illumina orb at it at the start",
+        "Throw an Illumina orb off Primarina and get it off its reef without hitting it. Then, use an Illumina orb in the water and play Melody. Photograph it jumping"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/primarina.shtml"
+    },
+    {
+      "species": 26,
+      "stars": 3,
+      "options": [
+        "Photograph Alolan Raichu happy while surfing",
+        "In Beach (Night), throw multiple fluffruit at the sleeping Raichu. Eventually it'll start to glow Blue. Hit it again and it'll flip over"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/raichu.shtml"
+    },
+    {
+      "species": 26,
+      "stars": 4,
+      "options": [
+        "Photograph Alolan Raichu doing a flip in Reef (Evening)",
+        "In Reef (Evening), throw an Illumina orb and start playing Melody by the first Raichu and Photograph it dancing"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/raichu.shtml"
+    },
+    {
+      "species": 769,
+      "stars": 3,
+      "options": [
+        "Throw fluffruit at Sandygast and Photograph it using Hypnosis",
+        "Photograph Sandygast dancing along to Melody"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/sandygast.shtml"
+    },
+    {
+      "species": 319,
+      "stars": 3,
+      "options": [
+        "Photograph Sharpedo chasing a Pokémon",
+        "Throw a fluffruit towards the Sharpedo at the start of Reef (Day) and Photograph it eating it"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/sharpedo.shtml"
+    },
+    {
+      "species": 319,
+      "stars": 4,
+      "options": [
+        "Photograph Sharpedo rapidly jumping out of the water in Reef (Day) during a race",
+        "Photograph Sharpedo jumping out the water by hitting the Crystabloom in Reef (Day)"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/sharpedo.shtml"
+    },
+    {
+      "species": 7,
+      "stars": 3,
+      "options": [
+        "Photograph Squirtle riding a Lapras",
+        "Throw fluffruit at the Squirtle lying on the island in Reef (Day) and Photograph them in their shell"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/squirtle.shtml"
+    },
+    {
+      "species": 7,
+      "stars": 4,
+      "options": [
+        "Throw a fluffruit at Squirtle in Reef (Evening) and have Wingull hit it into the Whirlpool. Photograph it in the whirlpool",
+        "If Squirtle was knocked in the whirlpool, use Illumina orbs to summon Blastoise and Photograph Squirtle riding Blastoise"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/squirtle.shtml"
+    },
+    {
+      "species": 131,
+      "stars": 3,
+      "options": [
+        "Photograph Lapras scaring Sharpedo away from Squirtle in Reef (Day)",
+        "Photograph Lapras eating a fluffruit"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/lapras.shtml"
+    },
+    {
+      "species": 226,
+      "stars": 4,
+      "options": [
+        "Photograph Mantine giving Pikachu a ride",
+        "Light the Crystabloom in Reef (Day) and get the Mantine enfused with energy. Photograph the school of Mantine leaping out of water in a line",
+        "Photograph Mantine rolling in the air from in front by holding turbo and then using scan. Photograph the higher jumping Mantine"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/mantine.shtml"
+    },
+    {
+      "species": 279,
+      "stars": 3,
+      "options": [
+        "Photograph Pelipper diving underwater in Underwater",
+        "Photograph Pelipper carrying Pyukumuku"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/pelipper.shtml"
+    },
+    {
+      "species": 321,
+      "stars": 3,
+      "options": [
+        "Photograph Wailord being chased by Wishiwashi in the Illumina Spot",
+        "In Reef (Day), throw an Illumina orb so it opens its mouth"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/wailord.shtml"
+    },
+    {
+      "species": 321,
+      "stars": 4,
+      "options": [
+        "Throw an Illumina orb at Wailord in Reef (Evening) to see it spout its water",
+        "Throw multiple Illumina orbs at Wailord to Prompt Wailord to do a spin in Reef (Day)"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/wailord.shtml"
+    },
+    {
+      "species": 747,
+      "stars": 3,
+      "options": [
+        "Photograph Mareanie chasing a Corsola in Reef (Day)",
+        "Photograph Mareanie dancing with Corsola to Primarina's song after hitting the Crystabloom in the Secret Beach in Beach (Night)"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/mareanie.shtml"
+    },
+    {
+      "species": 134,
+      "stars": 3,
+      "options": [
+        "Photograph Vaporeon eating a fluffruit after hitting it with an Illumina orb when swimming",
+        "Photograph Vaporeon singing along to the Melody at the Blue Hole area of the stage alongside Clamperl"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/vaporeon.shtml"
+    },
+    {
+      "species": 134,
+      "stars": 4,
+      "options": [
+        "Photograph Vaporeon jumping out of the Blue Spot by getting it to swim faster with an Illumina orb and then playing Melody at the spot",
+        "After luring Vaporeon out of the Blue Spot, go to the secret path and light the Crystabloom. Then, Vaporeon will appear by two Clamperl. Play Melody and it will go on its back"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/vaporeon.shtml"
+    },
+    {
+      "species": 370,
+      "stars": 3,
+      "options": [
+        "Photograph Luvdisc hit with an Illumina orb at the party with Corsola early on after hitting the Crystabloom",
+        "Photograph Luvdisc in Corsola's corals",
+        "Get eaten by Wishiwashi in the Illumina Spot and Photograph Finneon from its mouth"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/luvdisc.shtml"
+    },
+    {
+      "species": 370,
+      "stars": 4,
+      "options": [
+        "Rescue the Luvdisc from the Qwilfish by powering up Clawitzer's attacks.",
+        "As you Prompt to the end of a standard path, you will see two Crystabloom. Hit them with an Illumina orb to lure the Luvdisc and then play Melody for a 4 star shot of them as a clover"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/luvdisc.shtml"
+    },
+    {
+      "species": 594,
+      "stars": 3,
+      "options": [
+        "Photograph Alomomola sleeping on a clifface",
+        "In research Lv. 3, hit the first Almomola under Wailmer in the normal route with a fluffruit. Then, when it goes to sit in a cave, hit it with another so Frillish will grab it. Photograph it being carried to sea"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/alomomola.shtml"
+    },
+    {
+      "species": 594,
+      "stars": 4,
+      "options": [
+        "Photograph Alomomola blowing bubbles at Finneon by hitting it with an Illumina orb",
+        "Throw Illumina orbs at both Luvdisc and Alomomola early on and Photograph Alomola blowing a bubble ring"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/alomomola.shtml"
+    },
+    {
+      "species": 320,
+      "stars": 3,
+      "options": [
+        "Photograph Wailmer blowing away Octillery or Pyukumuku in Undersea",
+        "Photograph Wailmer facing you and spraying water in your face"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/wailmer.shtml"
+    },
+    {
+      "species": 346,
+      "stars": 4,
+      "options": [
+        "Photograph Cradily reacting to you throwing fluffruit at it repeatedly in the Underwater ruins in Undersea",
+        "Wake up a the Cradily in the seaweed and lure it to the open and hit it with an Illumina orb. Then play Melody for it to dance"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/cradily.shtml"
+    },
+    {
+      "species": 211,
+      "stars": 3,
+      "options": [
+        "Photograph Qwilfish puffed up by playing Melody",
+        "In research Lv. 1, get Qwilfish puffed up by playing Melody then hit it with a fluffruit. Photograph it deflating"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/qwilfish.shtml"
+    },
+    {
+      "species": 693,
+      "stars": 3,
+      "options": [
+        "Photograph Clawitzer shooting Qwilfish in Undersea research Lv. 3",
+        "In research Lv. 2, throw an Illumina orb at the Clawitzer and Photograph the special attack it unleashes in the duel"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/clawitzer.shtml"
+    },
+    {
+      "species": 693,
+      "stars": 4,
+      "options": [
+        "Photograph Clawitzer celebrating after shooting 4 Qwilfish in Undersea research Lv. 3",
+        "In research Lv. 2, throw an Illumina orb at the Clawitzer and Photograph the special attack it unleashes in the duel with both Clawitzer in frame"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/clawitzer.shtml"
+    },
+    {
+      "species": 171,
+      "stars": 3,
+      "options": [
+        "Photograph Lanturn being captured by the two Frillish",
+        "Photograph Lanturn after rescuing it from the two Frillish"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/lanturn.shtml"
+    },
+    {
+      "species": 121,
+      "stars": 3,
+      "options": [
+        "Photograph Starmie swimming away",
+        "Photograph Starmie being dug up by Lumineon"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/starmie.shtml"
+    },
+    {
+      "species": 592,
+      "stars": 4,
+      "options": [
+        "Photograph two Frillish grabbing Lanturn in the Undersea Cave",
+        "In research Lv. 3, hit the first Almomola under Wailmer in the normal route with a fluffruit. Then, when it goes to sit in a cave, hit it with another so Frillish will grab it. Photograph it being carried to sea"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/frillish.shtml"
+    },
+    {
+      "species": 746,
+      "stars": 3,
+      "options": [
+        "Take photos of Wishiwashi Spinning",
+        "Photograph Wishiwashi as it is about to eat you"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/wishiwashi.shtml"
+    },
+    {
+      "species": 451,
+      "stars": 4,
+      "options": [
+        "Photograph Skorupi caught in the tornado in Sands (Day) research Lv. 1",
+        "Photograph Skorupi standing on their tails by removing the Tornado then throwing Illumina orbs at them when the two meet"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/skorupi.shtml"
+    },
+    {
+      "species": 331,
+      "stars": 4,
+      "options": [
+        "Photograph Cacnea caught in the tornado in Sands (Day) research Lv. 2",
+        "Photograph Cacnea chasing a tumbleweed by using scan when you drop down the sandslide. It will appear at the end chasing the tumbleweed",
+        "First awaken the two Minior in the first area. Then, use scan when you drop down the sandslide and see the Cacnea to the left. It will appear at the end chasing tumbleweed but then will move to Minior for a closer picture"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/cacnea.shtml"
+    },
+    {
+      "species": 27,
+      "stars": 3,
+      "options": [
+        "Photograph Sandshrew talking to Minior in Sands (Night)",
+        "Photograph Lycanroc Midnight attacking Sandshrew",
+        "Photograph Sandshrew climbing out of the ground in Badlands (night)"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/sandshrew.shtml"
+    },
+    {
+      "species": 328,
+      "stars": 4,
+      "options": [
+        "Photograph Trapinch happy with Scorbunny after Flygon has given it a fluffruit",
+        "In Sands (Night), wake the Trapinch in the crater up with a fluffruit and Photograph Trapinch with a bit of Minior Shell in its mouth",
+        "Photograph Trapinch in Sands (Day) being dug up by Scorbunny using Illumina orbs at Scorbunny"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/trapinch.shtml"
+    },
+    {
+      "species": 330,
+      "stars": 4,
+      "options": [
+        "Photograph Flygon taking a fluffruit in Sands (Day)",
+        "In Sands (Night), wake Flygon up with an Illumina orb and Photograph it doing Dragon Dance"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/flygon.shtml"
+    },
+    {
+      "species": 115,
+      "stars": 3,
+      "options": [
+        "In Sands (Night), play the Melody and throw a fluffruit at the Kangaskhan watching the meteor show and",
+        "Photograph Kangaskhan roaring at Salazzle in Badlands (Day)"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/kangaskhan.shtml"
+    },
+    {
+      "species": 115,
+      "stars": 4,
+      "options": [
+        "Free two Minior that come down by the Crystablooms and watch as they fly to Kangaskhan in the Oasis, letting its guard down. Photograph the Kangaskhan playing with its baby",
+        "Free two Minior that come down by the Crystablooms and watch as they fly to Kangaskhan in the Oasis, letting its guard down. Photograph the Kangaskhan feeding its baby a fluffruit",
+        "In Badlands (Day), lure Koffing down to Tepig by hitting it with a fluffruit. Then, Illumina orb both and it'll use Smokescreen. Kangaskhan will put Tepig in its pouch. Photograph it with Tepig in its pouch"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/kangaskhan.shtml"
+    },
+    {
+      "species": 630,
+      "stars": 3,
+      "options": [
+        "Photograph Mandibuzz on the ground eating a fluffruit",
+        "Photograph Mandibuzz screaming at the Kangaskhan after being defeated by Rockruff and friends during Badlands (Night)"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/mandibuzz.shtml"
+    },
+    {
+      "species": 774,
+      "stars": 3,
+      "options": [
+        "Free the Minior that comes down from lighting the three Crystablooms and Photograph it spinning",
+        "Photograph Minior falling from the sky",
+        "Photograph Minior playing with Sandshrew"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/minior.shtml"
+    },
+    {
+      "species": 774,
+      "stars": 4,
+      "options": [
+        "Photograph Minior creating a meteor showed in the final parts of Sands (Night)",
+        "If you scan right to the bottom right when you start and release the Minior, then release two hidden in the dunes behind Trapinch, then two more hidden by the big rock to your right, then one poking out by the dune with Kangaskhan on, then one more next to Silicobra, then restore the one that hits Skorupi and the two that come down from th Crystabloom, a formating of Minior will fly through the Oasis for a 4 star photo"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/minior.shtml"
+    },
+    {
+      "species": 843,
+      "stars": 3,
+      "options": [
+        "Photograph Silicobra angry after the fight with Lycanroc",
+        "In Badlands (Day), rescue the Silicobra using a fluffruit at the Scolipede making chase and lighting the Crystabloom. Then, a Silicobra will pop out of a cave hole. Photograph it using Sand Spit after hitting it with an Illumina orb"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/silicobra.shtml"
+    },
+    {
+      "species": 843,
+      "stars": 4,
+      "options": [
+        "In Sands (Night), lure one to the Oasis by knocking it awake, then out of the sand opposite the Minior Crystablooms. Then, Prompt it to fight with Lycanroc",
+        "In Sands (Day), lure the Silicobra out by the final Crystabloom using a fluffruit and lure Vivillon close by. Photograph Silicobra leaping to get the Vivillon",
+        "In Badlands (Day), rescue the Silicobra using a fluffruit at the Scolipede making chase and lighting the Crystabloom. Then, a Silicobra will be sleeping in a cave hole. Photograph it using Sand Spit after hitting it with a fluffruit",
+        "In Badlands (Day), use an Illumina orb on the Silicobra stuck in the ground after releasing it from the ground. Photograph it attacking Tepig"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/silicobra.shtml"
+    },
+    {
+      "species": 255,
+      "stars": 3,
+      "options": [
+        "Photograph Torchic setting fire to a fluffruit",
+        "In Badlands (Night)'s alternate path, wake up Shinx and use an Illumina orb to Prompt it to attack the Mandibuzz"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/torchic.shtml"
+    },
+    {
+      "species": 255,
+      "stars": 4,
+      "options": [
+        "Lure Torchic over to Hippowdon and throw an Illumina orb at it. It will jump onto Hippowdon's back and photograph the response",
+        "Throw multiple Illumina orbs at Torchic then give it a fluffruit",
+        "In Badlands (Day), take the alternate path and there will be three Torchic. Lure them together and Illumina orb & play melody and a Diglett will pop out, scaring them. Photograph them startled."
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/torchic.shtml"
+    },
+    {
+      "species": 695,
+      "stars": 4,
+      "options": [
+        "Photograph Heliolisk running on water after being startled by a Magikarp when you throw a fluffruit into the Oasis",
+        "After awakening the Heliolisk, Photograph the two Heliolisk with their frills open",
+        "When Heliolisk has its frills open, throw an Illumina orb at it and take an image of it using Parabolic Charge"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/heliolisk.shtml"
+    },
+    {
+      "species": 745,
+      "stars": 3,
+      "options": [
+        "Photograph Lycanroc fighting Tyranitar in Sands (Day)",
+        "Photograph Lycanroc fighting Hippowdon in Sands (Day)",
+        "Use Scan as you go towards the Sandsfall and see Lycanroc on the rock causing it to Howl",
+        "Photograph Lycanroc Midnight Form fighting Tyranitar in Sands (Night)",
+        "In research Lv. 1 of Sands (Night), Photograph Lycanroc throwing your fluffruit away",
+        "Photograph Lycanroc Midnight attacking Sandshrew"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/lycanroc.shtml"
+    },
+    {
+      "species": 745,
+      "stars": 4,
+      "options": [
+        "Photograph Lycanroc Midday Form howling on the end of a cliff in the right hand side of Sands (Night)",
+        "Get Lycanroc Midday Form howling in Badlands (night) by waking up Rockruff in research Lv. 1 and having them join together",
+        "Photograph Lycanroc Midnight Form howling after feeing it a fluffruit in Levels 2 & 3"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/lycanroc.shtml"
+    },
+    {
+      "species": 248,
+      "stars": 3,
+      "options": [
+        "Photograph Tyranitar fighting with Lycanroc",
+        "Hit Tyranitar with a fluffruit at Sands (Night) and Photograph its roar"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/tyranitar.shtml"
+    },
+    {
+      "species": 248,
+      "stars": 4,
+      "options": [
+        "After the fight with Lycanroc, hit Tyranitar with an Illumina orb and Photograph it breaking the rock",
+        "In Sands (Night), activate the Crystabloom in the crater area to show Tyranitar. Then, lure Lycanroc Midnight Form over to Prompt them to fight and photograph the response"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/tyranitar.shtml"
+    },
+    {
+      "species": 334,
+      "stars": 3,
+      "options": [
+        "Photograph Altaria flying overhead",
+        "Let the Altaria at the start of research Lv. 3 follow you into the Hot Springs. Hit it with a fluffruit and Photograph it flailing in the water"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/altaria.shtml"
+    },
+    {
+      "species": 403,
+      "stars": 4,
+      "options": [
+        "Reunite the lost Shinx with Luxray in research Lv. 3 by luring it with fluffruit",
+        "In research Lv. 3 i nthe Blue Magma room, if you throw an Illumina orb at the Crystabloom, quickly turn and Photograph Shinx waking up and happy",
+        "Prompt Tepig, Torchic and Shinx to the end of Badlands (Night) and play music. Photograph it happy and dancing",
+        "In Badlands (Night)'s alternate path, wake up Shinx and use an Illumina orb to Prompt it to attack the Mandibuzz"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/shinx.shtml"
+    },
+    {
+      "species": 405,
+      "stars": 3,
+      "options": [
+        "Photograph Luxray after reuniting it with the Shinx in Volcano (research Lv. 3)",
+        "In research Lv. 3, reunite the Shinx and Luxray in the first area. Then, as you enter the canyon, throw a fluffruit at the Tyrantrum that is chasing Archeops. The Luxray will come in to your rescue and face down the Tyrantrum for a 3 Star photo"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/luxray.shtml"
+    },
+    {
+      "species": 391,
+      "stars": 3,
+      "options": [
+        "Photograph two Monferno showing off to eachother inside the volcano",
+        "Photograph Monferno absorbing energy from Volcarona in the Illumina Spot",
+        "Photograph Monferno slapping its rear after throwing an Illumina orb at it at research Lv. 1"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/monferno.shtml"
+    },
+    {
+      "species": 391,
+      "stars": 4,
+      "options": [
+        "Photograph Monferno doing fighting posses on top of a pillar in volcano in research Lv. 1",
+        "In research Lv. 3, Photograph Monferno going to kick Graveler away inside the volcano"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/monferno.shtml"
+    },
+    {
+      "species": 142,
+      "stars": 4,
+      "options": [
+        "Photograph Aerodactyl eating a fluffruit on land using fluffruit at the Typhlosion in the final area of research Lv. 2",
+        "Play Melody to make the Aerodactyl on the ground sleep"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/aerodactyl.shtml"
+    },
+    {
+      "species": 697,
+      "stars": 4,
+      "options": [
+        "Photograph Tyrantrum roaring against Charizard",
+        "Wake Tyrantrum up by getting the Monferno to jump on its tail. Then Photograph it as it bumps its head on the wall"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/tyrantrum.shtml"
+    },
+    {
+      "species": 218,
+      "stars": 3,
+      "options": [
+        "Photograph Slugma falling down a Lavafall",
+        "Photograph Slugma hanging upside-down from the ceiling"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/slugma.shtml"
+    },
+    {
+      "species": 218,
+      "stars": 4,
+      "options": [
+        "In Volcano research Lv. 1, Photograph Slugma climbing the Lavafall",
+        "Photograph Slugma eating a fluffruit in the Blue Magma area and throwing an Illumina orb at it so it doesn't burn the fluffruit"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/slugma.shtml"
+    },
+    {
+      "species": 4,
+      "stars": 3,
+      "options": [
+        "Photograph Charmander happy inside the volcano by playing the melody",
+        "Photograph Charmander in the crater growling at the other",
+        "In research Lv. 3, hit the Crystabloom above Tyrantrum then throw fluffruit at the Charmander hiding spot to lure Charmander out. Then play Melody and wait for Charizard to land. Photograph Charmander celebrating"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/charmander.shtml"
+    },
+    {
+      "species": 4,
+      "stars": 4,
+      "options": [
+        "Throw an Illumina orb at the Charmander talking with Archeops to Prompt it to unleash a Flamethrower",
+        "Photograph the Charmander growling at Charizard after luring them out in the main volcano",
+        "Photograph Charmander using Flame Burst by feeding it two fluffruit"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/charmander.shtml"
+    },
+    {
+      "species": 6,
+      "stars": 3,
+      "options": [
+        "Photograph Charizard doing a flypast of Tyrantrum",
+        "Prompt Charizard to land in the ruins on the Blue Magma path and either battle with Typhlosion or knock Typhlosion away and throw an Illumina orb at Charizard"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/charizard.shtml"
+    },
+    {
+      "species": 6,
+      "stars": 4,
+      "options": [
+        "Photograph Charizard roaring",
+        "If you Illumina orb the three Charmander on the way into the volcano, one at the start, one by the Crystabloom and one with Archeops, then Prompt to the Blue Magma Path. Throw Illumina orbs at both Charmander and then knock the Graveler down for a Charizard to appear. This will be a 4 star shot",
+        "Later, it will be in the main chamber. When it lands, Illumina orb it for a Flamethrower 4 star photo",
+        "Photograph Charizard with the Charmander in the main chamber by luring the Charmander out and playing Melody"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/charizard.shtml"
+    },
+    {
+      "species": 157,
+      "stars": 3,
+      "options": [
+        "Photograph Typhlosion eating a fluffruit",
+        "Photograph Typhlosion fighting with Charizard by luring Charizard there by Illumina orbing all Charmander"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/typhlosion.shtml"
+    },
+    {
+      "species": 157,
+      "stars": 4,
+      "options": [
+        "Throw Typhlosion a fluffruit then throw an Illumina orb at it. Photograph it using Flamethrower",
+        "Hit Typhlosion with a fluffruit at the start of a stage. Then, shortly after, see it interacting with an Aerodactyl. Throw an Illumina orb to Prompt it to use Eruption"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/typhlosion.shtml"
+    },
+    {
+      "species": 136,
+      "stars": 3,
+      "options": [
+        "Photograph Flareon jumping after illuminating the Crystabloom in the Blue Magma room",
+        "In the standard room, wake a Flareon up with an Illumina orb and wait for it to jump down to the lava. Then, throw a fluffruit at it"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/flareon.shtml"
+    },
+    {
+      "species": 162,
+      "stars": 3,
+      "options": [
+        "Photograph Furret jumping out of the hole in Snowfields (Day)",
+        "Hit the first Crystabloom with an Illumina orb to set Furret out of the hole and into one across the field. Throw a fluffruit in the new one to release Furret. Play Melody"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/furret.shtml"
+    },
+    {
+      "species": 162,
+      "stars": 4,
+      "options": [
+        "In the Tundra on Snowfields (Night), wake the Abomasnow up in the distance sleeping on the cliff. Photograph Furret interacting with it",
+        "Hit the Furret in Snowfields (Day) with a fluffruit right when you start. Then, throw an Illumina orb at the Crystabloom and have Furret jump out and run to another hole, but another Furret is in it. Photograph them waving"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/furret.shtml"
+    },
+    {
+      "species": 614,
+      "stars": 3,
+      "options": [
+        "Throw a fluffruit at a sleeping Beartic",
+        "Help Beartic find the Cubchoo in the igloo and Photograph it lifting the Cubchoo out",
+        "Throw a fluffruit at the Beartic by Piplup at the end of SNowfields (Day) and Photograph its roar"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/beartic.shtml"
+    },
+    {
+      "species": 614,
+      "stars": 4,
+      "options": [
+        "In the Icy Cave route of Snowfields (Night), throw a fluffruit into the waterhole and lure Magikarp out. Then, throw multiple fluffruit at the sleeping Beartic and it will wake up and go after the Magikarp",
+        "In the Icy Cave in (Snowfields Day) research Lv. 2, a Beartic will be running around. Hit it with a fluffruit to anger it. It will come to you. Then, throw an Illumina orb and it will run to a Mamoswine and start to road. Take the photo"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/beartic.shtml"
+    },
+    {
+      "species": 262,
+      "stars": 4,
+      "options": [
+        "Photograph Mightyena howling by using the scan",
+        "In the Tundra part, Photograph Mightyena howling on the peak by Illumina orbing the Furret and watching the chase"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/mightyena.shtml"
+    },
+    {
+      "species": 461,
+      "stars": 4,
+      "options": [
+        "Photograph Weavile being knocked out of a tree in the forest in Snowfields (Night)",
+        "Lure Weavile to the tree with the scratches and then hit it with an Illumina orb causing it to run up the hill. Then, throw a fluffruit at the Swinub on the left at the top of the hill to start a fight between the Weavile and the Mamoswine. Photograph Weavile fighting with Mamoswine"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/weavile.shtml"
+    },
+    {
+      "species": 628,
+      "stars": 3,
+      "options": [
+        "Photograph Braviary doing a loop-the-loop by playing Melody as it flies through the Tundra in Snowfields (Night)",
+        "Photograph Braviary eating a fluffruit by luring it to the cave Furret runs into in the Tundra"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/braviary.shtml"
+    },
+    {
+      "species": 628,
+      "stars": 4,
+      "options": [
+        "In Snowfields (night), Photograph Braviary landing next to the Alolan Sandslash and fighting",
+        "Photograph Braviary as it is about to land"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/braviary.shtml"
+    },
+    {
+      "species": 220,
+      "stars": 4,
+      "options": [
+        "Activate the Hot Springs at the end of Snowfields (Day) and lure Swinub over",
+        "In Snowfields (Night), throw an Illumina orb at the Swinub on the ridge in the final area and then the Braviary and Photograph Braviary taking the Swinub"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/swinub.shtml"
+    },
+    {
+      "species": 473,
+      "stars": 3,
+      "options": [
+        "Throw a fluffruit at the sleeping Mamoswine in Snow (Night) to wake it up",
+        "Photograph Mamoswine roaring in the Tundra"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/mamoswine.shtml"
+    },
+    {
+      "species": 28,
+      "stars": 3,
+      "options": [
+        "Photograph Alolan Sandslash as it is in the air to dig down",
+        "Awaken all the Alolan Sandslash in Snowfields (Night) and Photograph it digging around in the Tundra",
+        "In Snowfields (Day), feed the Sandslash beyond the Snow Wall with fluffruit and wait for them to go into the Icy Cave. Photograph them climbing the wall in the cave for a 3 Star Photo",
+        "In Snowfields Night, Illumina orb the Sandslash to your left as you go through the stage. Then, in the Tundra, wake the Abomasnow up on the ledge as you go to the cave and use an Illumina orb. It will use Blizzard and the Sandslash will jump out and photograph the response"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/sandslash.shtml"
+    },
+    {
+      "species": 28,
+      "stars": 4,
+      "options": [
+        "In Snowfields (Day), go beyond the Snow Wall. Throw an Illumina orb at the Sandslash that keeps digging and coming up, then feed it a Fluff Fruit. Photograph it smiling after eating it",
+        "Throw an Illumina orb at the Sandslash repeatedly digging in and out of the area and grab a picture of it smiling"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/sandslash.shtml"
+    },
+    {
+      "species": 460,
+      "stars": 3,
+      "options": [
+        "Use the Melody to make Abomasnow let out a roar",
+        "In the Tundra, wake the Abomasnow up on the ledge as you go to the cave and use an Illumina orb. It will use Blizzard",
+        "Lure the Sandslash to Abomasnow and Photograph the Sandslash waking it up in Snowfields (Night)"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/abomasnow.shtml"
+    },
+    {
+      "species": 37,
+      "stars": 3,
+      "options": [
+        "Photograph Alolan Vulpix happy after eating a fluffruit",
+        "Photograph Vulpix sleeping in a righthand cave alcove"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/vulpix.shtml"
+    },
+    {
+      "species": 37,
+      "stars": 4,
+      "options": [
+        "Photograph Alolan Vulpix using Icy Wind on the Spheal in Snowfields (Night)",
+        "In the final area of Snowfields (Night), hit Spheal with a fluffruit before Abomasnow hits them so Piplup can finish the race. Photograph Vulpix as it's crowning the victor, an even better picture if it is with Glaceon",
+        "Photograph Vulpix sleeping throughthe holes in the side of the cave"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/vulpix.shtml"
+    },
+    {
+      "species": 225,
+      "stars": 3,
+      "options": [
+        "Photograph Delibird putting a fluffruit into its sack",
+        "If you awaken the sleeping Crabominable with two fluffruit and an Illumina orb, it will knock the tree with the Snom sleeping. The Snom will dig under ground but one will be slower. Hit it with an Illumina orb and Delibird will come with a fluffruit. Photograph Delibird offering the fluffruit",
+        "Rescue the Delibird in the first area using a fluffruit at the Mightyena digging at the log the Dlibird ran into in the first area and then give Delibird a fluffruit. Photograph it showing the fluffruit to Piplup",
+        "Rescue the Delibird in the first area using a fluffruit at the Mightyena digging at the log the Dlibird ran into in the first area and then give Delibird a fluffruit. Then, throw an Illumina orb at the Furret in the Tundra and Photograph Delibird throwing the fluffruit at the Mightyena to scare it off"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/delibird.shtml"
+    },
+    {
+      "species": 225,
+      "stars": 4,
+      "options": [
+        "After Delibird puts a fluffruit in its pack, throw another and throw an Illumina orb or playing Melody to Prompt it to offer you one",
+        "After Delibird puts a fluffruit in its pack, throw another and use Scan to Prompt it to yell at you"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/delibird.shtml"
+    },
+    {
+      "species": 872,
+      "stars": 3,
+      "options": [
+        "Photograph Snom hanging down from the cave after going through the Snow Wall path in Snowfields (Night)",
+        "Photograph Snom going into the trees in Snowfields (Night)",
+        "Photograph the Snom on the righthand tree when going into the cave in Snowfields (Day)"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/snom.shtml"
+    },
+    {
+      "species": 872,
+      "stars": 4,
+      "options": [
+        "In the Snow Wall area of Snowfields (Night), if you awaken the sleeping Crabominable with two fluffruit and an Illumina orb, it will knock the tree with the Snom sleeping. The Snom will dig under ground but one will be slower. Hit it with an Illumina orb and Delibird will come with a fluffruit. Other Snom will then come up and celebrate. Take a photo for a 4 star photo",
+        "Take photos of 3 Snom on the way through the Forest in Snowfields (Day). Then, beyond the Snow Wall use the Crystabloom to lure Frosmoth over and Photograph the 4 Snom that appear"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/snom.shtml"
+    },
+    {
+      "species": 873,
+      "stars": 3,
+      "options": [
+        "Knock off the two Frosmoth on the way into the Snowfields and Photograph them eating fluffruit",
+        "Knock the Frosmoth off from the tree in the Blizzard area and Photograph it dancing using an Illumina orb"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/frosmoth.shtml"
+    },
+    {
+      "species": 361,
+      "stars": 3,
+      "options": [
+        "Photograph Snorunt happy inside the cave",
+        "Photograph SNorunt excited at the fallen icicle in the cave in Snowfields (Day)"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/snorunt.shtml"
+    },
+    {
+      "species": 361,
+      "stars": 4,
+      "options": [
+        "Throw a fluffruit at the front of the igloo in Snowfields (Night) and Photograph Snorunt within it",
+        "Knock the icicle down above the Snorunt and Photograph them as it lands"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/snorunt.shtml"
+    },
+    {
+      "species": 362,
+      "stars": 4,
+      "options": [
+        "Inside the cave after it has been woken up in Snowfields (Night), throw a fluffruit at Glalie to activate its Ice Armor",
+        "Lure Glalie to Avalugg's tail in the Icy Cave in Snowfields (Day) and hit it with an Illumina orb to Prompt it to bite down"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/glalie.shtml"
+    },
+    {
+      "species": 478,
+      "stars": 4,
+      "options": [
+        "After Froslass wakes up inside the cave in Snowfields (Day) research Lv. 1, throw Illumina orbs at the Crystabloom by it, then throw a fluffruit to Prompt it to use an attack",
+        "In the Ice Cave, throw Illumina orbs at the Froslass so she keeps disappearing. She will appear by the Froslass and release a spray of ice dust",
+        "Wake the Froslass up in the Snow Wall area of the Snowfields Night. Then, when going into the standard path, hit the Snom she's speaking to with a fluffruit and she will move to the final area. Wake her outside and play Melody and photograph the response"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/froslass.shtml"
+    },
+    {
+      "species": 124,
+      "stars": 4,
+      "options": [
+        "Throw an Illumina orb at the Jynx praying by the river inside the Icy Cave and Photograph it when it blows a kiss",
+        "Photograph Jynx dancing with Vanilluxe using an Illumina orb at the Crystabloom"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/jynx.shtml"
+    },
+    {
+      "species": 363,
+      "stars": 4,
+      "options": [
+        "Knock Spheal into the water hole in Snowfields (Day) and play Melody to Photograph Dewgong bouncing Spheal on its head",
+        "Photograph Spheal happily bouncing and posing after being bounced by the aforementioned Dewgong"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/spheal.shtml"
+    },
+    {
+      "species": 393,
+      "stars": 3,
+      "options": [
+        "Photograph Piplup sliding on the ice near the course exit in Snowfields (Night)",
+        "In Snowfields (Night), lure Piplup out of the snow in the tree behind the Snow Wall using lots of Illumina orbs at it"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/piplup.shtml"
+    },
+    {
+      "species": 393,
+      "stars": 4,
+      "options": [
+        "In the Icy cave area of Snowfields (Day), throw an Illumina orb at the Piplup on the iceberg and take a picture as they return with a scallop",
+        "In the final area of Snowfields (Night), hit Spheal with a fluffruit before Abomasnow hits them so Piplup can finish the race. Photograph the victor",
+        "In Snowfields Day, throw a fluffruit into the water to get Magikarp and Piplup out for a 4 star picture"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/piplup.shtml"
+    },
+    {
+      "species": 584,
+      "stars": 4,
+      "options": [
+        "Photograph Vanilluxe mid-spinafter hitting the Crystabloom",
+        "Hit the far Jynx with a fluffruit after waking Vanilluxe, then hit the Crystabloom again for it to let out smoke",
+        "In Snowfields (Day), in the Icy Cave Prompt Glalie to bite on Avalugg to scare Vanilluxe out of the cave. Then, near the end, throw the fluffruit into the hole in the side of the cave and Vanilluxe will jump out. Throw an Illumina orb at it and Photograph it using Frost Breath"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/vanilluxe.shtml"
+    },
+    {
+      "species": 713,
+      "stars": 3,
+      "options": [
+        "Photograph Avalugg carrying a Pokémon in the outside",
+        "In Snowfields (Night), go through the Icy Cave and Turbo to the glacier before Avalugg gets there. Lure Avalugg to you and lure it to the Delibird and Piplup then hit it with a fluffruit. Photograph it roaring"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/avalugg.shtml"
+    },
+    {
+      "species": 87,
+      "stars": 3,
+      "options": [
+        "Photograph Dewgong riding on Avalugg in the distance",
+        "Photograph Dewgong jumping out of the water"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/dewgong.shtml"
+    },
+    {
+      "species": 471,
+      "stars": 4,
+      "options": [
+        "Photograph Glaceon using Diamond Dust by hitting it with an Illumina orb after luring it to the small island in Snowfields (Day)",
+        "Photograph it in the Snow Wall Area in Snowfields Night and then hit Spheal with the fluffruit before Abomasnow hits them. Photograph Glaceon's move"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/glaceon.shtml"
+    },
+    {
+      "species": 169,
+      "stars": 4,
+      "options": [
+        "Throw two Illumina orbs at the Crobat in the distance at the end of the standard path of the cave and Photograph its acts",
+        "In the Standard Path, As you go beyond the Rampardos there are two Crobat flying around. Hit the one that pauses with a fluffruit and it will come and land behind you. Give it a fluffruit and take a photo"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/crobat.shtml"
+    },
+    {
+      "species": 595,
+      "stars": 3,
+      "options": [
+        "Get a photo of Joltik peering down on a rock",
+        "Photograph Joltik startled by Gengar"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/joltik.shtml"
+    },
+    {
+      "species": 74,
+      "stars": 3,
+      "options": [
+        "Get a photo of Geodude fighting",
+        "In the main cavern in the Cave, spot a Geodude on your left. Throw a fluffruit at it and grab a picture of it climbing the wall"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/geodude.shtml"
+    },
+    {
+      "species": 74,
+      "stars": 4,
+      "options": [
+        "At the end of the Cave's standard path, lure Rampardos towards Gengar's portal and wait for it to headbutt the wall. This will knock Geodude down and make them angry.",
+        "Lure Sableye to Geodude in a small alcove on the right of the main path and Photograph Geodude reacting to Sableye trying to dig it up",
+        "On the way down to the Gemstone Path, Illumina orb one of the Geodude so it wins the fight. Photograph its one-armed handstand that it does to celebrate a few seconds after."
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/geodude.shtml"
+    },
+    {
+      "species": 703,
+      "stars": 3,
+      "options": [
+        "Photograph Gengar scaring the Carbink early in the Cave stage by luring them to it and throwing an Illumina orb",
+        "Going down the Gemstone Path, hit a fluffruit at the second Joltik on the left and then activate the Crystabloom. Photograph Drifloon holding the Joltik"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/carbink.shtml"
+    },
+    {
+      "species": 703,
+      "stars": 4,
+      "options": [
+        "Throw Illumina orbs at a Crystabloom behind the ruins to lure Carbink out then hit it with Illumina orbs and play melody to Prompt it to dance",
+        "In the Garden, throw an Illumina orb out to Prompt the Carbink into the main area. Then, when all 4 Carbink ar in the area press Melody and get them to dance. This will summon Diancie. Hit it with a Illumina orb to generate a Diamond and Photograph Carbink's reaction as it explodes"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/carbink.shtml"
+    },
+    {
+      "species": 94,
+      "stars": 4,
+      "options": [
+        "Photograph Gengar startling some Carbink after luring them to the portal",
+        "Photograph Gengar scaring a sleeping Crobat using an Illumina orb at its portal",
+        "Photograph Gengar laughing at Rampardos after making it headbutt a wall",
+        "In research Lv. 1, lure Gengar to the Croagunk in the main area using an Illumina orb at its portal, then at Croagunk. Photograph Gengar scaring the Croagunk awake"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/gengar.shtml"
+    },
+    {
+      "species": 714,
+      "stars": 3,
+      "options": [
+        "Photograph Noibat eating a fluffruit",
+        "If you go down the Rimstone path, lure Magikarp out to interrupt Goodra and Noibat to make Noibat scared and take a picture"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/noibat.shtml"
+    },
+    {
+      "species": 714,
+      "stars": 4,
+      "options": [
+        "Throw an Illumina orb at the Noibat in the ruins in the Illumina Spot",
+        "Release the Noibat during the Illumina Spot stage and help Steelix fight it off. Noibat will be found cheering in a small cave by a Crystabloom"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/noibat.shtml"
+    },
+    {
+      "species": 453,
+      "stars": 3,
+      "options": [
+        "Photograph Croagunk sleeping after being hit by an Illumina orb so it has a snot bubble coming out of its nose",
+        "Hit the Croagunk with fluffruit on the way down in order: Middle, Top, Bottom to Prompt them to laugh for a 3 Star Photo",
+        "In research Lv. 1, lure Gengar to the Croagunk in the main area using an Illumina orb at its portal, then at Croagunk. Photograph Croagunk throwing a rock back at Gengar in retaliation"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/croagunk.shtml"
+    },
+    {
+      "species": 453,
+      "stars": 4,
+      "options": [
+        "As you are going down the cave, hit the three Croagunk in the order: Middle, Top, Bottom. Then, throw an Illumina orb and then they will start to float. Photograph them floating",
+        "In research Lv. 1, lure Gengar to the Croagunk in the main area using an Illumina orb at its portal, then at Croagunk. Photograph Croagunk stamping on the ground after Gengar leaves"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/croagunk.shtml"
+    },
+    {
+      "species": 425,
+      "stars": 3,
+      "options": [
+        "In Cave research Lv. 2, wake up the Glalie by the Carbink and have it scare the Drifloon away",
+        "Going down the Gemstone Path, hit a fluffruit at the second Joltik on the left and then activate the Crystabloom. Photograph Drifloon holding the Joltik"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/drifloon.shtml"
+    },
+    {
+      "species": 35,
+      "stars": 4,
+      "options": [
+        "Illuminate the Crystabloom and then play Melody then hit the Crystabloom again to Prompt Clefairy to dance with their wings lit up, lifting them into the air",
+        "In the cave mouth on the standard path, light the Crystabloom and then play music"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/clefairy.shtml"
+    },
+    {
+      "species": 302,
+      "stars": 4,
+      "options": [
+        "Throw a fluffruit at a sleeping Sableye",
+        "As you go down the standard path, lure Sableye to Geodude in a small alcove on the right. Sableye will dig under Geodude until Geodude wakes up scaring it. Photograph the scared Sableye",
+        "In the Illumina Spot, go to the ruins and lure the Sableye together with a fluffruit. Photograph the Sableye together for a 4 Star photo"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/sableye.shtml"
+    },
+    {
+      "species": 635,
+      "stars": 3,
+      "options": [
+        "Photograph a sleeping Hydreigon in the Secret Garden's secret entrance",
+        "Throw two fluffruit on the Hydreigon as it's going down on the main chamber"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/hydreigon.shtml"
+    },
+    {
+      "species": 635,
+      "stars": 4,
+      "options": [
+        "Hit Hydreigon twice with fluffruit on its way down into the cave. Then, when you reach the end of the stage, hit it with another one for another reaction",
+        "In the final chamber of the standard path, when Hydreigon starts to lower itself, play Melody and it will go down to the water. Throw a fluffruit near it when it's in the water and it will eat it. Photograph it eating for a 4 Star Photo"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/hydreigon.shtml"
+    },
+    {
+      "species": 303,
+      "stars": 3,
+      "options": [
+        "Photograph Mawile with its head mouth open to intimidate you",
+        "Photograph Mawile shaking its head around after Diancie's show in research Lv. 3"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/mawile.shtml"
+    },
+    {
+      "species": 135,
+      "stars": 4,
+      "options": [
+        "Lure a Joltik onto Jolteon with fluffruit and Photograph Jolteon using its electricity to knock Joltik away",
+        "Lure Jolteon out of the flowers and hit it with a fluffruit for it to use Discharge"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/jolteon.shtml"
+    },
+    {
+      "species": 208,
+      "stars": 4,
+      "options": [
+        "Photograph Steelix using Iron Tail towards the Crobat after summoning the Crobat and then agitating them",
+        "In the first room of the stage, if Steelix blocks your path, illuminate it and Photograph it roaring",
+        "Photograph Steelix with its head on the ceiling in the second chamber after you release the Crobat via the Crystabloom to the left"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/steelix.shtml"
+    },
+    {
+      "species": 229,
+      "stars": 3,
+      "options": [
+        "Photograph Houndoom howling at you",
+        "Photograph Houndoom stretching in the outside of the ruins"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/houndoom.shtml"
+    },
+    {
+      "species": 177,
+      "stars": 4,
+      "options": [
+        "Photograph Natu perched on top of a Golurk",
+        "In research Lv. 1, Photograph Natu jumping on a fluffruit by luring it out throwing a fluffruit at the ruins"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/natu.shtml"
+    },
+    {
+      "species": 359,
+      "stars": 4,
+      "options": [
+        "Photograph Absol coming to see Xerneas use Geomancy",
+        "Photograph Absol fighting with Umbreon by waking Umbreon up and luring them together"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/absol.shtml"
+    },
+    {
+      "species": 715,
+      "stars": 4,
+      "options": [
+        "Photograph Noivern using Supersonic in research Lv. 2 in a fight against Salandit",
+        "Photograph Noivern gliding down to the fight with Salandit using a fluffruit in the battle area to lure them out"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/noivern.shtml"
+    },
+    {
+      "species": 527,
+      "stars": 3,
+      "options": [
+        "Photograph Woobat stuck to the wall",
+        "Knock Woobat off the middle pillar and use Melody for it to dance"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/woobat.shtml"
+    },
+    {
+      "species": 561,
+      "stars": 4,
+      "options": [
+        "Photograph Sigilyph flying low in the ruins",
+        "Photograph Sigilyph happy after eating a fluffruit. Do this with the sleeping one by the entrance to the main ruins chamber"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/sigilyph.shtml"
+    },
+    {
+      "species": 606,
+      "stars": 3,
+      "options": [
+        "Photograph Beheeyem with its hands in the air when you hit it with a fluffruit",
+        "Photograph the Beheeyem chasing Golurk after activating all 6 Crystablooms in the ruins"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/beheeyem.shtml"
+    },
+    {
+      "species": 623,
+      "stars": 4,
+      "options": [
+        "Photograph Golurk rocketing overhead at the start of the ruins",
+        "In the Illumina Spot, throw two fluffruit at Sigilyph and Photograph the Golurk flying in",
+        "In the ruins, Prompt the two Beheeyem to meet using fluffruit at the first, then again after it moves Golurk. Then, two Golurk will fly into the ruins."
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/golurk.shtml"
+    },
+    {
+      "species": 609,
+      "stars": 3,
+      "options": [
+        "Photograph Chandelure fighting Absol",
+        "Photograph Chandelure eating a fluffruit"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/chandelure.shtml"
+    },
+    {
+      "species": 609,
+      "stars": 4,
+      "options": [
+        "Photograph Chandelure dancing by playing music in research Lv. 3 by luring it towards the end and giving it a fluffruit, then playing music",
+        "Photograph Chandelure using its flames by making it angry in research Lv. 2. Setup: looking behind you after you reach the Wishiwashi statue in the ruins and throwing a fluffruit at Absol. You will Prompt Chandelure to use its flames"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/chandelure.shtml"
+    },
+    {
+      "species": 385,
+      "stars": 3,
+      "options": [
+        "Hit Jirachi with multiple Illumina orbs outside and Photograph it dancing as it goes into the ruins.",
+        "Wake Jirachi up in the ruins and hit all 6 Crystablooms. Play the Melody and photograph its movements",
+        "Activate all the Crystablooms in the Ruins and throw an Illumina orb at Jirachi by the pillar of light"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/jirachi.shtml"
+    },
+    {
+      "species": 590,
+      "stars": 3,
+      "options": [
+        "Photograph Foongus dropping off apples",
+        "Photograph Foongus releasing their spores after dropping the fluffruit",
+        "Photograph Foongus eating a fluffruit"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/foongus.shtml"
+    },
+    {
+      "species": 143,
+      "stars": 3,
+      "options": [
+        "Throw fluffruit into Snorlax's mouth",
+        "In the Flower Fields, Photograph Snorlax eating a fluffruit",
+        "Photograph Snorlax raising its hand to you after running to you",
+        "In Side Path (Night), Photograph Snorlax sleeping"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/snorlax.shtml"
+    },
+    {
+      "species": 160,
+      "stars": 3,
+      "options": [
+        "Photograph Feraligatr roaring after coming out of the water",
+        "Photograph Feraligatr roaring after using an Illumina orb on it"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/feraligatr.shtml"
+    },
+    {
+      "species": 357,
+      "stars": 3,
+      "options": [
+        "Photograph Tropius in flight",
+        "Wake Tropius up with Morelull in River (Night)"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/tropius.shtml"
+    },
+    {
+      "species": 357,
+      "stars": 4,
+      "options": [
+        "Photograph Tropius eating a fluffruit",
+        "Photograph Tropius flying with Wooper on its head",
+        "Photograph Tropius as it is starting to take flight"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/tropius.shtml"
+    },
+    {
+      "species": 54,
+      "stars": 3,
+      "options": [
+        "Use an Illumina orb in the water and Photograph Psyduck splashing out of the water in River (Day)",
+        "In River (Night), awaken the Ursaring in the valley by activating the Ledian with the Illumina orb. Then, as they fly in and release Vivillon, Ursaring will run down and scare the Psyduck. Photograph it running away scared"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/psyduck.shtml"
+    },
+    {
+      "species": 54,
+      "stars": 4,
+      "options": [
+        "Use an Illumina orb to Prompt Psyduck to use Confusion to protect itself from Ursaring",
+        "Rescue Psyduck from the Aipom in research Lv. 1 and knock a Magikarp out of the river. Photograph it using Confusion on the Magikarp",
+        "In River (Day), Prompt Arbok to win the fight against Ursaring. near the course exit, it will be found sleeping with Psyduck"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/psyduck.shtml"
+    },
+    {
+      "species": 217,
+      "stars": 3,
+      "options": [
+        "Photograph Ursaring roaring with its arms open",
+        "In research Lv. 3, use Scan when Magikarp is under the Ursaring sleeping on the branch and Photograph Ursaring being knocked off the branch"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/ursaring.shtml"
+    },
+    {
+      "species": 217,
+      "stars": 4,
+      "options": [
+        "Photograph Ursaring attacking an Arbok in River (Day)",
+        "Photograph Ursaring being hit in the face by Magikarp in River (Night)",
+        "In River (Night), Illumina orb the Aipom near the course entrance, they will come to the Ursaring and wake it up, causing Ursaring to angrily slash the tree"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/ursaring.shtml"
+    },
+    {
+      "species": 529,
+      "stars": 3,
+      "options": [
+        "Photograph Drilbur digging into the ground",
+        "In River (Day), knock the Arbok out of the water and Photograph the startled Drilbur",
+        "In River (Night), hit the Quagsire by the waterfall with a fluffruit then Illumina orb the two Wooper. After they stop, use scan and Drilbur will come out. Photograph it waving."
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/drilbur.shtml"
+    },
+    {
+      "species": 529,
+      "stars": 4,
+      "options": [
+        "In River (Day), Photograph Drilbur after digging into the ground propelling themselves across the river",
+        "In River (Day), In the rapids, use the Crystabloom to summon the Toucannon and then play Melody. Two Drilbur will jump up for a midair pose for a 4 star photo"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/drilbur.shtml"
+    },
+    {
+      "species": 173,
+      "stars": 3,
+      "options": [
+        "Photograph Cleffa following Wooper at the start of research Lv. 2",
+        "Photograph Cleffa using Metronome in the cave in River (Day)"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/cleffa.shtml"
+    },
+    {
+      "species": 173,
+      "stars": 4,
+      "options": [
+        "Photograph Cleffa dancing by the Crystabloom",
+        "Photograph Cleffa using Twister in the cave in River (Day)"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/cleffa.shtml"
+    },
+    {
+      "species": 130,
+      "stars": 3,
+      "options": [
+        "Photograph Gyarados dancing after hitting it with an Illumina orb",
+        "Photograph Gyarados eating a fluffruit"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/gyarados.shtml"
+    },
+    {
+      "species": 130,
+      "stars": 4,
+      "options": [
+        "Photograph Gyarados jumping down the rapids in River (Day)",
+        "Photograph Gyarados climbing the waterfall in River (Night)"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/gyarados.shtml"
+    },
+    {
+      "species": 50,
+      "stars": 3,
+      "options": [
+        "In Badlands (Night), Illumina orb and photo 5 Diglett. Then, hit the Crystabloom with an Illumina orb and have the Diglett push the boulder down. Photograph the Diglett pushing the boulder",
+        "Photograph Diglett digging out of the ground"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/diglett.shtml"
+    },
+    {
+      "species": 744,
+      "stars": 3,
+      "options": [
+        "Photograph Rockruff howling in Badlands (Night) by waking it up and hitting it with an Illumina orb",
+        "Photograph Rockruff playing with Tepig, Torchic and Shinx"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/rockruff.shtml"
+    },
+    {
+      "species": 744,
+      "stars": 4,
+      "options": [
+        "Photograph Rockruff howling at the Mandibuzz to protect its friends",
+        "Photograph Rockruff celebrating after saving its friends"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/rockruff.shtml"
+    },
+    {
+      "species": 758,
+      "stars": 3,
+      "options": [
+        "Lure Salazzle over to the sand that gives an odour and Photograph Salazzle kicking the sand up at itself",
+        "Lure Salazzle to the Kangaskhan at the start area of Badlands (Day) and Photograph it attacking"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/salazzle.shtml"
+    },
+    {
+      "species": 758,
+      "stars": 4,
+      "options": [
+        "Photograph striking a pose after luring it out from behind a rock and playing Melody in Badlands (Day)",
+        "In Badlands (Day), awaken the Zeraora with a fluffruit and it will run through the stage. Salazzle will spot it and chase it, going to the Poison Swamp where it will sit on a cliff. Hit it with an Illumina orb and it will glow"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/salazzle.shtml"
+    },
+    {
+      "species": 498,
+      "stars": 4,
+      "options": [
+        "Photograph Tepig jumping between two large cliffs in the alternate route",
+        "In Badlands (Day), lure Koffing down to Tepig by hitting it with a fluffruit. Then, Illumina orb both and it'll use Smokescreen. Kangaskhan will put Tepig in its pouch. Photograph it with Tepig in its pouch",
+        "In Badlands (Night)'s alternate path, wake up Tepig and use an Illumina orb to Prompt it to attack the Mandibuzz"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/tepig.shtml"
+    },
+    {
+      "species": 472,
+      "stars": 3,
+      "options": [
+        "Wake the Gliscor up and Photograph one by the craters as a Minior crashes down",
+        "Photograph Gliscor doing a flip in mid-air",
+        "Photograph a Gliscor hanging upsidedown while awake towards the end of the stage",
+        "Photograph Gliscor having Sleep Powder being used on it in the alternate path"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/gliscor.shtml"
+    },
+    {
+      "species": 472,
+      "stars": 4,
+      "options": [
+        "Photograph Gliscor yawning after being attacked by the Vivillon in the alternate path up the geyser. The Vivillon needs to be awakened by another Vivillon flying past that has been hit by an Illumina orb",
+        "Photograph Scolipede attacking Gliscor in Badlands (Night)"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/gliscor.shtml"
+    },
+    {
+      "species": 545,
+      "stars": 3,
+      "options": [
+        "Photograph Scolipede waking up and attacking the Silicobra in Badlands (Day)",
+        "Photograph Scolipede rolling on the floor after hitting the Crystabloom in Badlands (Night)",
+        "Photograph Scolipede attacking eachother in the alternate path"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/scolipede.shtml"
+    },
+    {
+      "species": 545,
+      "stars": 4,
+      "options": [
+        "Photograph Scolipede attacking eachother in the alternate path",
+        "Photograph Scolipede attacking Gliscor in Badlands (Night)"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/scolipede.shtml"
+    },
+    {
+      "species": 109,
+      "stars": 4,
+      "options": [
+        "Photograph Swalot with Koffing stuck in its mouth after Salazzle kicks it out of the poison swamp volcano",
+        "Photograph Koffing overinflated by luring to a Crystabloom and throwing an Illumina orb"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/koffing.shtml"
+    },
+    {
+      "species": 317,
+      "stars": 3,
+      "options": [
+        "Photograph Swalot with its mouth open fighting Koffing in Badlands (Day)",
+        "Photograph Swalot dancing after hitting the Crystabloom in Badlands (Night)"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/swalot.shtml"
+    },
+    {
+      "species": 807,
+      "stars": 3,
+      "options": [
+        "Photograph Zeraora flipping while jumping",
+        "In Badlands (Day), lure Zeraora to the end by hitting it with a fluffruit in the cliffside. Then, give it a fluffruit"
+      ],
+      "source": "https://www.serebii.net/newpokemonsnap/photodex/zeraora.shtml"
+    }
+  ]
+}

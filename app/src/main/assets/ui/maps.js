@@ -3,7 +3,8 @@ const MM=SnapMapModel,DATA=SnapMapData,A='../game-art/';
 let api,dialog,cid='',follow=true,autoCourse=true,zoom=1,pan={x:0,y:0},frame={},selected=null,returnToMap=false;
 let resizeObserver,gesture=new Map(),drag=null,gestureMoved=false,lastMove=0,visibility=true;
 let layers={pokemon:'all',landmarks:true,routes:true},markerKey='',markerLayoutKey='',markerRevision=0,groups=new Map(),trailKey='',pastKey='',playerStamp='';
-const tracker=new MM.CourseTracker(SnapRouteData.courses,SnapRouteCalibration);
+const tracker=new MM.CourseTracker(SnapRouteData.courses,SnapRouteCalibration),continuity=new MM.PositionContinuity();
+let sourceKey;
 try{const saved=JSON.parse(localStorage.getItem('snap-map-preferences')||'{}').layers||{};
  if(typeof saved.pokemon==='string'&&['all','missing','requests','off'].includes(saved.pokemon))layers.pokemon=saved.pokemon;
  else if(typeof saved.pokemon==='boolean')layers.pokemon=saved.requests?'requests':saved.missing?'missing':saved.pokemon?'all':'off';
@@ -87,22 +88,24 @@ function pointerMove(ev){if(!gesture.has(ev.pointerId)||!drag)return;gesture.set
 function pointerUp(ev){if(gestureMoved)lastMove=Date.now();gesture.delete(ev.pointerId);drag=gesture.size?{points:new Map(gesture),pan:{...pan},zoom}:null;if(!gesture.size){markers();gestureMoved=false;}}
 let wheelTimer;
 function wheel(ev){ev.preventDefault();follow=false;zoomAt(zoom*Math.exp(-ev.deltaY*.002),ev.clientX-box.left,ev.clientY-box.top,false);clearTimeout(wheelTimer);wheelTimer=setTimeout(markers,140);}
-function player(){const fresh=visibility&&MM.frame(frame,Date.now(),cid),r=fresh?tracker.view(frame,Date.now()):null,el=$('.map-player');if(!el)return;
- const note=$('.map-position-note');hide(note,!fresh);text(note,r?.player?'Approximate Route Position':'Position Not Mapped');hide($('.map-live-route'),!r?.player);if($('.map-follow').disabled!==!r?.player)$('.map-follow').disabled=!r?.player;
+function position(){const now=Date.now(),fresh=MM.frame(frame,now,cid);return continuity.read(frame,now,cid,fresh?tracker.view(frame,now):null,visibility&&state().connected===true&&state().visible===true);}
+function player(){const display=position(),r=display?.view,reading=display?.row,el=$('.map-player');if(!el)return;
+ const note=$('.map-position-note');hide(note,!!r?.player&&!display.held);text(note,display?.held?'Last Position · Reconnecting':MM.frame(frame,Date.now(),cid)?'Position Not Mapped':'Waiting for Position');el.classList.toggle('last-position',display?.held===true);el.setAttribute('aria-label',display?.held?'Last Confirmed NEO-ONE Position':'Current NEO-ONE Position');hide($('.map-live-route'),!r?.player);if($('.map-follow').disabled!==!r?.player)$('.map-follow').disabled=!r?.player;
  if(!r?.player){playerStamp='';el.hidden=true;$('.map-view-cone').setAttribute('hidden','');return;}
- const stamp=JSON.stringify([cid,frame.run,frame.routeKey,frame.distance,frame.camera,zoom,follow,pan,box.width,box.height,r.pastRevision]);if(stamp===playerStamp)return;playerStamp=stamp;
+ const cone=display.held?null:MM.viewCone(reading,r.calibration),conePath=MM.conePath(cone,box.boardW,box.boardH);
+ const stamp=JSON.stringify([cid,reading.run,reading.routeKey,reading.distance,reading.camera,zoom,follow,pan,box.width,box.height,r.pastRevision,display.held,reading.phase,conePath]);if(stamp===playerStamp)return;playerStamp=stamp;
  if(follow){pan={x:(.5-r.player.x)*box.boardW*zoom,y:(.5-r.player.y)*box.boardH*zoom};positionBoard();}
  const p=transform(r.player);el.hidden=false;el.style.left=p.x+'px';el.style.top=p.y+'px';el.querySelector('i').hidden=!r.direction;if(r.direction)el.style.setProperty('--heading',Math.atan2(r.direction.x*box.boardW,-r.direction.y*box.boardH)+'rad');
- const key=cid+':'+frame.run+':'+frame.routeKey,base=MM.trailBase(r.calibration,frame.distance),bodyKey=key+':'+base.index;if(bodyKey!==trailKey){trailKey=bodyKey;$('.route-travelled').setAttribute('d',MM.trailPath(r.calibration,base.distance));}
- const head=MM.trailPath(r.calibration,frame.distance,base.distance);if($('.route-head').getAttribute('d')!==head)$('.route-head').setAttribute('d',head);
+ const key=cid+':'+reading.run+':'+reading.routeKey,base=MM.trailBase(r.calibration,reading.distance),bodyKey=key+':'+base.index;if(bodyKey!==trailKey){trailKey=bodyKey;$('.route-travelled').setAttribute('d',MM.trailPath(r.calibration,base.distance));}
+ const head=MM.trailPath(r.calibration,reading.distance,base.distance);if($('.route-head').getAttribute('d')!==head)$('.route-head').setAttribute('d',head);
  const historyKey=key+':'+r.pastRevision;if(historyKey!==pastKey){pastKey=historyKey;$('.route-past').innerHTML=r.past.map(part=>`<path d="${MM.trailPath(part.calibration,part.to)}"/>`).join('');}
- const cone=MM.viewCone(frame,r.calibration),path=MM.conePath(cone,box.boardW,box.boardH),view=$('.map-view-cone');view.toggleAttribute('hidden',!path);if(path){view.style.left=p.x+'px';view.style.top=p.y+'px';view.querySelector('path').setAttribute('d',path);}
+ const view=$('.map-view-cone');view.toggleAttribute('hidden',!conePath);if(conePath){view.style.left=p.x+'px';view.style.top=p.y+'px';view.querySelector('path').setAttribute('d',conePath);}
 }
 function progress(selector,lo,hi=lo,approximate=false){const bar=$(selector),value=bar.querySelector('strong'),label=lo==null?'—':(approximate?'≈':'')+(Math.round(lo*100)===Math.round(hi*100)?Math.round(lo*100):Math.round(lo*100)+'–'+Math.round(hi*100))+'%';if(value.textContent!==label)value.textContent=label;
  style(bar.querySelector('em'),'width',(lo==null?0:lo*100)+'%');bar.classList.toggle('tracking',lo!=null);if(lo==null)bar.removeAttribute('aria-label');else attribute(bar,'aria-label',bar.querySelector('b').textContent+' '+label);
 }
 function live(next){const incoming=MM.sanitize(next||{});if(incoming.status==='ready'&&frame.status==='ready'&&incoming.course===frame.course&&incoming.run===frame.run&&incoming.sampleAt<frame.sampleAt)return;frame=incoming;tracker.observe(frame,Date.now());if(!visible())return;
- const fresh=visibility&&MM.frame(frame,Date.now(),cid),r=fresh?tracker.view(frame,Date.now()):null;text($('.map-section-name'),r?.section||'Current Section');progress('.map-section-progress',r?.sectionProgress??null);progress('.map-overall-progress',r?.overall?.[0]??null,r?.overall?.[1]??null,r?.approximate===true);
+ const fresh=visibility&&MM.frame(frame,Date.now(),cid),r=position()?.view;text($('.map-section-name'),r?.section||'Current Section');progress('.map-section-progress',r?.sectionProgress??null);progress('.map-overall-progress',r?.overall?.[0]??null,r?.overall?.[1]??null,r?.approximate===true);
  text($('.map-level'),fresh?(frame.level===4?'Lv. MAX':'Lv. '+frame.level):'');hide($('.map-current'),!state().course||state().course===cid);player();
 }
 function updateCounts(){if(!$('.map-course-coverage'))return;const ids=[...new Set(data().points.filter(p=>p.pokemon).map(p=>p.pokemon))],diamond=ids.reduce((n,id)=>n+MM.collection(state().photos,id).diamond,0);$('.map-course-coverage').innerHTML=`${icon('star-diamond')}<b>${diamond}</b><span>/ ${ids.length*4}</span>`;}
@@ -127,12 +130,12 @@ function click(ev){const b=ev.target.closest('[data-map]');if(!b||b.disabled||Da
  else if(a==='request'){returnToMap=true;close();api.openRequest(v);}
  else if(a==='current')open(state().course);
 }
-function update(snapshot,changed={}){if(!api)return;const next=snapshot.course||'';
+function update(snapshot,changed={}){if(!api)return;if(sourceKey!==snapshot.sourceKey){sourceKey=snapshot.sourceKey;tracker.reset();continuity.clear();}if(!snapshot.connected||!snapshot.visible)continuity.clear();const next=snapshot.course||'';
  if(!visible()){frame=MM.sanitize(snapshot.gameReading||{});tracker.observe(frame,Date.now());return;}
  if(autoCourse&&next&&next!==cid&&DATA.courses.some(c=>c.id===next)){setMapCourse(next);render();measure();paint();}
  if(changed.collection||changed.requests){markerRevision++;updateCounts();markers();if(selected)pin();}live(snapshot.gameReading||{});
 }
-function setVisibility(value){visibility=value===true;if(!visibility&&visible())notify(false);else if(visible())notify(true);if(visible())player();}
+function setVisibility(value){visibility=value===true;if(!visibility)continuity.clear();if(!visibility&&visible())notify(false);else if(visible())notify(true);if(visible())player();}
 setInterval(()=>{if(visible()&&!MM.frame(frame,Date.now(),cid))live(frame);},500);
 window.SnapMaps={init,open,back,update,live,toolQueued(){},visibility:setVisibility,isOpen:visible};
 })();

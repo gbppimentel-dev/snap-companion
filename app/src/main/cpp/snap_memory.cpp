@@ -155,9 +155,11 @@ struct Reader {
    if(!controller)Discover(rest,near_done?2000:1400);
    if(!controller){if(priority.complete&&rest.complete)discovery_retry=Clock::now()+std::chrono::seconds(5);return "{\"status\":\"seeking\"}";}
   }
-  if(!CurrentScene(controller,scene))return "{\"status\":\"idle\"}";
+  if(!CurrentScene(controller,scene))return "{\"status\":\"seeking\"}";
   auto sample=scn::ReadSnapCandidate(host,scene);auto scope=sample?scn::ReadSnapScope(host,*sample):std::nullopt;
-  if(!scope||scope->owner!=controller)return "{\"status\":\"idle\"}";
+  // A rail/owner can change between reads during a fork or event. This is
+  // an incomplete observation, not evidence that the expedition has ended.
+  if(!scope||scope->owner!=controller)return "{\"status\":\"seeking\"}";
   if(!scope->expedition){run_scene=geometry_curve=0;return "{\"status\":\"idle\"}";}
   if(run_scene!=scene){run_scene=scene;++run_sequence;geometry_curve=0;}
   uint64_t phase=0;Read(scene+0x38,phase);char out[1024];
@@ -166,7 +168,7 @@ struct Reader {
   if(sample->world){auto&w=*sample->world;std::snprintf(out,sizeof(out),",\"world\":[%.6f,%.6f,%.6f]",w[0],w[1],w[2]);json+=out;}
   json+=Geometry(*sample);json+=Camera(*scope,*sample,phase);
   auto remaining=scn::ReadRemainingPhotos(host,*scope,*sample);if(remaining)json+=",\"remainingPhotos\":"+std::to_string(*remaining);
-  if(!scn::SameSnapScope(host,*scope,*sample)||!Read(scene+0x38,after)||after!=phase||!Read(scene+0x80,after)||after!=sample->rail||!Read(sample->rail+0x30,after)||after!=sample->curve)return "{\"status\":\"idle\"}";
+  if(!scn::SameSnapScope(host,*scope,*sample)||!Read(scene+0x38,after)||after!=phase||!Read(scene+0x80,after)||after!=sample->rail||!Read(sample->rail+0x30,after)||after!=sample->curve)return "{\"status\":\"seeking\"}";
   return json+"}";
  }
 };

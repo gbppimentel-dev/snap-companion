@@ -138,3 +138,9 @@ test('star-photo methods keep category, subject, course ownership and example le
  const invalid={'666:4':[{...reviewed['666:4'][0],species:172},{...reviewed['666:4'][0],stars:3},{...reviewed['666:4'][0],course:'not-a-course'},{...reviewed['666:4'][0],steps:['']}]};assert.deepEqual(M.photoMethods(vivillon,4,invalid),[],'Invalid details never borrow another subject, category or course');
  const existing=M.photoMethods(M.species.get(810),1,reviewed);assert.equal(existing.length,1);assert.equal(existing[0].course,'park-day');assert.equal(existing[0].reviewed,false);assert.deepEqual(existing[0].steps,[M.location(M.species.get(810),1).description],'Existing scoped instructions are retained exactly');
 });
+
+test('alternate photo hints restore only exact source boundaries and keep every existing word',()=>{
+ const ctx={window:{}};vm.runInNewContext(fs.readFileSync(dir+'/ui/photo-options.js','utf8'),ctx);const groups=ctx.window.SnapPhotoOptions;assert.equal(Object.keys(groups).length,258);
+ for(const [key,parts]of Object.entries(groups)){const [id,n]=key.split(':').map(Number),p=M.species.get(id);assert.equal(parts.join(' '),M.location(p,n).description);assert.equal(M.hintOptions(p,n,groups).length,parts.length);}
+ assert.equal(M.hintOptions(M.species.get(172),3,groups).length,4);assert.equal(M.hintOptions(M.species.get(172),3,{'172:3':['unrelated','advice']}).length,1);
+});

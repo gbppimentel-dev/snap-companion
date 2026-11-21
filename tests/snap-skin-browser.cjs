@@ -56,8 +56,8 @@ test('Live remains one screen, sprites fit, native feedback expires and Photo Bo
    await page.locator('.photo-book-route').click();assert(await page.locator('#detail').evaluate(e=>e.open));
    await page.locator('#detail [data-action=close]').click();assert(await page.locator('#detail').evaluate(e=>!e.open));
    await page.evaluate(()=>SnapApp.update({...fixture,phase:'selection',photoPhase:{subject:810,category:2,photosTaken:15,photosSelected:4}}));
-   assert.equal(await page.locator('.selection-reference').count(),4);
-   assert(await fits(page,'.selection-head,.selection-ledger,.selection-footer'),'Photo Selection remains available at the same viewport');
+   assert.equal(await page.locator('.selection-desk').count(),0);
+   assert(await fits(page,'.scenic-course,.suggestion-card,.moments'),'Photo Selection keeps the normal Live dashboard');
    // Give a long, narrow cutout the suggestion card without changing app code.
    await page.evaluate(()=>{const model=SnapModel.create(SNAP_CONTENT),photos={};for(const p of model.data.species)if(p.id!==95)for(let n=1;n<=4;n++)photos[p.id+':'+n]={score:4200,medal:'Diamond'};SnapApp.update({...fixture,sourceKey:'long-silhouette-fixture',course:'',level:0,photos});});
    await images(page,'.suggestion-portrait');
@@ -83,7 +83,7 @@ test('map assets, filter choices, progress and sighting routes remain usable wit
    window.feed=setInterval(()=>SnapMaps.live({...reading,sampleAt:Date.now()}),50);SnapMaps.open('park-day');
   });
   await page.waitForFunction(()=>!document.querySelector('.map-player').hidden);
-  assert(await page.locator('.map-view-cone').isVisible());assert.notEqual(await page.locator('.map-section-progress strong').textContent(),'—');
+  await page.waitForFunction(()=>!document.querySelector('.map-view-cone').hasAttribute('hidden'));assert.notEqual(await page.locator('.map-section-progress strong').textContent(),'—');
   const scale=()=>page.locator('.map-board').evaluate(e=>new DOMMatrix(getComputedStyle(e).transform).a);
   await page.getByRole('button',{name:'Zoom In',exact:true}).click();const zoom=await scale();assert(zoom>1);
   await page.getByRole('button',{name:'Filters',exact:true}).click();
@@ -367,17 +367,32 @@ test('star-photo specifics follow the selected category and course, preserve ste
  }finally{await browser.close();}
 });
 
-test('Photo Selection replaces subjects immediately, clears unknown references and updates its notice',async()=>{
+test('Photo Selection never replaces Live or inserts a notice on other tabs',async()=>{
  const browser=await chromium.launch(options);
  try{
   for(const [width,height]of [[540,470],[540,405],[412,640]]){
    const {page,errors}=await start(browser,width,height);
-   await page.evaluate(()=>SnapApp.update({...fixture,phase:'selection',photoPhase:{subject:810,category:1,photosTaken:12}}));assert.equal(await page.locator('.selection-identity h2').textContent(),'Grookey');assert.equal(await page.locator('.selection-reference.registered').count(),3);
-   await page.evaluate(()=>SnapApp.update({...fixture,phase:'selection',photoPhase:{subject:172,category:3,photosTaken:12}}));assert.equal(await page.locator('.selection-identity h2').textContent(),'Pichu');assert.equal(await page.locator('.selection-reference.registered').count(),0);assert.equal(await page.locator('.selection-reference.current').getAttribute('data-id'),'3');
-   await page.evaluate(()=>SnapApp.update({...fixture,phase:'selection',photoPhase:{}}));assert.equal(await page.locator('.selection-identity h2').textContent(),'Reading Selection');assert.equal(await page.locator('.selection-reference.registered,.selection-reference.current').count(),0);assert.equal(await page.locator('.selection-reference:disabled').count(),4);
-   assert(await fits(page,'.selection-head,.selection-ledger,.selection-footer'));await page.locator('#nav [data-id=dex]').click();assert(await page.locator('#selection-notice').isVisible());assert.equal(await page.locator('#selection-notice small').count(),0);
-   await page.evaluate(()=>SnapApp.update({...fixture,phase:'selection',photoPhase:{subject:810,category:4}}));assert.equal(await page.locator('#selection-notice small').textContent(),'Grookey');await page.evaluate(()=>SnapApp.update({...fixture,phase:'selection',photoPhase:{subject:172}}));assert.equal(await page.locator('#selection-notice small').textContent(),'Pichu');
-   await page.locator('#selection-notice').click();assert.equal(await page.locator('.selection-identity h2').textContent(),'Pichu');assert.equal(await page.locator('.selection-reference.current').count(),0);await page.evaluate(()=>SnapApp.update({...fixture,phase:'evaluation',photoPhase:{subject:172,category:4}}));assert.equal(await page.locator('.selection-desk').count(),0);assert.deepEqual(errors,[]);await page.close();
+   await page.evaluate(()=>SnapApp.update({...fixture,phase:'selection',photoPhase:{subject:810,category:1}}));
+   assert.equal(await page.locator('.selection-desk,#selection-notice').count(),0);assert(await fits(page,'.scenic-course,.suggestion-card,.moments'));
+   await page.locator('#nav [data-id=dex]').click();await page.evaluate(()=>SnapApp.update({...fixture,phase:'selection',photoPhase:{subject:172,category:3}}));
+   assert(await page.locator('.dex-grid').isVisible());assert.equal(await page.locator('.selection-desk,#selection-notice').count(),0);assert.deepEqual(errors,[]);await page.close();
+  }
+ }finally{await browser.close();}
+});
+
+test('quiet battery health shares the header and alternate hints remain separate options',async()=>{
+ const browser=await chromium.launch(options);
+ try{
+  for(const [width,height]of [[540,470],[540,405],[412,640]]){
+   const {page,errors}=await start(browser,width,height);
+   await page.evaluate(()=>SnapApp.update({...fixture,battery:{percent:61,health:'Good',charging:true}}));
+   assert.equal(await page.locator('#device-battery b').textContent(),'61%');assert.equal(await page.locator('#device-battery small').textContent(),'Good');assert(await fits(page,'#device-battery,#clock,#last-sync,#fps,#playtime'));
+   const overlap=await page.locator('.header-meta').evaluate(el=>{const a=[...el.children].filter(e=>e.getBoundingClientRect().width).map(e=>e.getBoundingClientRect());return a.some((r,i)=>a.slice(i+1).some(s=>Math.min(r.right,s.right)>Math.max(r.left,s.left)+1&&Math.min(r.bottom,s.bottom)>Math.max(r.top,s.top)+1));});assert(!overlap,'Header metadata must not overlap');
+   await page.locator('#nav [data-id=dex]').click();await page.locator('#browse-search').fill('Pichu');await page.locator('[data-action=pokemon][data-id="172"]').first().click();await page.locator('[data-action=category][data-id="3"]').click();await page.locator('[data-action=tips]').click();
+   assert.equal(await page.locator('.tip-full-text .hint-option').count(),4);assert.equal(await page.locator('.tip-full-text .hint-options .hint-or').count(),3);assert.match(await page.locator('.tip-full-text .hint-option').nth(0).textContent(),/electrocute/);assert.match(await page.locator('.tip-full-text .hint-option').nth(1).textContent(),/Torterra/);
+   assert(await page.locator('.hint-option').evaluateAll(es=>es.every(e=>e.scrollWidth<=e.clientWidth+1)));assert(await page.locator('.hint-option>header').evaluateAll(es=>es.every(e=>e.getBoundingClientRect().height<=24)),'Option labels stay compact');
+   await page.screenshot({path:`/private/tmp/scn62-hints-${width}x${height}.png`});await page.locator('[data-action=close-photo-tip]').click();await page.locator('#detail [data-action=close]').click();await page.locator('#nav [data-id=live]').click();await page.screenshot({path:`/private/tmp/scn62-header-${width}x${height}.png`});
+   await page.evaluate(()=>SnapApp.update({...fixture,battery:{health:'Unknown'}}));assert(await page.locator('#device-battery').isHidden());assert.deepEqual(errors,[]);await page.close();
   }
  }finally{await browser.close();}
 });

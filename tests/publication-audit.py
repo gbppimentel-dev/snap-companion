@@ -43,4 +43,8 @@ assert 'https://' not in notes and 'http://' not in notes
 photos = runpy.run_path(str(ROOT/'tools/prepare_photo_walkthroughs.py'))['prepare']()
 assert (ROOT/'app/src/main/assets/ui/photo-details.js').read_text() == photos
 assert 'https://' not in photos and 'http://' not in photos
+
+options = runpy.run_path(str(ROOT/'tools/prepare_photo_hint_options.py'))['prepare']()
+assert (ROOT/'app/src/main/assets/ui/photo-options.js').read_text() == options
+
 print(f'Publication audit passed: {count} source/documentation files; private inputs excluded.')

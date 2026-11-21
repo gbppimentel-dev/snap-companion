@@ -22,4 +22,11 @@ public class GameMemoryLinkTest {
   assertNull(GameMemoryLink.remainingPhotos(row.put("phaseRva",0)));assertFalse(GameMemoryLink.uiSnapshot(row).has("remainingPhotos"));
   assertNull(GameMemoryLink.remainingPhotos(row.put("phaseRva",0x62e180).put("status","idle")));
  }
+ @Test public void ownedExpeditionEventsRetainPositionButNeverEnableToolsOrCamera()throws Exception{
+  JSONObject row=sample().put("phaseRva",0x62e200).put("inputAvailable",true).put("camera",camera());
+  JSONObject ui=GameMemoryLink.uiSnapshot(row);assertEquals("event",ui.getString("phase"));assertFalse(ui.getBoolean("tools"));assertFalse(ui.has("camera"));
+  for(long phase:new long[]{0,0x62441f,0x633000})assertEquals("transition",GameMemoryLink.uiSnapshot(row.put("phaseRva",phase)).getString("phase"));
+  assertEquals("transition",GameMemoryLink.uiSnapshot(row.put("phaseRva",0x62e200).put("status","idle")).getString("phase"));
+ }
+
 }
