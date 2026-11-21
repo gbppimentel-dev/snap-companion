@@ -2,6 +2,7 @@
 """Build SCN locally. Host builds do not produce an installable Android mod."""
 import argparse
 import os
+import platform
 from pathlib import Path
 import subprocess
 import sys
@@ -40,6 +41,11 @@ def main():
     flags=['-std=c++17','-O2','-fPIC','-fvisibility=hidden','-DOOZ_BUILD_DLL=1','-DSIMDE_ENABLE_NATIVE_ALIASES',
            '-ffile-prefix-map='+str(ROOT)+'=scn','-ffile-prefix-map='+str(ooz)+'=ooz',
            '-I'+str(ROOT/'vendor/eden'),'-I'+str(ROOT/'vendor/bcdec'),'-I'+str(ROOT/'native'),'-I'+str(ooz/'simde')]
+    # The pinned decoder assumes Linux x86gprintrin.h supplies _rotl; Clang's
+    # header does not. Its built-in preserves the decoder's 32-bit rotate,
+    # including zero/modulo-32 counts. Apple, GCC and Android paths are unchanged.
+    if not args.android and sys.platform.startswith('linux') and platform.machine() in ('x86_64','AMD64') and 'clang' in Path(cxx).name:
+        flags+=['-D_rotl=__builtin_rotateleft32']
     if args.diagnostic_reader:flags+=['-DSCN_DIAGNOSTIC_READER=1']
     codec=[ooz/n for n in ['kraken.cpp','lzna.cpp','bitknit.cpp']]
     source=[ROOT/'native'/n for n in ['live_reader.cpp','snap_runtime.cpp','archive.cpp','catalog.cpp','map_art.cpp','scn_module.cpp']]
