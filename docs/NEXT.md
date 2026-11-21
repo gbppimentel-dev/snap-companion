@@ -4,11 +4,11 @@ The user clarified on 2026-11-18 that the freeze existed only because a Duo-spec
 
 - Application ID, namespace and launcher: `dev.gbppimentel.snapcompanion` / Snap Companion.
 - Signing certificate: match historical v0.5.24. An update must never require uninstalling or replacing the key.
-- Current development identity: 0.5.35-dev.1, versionCode62, updating the original package.
+- Current release identity: 0.5.35, versionCode63, updating the original package.
 - Private preferences, records, saved images, helper paths and the established UI remain in the original app sandbox. No separate-package import is needed.
 - Preserve the historical v0.5.24 tag, APK, release assets and existing backups; they are reference/rollback artifacts, not a prohibition on new app builds.
 - The worktree/branch and `fork.json` filenames are historical. They no longer describe a second installed app. Continue development here until repository consolidation is requested.
-- Build using `scripts/build-local.sh`; `scripts/build-next.sh` forwards to it for compatibility. Output: `dist/development/SnapCompanion-0.5.35-dev.1.apk`.
+- Build using `scripts/build-local.sh`; `scripts/build-next.sh` forwards to it for compatibility. Output: `dist/development/SnapCompanion-0.5.35.apk`.
 - Native build dependency: Android NDK28.2.13676358 (`sdkmanager 'ndk;28.2.13676358'`), or point `ANDROID_NDK_HOME` at an existing r28c installation. No archive decoder or game executable is linked into the APK reader.
 - Keep the user-requested native-asset UI skin and existing feature/data flow. Replace screen-reading inputs with verified direct memory inputs where supported; do not present unverified fields as live. The code52 visual direction supersedes the earlier appearance freeze; original identity, data and historical artifacts stay protected.
 
@@ -40,3 +40,5 @@ Code60 / 0.5.33-dev.3 adds star-photo setup/timing methods to the existing Photo
 Code61 / 0.5.34-dev.1 corrects Photo Selection overview/inner-picker recognition and subject confirmation. It adds bounded neutral-desk continuity through unreadable transitions while keeping previous Pokémon/category data cleared. No capture-rate or native sampler change. See [SELECTION_RECOVERY.md](SELECTION_RECOVERY.md).
 
 Code62 / 0.5.35-dev.1 removes the automatic Photo Selection page, retains owned expedition-event rail readings, bounds last-position continuity, separates alternate photo hints and adds quiet Android battery condition/charge to the header. See [LIVE_CONTINUITY.md](LIVE_CONTINUITY.md).
+
+Release v0.5.35 / code63 removes all battery-health wording from the header, retaining only its icon and charge percentage. Public source, screenshots and release/setup/compatibility documentation now cover the work since v0.5.24. See [release notes](releases/v0.5.35.md).

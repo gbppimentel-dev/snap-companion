@@ -1,30 +1,33 @@
-# setup & maintenance
+# Setup and maintenance
 
-## install and pair
+## Install and pair
 
-1. Install and run your own compatible New Pokémon Snap copy in the original Eden package (`dev.eden.eden_emulator`). Create a normal game save.
-2. Download the APK from [releases](https://github.com/gbppimentel-dev/snap-companion/releases/latest). Install it normally.
-3. In Cocoon, open the game's shortcut options → **Use Companion** → **Snap Companion** → bottom screen.
-4. Launch the game normally. The companion opens its automatic saved-data and supported screen-reading connection on the target Thor environment.
+1. Run your own compatible New Pokémon Snap 2.0.1 copy in the original Eden package (`dev.eden.eden_emulator`) on the supported AYN Thor firmware. Create a normal game save.
+2. Download the signed APK from [Releases](https://github.com/gbppimentel-dev/snap-companion/releases/latest). Install it over the existing companion if present.
+3. In Cocoon's Snap shortcut options, choose **Use Companion → Snap Companion → bottom screen**.
+4. Launch normally. Saved-data, supported screen-reading and bundled native-reader connections start automatically.
 
-If Android presents a permission prompt, respond to that system prompt. There are no manual course/progress fields to fill in. Unknown context remains neutral.
+Respond to Android permission prompts if presented. Screen capture uses Android MediaProjection; the supported firmware helper supplies its existing local access. There are no manual course/progress fields and no separate Duo mod to install. Unsupported or unknown readings remain neutral.
 
-## updates
+## Updates
 
-Install the new release APK over the existing app. Keep the package installed so Android preserves private records and cached photographs. The package name is `dev.gbppimentel.snapcompanion`; official release builds use the same signing certificate. A source build made with another key cannot replace an existing release without a signing conflict.
+Install the new signed APK over the existing app. Do not uninstall or clear data. Package `dev.gbppimentel.snapcompanion`, original signing certificate and private-data paths are preserved. A source build signed with a different key cannot replace the distributed APK.
 
-## reading the screens
+## Read the screens
 
-- **Live:** course context where recognized, a reference suggestion and automatic Photo Selection assistance.
-- **Photodex:** saved categories, medals and current official images. Each Pokémon's My Photos contains at most four current slots.
-- **LenTalk:** saved request statuses and full reference solutions.
-- **Guide:** offline course/species references. Research-level controls browse the guide and do not change the game.
-- **Credits:** the GitHub-mark button beside the header clock.
+- **Live:** current supported course/variant and selected level, reference photo suggestion, recent snapshots and course requests. Tap **Explore Course Map** to expand. Photo Selection keeps this ordinary dashboard; no automatic comparison or grading page opens.
+- **Map:** default Follow tracks a mapped NEO-ONE reading. Drag/pinch or use the Follow toggle to explore, and Overview to fit the illustration. Zoom is retained through short reading gaps. Use one Pokémon mode at a time: All, Missing Diamonds, LenTalk or Hidden. Map gestures do not steer the game.
+- **Photodex:** saved stars, scores, medals and current official images. My Photos contains at most four current registered slots. Photo Tips separates alternate opportunities with Option/OR cards and offers specific reviewed methods where available.
+- **LenTalk:** saved request statuses and full offline reference solutions. Optional Step-by-Step notes appear for supported reviewed requests.
+- **Guide:** island/course encounters and category coverage. Its course/level filters browse reference information; they do not change the game.
+- **Header:** available FPS, Cocoon-recorded Thor playtime, clock, sync status, battery icon/percentage and the credits button. The battery percentage is current charge, not battery health or remaining capacity.
 
-## when something stays unknown
+## When something stays unknown
 
-Supported English text anchors are needed for screen context. Opening mid-course may leave the course/selected level unknown until a supported transition or pause label appears. Saved maximum/unlocked level is deliberately not used as the selected level.
+Fresh verified game-memory context takes priority for supported current course and selected-level readings. Saved maximum/unlocked level is never substituted for the level of the current run. Exact build/ownership checks, firmware access and the original Eden package are required. English text anchors still supply supported screen-only observations.
 
-Saved-photo images are copied during supported quiet scenes. A new record can precede its locally available image. The sync summary distinguishes registered photos from images ready to display. An image already black in the game save cannot be reconstructed from missing pixels.
+The illustrated map is partly aligned and approximate. A reference pin is not a detected Pokémon. Unaligned intervals stay unmapped. A brief handoff may show **Last Position · Reconnecting** with a stationary dashed marker; it expires rather than guessing movement. Full-course totals remain neutral where continuations are incomplete.
 
-Only the original Eden package is targeted. Other emulator forks, multiple ambiguous saves, missing firmware access and different game data layouts can prevent the link. Do not treat a green connection dot as proof that every live field is recognized. See [compatibility](COMPATIBILITY.md).
+Photo metadata can arrive before the copied image. Copies refresh during supported quiet scenes; a missing image may show a developing placeholder. An image already black in the game save cannot be reconstructed from missing pixels.
+
+Missing firmware access, multiple ambiguous saves, another emulator package or a different game build can prevent the link. A green connection dot does not prove every live field is available. See [compatibility](COMPATIBILITY.md) and include app/game/emulator versions when reporting a problem. Do not attach personal saves, photographs or raw memory packets publicly.

@@ -1,9 +1,9 @@
 {
   "name": "Snap Companion",
-  "channel": "development",
+  "channel": "release",
   "applicationId": "dev.gbppimentel.snapcompanion",
-  "version": "0.5.35-dev.1",
-  "versionCode": 62,
+  "version": "0.5.35",
+  "versionCode": 63,
   "base": {
     "version": "0.5.24",
     "versionCode": 36,
@@ -19,7 +19,7 @@
     "updatesExistingApp": true,
     "requiredDuoMod": false,
     "reader": "bundled Thor-specific persistent read-only native sampler (20 Hz)",
-    "status": "development; normal Live during photo selection, event/branch map continuity, separated photo alternatives and quiet Android battery health",
+    "status": "release APK with native course/map reading, event handoff recovery, separated photo hints and icon/percentage-only battery display",
     "supersedes": "separate Next APK and mod-only delivery"
   }
 }

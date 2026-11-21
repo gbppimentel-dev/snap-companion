@@ -71,3 +71,9 @@ observations and deployment results are recorded below when completed.
   completed this turn. Route fixes are source/model/browser verified; actual
   event/fork recognition and existing illustrated alignment are not claimed as
   hardware accepted by this delivery.
+
+## v0.5.35 / code63 follow-up
+
+The final header shows only the battery icon and charge percentage. All health
+labels, including Good, are removed from the display, accessibility label and
+Java-to-WebView payload. Earlier code62 observations above are historical.

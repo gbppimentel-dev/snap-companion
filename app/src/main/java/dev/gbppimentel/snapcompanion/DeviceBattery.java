@@ -6,7 +6,7 @@ import android.content.IntentFilter;
 import android.os.BatteryManager;
 import org.json.JSONObject;
 
-/** Android's reported charge and health condition, never an estimated capacity percentage. */
+/** Android's current charge only; no health labels or estimated capacity percentage. */
 final class DeviceBattery {
     static JSONObject read(Context context) {
         try { return from(context.registerReceiver(null,new IntentFilter(Intent.ACTION_BATTERY_CHANGED))); }
@@ -20,16 +20,7 @@ final class DeviceBattery {
             if(level>=0&&scale>0&&level<=scale)out.put("percent",Math.round(level*100.0/scale));
             int status=intent.getIntExtra(BatteryManager.EXTRA_STATUS,BatteryManager.BATTERY_STATUS_UNKNOWN);
             out.put("charging",status==BatteryManager.BATTERY_STATUS_CHARGING||status==BatteryManager.BATTERY_STATUS_FULL);
-            String health=switch(intent.getIntExtra(BatteryManager.EXTRA_HEALTH,BatteryManager.BATTERY_HEALTH_UNKNOWN)) {
-                case BatteryManager.BATTERY_HEALTH_GOOD -> "Good";
-                case BatteryManager.BATTERY_HEALTH_OVERHEAT -> "Too Warm";
-                case BatteryManager.BATTERY_HEALTH_COLD -> "Cold";
-                case BatteryManager.BATTERY_HEALTH_DEAD -> "Needs Service";
-                case BatteryManager.BATTERY_HEALTH_OVER_VOLTAGE -> "Voltage Warning";
-                case BatteryManager.BATTERY_HEALTH_UNSPECIFIED_FAILURE -> "Needs Attention";
-                default -> "Unknown";
-            };
-            out.put("health",health);
+
         } catch(org.json.JSONException ignored) { return new JSONObject(); }
         return out;
     }

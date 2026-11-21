@@ -380,13 +380,13 @@ test('Photo Selection never replaces Live or inserts a notice on other tabs',asy
  }finally{await browser.close();}
 });
 
-test('quiet battery health shares the header and alternate hints remain separate options',async()=>{
+test('quiet battery icon and percent share the header without health labels',async()=>{
  const browser=await chromium.launch(options);
  try{
   for(const [width,height]of [[540,470],[540,405],[412,640]]){
    const {page,errors}=await start(browser,width,height);
    await page.evaluate(()=>SnapApp.update({...fixture,battery:{percent:61,health:'Good',charging:true}}));
-   assert.equal(await page.locator('#device-battery b').textContent(),'61%');assert.equal(await page.locator('#device-battery small').textContent(),'Good');assert(await fits(page,'#device-battery,#clock,#last-sync,#fps,#playtime'));
+   assert.equal(await page.locator('#device-battery b').textContent(),'61%');assert.equal((await page.locator('#device-battery').textContent()).trim(),'61%');assert.equal(await page.locator('#device-battery small').count(),0);assert(!/health|Good/.test(await page.locator('#device-battery').getAttribute('aria-label')));assert(await fits(page,'#device-battery,#clock,#last-sync,#fps,#playtime'));
    const overlap=await page.locator('.header-meta').evaluate(el=>{const a=[...el.children].filter(e=>e.getBoundingClientRect().width).map(e=>e.getBoundingClientRect());return a.some((r,i)=>a.slice(i+1).some(s=>Math.min(r.right,s.right)>Math.max(r.left,s.left)+1&&Math.min(r.bottom,s.bottom)>Math.max(r.top,s.top)+1));});assert(!overlap,'Header metadata must not overlap');
    await page.locator('#nav [data-id=dex]').click();await page.locator('#browse-search').fill('Pichu');await page.locator('[data-action=pokemon][data-id="172"]').first().click();await page.locator('[data-action=category][data-id="3"]').click();await page.locator('[data-action=tips]').click();
    assert.equal(await page.locator('.tip-full-text .hint-option').count(),4);assert.equal(await page.locator('.tip-full-text .hint-options .hint-or').count(),3);assert.match(await page.locator('.tip-full-text .hint-option').nth(0).textContent(),/electrocute/);assert.match(await page.locator('.tip-full-text .hint-option').nth(1).textContent(),/Torterra/);

@@ -2,7 +2,7 @@
 
 **Everything runs locally.** The manifest removes Internet and network-state permissions. There is no companion login, telemetry service, analytics or automatic upload/updater.
 
-The app reads supported Eden/Snap identity and save metadata, selected Photodex images, supported upper-screen text, Cocoon-recorded playtime and passive built-in controller state. The bundled native helper additionally reads validated current-game course, selected level, rail/world and render-camera fields. It opens game memory read-only; no raw pointers, process IDs or reader session tokens enter the map WebView. It stores cached records and copied photographs in the companion's private Android storage. Existing historical/private records are preserved when the current UI stops displaying them.
+The app reads supported Eden/Snap identity and save metadata, selected Photodex images, supported upper-screen text, Cocoon-recorded playtime passive built-in controller state and Android-reported current battery charge/charging state. The bundled native helper additionally reads validated current-game course, selected level, rail/world and render-camera fields. It opens game memory read-only; no raw pointers, process IDs or reader session tokens enter the map WebView. It stores cached records and copied photographs in the companion's private Android storage. Existing historical/private records are preserved when the current UI stops displaying them.
 
 Captured screen pixels are processed in memory and are not written to disk by the capture service. Saved Photodex image copies are distinct from captured screen frames. Recognition is bundled/offline. A normal Android uninstall removes the app's private storage; installing an update with the same signing key preserves it.
 

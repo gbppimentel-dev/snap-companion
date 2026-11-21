@@ -1,0 +1,30 @@
+{
+  "version": "0.5.35",
+  "versionCode": 63,
+  "sha256": "620ead6dc0fafb47626292304822e6a421a4b9eaa4017bfd8e6b860125e7b1b0",
+  "certificateSha256": "a59a575f5e7525500e003e9bba01b92195c57af78b6acbb7abc3593648029e77",
+  "noInternetPermission": true,
+  "releaseHasNoDebugHarness": true,
+  "includesPersonalData": false,
+  "localChecks": {
+    "androidJvmRobolectricPassed": 200,
+    "modelMapPassed": 79,
+    "browserPassed": 16,
+    "offlineDiagnosticPassed": 6,
+    "duoContractPassed": 6,
+    "nativeScopeCounter": "passed; synthetic memory only",
+    "releaseLint": {
+      "errors": 0,
+      "warnings": 32
+    },
+    "identitySigner": "passed; original package/launcher/private paths, increasing versionCode and baseline certificate"
+  },
+  "hardware": {
+    "target": "AYN Thor Android 13; original Eden package, observed 0.2.1; New Pokemon Snap 2.0.1",
+    "code63Deployment": "Installed in place on Thor; package metadata confirms 0.5.35 / code63; Eden process preserved and companion reopened on lower display",
+    "latestEventForkFix": "No completed latest-build live split-path run; source/model/browser checked",
+    "priorEvidence": "See docs/THOR_READER_VALIDATION.md and docs/LIVE_CONTINUITY.md for dated observations and limits"
+  },
+  "documentationPreviews": "Invented offline progress/telemetry and simulated map readings; no personal save/photo captures",
+  "status": "local release checks passed; in-place Thor deployment verified; full event/fork hardware acceptance incomplete"
+}

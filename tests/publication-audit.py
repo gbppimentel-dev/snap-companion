@@ -29,8 +29,13 @@ for name in sorted(set(filter(None,files))):
         assert not re.search(r'[A-Za-z0-9_.+-]+@(?:icloud|gmail|outlook)\.com', text), relative
     count += 1
 compat = json.loads((ROOT/'compatibility.json').read_text())
-validation = json.loads((ROOT/'packaging/validation-v0.5.24.json').read_text())
-assert compat['version'] == validation['version'] == '0.5.24'
+validation = json.loads((ROOT/f"packaging/validation-v{compat['version']}.json").read_text())
+assert compat['version'] == validation['version']
+fork = json.loads((ROOT/'fork.json').read_text())
+if fork['channel'] == 'release':
+    assert fork['version'] == compat['version'] and fork['versionCode'] == compat['versionCode'] == validation['versionCode']
+# Historical release evidence is immutable even when current release metadata advances.
+assert (ROOT/'packaging/validation-v0.5.24.json').read_bytes() == subprocess.check_output(['git','show','v0.5.24:packaging/validation-v0.5.24.json'],cwd=ROOT)
 assert validation['includesPersonalData'] is False
 assert validation['noInternetPermission'] and validation['releaseHasNoDebugHarness']
 assert validation['certificateSha256']

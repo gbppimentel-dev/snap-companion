@@ -5,7 +5,7 @@ SNAP COMPANION
 3. In Cocoon, pair the game's shortcut with Snap Companion on the bottom screen.
 4. Launch normally. The supported connection starts automatically; respond to Android permission prompts if presented.
 
-Live course/level recognition is limited to supported English labels. Unknown fields stay neutral. The app does not rank ungraded shots or guarantee60FPS. Other firmware/emulator packages are unverified. See compatibility.json and the GitHub documentation.
+The bundled read-only native reader supplies supported current course/level and rail/camera readings; no Duo mod is required. Some screen-only information still uses English OCR. Illustrated maps are partly aligned and reference pins are not live Pokemon actors. Unknown fields stay neutral. Battery shows current charge only. The app does not rank ungraded shots or guarantee 60 FPS. Other firmware/emulator packages are unverified. See compatibility.json and the GitHub documentation.
 
 https://github.com/gbppimentel-dev/snap-companion
 

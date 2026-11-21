@@ -12,7 +12,7 @@ Photodex metadata, request registries and research revisions refresh independent
 
 The capture service reads a bounded upper-display image using Android MediaProjection and bundled offline Latin OCR. Accepted bitmaps remain owned until a terminal success/failure releases them. Result publication occurs on the capture worker and requires the current source/generation and a fresh capture timestamp. Resizing, recognition pause, connection changes and shutdown invalidate older work.
 
-The supported direct reader supplies current course/variant and selected level after exact-build and object-ownership validation. Supported screen labels remain available for screen-only observations; they do not override a fresh verified game context. Saved research progress, manual historical records and reference filters cannot become current selected-run context. Photo Selection uses current recognized subject/category fields plus saved benchmarks; Grading has no dedicated helper.
+The supported direct reader supplies current course/variant and selected level after exact-build and object-ownership validation. Supported screen labels remain available for screen-only observations; they do not override a fresh verified game context. Saved research progress, manual historical records and reference filters cannot become current selected-run context. Photo Selection keeps the normal dashboard; neither a comparison desk nor a grading helper is shown. Recognition/save safeguards remain active.
 
 ## workload and lifecycle
 
@@ -31,3 +31,18 @@ The illustrated map matches directed rail geometry against the factual catalog. 
 The APK resolves a typed scene back to its current controller: standard courses and Research Camp have different controller types and scene-owner fields. Both scenes share the verified render context, so Camp uses the same typed-camera checks as other courses. Camp's photo count comes from its current world's shared-owned HUD vector and exact current rail, with repeated ownership/vector/counter checks. Only the bounded integer reaches the dashboard; no guest pointer is exported. Standard courses use a bounded lookup of the game’s named HUD registration, then prove that HUD’s weak world reference is alive and that the same world owns the exact HUD/control pair. Registry identity, alias type, world/HUD shared headers, rail, phase, vector bounds and counter are checked again to reject replacement during a read. Missing or changing ownership withholds only the native count; the original screen-reading fallback remains. The path has been checked in Park Day, not every course.
 
 The dashboard activity uses Android’s single-task launch policy. Reopening its launcher or an explicit app intent reuses the existing activity instead of stacking another WebView, controller subscriber and memory-reader owner. The normal Android Back gesture still dismisses in-app overlays and can leave the dashboard from Live.
+
+## Event continuity and device charge
+
+A scoped owned expedition can yield a fresh rail reading during an event phase.
+The map can use that measured rail/distance without enabling gameplay tools,
+photo counters or camera cones in the event. A failed consistency reread is
+seeking, not evidence of an ended expedition; ownership checks are retained.
+Branch history tolerates gaps up to five seconds. A missing/unmapped reading can
+retain an explicitly labelled stationary marker for at most 2.5 seconds. Known
+exits, source/run/course changes and visibility loss clear it. No motion is
+extrapolated. Unaligned intervals remain unmapped.
+
+Android's sticky battery broadcast supplies current charge and charging state,
+read at most once per 15 seconds. Only the icon/charge percentage is displayed;
+there is no health/Good label or capacity estimate.

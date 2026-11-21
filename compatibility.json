@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "app": "Snap Companion",
-  "version": "0.5.24",
+  "version": "0.5.35",
   "package": "dev.gbppimentel.snapcompanion",
   "device": "AYN Thor",
   "physicalDevelopmentAndroid": "13",
@@ -10,13 +10,32 @@
   "gameDataSchemas": "New Pok\u00e9mon Snap 2.0.1",
   "screenLanguage": "English supported layouts",
   "firmwareRequirement": "Existing compatible AYN PServerBinder service; exact public firmware/emulator matrix unqualified",
-  "validation": "Local release checks passed.0.5.24 credits update has no new physical acceptance run; core based on installed0.5.23 development build.",
+  "validation": "Local release checks and in-place Thor deployment; battery/UI verified. Event/fork recovery has model/browser checks, not a completed latest-build live split-path run.",
   "internetPermission": false,
   "limits": [
-    "No verified current-course/selected-level memory source; mid-course screen-label recovery remains limited.",
-    "No route-timed visual/audio recognition or ungraded-photo ranking.",
-    "General saved ownership/unlock meanings remain partial.",
-    "No universal60FPS or original black-photo reconstruction claim.",
-    "Broader physical controls, sustained performance, gyro and new-save acceptance remain unverified."
-  ]
+    "Exact checked Thor/AYN firmware, Eden package and Snap 2.0.1 build only; other environments unverified.",
+    "Schematic map alignment is partial; two rails, rejected intervals and some seasonal/branch variants remain unplaced or unverified.",
+    "Reference sightings are not live Pokemon actors or current pose availability.",
+    "Forest/Camp whole-course totals remain neutral where continuation data is incomplete.",
+    "No live target/pose recognition or ungraded-photo ranking.",
+    "Some fields use supported English screen observations; image import can lag metadata.",
+    "No universal 60 FPS, original black-photo reconstruction or full restart/thermal/new-save acceptance claim."
+  ],
+  "versionCode": 63,
+  "liveReader": "Bundled Thor-specific read-only native reader; no Duo mod dependency",
+  "directReadings": [
+    "Current course and variant",
+    "Selected research level",
+    "Matched rail distance/geometry",
+    "Guarded render-camera direction/lens",
+    "Supported remaining-photo counter"
+  ],
+  "maps": {
+    "courseViews": 30,
+    "terrainRouteAssets": 143,
+    "referenceSightings": 1403,
+    "knownRails": 123,
+    "partlyAlignedRails": 121,
+    "fullCourseAcceptance": false
+  }
 }

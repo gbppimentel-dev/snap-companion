@@ -3,6 +3,8 @@
 ## requirements
 
 - JDK21; `JAVA_HOME` points to it.
+- Android NDK 28.2.13676358/r28c; optionally set `ANDROID_NDK_HOME`.
+- A host C++17 compiler for native scope/counter regression checks.
 - Android SDK platform36 and build-tools36.0.0; set `ANDROID_HOME` (or an ignored `local.properties` containing `sdk.dir=...`).
 - Node22+ and Python3.10+ for the supplied checks.
 - Network access for Gradle's declared dependencies on the first build. The built app has no Internet permission.
@@ -22,17 +24,39 @@ The native bridge is built from `bridge/src` and `ControllerButtons.java` by `sc
 
 ## checks
 
-CI runs publication checks, JavaScript model checks, offline diagnostic-boundary checks, the supported JVM/Robolectric suite and an Android debug build/lint. Test save vectors are synthetic or small independently published ISC vectors; they are not user saves. Original-font OCR/recovery instrumentation sources are provided for an isolated local Android emulator. No CI job connects to a user's Thor.
+CI runs publication checks, JavaScript model/map checks, offline diagnostics, JVM/Robolectric checks, Android release assembly/lint and native reader/research checks. Test save vectors are synthetic or small independently published ISC vectors; they are not user saves. Original-font OCR/recovery instrumentation sources are provided for an isolated local Android emulator. No CI job connects to a user's Thor.
 
 ## release packaging
 
-Only package an already signed APK matching `packaging/validation-v0.5.24.json`:
+Build and verify the original-package update locally:
 
 ```sh
-python3 packaging/package_release.py --apk /path/to/SnapCompanion-v0.5.24.apk
+sh scripts/build-local.sh
 ```
 
-The command creates an APK, a ZIP with quick-start/notices/compatibility/validation, a compatibility JSON, release manifest and SHA256 checksums in ignored `dist/`. It does not install or publish. Release metadata states the actual test scope and does not convert local checks into hardware acceptance.
+It checks model/map, diagnostic, native and Android behavior, release lint and the
+baseline signing certificate. Output: `dist/development/SnapCompanion-0.5.35.apk`.
+The original private signing key must be configured locally for that identity
+check to pass. It is not included in this repository or CI.
+
+After committing the intended source, package an already verified release APK:
+
+```sh
+python3 packaging/package_release.py --apk dist/development/SnapCompanion-0.5.35.apk
+```
+
+The packager reads current `fork.json`, compatibility and versioned validation
+metadata; checks the baseline signer; and writes the APK, quick-start ZIP,
+compatibility JSON, release manifest and SHA256 sums under ignored
+`dist/releases/v0.5.35/`. It refuses to replace an existing output directory or
+package v0.5.24. It does not install, create tags or publish. GitHub's automatically
+provided source archives correspond to the release tag; the bundle links to that
+source and includes the third-party notices/licenses.
+
+The historical v0.5.24 APK, release assets, tag and validation remain immutable.
+Release metadata must distinguish local checks, device observations and untested
+course/branch/thermal flows. CI's disposable signing key cannot replace a local
+owner-signed APK and CI does not publish APKs automatically.
 
 ## Regenerating schematic route alignments
 
