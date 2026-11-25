@@ -1,14 +1,17 @@
 # Snap Companion
 
+<img src="app/src/main/res/drawable/companion_icon.png" alt="Companion app icon" width="112">
+
+**Icon refresh:** [download build 65](https://github.com/gbppimentel-dev/snap-companion/releases/tag/v0.5.36-duo.1-icons.1) · [details](docs/ICON_REFRESH.md). Original game artwork with a rounded teal frame and bottom-left document badge.
 [![release](https://img.shields.io/github/v/release/gbppimentel-dev/snap-companion)](https://github.com/gbppimentel-dev/snap-companion/releases/latest)
 [![checks](https://github.com/gbppimentel-dev/snap-companion/actions/workflows/ci.yml/badge.svg)](https://github.com/gbppimentel-dev/snap-companion/actions/workflows/ci.yml)
 [![license: MIT](https://img.shields.io/badge/companion-MIT-blue.svg)](LICENSE)
 
 An offline second-screen companion for **New Pokémon Snap on AYN Thor**, running alongside Eden Duo. Keep your Photodex, LenTalk requests, photo tips and illustrated course map on the bottom screen while playing above.
 
-**[Download v0.5.36-duo.1](https://github.com/gbppimentel-dev/snap-companion/releases/tag/v0.5.36-duo.1)** · [Duo setup](docs/EDEN_DUO_SETUP.md) · [Release notes](docs/releases/v0.5.36-duo.1.md) · [Compatibility](docs/COMPATIBILITY.md)
+**[Download v0.5.36-duo.1, icon refresh](https://github.com/gbppimentel-dev/snap-companion/releases/tag/v0.5.36-duo.1-icons.1)** · [Duo setup](docs/EDEN_DUO_SETUP.md) · [Release notes](docs/releases/v0.5.36-duo.1.md) · [Compatibility](docs/COMPATIBILITY.md)
 
-**Current host: Eden Duo 1.4.0 (`dev.igawa6.edenduo`).** This is the exact code64 build verified on Thor. The older [v0.5.35](https://github.com/gbppimentel-dev/snap-companion/releases/tag/v0.5.35) remains available for users still on stock Eden. The new APK does not automatically migrate emulator saves, install Duo or supply an LSFG DLL.
+**Current host: Eden Duo 1.4.0 (`dev.igawa6.edenduo`).** Build65 applies the approved icon to the verified code64 build; application code and bundled content are unchanged. The older [v0.5.35](https://github.com/gbppimentel-dev/snap-companion/releases/tag/v0.5.35) remains available for users still on stock Eden. The new APK does not automatically migrate emulator saves, install Duo or supply an LSFG DLL.
 
 The APK updates the original Snap Companion app in place. It includes its own supported read-only game-memory reader; **no separate Next app or Eden Duo mod is required**. Keep the existing app installed to preserve its data.
 

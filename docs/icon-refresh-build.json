@@ -1,0 +1,14 @@
+{
+  "app": "pokemon-snap",
+  "oldVersionCode": 64,
+  "newVersionCode": 65,
+  "iconEntry": "res/T3.webp",
+  "changedEntries": [
+    "AndroidManifest.xml",
+    "res/T3.webp",
+    "res/r2.xml"
+  ],
+  "certificateSha256": "a59a575f5e7525500e003e9bba01b92195c57af78b6acbb7abc3593648029e77",
+  "apkSha256": "9926339e50fa391366508283a3dda303167a58e3adf85657d64ff11ff2aa8698",
+  "codeAssetsLibrariesUnchanged": true
+}
