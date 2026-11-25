@@ -27,8 +27,13 @@ final class GameMemoryLink implements AutoCloseable {
   }catch(Exception ignored){}finally{starting=false;}});
  }
  static void writeHeartbeat(File watch,String token)throws IOException{
-  android.util.AtomicFile file=new android.util.AtomicFile(watch);FileOutputStream out=file.startWrite();
-  try{out.write(token.getBytes(StandardCharsets.UTF_8));file.finishWrite(out);}catch(IOException e){file.failWrite(out);throw e;}
+  // The native process opens the base path directly. Publish with one atomic rename,
+  // so backup-style AtomicFile implementations cannot briefly remove that path.
+  File next=File.createTempFile("memory-heartbeat-",".next",watch.getParentFile());
+  try{
+   try(FileOutputStream out=new FileOutputStream(next)){out.write(token.getBytes(StandardCharsets.UTF_8));out.getFD().sync();}
+   java.nio.file.Files.move(next.toPath(),watch.toPath(),java.nio.file.StandardCopyOption.ATOMIC_MOVE,java.nio.file.StandardCopyOption.REPLACE_EXISTING);
+  }finally{next.delete();}
  }
  synchronized JSONObject current(long now){
   if(!active||token.isEmpty())return new JSONObject();

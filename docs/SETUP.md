@@ -2,9 +2,9 @@
 
 ## Install and pair
 
-1. Run your own compatible New Pokémon Snap 2.0.1 copy in the original Eden package (`dev.eden.eden_emulator`) on the supported AYN Thor firmware. Create a normal game save.
+1. Run your own compatible New Pokémon Snap 2.0.1 copy in Eden Duo 1.4.0 (`dev.igawa6.edenduo`) on the supported AYN Thor firmware. For existing progress, back up/export your stock-Eden save, import it into the intended Duo profile and verify that it loads. Keep the originals.
 2. Download the signed APK from [Releases](https://github.com/gbppimentel-dev/snap-companion/releases/latest). Install it over the existing companion if present.
-3. In Cocoon's Snap shortcut options, choose **Use Companion → Snap Companion → bottom screen**.
+3. Generate a Snap shortcut from Duo and use it in Cocoon. Pair **Use Companion → Snap Companion → bottom screen**; in Duo set Snap's per-title **No Companion** option to **Off** so Duo's idle lower-screen page cannot cover the APK.
 4. Launch normally. Saved-data, supported screen-reading and bundled native-reader connections start automatically.
 
 Respond to Android permission prompts if presented. Screen capture uses Android MediaProjection; the supported firmware helper supplies its existing local access. There are no manual course/progress fields and no separate Duo mod to install. Unsupported or unknown readings remain neutral.
@@ -24,10 +24,30 @@ Install the new signed APK over the existing app. Do not uninstall or clear data
 
 ## When something stays unknown
 
-Fresh verified game-memory context takes priority for supported current course and selected-level readings. Saved maximum/unlocked level is never substituted for the level of the current run. Exact build/ownership checks, firmware access and the original Eden package are required. English text anchors still supply supported screen-only observations.
+Fresh verified game-memory context takes priority for supported current course and selected-level readings. Saved maximum/unlocked level is never substituted for the level of the current run. Exact build/ownership checks, firmware access and the targeted Duo package are required. English text anchors still supply supported screen-only observations.
 
 The illustrated map is partly aligned and approximate. A reference pin is not a detected Pokémon. Unaligned intervals stay unmapped. A brief handoff may show **Last Position · Reconnecting** with a stationary dashed marker; it expires rather than guessing movement. Full-course totals remain neutral where continuations are incomplete.
 
 Photo metadata can arrive before the copied image. Copies refresh during supported quiet scenes; a missing image may show a developing placeholder. An image already black in the game save cannot be reconstructed from missing pixels.
 
-Missing firmware access, multiple ambiguous saves, another emulator package or a different game build can prevent the link. A green connection dot does not prove every live field is available. See [compatibility](COMPATIBILITY.md) and include app/game/emulator versions when reporting a problem. Do not attach personal saves, photographs or raw memory packets publicly.
+Missing firmware access, multiple ambiguous saves, another emulator package (including stock Eden with this Duo-targeted APK) or a different game build can prevent the link. A green connection dot does not prove every live field is available. See [compatibility](COMPATIBILITY.md) and include app/game/emulator versions when reporting a problem. Do not attach personal saves, photographs or raw memory packets publicly.
+
+## Eden Duo and optional frame generation
+
+See [Duo setup and migration](EDEN_DUO_SETUP.md). Companion v0.5.36-duo.1 keeps
+the same companion package and signing certificate, but reads Duo's game process
+and save tree. It does not automatically copy or move emulator saves. The owner's
+existing cached records were retained during the checked migration; this is not a
+universal automatic profile-rebinding or new-save acceptance claim.
+
+LSFG is optional emulator functionality. The checked setup used Duo 1.4.0 with
+2× LSFG and SMAA. Supply any required licensed DLL yourself through Duo's supported
+configuration; no DLL or shader cache is included here. Leave unrelated games'
+settings alone. The header shows available reported game FPS, which can differ
+from generated-frame presentation rate. Short frame-pacing checks are not a
+sustained 60 FPS guarantee.
+
+Stock-Eden users who have not migrated can continue using the prior v0.5.35
+release. Do not assume that installing this Duo-targeted APK copies progress or
+that an older version can be installed over a newer one without Android's version
+restrictions. Keep independent backups before any host/version migration.

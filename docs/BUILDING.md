@@ -35,20 +35,20 @@ sh scripts/build-local.sh
 ```
 
 It checks model/map, diagnostic, native and Android behavior, release lint and the
-baseline signing certificate. Output: `dist/development/SnapCompanion-0.5.35.apk`.
+baseline signing certificate. Output: `dist/development/SnapCompanion-0.5.36-duo.1.apk`.
 The original private signing key must be configured locally for that identity
 check to pass. It is not included in this repository or CI.
 
 After committing the intended source, package an already verified release APK:
 
 ```sh
-python3 packaging/package_release.py --apk dist/development/SnapCompanion-0.5.35.apk
+python3 packaging/package_release.py --apk dist/development/SnapCompanion-0.5.36-duo.1.apk
 ```
 
 The packager reads current `fork.json`, compatibility and versioned validation
 metadata; checks the baseline signer; and writes the APK, quick-start ZIP,
 compatibility JSON, release manifest and SHA256 sums under ignored
-`dist/releases/v0.5.35/`. It refuses to replace an existing output directory or
+`dist/releases/v0.5.36-duo.1/`. It refuses to replace an existing output directory or
 package v0.5.24. It does not install, create tags or publish. GitHub's automatically
 provided source archives correspond to the release tag; the bundle links to that
 source and includes the third-party notices/licenses.

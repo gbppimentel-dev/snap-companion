@@ -38,7 +38,7 @@ final class EdenResearch {
     }
     static String script(File output,int uid,String user,String hash){
         if(!user.matches("[A-Fa-f0-9]{32}")||!hash.matches("[a-f0-9]{64}"))throw new IllegalArgumentException("Invalid course source");String dir="'"+output.getAbsolutePath().replace("'","'\\''")+"'";
-        return "snap_dir=/sdcard/Android/data/dev.eden.eden_emulator/files/nand/user/save/0000000000000000/"+user+"/0100F4300BF2C000\n"+
+        return "snap_dir=/sdcard/Android/data/dev.igawa6.edenduo/files/nand/user/save/0000000000000000/"+user+"/0100F4300BF2C000\n"+
             "[ \"$(stat -c %s \"$snap_dir/4b1a0e859a3f7816\")\" = 15568 ] && [ \"$(stat -c %s \"$snap_dir/76401e93e6565bd5\")\" = 3056 ] || { echo unsupported; exit 0; }\n"+
             "[ \"$(sha256sum \"$snap_dir/6706e7d0f3dab2ab\" | cut -d ' ' -f 1)\" = '"+hash+"' ] || { echo changed; exit 0; }\n"+
             "snap_records=$(sha256sum \"$snap_dir/4b1a0e859a3f7816\" | cut -d ' ' -f 1)\nsnap_flags=$(sha256sum \"$snap_dir/76401e93e6565bd5\" | cut -d ' ' -f 1)\n"+

@@ -4,7 +4,7 @@ The Android service layer reads supported saved-data containers and transient sc
 
 ## saved data
 
-The fixed-purpose AYN bridge verifies the original Eden package and Snap title identity, then reads bounded metadata/image records. Stable revisions, file dimensions, encrypted envelopes, CRC32/Adler32 checksums, source/profile bindings and supported IDs gate adoption. Unknown records are not assigned invented meanings.
+The fixed-purpose AYN bridge verifies the targeted Eden Duo package and Snap title identity, then reads bounded metadata/image records. Stable revisions, file dimensions, encrypted envelopes, CRC32/Adler32 checksums, source/profile bindings and supported IDs gate adoption. Unknown records are not assigned invented meanings.
 
 Photodex metadata, request registries and research revisions refresh independently. Images are copied one record at a time in supported quiet scenes, with a quiet-state recheck before import. Current official photo slots enter the UI; prior private records remain stored separately.
 
@@ -46,3 +46,12 @@ extrapolated. Unaligned intervals remain unmapped.
 Android's sticky battery broadcast supplies current charge and charging state,
 read at most once per 15 seconds. Only the icon/charge percentage is displayed;
 there is no health/Good label or capacity estimate.
+
+## Current emulator host
+
+v0.5.36-duo.1 targets `dev.igawa6.edenduo` across process/save/visibility/focus
+and native ownership guards. There is no stock/Duo auto-detection. A visible
+window flag requires a live game PID; native heartbeat publication uses one
+atomic rename without temporarily removing the watched base path. Reader scope
+and game-build checks are retained. The companion does not migrate emulator
+saves or implement Duo frame generation. See [Duo setup](EDEN_DUO_SETUP.md).

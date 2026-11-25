@@ -25,7 +25,7 @@ final class GameToolInput {
  }catch(Throwable e){device=-1;return false;}}
  private static int gameTask(){Process process=null;try{
   process=new ProcessBuilder("dumpsys","-t","1","activity","activities").redirectErrorStream(true).start();boolean primary=false;int total=0;
-  try(BufferedReader input=new BufferedReader(new InputStreamReader(process.getInputStream(),StandardCharsets.UTF_8))){String line;while((line=input.readLine())!=null){total+=line.length();if(total>1000000)return -1;String t=line.trim();if(t.startsWith("Display #"))primary=t.startsWith("Display #0 ")||t.equals("Display #0")||t.startsWith("Display #0 (");if(primary&&line.contains("topResumedActivity=")){if(!line.contains("dev.eden.eden_emulator/org.yuzu.yuzu_emu.activities.EmulationActivity"))return -1;Matcher m=Pattern.compile(" t([0-9]+)[} ]").matcher(line);return m.find()?Integer.parseInt(m.group(1)):-1;}}}
+  try(BufferedReader input=new BufferedReader(new InputStreamReader(process.getInputStream(),StandardCharsets.UTF_8))){String line;while((line=input.readLine())!=null){total+=line.length();if(total>1000000)return -1;String t=line.trim();if(t.startsWith("Display #"))primary=t.startsWith("Display #0 ")||t.equals("Display #0")||t.startsWith("Display #0 (");if(primary&&line.contains("topResumedActivity=")){if(!line.contains("dev.igawa6.edenduo/org.yuzu.yuzu_emu.activities.EmulationActivity"))return -1;Matcher m=Pattern.compile(" t([0-9]+)[} ]").matcher(line);return m.find()?Integer.parseInt(m.group(1)):-1;}}}
  }catch(Exception ignored){}finally{if(process!=null)process.destroy();}return -1;}
  private static boolean focusGame(int task){if(task<0)return false;Process p=null;try{p=new ProcessBuilder("am","task","focus",Integer.toString(task)).redirectErrorStream(true).start();return p.waitFor(400,TimeUnit.MILLISECONDS)&&p.exitValue()==0;}catch(Exception e){return false;}finally{if(p!=null)p.destroy();}}
  private static boolean clearGameWindow(){HandlerThread thread=null;UiAutomation ui=null;try{
@@ -33,9 +33,9 @@ final class GameToolInput {
   AccessibilityServiceInfo info=ui.getServiceInfo();info.flags|=AccessibilityServiceInfo.FLAG_RETRIEVE_INTERACTIVE_WINDOWS|AccessibilityServiceInfo.FLAG_REPORT_VIEW_IDS;ui.setServiceInfo(info);
   List<AccessibilityWindowInfo> windows=ui.getWindowsOnAllDisplays().get(0);if(windows==null)return false;boolean surface=false;
   for(AccessibilityWindowInfo w:windows){if(w.getType()!=AccessibilityWindowInfo.TYPE_APPLICATION)continue;AccessibilityNodeInfo root=w.getRoot();if(root==null)return false;
-   if(!"dev.eden.eden_emulator".contentEquals(root.getPackageName()))return false;
-   for(String id:new String[]{"in_game_menu","quick_settings_sheet","paused_icon"})for(AccessibilityNodeInfo n:root.findAccessibilityNodeInfosByViewId("dev.eden.eden_emulator:id/"+id))if(n.isVisibleToUser())return false;
-   for(AccessibilityNodeInfo n:root.findAccessibilityNodeInfosByViewId("dev.eden.eden_emulator:id/surface_emulation"))if(n.isVisibleToUser())surface=true;
+   if(!"dev.igawa6.edenduo".contentEquals(root.getPackageName()))return false;
+   for(String id:new String[]{"in_game_menu","quick_settings_sheet","paused_icon"})for(AccessibilityNodeInfo n:root.findAccessibilityNodeInfosByViewId("dev.igawa6.edenduo:id/"+id))if(n.isVisibleToUser())return false;
+   for(AccessibilityNodeInfo n:root.findAccessibilityNodeInfosByViewId("dev.igawa6.edenduo:id/surface_emulation"))if(n.isVisibleToUser())surface=true;
   }return surface;
  }catch(Throwable e){return false;}finally{if(ui!=null)try{UiAutomation.class.getMethod("disconnect").invoke(ui);}catch(Exception ignored){}if(thread!=null)thread.quitSafely();}}
  static void handle(String token,JSONObject sample)throws Exception{

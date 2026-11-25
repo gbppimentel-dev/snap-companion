@@ -49,7 +49,8 @@ def main():
     with zipfile.ZipFile(bundle,'w',compression=zipfile.ZIP_DEFLATED,compresslevel=6) as z:
         for p,name in [(apk,apk.name),(compatibility,'compatibility.json'),(manifest,'release-manifest.json'),(validation_path,'validation.json'),(ROOT/'packaging/QUICK-START.md','QUICK-START.md'),(ROOT/'packaging/QUICK-START.txt','QUICK-START.txt'),(ROOT/'LICENSE','LICENSE'),(ROOT/'THIRD_PARTY_NOTICES.md','THIRD_PARTY_NOTICES.md'),(ROOT/'docs/releases'/f'{tag}.md',f'docs/releases/{tag}.md')]:
             z.write(p,name)
-        for name in ['SETUP.md','COMPATIBILITY.md','PRIVACY.md','ARCHITECTURE.md','BUILDING.md']:
+        z.write(ROOT/'CHANGELOG.md','CHANGELOG.md')
+        for name in ['SETUP.md','EDEN_DUO_SETUP.md','COMPATIBILITY.md','PRIVACY.md','ARCHITECTURE.md','BUILDING.md']:
             z.write(ROOT/'docs'/name,'docs/'+name)
         for p in sorted((ROOT/'app/src/main/assets/licenses').glob('*.txt')):
             z.write(p,'licenses/'+p.name)

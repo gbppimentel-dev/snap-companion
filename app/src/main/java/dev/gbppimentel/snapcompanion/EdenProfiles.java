@@ -5,7 +5,7 @@ final class EdenProfiles {
     record Save(String user,long bytes){}
     static List<Save> discover(Context context)throws Exception{
         String result=AynBridge.run(context.getCacheDir(),"""
-            snap_root=/sdcard/Android/data/dev.eden.eden_emulator/files/nand/user/save/0000000000000000
+            snap_root=/sdcard/Android/data/dev.igawa6.edenduo/files/nand/user/save/0000000000000000
             for snap_file in "$snap_root"/*/0100F4300BF2C000/6706e7d0f3dab2ab; do
               [ -f "$snap_file" ] || continue
               snap_user=${snap_file%/0100F4300BF2C000/6706e7d0f3dab2ab}; snap_user=${snap_user##*/}

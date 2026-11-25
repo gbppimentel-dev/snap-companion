@@ -2,8 +2,8 @@
   "name": "Snap Companion",
   "channel": "release",
   "applicationId": "dev.gbppimentel.snapcompanion",
-  "version": "0.5.35",
-  "versionCode": 63,
+  "version": "0.5.36-duo.1",
+  "versionCode": 64,
   "base": {
     "version": "0.5.24",
     "versionCode": 36,
@@ -19,7 +19,7 @@
     "updatesExistingApp": true,
     "requiredDuoMod": false,
     "reader": "bundled Thor-specific persistent read-only native sampler (20 Hz)",
-    "status": "release APK with native course/map reading, event handoff recovery, separated photo hints and icon/percentage-only battery display",
+    "status": "Exact installed code64 release for Eden Duo 1.4.0; original APK identity/signer/data; paired cold launch, save sync, Park Day level3 native map and short optional 2x LSFG/SMAA checks documented",
     "supersedes": "separate Next APK and mod-only delivery"
   }
 }

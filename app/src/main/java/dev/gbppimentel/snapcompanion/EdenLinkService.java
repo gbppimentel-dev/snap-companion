@@ -88,16 +88,18 @@ public final class EdenLinkService extends Service {
         if(!skip.matches("[a-f0-9]{64}|"))throw new IllegalArgumentException("Invalid metadata fingerprint");
         String out="'"+output.getAbsolutePath().replace("'","'\\''")+"'";
         return """
-            snap_pid=$(pidof dev.eden.eden_emulator)
+            snap_pid=$(pidof dev.igawa6.edenduo)
             case "$snap_pid" in '') snap_pid=0;; *[!0-9]*) echo no-game; exit 0;; esac
-            snap_root=/sdcard/Android/data/dev.eden.eden_emulator/files
+            snap_root=/sdcard/Android/data/dev.igawa6.edenduo/files
             snap_game=$(grep 'Core .*Load: Loading ' "$snap_root/log/eden_log.txt" | tail -n 1)
             if [ "$snap_pid" != 0 ]; then
               case "$snap_game" in *'(0100F4300BF2C000)'*) ;; *) echo other-game; exit 0;; esac
             fi
             snap_top=$(dumpsys activity activities 2>/dev/null | awk '/^Display #/{primary=($2=="#0")} primary && /topResumedActivity=/ && !found {print;found=1}')
             snap_visible=0
-            case "$snap_top" in *' dev.eden.eden_emulator/org.yuzu.yuzu_emu.activities.EmulationActivity'*) snap_visible=1;; esac
+            if [ "$snap_pid" != 0 ]; then
+              case "$snap_top" in *' dev.igawa6.edenduo/org.yuzu.yuzu_emu.activities.EmulationActivity'*) snap_visible=1;; esac
+            fi
             snap_closed_copy=0
             if [ "$snap_pid" = 0 ]; then
               case "$snap_top" in *' rip.moth.cocoonshell/.MainActivity}'*|*' com.android.launcher3/'*) snap_closed_copy=1;; esac

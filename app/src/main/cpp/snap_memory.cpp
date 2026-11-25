@@ -62,7 +62,7 @@ struct Reader {
  bool Init(int target){
   if(getuid()!=0||target<=0)return false;pid=target;
   std::ifstream cmd("/proc/"+std::to_string(pid)+"/cmdline");std::string name;std::getline(cmd,name,'\0');
-  if(name!="dev.eden.eden_emulator"||!Maps())return false;
+  if(name!="dev.igawa6.edenduo"||!Maps())return false;
   fd=open(("/proc/"+std::to_string(pid)+"/mem").c_str(),O_RDONLY|O_CLOEXEC);if(fd<0)return false;
   host.userdata=this;host.main_base=base;
   host.is_mapped=[](void*p,uint64_t a,uint64_t n)->EdenDsmodBool{return static_cast<Reader*>(p)->Mapped(a,n);};

@@ -18,15 +18,15 @@ final class EdenPerformance {
     static boolean isThorModel(String model) { return model != null && "AYN Thor".equalsIgnoreCase(model.replace('_', ' ').trim()); }
     // Only the visible primary-display Eden activity qualifies. Other emulators and hidden games do not.
     private static final String PROMOTE = """
-        snap_pid=$(pidof dev.eden.eden_emulator)
+        snap_pid=$(pidof dev.igawa6.edenduo)
         case "$snap_pid" in ''|*[!0-9]*) echo no-process; exit 0;; esac
         snap_group=$(cat /proc/$snap_pid/cpuset)
         snap_cpu=$(awk -F: '$2 ~ /(^|,)cpu(,|$)/ {print $3;exit}' /proc/$snap_pid/cgroup)
         if [ "$snap_group" = /top-app ] && [ "$snap_cpu" = /top-app ]; then echo already-top:$snap_pid; exit 0; fi
         case "$snap_group:$snap_cpu" in /foreground:/foreground|/foreground:/top-app|/top-app:/foreground) ;; *) echo inactive; exit 0;; esac
         snap_top=$(dumpsys activity activities 2>/dev/null | awk '/^Display #/{primary=($2=="#0")} primary && /topResumedActivity=/ && !found {print;found=1}')
-        case "$snap_top" in *' dev.eden.eden_emulator/'*) ;; *) echo not-visible; exit 0;; esac
-        [ "$(pidof dev.eden.eden_emulator)" = "$snap_pid" ] || exit 0
+        case "$snap_top" in *' dev.igawa6.edenduo/'*) ;; *) echo not-visible; exit 0;; esac
+        [ "$(pidof dev.igawa6.edenduo)" = "$snap_pid" ] || exit 0
         if echo "$snap_pid" > /dev/cpuset/top-app/cgroup.procs && echo "$snap_pid" > /dev/cpuctl/top-app/cgroup.procs; then
           echo promoted:$snap_pid
         else echo unavailable; fi
@@ -49,7 +49,7 @@ final class EdenPerformance {
             // If Android has legitimately made Eden the focused top app, leave it alone.
             command("snap_focus=$(dumpsys input 2>/dev/null | awk '/FocusedDisplayId/ && !found {print $2;found=1}')\n" +
                 "[ \"$snap_focus\" = 0 ] && exit 0\n" +
-                "[ \"$(pidof dev.eden.eden_emulator)\" = " + pid + " ] || exit 0\n" +
+                "[ \"$(pidof dev.igawa6.edenduo)\" = " + pid + " ] || exit 0\n" +
                 "[ \"$(cat /proc/" + pid + "/cpuset)\" = /top-app ] || exit 0\n" +
                 "echo " + pid + " > /dev/cpuset/foreground/cgroup.procs\n" +
                 "echo " + pid + " > /dev/cpuctl/foreground/cgroup.procs\necho released");

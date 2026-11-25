@@ -1,5 +1,17 @@
 # release history
 
+## 0.5.36-duo.1
+
+Publishes the exact code64 build installed on Thor, targeting Eden Duo 1.4.0.
+
+- Retargets supported saves/photos, requests/research, visibility, focus/performance helpers and native reader guards to `dev.igawa6.edenduo`.
+- Preserves the original companion APK identity, signer, private data, interface, maps and reference features. No Duo mod is required.
+- Requires a live PID before accepting a visible game window; publishes the native heartbeat with a single atomic rename.
+- Documents Duo-generated Cocoon shortcuts, per-title No Companion Off, save-backup/import boundaries and the checked optional 2× LSFG/SMAA setup.
+- Records paired cold-launch/save-sync and Park Day Lv.3 native map evidence. Full branch/event/all-course and long-session/thermal acceptance remain incomplete.
+
+The APK does not include an emulator, game/save data, LSFG DLL or personal shader cache, and does not automatically migrate saves or enable frame generation. Stock-Eden users can retain the prior v0.5.35 release.
+
 ## 0.5.35
 
 Publishes the APK development since v0.5.24, with the original package/signer/data.

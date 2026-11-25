@@ -1,0 +1,49 @@
+{
+  "version": "0.5.36-duo.1",
+  "versionCode": 64,
+  "sha256": "7dd53c6e0b035b9b11780ccc2d3006b94df7412be5b573b755580ed1592cb0de",
+  "certificateSha256": "a59a575f5e7525500e003e9bba01b92195c57af78b6acbb7abc3593648029e77",
+  "noInternetPermission": true,
+  "releaseHasNoDebugHarness": true,
+  "includesPersonalData": false,
+  "localChecks": {
+    "androidJvmRobolectricPassed": 200,
+    "modelMapPassed": 79,
+    "offlineDiagnosticPassed": 6,
+    "nativeScopeCounter": "passed; synthetic memory only",
+    "releaseLint": {
+      "errors": 0,
+      "warnings": 32
+    },
+    "identitySigner": "passed; original package/private paths and baseline signer",
+    "rebuiltApkEqualsInstalled": true,
+    "codeNativeAssetEntriesCompared": 1554,
+    "codeNativeAssetDifferences": 0,
+    "browserUi": "No new browser run: packaged UI matches installed/source bytes; prior v0.5.35 UI regression scope retained"
+  },
+  "hardware": {
+    "comparisonDate": "2026-11-25",
+    "installedCompanion": "0.5.36-duo.1 / code64",
+    "installedDuo": "1.4.0 / dev.igawa6.edenduo",
+    "installedApkSha256Matches": true,
+    "taskDeviceActions": "Read-only version/APK digest checks; no install, launch, game input, configuration or save edits",
+    "migrationObservationsDate": "2026-11-24",
+    "migrationObservations": [
+      "In-place original-signer code64 installation",
+      "Paired cold launches, save synchronization and lower-screen companion pairing",
+      "Park Day level3 native course/map/NEO-ONE marker/trail and photos remaining",
+      "Optional 2x LSFG/SMAA active in short samples; reported game FPS and presentation cadence are distinct"
+    ],
+    "remaining": "All-course/branch/event, new-save, restart breadth, long-session and thermal acceptance incomplete"
+  },
+  "distributionExcludes": [
+    "emulator APK",
+    "original game archives",
+    "user saves/photos/backups",
+    "private captures/logs",
+    "LSFG DLL",
+    "personal shader caches",
+    "signing keys"
+  ],
+  "status": "Local release validation passed; publishing exact installed APK with dated, bounded hardware evidence"
+}

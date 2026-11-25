@@ -1,27 +1,28 @@
 {
   "schema": 1,
   "app": "Snap Companion",
-  "version": "0.5.35",
+  "version": "0.5.36-duo.1",
   "package": "dev.gbppimentel.snapcompanion",
   "device": "AYN Thor",
   "physicalDevelopmentAndroid": "13",
   "minimumAndroidApi": 30,
-  "edenPackage": "dev.eden.eden_emulator",
+  "edenPackage": "dev.igawa6.edenduo",
   "gameDataSchemas": "New Pok\u00e9mon Snap 2.0.1",
   "screenLanguage": "English supported layouts",
   "firmwareRequirement": "Existing compatible AYN PServerBinder service; exact public firmware/emulator matrix unqualified",
-  "validation": "Local release checks and in-place Thor deployment; battery/UI verified. Event/fork recovery has model/browser checks, not a completed latest-build live split-path run.",
+  "validation": "Exact installed code64 APK compared by SHA-256 on 2026-11-25; source/build/tests/signature checks pass. Dated 2026-11-24 device observations include paired cold launches, save sync, Park Day level3 native map/trail and short 2x LSFG/SMAA samples; not all-course or sustained performance acceptance.",
   "internetPermission": false,
   "limits": [
-    "Exact checked Thor/AYN firmware, Eden package and Snap 2.0.1 build only; other environments unverified.",
+    "Targets Eden Duo 1.4.0 (dev.igawa6.edenduo) on the checked Thor/AYN firmware and Snap 2.0.1 build; no stock-Eden auto-detection or other-host guarantee.",
     "Schematic map alignment is partial; two rails, rejected intervals and some seasonal/branch variants remain unplaced or unverified.",
     "Reference sightings are not live Pokemon actors or current pose availability.",
     "Forest/Camp whole-course totals remain neutral where continuation data is incomplete.",
     "No live target/pose recognition or ungraded-photo ranking.",
     "Some fields use supported English screen observations; image import can lag metadata.",
-    "No universal 60 FPS, original black-photo reconstruction or full restart/thermal/new-save acceptance claim."
+    "No universal 60 FPS, original black-photo reconstruction or full restart/thermal/new-save acceptance claim.",
+    "Does not install Duo, migrate emulator saves, enable LSFG automatically or include a third-party DLL/shader cache."
   ],
-  "versionCode": 63,
+  "versionCode": 64,
   "liveReader": "Bundled Thor-specific read-only native reader; no Duo mod dependency",
   "directReadings": [
     "Current course and variant",
@@ -37,5 +38,24 @@
     "knownRails": 123,
     "partlyAlignedRails": 121,
     "fullCourseAcceptance": false
+  },
+  "emulatorVersion": "Eden Duo 1.4.0",
+  "migration": {
+    "automaticSaveMigration": false,
+    "backupRequired": true,
+    "separateCompanionApk": true,
+    "duoModRequired": false,
+    "duoNoCompanionOption": "Off for Snap",
+    "cocoonShortcut": "Duo-generated pinned game shortcut",
+    "stockEdenRelease": "v0.5.35"
+  },
+  "frameGeneration": {
+    "provider": "Eden Duo; optional",
+    "checkedMultiplier": 2,
+    "checkedAntiAliasing": "SMAA",
+    "dllIncluded": false,
+    "shaderCacheIncluded": false,
+    "sustainedFpsGuarantee": false,
+    "reportedGameFpsIsPresentedFrameRate": false
   }
 }

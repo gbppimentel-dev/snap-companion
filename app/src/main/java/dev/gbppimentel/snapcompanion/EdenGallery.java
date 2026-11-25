@@ -28,7 +28,7 @@ final class EdenGallery {
     static String recordScript(File a,File b,int uid,String user,String hash,String albumHash,int slot,int archive){
         int count=archive==3?954:2376,payload=archive==10?30736:460816,blocks=(((payload+15)/16)*16+48)/16;
         if(!Set.of(3,7,10).contains(archive)||!user.matches("[A-Fa-f0-9]{32}")||!hash.matches("[a-f0-9]{64}")||slot<0||slot>=count||archive!=3&&!albumHash.matches("[a-f0-9]{64}"))throw new IllegalArgumentException("Invalid gallery bridge request");long skip=3L+(long)blocks*slot;
-        String root="/sdcard/Android/data/dev.eden.eden_emulator/files/nand/user/save/0000000000000000/"+user+"/0100F4300BF2C000/";
+        String root="/sdcard/Android/data/dev.igawa6.edenduo/files/nand/user/save/0000000000000000/"+user+"/0100F4300BF2C000/";
         String albumGuard=archive==3?"":"[ \"$(sha256sum '"+root+NewSnapSave.NAMES.get(6)+"' | cut -d ' ' -f 1)\" = '"+albumHash+"' ] || { echo changed; exit 0; }\n";
         return "snap_photo='"+root+NewSnapSave.NAMES.get(archive)+"'\nsnap_metadata='"+root+"6706e7d0f3dab2ab'\n"+
             "[ -f \"$snap_photo\" ] || { echo missing; exit 0; }\n"+

@@ -4,9 +4,11 @@
 [![checks](https://github.com/gbppimentel-dev/snap-companion/actions/workflows/ci.yml/badge.svg)](https://github.com/gbppimentel-dev/snap-companion/actions/workflows/ci.yml)
 [![license: MIT](https://img.shields.io/badge/companion-MIT-blue.svg)](LICENSE)
 
-An offline second-screen companion for **New Pokémon Snap on AYN Thor**, running alongside Eden. Keep your Photodex, LenTalk requests, photo tips and illustrated course map on the bottom screen while playing above.
+An offline second-screen companion for **New Pokémon Snap on AYN Thor**, running alongside Eden Duo. Keep your Photodex, LenTalk requests, photo tips and illustrated course map on the bottom screen while playing above.
 
-**[Download v0.5.35](https://github.com/gbppimentel-dev/snap-companion/releases/tag/v0.5.35)** · [Setup](docs/SETUP.md) · [Changes since v0.5.24](docs/releases/v0.5.35.md) · [Compatibility](docs/COMPATIBILITY.md)
+**[Download v0.5.36-duo.1](https://github.com/gbppimentel-dev/snap-companion/releases/tag/v0.5.36-duo.1)** · [Duo setup](docs/EDEN_DUO_SETUP.md) · [Release notes](docs/releases/v0.5.36-duo.1.md) · [Compatibility](docs/COMPATIBILITY.md)
+
+**Current host: Eden Duo 1.4.0 (`dev.igawa6.edenduo`).** This is the exact code64 build verified on Thor. The older [v0.5.35](https://github.com/gbppimentel-dev/snap-companion/releases/tag/v0.5.35) remains available for users still on stock Eden. The new APK does not automatically migrate emulator saves, install Duo or supply an LSFG DLL.
 
 The APK updates the original Snap Companion app in place. It includes its own supported read-only game-memory reader; **no separate Next app or Eden Duo mod is required**. Keep the existing app installed to preserve its data.
 
@@ -25,15 +27,19 @@ The APK updates the original Snap Companion app in place. It includes its own su
 
 Photo Selection now keeps the normal Live dashboard. The automatic Photo Selection comparison page and the grading helper are absent. Browsing reference filters never changes the game.
 
-## What changed since the previous public release
+## What changed since v0.5.35
 
-v0.5.24 was the first public release. v0.5.35 publishes the subsequent APK work: the bundled memory reader, illustrated maps and route/camera tracking, native-asset UI refresh, redesigned collection/request/guide readers, more specific photo instructions, snapshot/import improvements, map handoff recovery and the simplified battery display.
+- Retargeted supported save/image, request, research, game visibility, scheduling/focus and native-reader paths to **Eden Duo 1.4.0**.
+- Retained the original companion APK identity, signer, cached data, interface, maps and offline references. It remains a separate companion APK, not a Duo mod.
+- Fixed a stale visible-window flag after a game process exits and made native heartbeat publication a single atomic rename.
+- Updated the setup notes for Duo's per-title **No Companion = Off** option and a Duo-generated Cocoon shortcut, so the emulator's idle companion page does not cover this APK.
+- Documented the checked optional **2× LSFG / SMAA** setup. Frame generation belongs to Duo, not the companion; it does not imply that reported game FPS doubles.
 
-See the [release notes](docs/releases/v0.5.35.md) and [changelog](CHANGELOG.md). The historical v0.5.24 tag, APK and release assets remain unchanged.
+Prior v0.5.35 introduced the bundled reader, illustrated maps/route-camera tracking, asset-based readers, separated photo hints and icon/percentage-only battery display. See [release history](CHANGELOG.md). Earlier releases and assets remain unchanged.
 
 ## Compatibility and honest limits
 
-The checked target is **AYN Thor, Android 13, original Eden package `dev.eden.eden_emulator` (observed 0.2.1), and New Pokémon Snap 2.0.1**. The supported AYN firmware service is required. Other devices, firmware, emulator packages and game builds are unverified. English OCR remains in use for supported screen-only information; native course/level readings do not depend on reading those labels.
+The checked target is **AYN Thor, Android 13, Eden Duo 1.4.0 package `dev.igawa6.edenduo`, and New Pokémon Snap 2.0.1**. The supported AYN firmware service is required. Other devices, firmware, emulator packages and game builds are unverified. English OCR remains in use for supported screen-only information; native course/level readings do not depend on reading those labels.
 
 - Map alignment is schematic and covers **portions of 30 illustrations / 121 of 123 known rails**. Two short rails, rejected intervals and some seasonal/branch variants remain unplaced or unverified. This is not complete all-course gameplay acceptance.
 - Pokémon pins are authored reference sightings across research levels, **not live Pokémon positions** or guarantees that a particular pose is currently available.
@@ -46,9 +52,9 @@ The checked target is **AYN Thor, Android 13, original Eden package `dev.eden.ed
 
 ## Install or update
 
-1. Run your own compatible copy of Snap in Eden and create a normal game save.
+1. Run your own compatible Snap 2.0.1 copy in Eden Duo 1.4.0. Back up and migrate/verify existing progress before switching from stock Eden.
 2. Download the signed APK from [Releases](https://github.com/gbppimentel-dev/snap-companion/releases/latest) and install it **over the existing app**. Do not uninstall or clear data.
-3. In Cocoon's game-shortcut options, choose **Use Companion → Snap Companion → bottom screen**.
+3. Use a Duo-generated Snap shortcut in Cocoon, pair **Use Companion → Snap Companion → bottom screen**, and set Snap's Duo **No Companion** option to **Off**.
 4. Open normally. Supported live connections start automatically; respond to Android permission prompts if presented.
 
 The package remains `dev.gbppimentel.snapcompanion` with the original signing certificate and private-data paths. [Setup and troubleshooting](docs/SETUP.md).
